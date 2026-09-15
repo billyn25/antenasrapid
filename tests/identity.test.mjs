@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { pages, site, renderPage, esc } from '../scripts/build.mjs';
-import { SERVICE_STATEMENT, localMetadata } from '../scripts/identity.mjs';
+import { SERVICE_STATEMENT, localMetadata, locationLabel } from '../scripts/identity.mjs';
 
 test('frase aprobada íntegra y visible, en description y datos estructurados', () => {
   for (const p of pages) {
@@ -17,13 +17,12 @@ test('frase aprobada íntegra y visible, en description y datos estructurados', 
     assert.ok(graph.some(n => n.description === meta.description));
   }
 });
-test('página local prioriza pueblo, teléfono y servicios, no provincia', () => {
+test('página local: pueblo y provincia juntos, teléfono temprano y servicios en descripción', () => {
   for (const p of pages.filter(p => p.type === 'town')) {
     const meta = localMetadata(p, site), html = renderPage(p);
-    assert.ok(meta.title.startsWith(`Antenista en ${p.name}`));
-    assert.ok(meta.title.includes(site.phone));
-    assert.ok(meta.title.includes('Porteros y videoporteros'));
-    assert.ok(html.includes(`<h1>Antenista en ${p.name}</h1>`));
+    assert.equal(meta.title, `Antenista en ${locationLabel(p)} | ${site.phone}`);
+    assert.ok(meta.description.includes('porteros automáticos y videoporteros'));
+    assert.ok(html.includes(`<h1>Antenista en ${esc(locationLabel(p))}</h1>`));
     assert.ok(html.includes(`Porteros automáticos y videoporteros en ${p.name}</h2>`));
   }
 });
