@@ -1,51 +1,34 @@
-# Antenas Rapid · renovación 0.1
+# Antenas Rapid · renovación 0.2
 
-Primera implementación navegable de revisión, independiente de Antenista Cerca. **No conectar todavía el dominio de la web actual.** El inventario preliminar se conserva en `docs/INVENTARIO-INICIAL.md`.
+Versión independiente de revisión. No conectar el dominio actual ni sustituir todavía la web que ya posiciona.
 
-## Ver en Netlify
+## Cambios 0.2
 
-Importar el repositorio `billyn25/antenasrapid` y seleccionar:
+Identidad visual propia: grafito, blanco y rojo; cabecera, bloque de contacto y servicios rediseñados. Sin la ilustración provisional de la versión anterior ni recursos de Antenista Cerca.
 
-| Campo | Valor |
-| --- | --- |
-| Rama | `main` |
-| Directorio base | Vacío (raíz del repositorio) |
-| Comando de construcción | `npm run build` |
-| Directorio de publicación | `dist` |
-| Node | `22`, ya configurado |
+La frase «Técnico en instalación, reparación y mantenimiento de antenas, porteros automáticos y videoporteros» aparece íntegra en el contenido visible, meta description, Open Graph y descripción de WebPage. Las páginas locales comienzan con «Antenista en [localidad]» en H1 y título; el teléfono forma parte del título y aparece al principio de la descripción. Google puede elegir otro título o fragmento.
 
-`netlify.toml` contiene la configuración. Mantener el dominio temporal `.netlify.app` y no enviar esta versión a Search Console. No hay que subir fotos ni archivos adicionales para esta primera revisión.
+Porteros automáticos y videoporteros tienen acceso directo en el menú, sección principal de instalación/reparación/mantenimiento, fichas separadas y preguntas específicas. No se inventan sedes, reseñas, obras ni tiempos de llegada.
 
-La aplicación permanece en modo de revisión aunque Netlify llame «production» al despliegue de `main`. Genera `noindex,nofollow` en HTML y cabeceras; no es un control de acceso privado. La activación real exige revisar la migración y cambiar expresamente la configuración. No modifica DNS ni el alojamiento existente.
+## Netlify (solo revisión)
 
-## Incluido
+- Repositorio: `billyn25/antenasrapid`, rama `main`.
+- Directorio base vacío; comando `npm run build`; publicación `dist`.
+- Node 22 y `SITE_MODE=preview` configurados en `netlify.toml`.
+- Mantener la dirección temporal `.netlify.app`, sin cambiar DNS.
 
-Portada, cinco provincias y dos páginas locales iniciales: Bilbao y Lerma. Rutas conservadas con mayúsculas y `.html`. Servicios, teléfono, WhatsApp, abecedario y búsqueda en una selección inicial de municipios. Plantilla compartida con contenido y configuración propios, sin trasladar textos, logo, fotos ni Analytics de Antenista Cerca.
+Se conserva el bloqueo `noindex,nofollow` en HTML y cabeceras, sin analítica. No es una página privada. El build rechaza el dominio actual y el modo de producción. No se genera un sitemap incompleto.
 
-Esta versión utiliza una ilustración técnica y una marca tipográfica provisionales. Las fotografías originales y el inventario completo siguen pendientes. Son ocho páginas iniciales, no toda la web histórica ni una migración aprobada.
+## Alcance real
 
-## Pruebas locales
+Ocho páginas: portada, cinco provincias y dos locales (Bilbao y Lerma), conservando las rutas y `.html`. Los demás municipios del índice siguen siendo una selección parcial, no páginas ya construidas. Fotografías propias, inventario completo, más páginas locales útiles e información legal completa siguen pendientes. El inventario original está en `docs/INVENTARIO-INICIAL.md`.
 
-Requiere Node 22 o posterior. Sin dependencias externas.
+## Pruebas
 
-```sh
-npm run build
-npm run preview
-```
+`npm run build` ejecuta las pruebas y la auditoría del HTML. `npm run preview` abre el servidor local en el puerto 4173.
 
-Abrir `http://127.0.0.1:4173`. El build ejecuta las pruebas y después audita cada página generada. `npm test` ejecuta únicamente los tests. La carpeta `dist/` se genera; no se guarda en Git.
+Resultado local de esta entrega: 17 pruebas automáticas, 175 enlaces y anclas; 32 comprobaciones de los componentes renderizados (ocho páginas en 320, 390, 768 y 1440 px), tres pruebas de filtrado del índice, sin errores de JavaScript. Para las pruebas visuales se inyectaron los CSS y JS locales en Chromium; no constituyen una prueba de la publicación HTTP de Netlify.
 
-## Organización
+## Antes de producción
 
-- `config/site.json`: marca, dominio, teléfono y estado.
-- `content/`: páginas, servicios, rutas y procedencia.
-- `src/`: estilos e interacción sin seguimiento.
-- `scripts/`: generador, auditor y servidor local.
-- `tests/`: pruebas previas a la construcción.
-- `docs/`: inventario preliminar, limitaciones y pruebas realizadas.
-
-No se carga analítica, no hay formularios y no se utiliza almacenamiento del navegador. Los enlaces de teléfono y WhatsApp llevan al servicio real; no son un simulador de contacto. La información legal completa está pendiente de revisión.
-
-## Antes de sustituir la web actual
-
-Completar el inventario de URLs y su estado HTTP, revisar consultas y páginas con Search Console, recuperar recursos autorizados, confirmar cobertura y contenido, completar información legal, preparar copia de seguridad y mapa de redirecciones si fuera necesario. Comprobar la versión alojada y obtener autorización expresa para cambiar dominio o alojamiento.
+Completar el mapa de URLs actuales y consultas de Search Console, verificar cobertura y contenido, recuperar fotografías autorizadas, completar información del titular, preparar respaldo y redirecciones solo cuando hagan falta. Publicar en el dominio real únicamente tras revisar la migración y recibir autorización.
