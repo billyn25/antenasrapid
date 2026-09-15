@@ -1,0 +1,16 @@
+# Primera versión exclusivamente de revisión. NO conectar el dominio actual.
+[build]
+  command = "npm run build"
+  publish = "dist"
+[build.environment]
+  NODE_VERSION = "22"
+  SITE_MODE = "preview"
+[build.processing]
+  skip_processing = true
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Cache-Control = "public, max-age=0, must-revalidate"

@@ -1,0 +1,12 @@
+{
+  "name": "antenasrapid",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {"node": ">=22"},
+  "scripts": {
+    "build": "node --test tests/site.test.mjs && node scripts/build.mjs && node scripts/audit.mjs",
+    "test": "node --test tests/site.test.mjs",
+    "preview": "node scripts/serve.mjs"
+  }
+}

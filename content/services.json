@@ -1,0 +1,8 @@
+[
+ {"id":"tdt","name":"Antenas TDT","short":"Recuperar canales y señal estable.","text":"Revisión de antenas, conexiones y tomas cuando faltan canales o se corta la imagen. Instalación y orientación de equipos para televisión terrestre.","icon":"antenna"},
+ {"id":"parabolicas","name":"Antenas parabólicas","short":"Instalación y ajuste de satélite.","text":"Montaje y revisión de recepción por satélite, orientación de la parabólica y comprobación del LNB, conectores y recorrido del cable coaxial.","icon":"dish"},
+ {"id":"amplificacion","name":"Amplificación y distribución","short":"La señal, hasta la última toma.","text":"Comprobación de amplificadores, fuentes y distribución para detectar en qué tramo se pierde la señal. Revisión de instalaciones individuales y colectivas.","icon":"signal"},
+ {"id":"porteros","name":"Porteros y videoporteros","short":"Llamar, escuchar y abrir la puerta.","text":"Reparación y renovación de placas de calle, telefonillos y monitores. Revisión de llamada, audio, imagen y apertura antes de seleccionar recambios.","icon":"door"},
+ {"id":"tomas","name":"Tomas y cableado de TV","short":"Una conexión donde la necesitas.","text":"Instalación de nuevas tomas de televisión y adaptación del recorrido del cable. Consulta cómo llevar TV o satélite a otra habitación.","icon":"cable"},
+ {"id":"mantenimiento","name":"Mantenimiento de antenas","short":"Revisiones para tu instalación.","text":"Consulta las condiciones de mantenimiento para vivienda o comunidad. El alcance, la periodicidad y los trabajos incluidos se concretan para cada instalación.","icon":"tools"}
+]
