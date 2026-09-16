@@ -141,11 +141,18 @@ assert.ok(localVariants.size >= 150, `Poca diversidad determinista: solo ${local
 const largestFingerprintGroup = Math.max(...localBodyFingerprints.values());
 assert.ok(largestFingerprintGroup <= 12, `Demasiadas páginas locales con el mismo bloque normalizado: ${largestFingerprintGroup}`);
 
-const aranda = localPages.find(p => p.name === 'Aranda de Duero' && p.province === 'Burgos');
-assert.ok(aranda, 'Falta Aranda de Duero en el manifiesto');
-assert.equal(aranda.path, '/Antenas-Burgos/aranda_duero.html', 'Aranda debe conservar su URL histórica');
-assert.ok(fs.existsSync(path.join(root, 'Antenas-Burgos', 'aranda_duero.html')), 'Falta HTML histórico de Aranda');
-assert.ok(!fs.existsSync(path.join(root, 'Antenas-Burgos', 'aranda-de-duero.html')), 'No crear URL paralela para Aranda');
+const historicalRoutes = [
+  { name: 'Bilbao', province: 'Bizkaia', path: '/Antenas-Bizkaia/bilbao.html' },
+  { name: 'Aranda de Duero', province: 'Burgos', path: '/Antenas-Burgos/aranda_duero.html' },
+  { name: 'Lerma', province: 'Burgos', path: '/Antenas-Burgos/lerma.html' }
+];
+for (const expected of historicalRoutes) {
+  const page = localPages.find(p => p.name === expected.name && p.province === expected.province);
+  assert.ok(page, `Falta ${expected.name} en el manifiesto local`);
+  assert.equal(page.path, expected.path, `${expected.name} debe conservar su URL histórica`);
+  assert.ok(fs.existsSync(path.join(root, expected.path.slice(1))), `Falta HTML histórico de ${expected.name}`);
+}
+assert.ok(!fs.existsSync(path.join(root, 'Antenas-Burgos', 'aranda-de-duero.html')), 'No crear URL paralela para Aranda de Duero');
 
 for (const province of provinces) {
   const html = fs.readFileSync(path.join(root, routeFile(province.path)), 'utf8');
@@ -165,4 +172,4 @@ for (const province of provinces) {
   assert.equal(zones.split(`href="${province.path}"`).length - 1, 1, `Portada: acceso único a ${province.name}`);
 }
 assert.ok(fs.statSync(path.join(root, 'assets/logo-antenasrapid.webp')).size > 0, 'Falta el archivo de logo publicado');
-console.log(`AUDITORÍA SEO LOCAL OK: ${localPages.length} páginas; ${titlePatterns.size} patrones de title, ${descriptionPatterns.size} metas, ${localVariants.size} variantes de contenido, schema Service sin dirección inventada, Urgencias 24h, URL histórica de Aranda e interlinking provincial.`);
+console.log(`AUDITORÍA SEO LOCAL OK: ${localPages.length} páginas; ${titlePatterns.size} patrones de title, ${descriptionPatterns.size} metas, ${localVariants.size} variantes de contenido, schema Service sin dirección inventada, Urgencias 24h, URLs históricas de Bilbao/Aranda/Lerma e interlinking provincial.`);
