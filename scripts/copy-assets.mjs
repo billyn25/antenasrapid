@@ -4,6 +4,9 @@ import path from 'node:path';
 const root = path.resolve('dist');
 const source = path.join('src', 'logo-antenasrapid-clean.webp.b64');
 const target = path.join(root, 'assets', 'logo-antenasrapid.webp');
+const PHONE = '641 589 394';
+const TEL = '+34641589394';
+const DOMAIN = 'https://www.antenasrapid.com';
 
 fs.mkdirSync(path.dirname(target), { recursive: true });
 const encoded = fs.readFileSync(source, 'utf8').trim();
@@ -37,7 +40,7 @@ for (const page of localPages) {
 
 function replaceHistoricRoutes(text) {
   for (const [from, to] of historicRoutes) {
-    text = text.replaceAll(from, to).replaceAll(`https://www.antenasrapid.com${from}`, `https://www.antenasrapid.com${to}`);
+    text = text.replaceAll(from, to).replaceAll(`${DOMAIN}${from}`, `${DOMAIN}${to}`);
   }
   return text;
 }
@@ -92,19 +95,89 @@ function relatedTownBlock(page) {
   return `<div class="related-towns"><h3>Servicio de antenista en otros pueblos de ${page.province}</h3><p>Consulta también nuestras páginas de servicio en otros municipios de la provincia.</p><div class="related-town-links">${selected.map(p => `<a href="${p.path}">${p.name}</a>`).join('')}</div></div>`;
 }
 
+function stableHash(value) {
+  let h = 2166136261;
+  for (const ch of String(value)) {
+    h ^= ch.codePointAt(0);
+    h = Math.imul(h, 16777619) >>> 0;
+  }
+  return h >>> 0;
+}
+
+function seoTitle(page) {
+  const v = stableHash(`${page.province}|${page.name}|title`) % 4;
+  const patterns = [
+    `Antenista en ${page.name}, ${page.province} · Urgencias 24h | ${PHONE}`,
+    `Reparación de antenas en ${page.name} · Urgencias 24h | ${PHONE}`,
+    `Técnico de antenas en ${page.name}, ${page.province} · Urgencias 24h | ${PHONE}`,
+    `Antenas y porteros en ${page.name}, ${page.province} · Urgencias 24h | ${PHONE}`
+  ];
+  return patterns[v];
+}
+
+function seoDescription(page) {
+  const v = stableHash(`${page.province}|${page.name}|description`) % 6;
+  const patterns = [
+    `Antenista en ${page.name}, ${page.province}. Urgencias 24h · ${PHONE}. Reparación e instalación de TDT, parabólicas, amplificación, porteros automáticos y videoporteros.`,
+    `Urgencias 24h en ${page.name}, ${page.province} · ${PHONE}. Técnico para antenas TDT, señal, parabólicas, amplificadores, porteros automáticos y videoporteros.`,
+    `Reparación de antenas en ${page.name}, ${page.province}. Urgencias 24h · ${PHONE}. TDT, satélite, antenas colectivas, porteros automáticos y videoporteros.`,
+    `Técnico de antenas en ${page.name}, ${page.province} · ${PHONE}. Urgencias 24h, TDT, parabólicas, amplificación, porteros automáticos y cobertura móvil 4G/5G.`,
+    `Servicio de antenista en ${page.name}, ${page.province}. ${PHONE} · Urgencias 24h. Averías de señal, TDT, parabólicas, porteros automáticos y videoporteros.`,
+    `Antenas Rapid en ${page.name}, ${page.province} · Urgencias 24h · ${PHONE}. Antenas individuales y colectivas, TDT, satélite, porteros y videoporteros.`
+  ];
+  return patterns[v];
+}
+
+function serviceSchema(page) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    '@id': `${DOMAIN}${page.path}#servicio`,
+    name: `Instalación y reparación de antenas en ${page.name}, ${page.province}`,
+    url: `${DOMAIN}${page.path}`,
+    telephone: TEL,
+    provider: {
+      '@type': 'Organization',
+      '@id': `${DOMAIN}/#organizacion`,
+      name: 'Antenas Rapid',
+      url: `${DOMAIN}/`,
+      telephone: TEL
+    },
+    areaServed: {
+      '@type': 'AdministrativeArea',
+      name: `${page.name}, ${page.province}`
+    },
+    serviceType: [
+      'Instalación y reparación de antenas TDT',
+      'Antenas individuales y colectivas',
+      'Antenas parabólicas',
+      'Amplificación y distribución de señal',
+      'Porteros automáticos y videoporteros',
+      'Cobertura móvil 4G/5G en vivienda individual'
+    ]
+  };
+}
+
 function strengthenLocalSeo(html, page) {
   const currentTitle = html.match(/<title>(.*?)<\/title>/)?.[1];
-  if (currentTitle && !/24h/i.test(currentTitle)) {
-    const improved = currentTitle.replace(` | `, ` · Urgencias 24h | `);
-    html = html.replace(`<title>${currentTitle}</title>`, `<title>${improved}</title>`);
-    html = html.replace(`<meta property="og:title" content="${currentTitle}">`, `<meta property="og:title" content="${improved}">`);
+  const title = seoTitle(page);
+  if (currentTitle) {
+    html = html.replace(`<title>${currentTitle}</title>`, `<title>${title}</title>`);
+    html = html.replace(`<meta property="og:title" content="${currentTitle}">`, `<meta property="og:title" content="${title}">`);
   }
-  const desc = html.match(/<meta name="description" content="([^"]*)">/)?.[1];
-  if (desc && !/Urgencias 24h/i.test(desc)) {
-    const improved = `Urgencias 24h. ${desc}`;
-    html = html.replace(`<meta name="description" content="${desc}">`, `<meta name="description" content="${improved}">`);
-    html = html.replace(`<meta property="og:description" content="${desc}">`, `<meta property="og:description" content="${improved}">`);
+
+  const currentDesc = html.match(/<meta name="description" content="([^"]*)">/)?.[1];
+  const description = seoDescription(page);
+  if (currentDesc) {
+    html = html.replace(`<meta name="description" content="${currentDesc}">`, `<meta name="description" content="${description}">`);
+    html = html.replace(`<meta property="og:description" content="${currentDesc}">`, `<meta property="og:description" content="${description}">`);
   }
+
+  if (!html.includes('id="local-service-schema"')) {
+    const schema = JSON.stringify(serviceSchema(page)).replace(/</g, '\\u003c');
+    html = html.replace('</head>', `<script id="local-service-schema" type="application/ld+json">${schema}</script></head>`);
+  }
+
   if (!html.includes('class="related-towns"')) {
     const block = relatedTownBlock(page);
     if (block) html = html.replace('<section class="section wrap faq" id="preguntas">', block + '<section class="section wrap faq" id="preguntas">');
@@ -145,4 +218,4 @@ function fixHtml(dir) {
 }
 fixHtml(root);
 
-console.log(`ASSET/HTML OK: ${localPages.length} páginas locales reforzadas; Porteros automáticos y videoporteros en accesos, antenas primero, Urgencias 24h en SEO, enlazado provincial y URL histórica de Aranda preservada.`);
+console.log(`ASSET/HTML OK: ${localPages.length} páginas locales con titles/metas variados, schema Service sin dirección ficticia, interlinking provincial, Urgencias 24h y URLs históricas preservadas.`);
