@@ -3,14 +3,22 @@ import path from 'node:path';
 
 const root = path.resolve('dist');
 const domain = 'https://www.antenasrapid.com';
-const forbidden = [
-  /VISTA PREVIA/i,
+const forbiddenVisible = [
+  /vista previa/i,
+  /modo de revisión/i,
   /versión de revisión/i,
   /página de prueba/i,
+  /página local generada/i,
+  /generada para esa localidad/i,
   /selección parcial/i,
   /pendiente(?:s)? de revisión/i,
   /inventario .*revisión/i,
-  /demo\b/i
+  /web actual permanece/i,
+  /no sustituye la web actual/i,
+  /\bnoindex\b/i,
+  /\bpreview\b/i,
+  /\bdemo\b/i,
+  /\btest\b/i
 ];
 
 function walk(dir) {
@@ -21,6 +29,18 @@ function walk(dir) {
     else out.push(full);
   }
   return out;
+}
+
+function visibleText(html) {
+  const body = html.match(/<body\b[^>]*>([\s\S]*?)<\/body>/i)?.[1] || html;
+  return body
+    .replace(/<script\b[\s\S]*?<\/script>/gi, ' ')
+    .replace(/<style\b[\s\S]*?<\/style>/gi, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&nbsp;/gi, ' ')
+    .replace(/&[^;]+;/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
 }
 
 function existsForHref(href) {
@@ -43,9 +63,10 @@ const broken = [];
 for (const file of htmlFiles) {
   const rel = path.relative(root, file).split(path.sep).join('/');
   const html = fs.readFileSync(file, 'utf8');
+  const visible = visibleText(html);
 
-  for (const pattern of forbidden) {
-    if (pattern.test(html)) throw new Error(`${rel}: texto interno visible detectado: ${pattern}`);
+  for (const pattern of forbiddenVisible) {
+    if (pattern.test(visible)) throw new Error(`${rel}: texto técnico/de desarrollo visible detectado: ${pattern}`);
   }
   if (/antenasrapid\.netlify\.app/i.test(html)) throw new Error(`${rel}: contiene referencia a Netlify`);
 
@@ -86,4 +107,4 @@ if (!/@media\(max-width:480px\)[\s\S]*?\.strip \.wrap\{[^}]*overflow-x:visible!i
 if (!/@media\(max-width:640px\)[\s\S]*?\.head nav\{[^}]*grid-template-columns:repeat\(5,minmax\(0,1fr\)\)/.test(css)) throw new Error('CSS: falta el menú móvil compacto de cinco accesos');
 if (!/@media\(max-width:640px\)[\s\S]*?\.hero \.actions\{display:none!important\}/.test(css)) throw new Error('CSS: el hero móvil sigue duplicando los botones de llamada y WhatsApp');
 
-console.log(`CIERRE PREPRODUCCIÓN OK: ${manifest.length} páginas locales, ${canonicals} canonicals finales, ${checkedLinks} enlaces internos comprobados, 0 rotos, 0 textos internos visibles y móvil compacto sin CTA duplicado.`);
+console.log(`CIERRE PREPRODUCCIÓN OK: ${manifest.length} páginas locales, ${canonicals} canonicals finales, ${checkedLinks} enlaces internos comprobados, 0 rotos, 0 textos técnicos visibles y móvil compacto sin CTA duplicado.`);
