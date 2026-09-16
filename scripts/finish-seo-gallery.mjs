@@ -87,6 +87,8 @@ for (const page of localPages) {
 }
 
 // Galería procedente de los recursos fotográficos indicados por el propietario.
+// Las imágenes se descargan durante el build y Rapid las sirve desde /assets/galeria/;
+// no quedan enlazadas externamente a Antenas Zalla.
 // antena5.jpg se excluye expresamente porque muestra la fachada de Antenas Zalla.
 const gallerySources = [
   { url: 'https://www.antenaszalla.com/img/videoportero.jpg', alt: 'Videoportero' },
@@ -95,7 +97,7 @@ const gallerySources = [
   { url: 'https://www.antenaszalla.com/img/galeria/antena3.jpg', alt: 'Instalación de antena' },
   { url: 'https://www.antenaszalla.com/img/galeria/antena4.jpg', alt: 'Instalación de antena' },
   { url: 'https://www.antenaszalla.com/img/galeria/antena6.jpg', alt: 'Trabajo técnico de antena' },
-  { url: 'https://www.antenaszalla.com/img/galeria/antena7.jpg', alt: 'Equipo de distribución de señal' },
+  { url: 'https://www.antenaszalla.com/img/galeria/antenas17.jpg', alt: 'Instalación técnica de antena' },
   { url: 'https://www.antenaszalla.com/img/galeria/antena8.jpg', alt: 'Antena parabólica e instalación TDT' }
 ];
 const galleryDir = path.join(root, 'assets', 'galeria');
