@@ -31,6 +31,48 @@ const extras = [
     towns: [],
     source: 'dataset-municipal-publico',
     evidence: 'generated-province-preview'
+  },
+  {
+    type: 'province',
+    path: '/Antenas-Leon/',
+    name: 'León',
+    title: 'Antenistas en León · Porteros automáticos y videoporteros | 641 589 394',
+    heading: 'Antenas y porteros en León',
+    lead: 'Servicio de antenas TDT, parabólicas, amplificación, porteros automáticos, videoporteros y cobertura móvil en los municipios de León.',
+    intro: 'Antenas Rapid organiza el servicio en León por municipio. Para preparar una revisión conviene indicar si se trata de una vivienda, comunidad o negocio y si el problema afecta a una toma, a varios televisores o a una instalación común.',
+    focus: 'Preparar una revisión en León',
+    advice: 'Indica municipio, tipo de inmueble y síntoma observado. Si el problema es de televisión, comenta si falla una toma o varias; si es de portero, distingue llamada, audio, imagen y apertura.',
+    towns: [],
+    source: 'dataset-municipal-publico',
+    evidence: 'generated-province-preview'
+  },
+  {
+    type: 'province',
+    path: '/Antenas-Valladolid/',
+    name: 'Valladolid',
+    title: 'Antenistas en Valladolid · Porteros automáticos y videoporteros | 641 589 394',
+    heading: 'Antenas y porteros en Valladolid',
+    lead: 'Instalación y reparación de antenas, TDT, parabólicas, amplificación, porteros automáticos, videoporteros y cobertura móvil por municipio.',
+    intro: 'Antenas Rapid organiza la atención en Valladolid por localidad. Antes de proponer cambios de equipos se revisa si la incidencia está en recepción, amplificación, distribución, cableado o en el sistema de acceso.',
+    focus: 'Localizar la avería antes de cambiar equipos',
+    advice: 'Indica tu municipio y qué ocurre exactamente. Si afecta a varios televisores o a varias viviendas, comunícalo al preparar el aviso porque orienta la revisión hacia la instalación común.',
+    towns: [],
+    source: 'dataset-municipal-publico',
+    evidence: 'generated-province-preview'
+  },
+  {
+    type: 'province',
+    path: '/Antenas-Zamora/',
+    name: 'Zamora',
+    title: 'Antenistas en Zamora · Porteros automáticos y videoporteros | 641 589 394',
+    heading: 'Antenas y porteros en Zamora',
+    lead: 'Servicio técnico para antenas TDT, parabólicas, amplificación, porteros automáticos, videoporteros y cobertura móvil en los municipios de Zamora.',
+    intro: 'Antenas Rapid organiza los avisos de Zamora por municipio. Para orientar bien una reparación conviene diferenciar una pérdida de señal, un problema de amplificación, una instalación nueva o una avería de portero.',
+    focus: 'Datos útiles antes de llamar',
+    advice: 'Indica localidad, tipo de inmueble y si el fallo aparece en una sola toma o en varias. Para una parabólica o un portero, facilita también si la instalación funcionaba anteriormente.',
+    towns: [],
+    source: 'dataset-municipal-publico',
+    evidence: 'generated-province-preview'
   }
 ];
 
