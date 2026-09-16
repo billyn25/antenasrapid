@@ -25,12 +25,31 @@ const urgentStyles = `<style id="urgent-24h-style">
 @media(max-width:480px){.urgent-line>span:last-child{display:none}}
 </style>`;
 
+function moveSectionBefore(html, sectionId, beforeId) {
+  const sectionStart = html.indexOf(`<section class="section wrap" id="${sectionId}">`);
+  const beforeStart = html.indexOf(`<section class="doorphones section" id="${beforeId}">`);
+  if (sectionStart < 0 || beforeStart < 0 || sectionStart < beforeStart) return html;
+
+  const nextSection = html.indexOf('<section ', sectionStart + 9);
+  if (nextSection < 0) return html;
+
+  const block = html.slice(sectionStart, nextSection);
+  const without = html.slice(0, sectionStart) + html.slice(nextSection);
+  const insertAt = without.indexOf(`<section class="doorphones section" id="${beforeId}">`);
+  if (insertAt < 0) return html;
+  return without.slice(0, insertAt) + block + without.slice(insertAt);
+}
+
 function fixHtml(dir) {
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
     const file = path.join(dir, entry.name);
     if (entry.isDirectory()) fixHtml(file);
     else if (entry.isFile() && entry.name.endsWith('.html')) {
       let html = fs.readFileSync(file, 'utf8').replaceAll('Antennistas', 'Antenistas');
+
+      // Orden comercial: primero antenas/servicios; luego porteros, cobertura móvil,
+      // experiencia/estrellas y marcas. Evita que las marcas aparezcan antes del servicio principal.
+      html = moveSectionBefore(html, 'servicios', 'porteros-videoporteros');
 
       // Urgencias 24h visibles en cabecera y hero.
       html = html.replace('<small>Consulta tu instalación</small>', '<small class="urgent-line"><span class="urgent-24h">Urgencias 24h</span><span>Consulta tu instalación</span></small>');
@@ -57,4 +76,4 @@ function fixHtml(dir) {
 }
 fixHtml('dist');
 
-console.log('ASSET/HTML OK: logo limpio, Urgencias 24h y acceso rápido a cobertura móvil 4G/5G visibles');
+console.log('ASSET/HTML OK: servicios de antenas primero, luego porteros, cobertura móvil, confianza y marcas; Urgencias 24h y accesos 4G/5G visibles');
