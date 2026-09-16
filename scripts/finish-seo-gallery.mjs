@@ -21,29 +21,22 @@ function stableHash(value) {
 
 function fitTitle(page, used) {
   const variants = [
-    `Antenista en ${page.name}, ${page.province} | ${PHONE}`,
-    `Reparación de antenas en ${page.name} | ${PHONE}`,
-    `Técnico de antenas en ${page.name} | ${PHONE}`,
-    `Antenas y porteros en ${page.name} | ${PHONE}`
+    `Antenista en ${page.name} · Urgencias 24h | ${PHONE}`,
+    `Reparación antenas ${page.name} · Urgencias 24h | ${PHONE}`,
+    `Técnico antenas ${page.name} · Urgencias 24h | ${PHONE}`,
+    `Antenas y porteros ${page.name} · Urgencias 24h | ${PHONE}`
   ];
   const start = stableHash(`${page.path}|title-final`) % variants.length;
   const ordered = [...variants.slice(start), ...variants.slice(0, start)];
   const fallbacks = [
-    `Antenista en ${page.name} | ${PHONE}`,
-    `${page.name} · Antenista | ${PHONE}`,
-    `${page.name} · Antenista 24h`,
-    `${page.name} · Antenista`
+    `Antenista en ${page.name} · Urgencias 24h`,
+    `${page.name} · Antenista · Urgencias 24h`,
+    `${page.name}, ${page.province} · Urgencias 24h`
   ];
 
   let title = [...ordered, ...fallbacks].find(value => value.length <= MAX_TITLE && !used.has(value));
-  if (!title) {
-    const uniqueFallbacks = [
-      `${page.name}, ${page.province} · Antenista`,
-      `${page.name} · ${page.province} · Antenista`
-    ];
-    title = uniqueFallbacks.find(value => value.length <= MAX_TITLE && !used.has(value)) || uniqueFallbacks[0];
-  }
-  if (used.has(title)) title = `${page.name} · ${page.province} · Antenista`;
+  if (!title) title = `${page.name}, ${page.province} · Urgencias 24h`;
+  if (used.has(title)) title = `${page.name} · ${page.province} · Urgencias 24h`;
   used.add(title);
   return title;
 }
