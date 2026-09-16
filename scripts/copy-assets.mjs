@@ -15,16 +15,29 @@ if (fs.existsSync(home)) {
   fs.writeFileSync(home, html);
 }
 
+const urgentStyles = `<style id="urgent-24h-style">
+.urgent-line{display:flex!important;align-items:flex-end;gap:6px!important;flex-direction:column;margin-top:6px!important;color:#fff!important}
+.urgent-24h{display:inline-flex;align-items:center;gap:6px;padding:5px 9px;border-radius:999px;background:#c3263b;color:#fff;font-size:11px;font-weight:900;line-height:1;letter-spacing:.04em;text-transform:uppercase;box-shadow:0 6px 16px rgba(195,38,59,.25)}
+.urgent-24h:before{content:'●';font-size:8px;color:#ffd2d7}
+.urgent-hero{display:inline-flex;align-items:center;gap:8px;margin:0 0 12px;padding:8px 12px;border-radius:999px;background:#c3263b;color:#fff;font-size:12px;font-weight:900;letter-spacing:.05em;text-transform:uppercase;box-shadow:0 10px 22px rgba(195,38,59,.2)}
+.urgent-hero:before{content:'●';font-size:8px;color:#ffd2d7}
+@media(max-width:760px){.urgent-line{align-items:flex-end}.urgent-24h{font-size:10px;padding:4px 8px}.urgent-hero{font-size:11px;padding:7px 10px;margin-bottom:10px}}
+@media(max-width:480px){.urgent-line>span:last-child{display:none}}
+</style>`;
+
 function fixHtml(dir) {
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
     const file = path.join(dir, entry.name);
     if (entry.isDirectory()) fixHtml(file);
     else if (entry.isFile() && entry.name.endsWith('.html')) {
-      const html = fs.readFileSync(file, 'utf8').replaceAll('Antennistas', 'Antenistas');
+      let html = fs.readFileSync(file, 'utf8').replaceAll('Antennistas', 'Antenistas');
+      html = html.replace('<small>Consulta tu instalación</small>', '<small class="urgent-line"><span class="urgent-24h">Urgencias 24h</span><span>Consulta tu instalación</span></small>');
+      html = html.replace(/(<section class="hero"><div class="wrap hero-inner"><div class="hero-copy">)/, '$1<span class="urgent-hero">Urgencias 24h</span>');
+      if (!html.includes('id="urgent-24h-style"')) html = html.replace('</head>', urgentStyles + '</head>');
       fs.writeFileSync(file, html);
     }
   }
 }
 fixHtml('dist');
 
-console.log('ASSET/HTML OK: logo limpio, portada sin bloque duplicado y textos revisados');
+console.log('ASSET/HTML OK: logo limpio, portada sin bloque duplicado, Urgencias 24h visible y textos revisados');
