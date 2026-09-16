@@ -65,6 +65,8 @@ function normalizeVisible(html) {
 const paths = new Set();
 const titles = new Set();
 const descriptions = new Set();
+const titlePatterns = new Set();
+const descriptionPatterns = new Set();
 const localVariants = new Set();
 const localBodyFingerprints = new Map();
 
@@ -103,8 +105,22 @@ for (const page of localPages) {
   assert.ok(description && /Urgencias 24h/i.test(description), `${page.path}: meta description sin Urgencias 24h`);
   assert.ok(title && !titles.has(title), `${page.path}: título duplicado`);
   assert.ok(description && !descriptions.has(description), `${page.path}: meta description duplicada`);
+  assert.ok(title.length >= 42 && title.length <= 100, `${page.path}: longitud de title poco cuidada (${title.length})`);
+  assert.ok(description.length >= 115 && description.length <= 190, `${page.path}: longitud de meta description poco cuidada (${description.length})`);
   titles.add(title);
   descriptions.add(description);
+
+  titlePatterns.add(title.replace(page.name, 'LOCALIDAD').replace(page.province || '', 'PROVINCIA').replace(site.phone, 'PHONE'));
+  descriptionPatterns.add(description.replace(page.name, 'LOCALIDAD').replace(page.province || '', 'PROVINCIA').replace(site.phone, 'PHONE'));
+
+  const serviceSchemaText = html.match(/<script id="local-service-schema" type="application\/ld\+json">([\s\S]*?)<\/script>/)?.[1];
+  assert.ok(serviceSchemaText, `${page.path}: falta schema Service local`);
+  const serviceSchema = JSON.parse(serviceSchemaText);
+  assert.equal(serviceSchema['@type'], 'Service', `${page.path}: schema local debe ser Service`);
+  assert.equal(serviceSchema.areaServed?.name, `${page.name}, ${page.province}`, `${page.path}: areaServed incorrecta`);
+  assert.equal(serviceSchema.telephone, site.tel, `${page.path}: teléfono de schema incorrecto`);
+  assert.ok(!serviceSchema.address, `${page.path}: no inventar dirección en schema`);
+  assert.ok(Array.isArray(serviceSchema.serviceType) && serviceSchema.serviceType.length >= 5, `${page.path}: serviceType insuficiente`);
 
   const variant = html.match(/data-local-variant="(\d+)"/)?.[1];
   if (variant) localVariants.add(variant);
@@ -119,12 +135,12 @@ for (const page of localPages) {
   }
 }
 
-// Debe existir una variedad real de combinaciones, no solo sustituir el nombre del pueblo.
+assert.ok(titlePatterns.size >= 4, `Poca variedad de title SEO: ${titlePatterns.size} patrones`);
+assert.ok(descriptionPatterns.size >= 6, `Poca variedad de meta descriptions: ${descriptionPatterns.size} patrones`);
 assert.ok(localVariants.size >= 150, `Poca diversidad determinista: solo ${localVariants.size} variantes`);
 const largestFingerprintGroup = Math.max(...localBodyFingerprints.values());
 assert.ok(largestFingerprintGroup <= 12, `Demasiadas páginas locales con el mismo bloque normalizado: ${largestFingerprintGroup}`);
 
-// URL histórica real comprobada en antenasrapid.com: debe mantenerse exactamente.
 const aranda = localPages.find(p => p.name === 'Aranda de Duero' && p.province === 'Burgos');
 assert.ok(aranda, 'Falta Aranda de Duero en el manifiesto');
 assert.equal(aranda.path, '/Antenas-Burgos/aranda_duero.html', 'Aranda debe conservar su URL histórica');
@@ -149,4 +165,4 @@ for (const province of provinces) {
   assert.equal(zones.split(`href="${province.path}"`).length - 1, 1, `Portada: acceso único a ${province.name}`);
 }
 assert.ok(fs.statSync(path.join(root, 'assets/logo-antenasrapid.webp')).size > 0, 'Falta el archivo de logo publicado');
-console.log(`AUDITORÍA SEO LOCAL OK: ${localPages.length} páginas; ${localVariants.size} variantes deterministas, sin frases de Antenista Cerca ni datos locales inventados, Urgencias 24h, URL histórica de Aranda, interlinking provincial y servicios antes que marcas.`);
+console.log(`AUDITORÍA SEO LOCAL OK: ${localPages.length} páginas; ${titlePatterns.size} patrones de title, ${descriptionPatterns.size} metas, ${localVariants.size} variantes de contenido, schema Service sin dirección inventada, Urgencias 24h, URL histórica de Aranda e interlinking provincial.`);
