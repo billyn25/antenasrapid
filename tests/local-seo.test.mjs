@@ -7,7 +7,7 @@ test('portada de marca: sin Bizkaia en título, H1, descripción o encabezados',
  const p = pages.find(p => p.type === 'home'), h = renderPage(p), m = localMetadata(p, site);
  assert.ok(!/Bizkaia/i.test([m.title,m.heading,m.description].join(' ')));
  for (const match of h.matchAll(/<h[12]\b[^>]*>(.*?)<\/h[12]>/g)) assert.ok(!/Bizkaia/.test(match[1]));
- assert.ok(h.includes('href="/Antenas-Bizkaia/"')); // Se conserva su acceso provincial.
+ assert.ok(h.includes('href="/Antenas-Bizkaia/"'));
 });
 test('Lerma conserva Burgos, teléfono y reclamo proporcionado; no inventa tiempos de llegada', () => {
  const p=pages.find(p=>p.name==='Lerma'), m=localMetadata(p,site), h=renderPage(p);
@@ -25,18 +25,20 @@ test('antenas y porteros tienen encabezados propios de cada localidad', () => {
   const h=renderPage(p);
   assert.ok(h.includes(`<h2>Instalación y reparación de antenas en ${p.name}</h2>`));
   assert.ok(h.includes(`Porteros automáticos y videoporteros en ${p.name}</h2>`));
+  assert.ok(h.includes(`Cobertura móvil 4G/5G en ${p.name}</h2>`));
+  assert.ok(h.includes(`Servicio en ${p.name} · ${site.phone}`));
  }
 });
-test('icono propio solo en la marca, sin imágenes ni dependencias externas', () => {
+test('logotipo oficial local en la marca, sin imagen remota', () => {
  for (const p of pages) {
   const h=renderPage(p);
-  assert.equal((h.match(/class="icon rapid-brand-mark"/g)||[]).length,1);
-  assert.ok(h.includes('aria-hidden="true" focusable="false"'));
+  assert.equal((h.match(/class="rapid-brand-logo"/g)||[]).length,1);
+  assert.ok(h.includes('src="/assets/logo-antenasrapid.webp"'));
+  assert.ok(h.includes('alt="Antenas Rapid"'));
   assert.ok(h.includes('aria-label="Antenas Rapid, inicio"'));
-  assert.ok(!/\.png|\.webp/.test(h));
+  assert.ok(!/<img[^>]+src="https?:\/\//i.test(h));
  }
 });
-
 test('prioridad a pueblos en portada y navegación, sin destacar capitales', () => {
  const p=pages.find(p=>p.type==='home'), h=renderPage(p), m=localMetadata(p,site);
  assert.equal(m.heading,'Antenistas en tu pueblo');
@@ -48,4 +50,13 @@ test('prioridad a pueblos en portada y navegación, sin destacar capitales', () 
 test('el enfoque en pueblos no borra las rutas históricas de ciudades', () => {
  assert.ok(pages.some(p=>p.path==='/Antenas-Bizkaia/bilbao.html'));
  for(const p of pages.filter(p=>p.type==='province')) assert.ok(renderPage(p).includes(`<h2>Busca tu pueblo en ${p.name}</h2>`));
+});
+test('marcas y confianza están visibles sin inventar reseñas estructuradas', () => {
+ for (const p of pages) {
+  const h=renderPage(p);
+  for (const brand of ['Televés','Alcad','Ikusi','Fagor','Rover','EK','FTE Maximal','Fermax','Tegui','Golmar','Comelit','BTicino','Legrand','Galak']) assert.ok(h.includes(brand));
+  assert.ok(h.includes('Atención profesional para averías e instalaciones'));
+  assert.ok(h.includes('★★★★★'));
+  assert.ok(!/AggregateRating|Review/.test(h));
+ }
 });

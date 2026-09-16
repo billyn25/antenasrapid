@@ -1,11 +1,20 @@
-# Antenas Rapid: prioridad a pueblos, servicios y teléfono
+# Antenas Rapid: SEO por pueblos, servicios y confianza
 
-Petición del usuario: pueblos, no capitales. La portada y la navegación pasan a hablar de pueblos. Las provincias organizan los listados; no sustituyen el nombre del municipio en sus páginas. Las ocho rutas existentes, incluida Bilbao, se mantienen por conservación, no como prioridad comercial. No se han generado nuevas páginas locales ni cambiado el dominio.
+La web se mantiene en revisión (`noindex,nofollow`). El objetivo comercial es crecer en pueblos y localidades sin perder las rutas históricas de ciudades ya existentes.
 
-La portada usa «Antenistas en tu pueblo», sin atribuir toda la web a Bizkaia. El título local de ejemplo es «Antenista en Lerma, Burgos | 641 589 394». Teléfono al principio de la descripción; se mantienen las antenas colectivas e individuales y la frase completa «Técnico en instalación, reparación y mantenimiento de antenas, porteros automáticos y videoporteros». Porteros y videoporteros conservan sección propia y sus fichas separadas. El reclamo 24h aportado para Lerma no se extiende a otras páginas ni promete un tiempo de llegada.
+## Criterio para páginas locales
 
-Icono de cabecera: antena sobre tejado con señal en SVG local, conservando la tipografía y los colores grafito/rojo. No se han utilizado ni generado fotografías nuevas.
+Cada página de pueblo debe tener una intención útil y diferenciada: localidad visible en H1 y contenido, teléfono accesible, enlaces desde su provincia y bloques de servicio que respondan a búsquedas reales como antenista, reparación TDT, parabólicas, amplificación, porteros automáticos, videoporteros y cobertura móvil 4G/5G en vivienda individual.
 
-Verificación local: 24 pruebas automáticas aprobadas; auditoría de ocho páginas y 175 enlaces internos/anclas. 32 comprobaciones en Chromium (ocho páginas por 320, 390, 768 y 1440 px) con CSS y JS locales inyectados; sin desbordamiento horizontal, solapamiento logo/teléfono ni errores de JavaScript. No equivale a comprobar el despliegue en Netlify.
+No se deben generar páginas clonadas cambiando únicamente el nombre del municipio. La estructura provincial sirve para que las localidades formen una jerarquía navegable y coherente.
 
-Se conservan noindex, ausencia de analítica y bloqueo del modo de producción. El inventario, los contenidos de más pueblos y la migración siguen pendientes. No se garantiza la presentación exacta de los títulos o fragmentos por Google.
+## Cambios de esta revisión
+
+- Logotipo oficial optimizado para la cabecera oscura y sin zonas transparentes visibles.
+- Cobertura móvil 4G/5G añadida como servicio de vivienda individual.
+- Bloque «Experiencia con equipos antiguos y actuales».
+- Marcas habituales de antena/amplificación y porteros/videoporteros.
+- Bloque de confianza con estrellas decorativas, sin datos `Review` o `AggregateRating` inventados.
+- En páginas locales aparece «Servicio en [localidad] · teléfono» y encabezado específico de cobertura móvil.
+
+Antes de producción siguen pendientes el inventario completo de URLs/pueblos, revisión de contenido localidad por localidad y plan de migración.
