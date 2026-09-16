@@ -9,14 +9,17 @@ const PROVINCES = {
   '39': { name: 'Cantabria', path: '/Antenas-Cantabria/' },
   '20': { name: 'Gipuzkoa', path: '/Antenas-Guipuzcoa/' },
   '31': { name: 'Navarra', path: '/Antenas-Navarra/' },
-  '26': { name: 'La Rioja', path: '/Antenas-La-Rioja/' }
+  '26': { name: 'La Rioja', path: '/Antenas-La-Rioja/' },
+  '24': { name: 'León', path: '/Antenas-Leon/' },
+  '47': { name: 'Valladolid', path: '/Antenas-Valladolid/' },
+  '49': { name: 'Zamora', path: '/Antenas-Zamora/' }
 };
 
 const response = await fetch(SOURCE, { headers: { 'user-agent': 'AntenasRapid-build' } });
 if (!response.ok) throw new Error(`No se pudo cargar el listado de municipios: HTTP ${response.status}`);
 const all = await response.json();
 const selected = all.filter(item => PROVINCES[item.provincia_id]);
-if (selected.length < 1100) throw new Error(`Listado municipal incompleto: solo ${selected.length} municipios`);
+if (selected.length < 1800) throw new Error(`Listado municipal incompleto: solo ${selected.length} municipios`);
 
 const grouped = {};
 for (const [id, info] of Object.entries(PROVINCES)) {
