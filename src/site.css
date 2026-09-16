@@ -134,3 +134,12 @@ body{background:linear-gradient(#fff 0 72%,#fbfaf8 100%)}
  .section{padding-block:38px}.strip .wrap{display:flex;overflow-x:auto;flex-wrap:nowrap;padding-bottom:14px}.strip span{white-space:nowrap;flex:0 0 auto}.province-grid{grid-template-columns:1fr 1fr}.province-card{padding:18px 14px}.province-card strong{font-size:18px}.province-card span{font-size:10px}.town-list{grid-template-columns:1fr}.faq summary{font-size:14px}.contact-panel{border-radius:14px!important}.mobilebar{box-shadow:0 -10px 28px rgba(24,25,29,.14)}
 }
 @media(prefers-reduced-motion:reduce){.service-card,.province-card,.town-list a,.related-town-links a{transition:none}.service-card:hover,.province-card:hover,.town-list a:hover,.related-town-links a:hover{transform:none}}
+
+/* Corrección de altura del bloque de criterios de trabajo. */
+.trust-grid{align-items:start!important}
+.trust-grid>div,.trust-points{align-self:start!important}
+.trust-points{align-items:start!important;align-content:start!important;height:auto!important;min-height:0!important}
+.trust-points article{height:auto!important;min-height:0!important;align-self:start!important;padding:20px 20px!important}
+.trust-points strong{line-height:1.3}
+.trust-points p{line-height:1.55;margin-top:7px}
+@media(max-width:760px){.trust-points article{padding:17px 18px!important}}
