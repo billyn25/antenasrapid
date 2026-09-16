@@ -19,34 +19,57 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Comprobar HTML que sirve la vista previa
+      - name: Pruebas, generación y auditoría de todos los pueblos
+        run: npm run build
+      - name: Comparar la web publicada con la salida comprobada
         continue-on-error: true
         run: |
           python3 - <<'PY'
-          import json, pathlib, urllib.request, datetime
+          import json, pathlib, urllib.request, datetime, hashlib, time, os
           folder = pathlib.Path('qa'); folder.mkdir(exist_ok=True)
-          report = {'checkedAt': datetime.datetime.now(datetime.timezone.utc).isoformat(), 'url': 'https://antenasrapid.netlify.app/'}
-          try:
-              request = urllib.request.Request(report['url'], headers={'Cache-Control': 'no-cache', 'User-Agent': 'AntenasRapid-build-check'})
-              with urllib.request.urlopen(request, timeout=20) as response:
-                  html = response.read().decode('utf-8')
-                  report.update(status=response.status, finalUrl=response.url,
-                      heroCorregido='class="hero-copy"' in html,
-                      marcaDuplicada='class="wordmark"' in html,
-                      cssCorregido='cabecera-hero-2' in html)
-                  (folder/'published.html').write_text(html)
-          except Exception as error:
-              report['error'] = str(error)
-          print(json.dumps(report, ensure_ascii=False, indent=2))
+          domain = 'https://antenasrapid.netlify.app'
+          files = {'/': 'index.html', '/Antenas-Alava/': 'Antenas-Alava/index.html', '/Antenas-Burgos/lerma.html': 'Antenas-Burgos/lerma.html', '/assets/site.css': 'assets/site.css', '/assets/logo-antenasrapid.webp': 'assets/logo-antenasrapid.webp'}
+          def digest(data):
+              return hashlib.sha256(data).hexdigest()
+          expected = {route: digest((pathlib.Path('dist')/file).read_bytes()) for route, file in files.items()}
+          report = {'commit': os.environ['GITHUB_SHA'], 'url': domain, 'published': False}
+          for attempt in range(7):
+              checks = []
+              for route, file in files.items():
+                  check = {'path': route, 'expectedSha256': expected[route]}
+                  try:
+                      request = urllib.request.Request(domain+route, headers={'Cache-Control': 'no-cache', 'User-Agent': 'AntenasRapid-build-check'})
+                      with urllib.request.urlopen(request, timeout=15) as response:
+                          data = response.read()
+                          check.update(status=response.status, receivedSha256=digest(data), matches=digest(data)==expected[route])
+                          saved = folder/'published'/file
+                          saved.parent.mkdir(parents=True, exist_ok=True)
+                          saved.write_bytes(data)
+                  except Exception as error:
+                      check.update(matches=False, error=str(error))
+                  checks.append(check)
+              report.update(checkedAt=datetime.datetime.now(datetime.timezone.utc).isoformat(), checks=checks, published=all(c['matches'] for c in checks))
+              print('PUBLICACIÓN', attempt+1, json.dumps(report, ensure_ascii=False))
+              if report['published']:
+                  break
+              if attempt < 6:
+                  time.sleep(10)
           (folder/'published-check.json').write_text(json.dumps(report, ensure_ascii=False, indent=2))
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as summary:
+              summary.write('## Verificación de publicación\n')
+              summary.write('HTML, CSS y logo coinciden con el build comprobado.\n' if report['published'] else 'Build comprobado; la publicación en Netlify aún no coincide.\n')
+              summary.write('| Recurso | HTTP | Coincide |\n|---|---|---|\n')
+              for check in checks:
+                  summary.write('| '+check['path']+' | '+str(check.get('status','error'))+' | '+str(check['matches'])+' |\n')
+          if not report['published']:
+              print('::warning::Netlify todavía no sirve los mismos archivos que el build. No dar por confirmada la publicación.')
           PY
-      - name: Pruebas, generación y auditoría de todos los pueblos
-        run: npm run build
       - name: Guardar salida y fuentes de diagnóstico
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: antenasrapid-verificacion
+          overwrite: true
           retention-days: 2
           include-hidden-files: true
           path: |
