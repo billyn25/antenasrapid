@@ -13,9 +13,10 @@ export function localMetadata(page, site) {
   const place = locationLabel(page);
   const scope = page.type === 'home' ? `${site.brand}. Antenistas en tu pueblo` : `${page.type === 'town' ? 'Antenista' : 'Antenistas'} en ${place}`;
   const emergency = page.urgentLabel ? `${page.urgentLabel}. ` : '';
+  const defaultDescription = `${scope}. ${emergency}☎ ${site.phone}. Antenas colectivas e individuales. ${SERVICE_STATEMENT}.`;
   return {
     title: page.type === 'town' ? `${scope} | ${site.phone}` : page.title,
-    description: `${scope}. ${emergency}☎ ${site.phone}. Antenas colectivas e individuales. ${SERVICE_STATEMENT}.`,
+    description: page.seoDescription || defaultDescription,
     heading: page.type === 'town' ? `Antenista en ${place}` : page.heading,
     statement: SERVICE_STATEMENT
   };
