@@ -87,16 +87,16 @@ for (const page of localPages) {
 }
 
 // Galería procedente de los recursos fotográficos indicados por el propietario.
-// Se excluye la fotografía de la tienda y se incorpora el videoportero de la portada original.
+// antena5.jpg se excluye expresamente porque muestra la fachada de Antenas Zalla.
 const gallerySources = [
-  { url: 'https://www.antenaszalla.com/img/videoportero.jpg', alt: 'Videoportero' },
-  { url: 'https://www.antenaszalla.com/img/galeria/antena2.jpg', alt: 'Trabajo técnico de antena 2' },
-  { url: 'https://www.antenaszalla.com/img/galeria/antena3.jpg', alt: 'Trabajo técnico de antena 3' },
-  { url: 'https://www.antenaszalla.com/img/galeria/antena4.jpg', alt: 'Trabajo técnico de antena 4' },
-  { url: 'https://www.antenaszalla.com/img/galeria/antena5.jpg', alt: 'Trabajo técnico de antena 5' },
-  { url: 'https://www.antenaszalla.com/img/galeria/antena6.jpg', alt: 'Trabajo técnico de antena 6' },
-  { url: 'https://www.antenaszalla.com/img/galeria/antena7.jpg', alt: 'Trabajo técnico de antena 7' },
-  { url: 'https://www.antenaszalla.com/img/galeria/antena8.jpg', alt: 'Trabajo técnico de antena 8' }
+  { file: 'videoportero.jpg', alt: 'Videoportero' },
+  { file: 'antena1.jpg', alt: 'Instalación de antena' },
+  { file: 'antena2.jpg', alt: 'Instalación de antena' },
+  { file: 'antena3.jpg', alt: 'Instalación de antena' },
+  { file: 'antena4.jpg', alt: 'Instalación de antena' },
+  { file: 'antena6.jpg', alt: 'Trabajo técnico de antena' },
+  { file: 'antena7.jpg', alt: 'Equipo de distribución de señal' },
+  { file: 'antena8.jpg', alt: 'Antena parabólica e instalación TDT' }
 ];
 const galleryDir = path.join(root, 'assets', 'galeria');
 fs.mkdirSync(galleryDir, { recursive: true });
@@ -104,10 +104,11 @@ const imported = [];
 
 for (let i = 0; i < gallerySources.length; i++) {
   const source = gallerySources[i];
+  const url = `https://www.antenaszalla.com/img/galeria/${source.file}`;
   try {
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), 12000);
-    const response = await fetch(source.url, {
+    const response = await fetch(url, {
       headers: { 'user-agent': 'AntenasRapid-gallery-migration' },
       signal: controller.signal
     });
@@ -117,7 +118,7 @@ for (let i = 0; i < gallerySources.length; i++) {
     if (!type.startsWith('image/')) continue;
     const bytes = Buffer.from(await response.arrayBuffer());
     if (bytes.length < 2000) continue;
-    const localName = `trabajo-${String(i + 1).padStart(2, '0')}.jpg`;
+    const localName = `trabajo-${String(imported.length + 1).padStart(2, '0')}.jpg`;
     fs.writeFileSync(path.join(galleryDir, localName), bytes);
     imported.push({ name: localName, alt: source.alt });
   } catch {
@@ -150,4 +151,4 @@ if (!home.includes('id="galeria"')) {
 }
 fs.writeFileSync(homeFile, home);
 
-console.log(`SEO/GALERÍA OK: ${localPages.length} páginas locales; title máx. ${maxTitle}, meta ${minDescription}-${maxDescription}; ${imported.length} imágenes migradas a assets/galeria.`);
+console.log(`SEO/GALERÍA OK: ${localPages.length} páginas locales; title máx. ${maxTitle}, meta ${minDescription}-${maxDescription}; ${imported.length} imágenes migradas a assets/galeria, sin fachada de Antenas Zalla.`);
