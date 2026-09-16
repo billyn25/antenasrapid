@@ -31,13 +31,30 @@ function fixHtml(dir) {
     if (entry.isDirectory()) fixHtml(file);
     else if (entry.isFile() && entry.name.endsWith('.html')) {
       let html = fs.readFileSync(file, 'utf8').replaceAll('Antennistas', 'Antenistas');
+
+      // Urgencias 24h visibles en cabecera y hero.
       html = html.replace('<small>Consulta tu instalación</small>', '<small class="urgent-line"><span class="urgent-24h">Urgencias 24h</span><span>Consulta tu instalación</span></small>');
       html = html.replace(/(<section class="hero"><div class="wrap hero-inner"><div class="hero-copy">)/, '$1<span class="urgent-hero">Urgencias 24h</span>');
       if (!html.includes('id="urgent-24h-style"')) html = html.replace('</head>', urgentStyles + '</head>');
+
+      // Acceso rápido directo a cobertura móvil / antenas 4G-5G.
+      if (!html.includes('class="nav-mobile-coverage"')) {
+        html = html.replace(
+          '<a href="#porteros-videoporteros">Porteros y videoporteros</a>',
+          '<a href="#porteros-videoporteros">Porteros y videoporteros</a><a class="nav-mobile-coverage" href="#cobertura-movil">Antenas 4G/5G y cobertura móvil</a>'
+        );
+      }
+      if (!html.includes('<span>Cobertura móvil 4G/5G</span>')) {
+        html = html.replace(
+          '<span>Porteros automáticos y videoporteros</span><span>Instalación y mantenimiento</span>',
+          '<span>Porteros automáticos y videoporteros</span><span>Cobertura móvil 4G/5G</span><span>Instalación y mantenimiento</span>'
+        );
+      }
+
       fs.writeFileSync(file, html);
     }
   }
 }
 fixHtml('dist');
 
-console.log('ASSET/HTML OK: logo limpio, portada sin bloque duplicado, Urgencias 24h visible y textos revisados');
+console.log('ASSET/HTML OK: logo limpio, Urgencias 24h y acceso rápido a cobertura móvil 4G/5G visibles');
