@@ -35,8 +35,8 @@ test('porteros y videoporteros: menú, sección y fichas separadas', () => {
     assert.ok(html.includes('<h3>Videoporteros</h3>'));
   }
 });
-test('las ocho rutas anteriores permanecen, sin generar clones nuevos', () => {
-  assert.deepEqual(pages.map(p => p.path), ['/', '/Antenas-Alava/', '/Antenas-Bizkaia/', '/Antenas-Burgos/', '/Antenas-Cantabria/', '/Antenas-Guipuzcoa/', '/Antenas-Bizkaia/bilbao.html', '/Antenas-Burgos/lerma.html']);
+test('las diez rutas base permanecen, sin generar clones nuevos', () => {
+  assert.deepEqual(pages.map(p => p.path), ['/', '/Antenas-Alava/', '/Antenas-Bizkaia/', '/Antenas-Burgos/', '/Antenas-Cantabria/', '/Antenas-Guipuzcoa/', '/Antenas-Navarra/', '/Antenas-La-Rioja/', '/Antenas-Bizkaia/bilbao.html', '/Antenas-Burgos/lerma.html']);
 });
 test('identidad grafito y rojo, sin la ilustración ni estilos azules anteriores', () => {
   const css = fs.readFileSync('src/site.css', 'utf8');
