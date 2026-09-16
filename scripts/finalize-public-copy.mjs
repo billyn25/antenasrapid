@@ -13,6 +13,36 @@ function walk(dir) {
   return out;
 }
 
+function visibleText(html) {
+  const body = html.match(/<body\b[^>]*>([\s\S]*?)<\/body>/i)?.[1] || html;
+  return body
+    .replace(/<script\b[\s\S]*?<\/script>/gi, ' ')
+    .replace(/<style\b[\s\S]*?<\/style>/gi, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&nbsp;/gi, ' ')
+    .replace(/&middot;/gi, ' · ')
+    .replace(/&[^;]+;/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+const forbiddenVisible = [
+  /vista previa/i,
+  /modo de revisión/i,
+  /versión de revisión/i,
+  /pendiente(?:s)? de revisión/i,
+  /página de prueba/i,
+  /página local generada/i,
+  /generada para esa localidad/i,
+  /selección parcial/i,
+  /web actual permanece/i,
+  /no sustituye la web actual/i,
+  /\bnoindex\b/i,
+  /\bpreview\b/i,
+  /\bdemo\b/i,
+  /\btest\b/i
+];
+
 let changed = 0;
 for (const file of walk(root)) {
   if (!file.endsWith('.html')) continue;
@@ -20,16 +50,28 @@ for (const file of walk(root)) {
   const before = html;
 
   // Ningún texto interno de desarrollo debe quedar visible para el cliente.
+  // El noindex técnico de la preview se conserva únicamente en <head>/cabeceras.
   html = html
-    .replace(/<div class="preview"><b>VISTA PREVIA<\/b>[^<]*<\/div>/g, '')
+    .replace(/<div class="preview">[\s\S]*?<\/div>/gi, '')
     .replaceAll('Los nombres enlazados ya disponen de una página de prueba.', 'Selecciona tu municipio para consultar los servicios disponibles.')
     .replaceAll('Buscar en esta selección', 'Buscar municipio')
     .replaceAll(' localidades en esta selección', ' municipios disponibles')
-    .replace(/<p class="notice">Vista previa: selección parcial del listado de la web actual\. No se ha terminado el inventario de municipios ni la revisión de todas sus páginas\.<\/p>/g, '')
-    .replace(/<details><summary>Información de esta vista previa y privacidad<\/summary><p>[\s\S]*?<\/p><\/details>/g, '')
+    .replaceAll('Cada enlace abre una página local generada para esa localidad. La web continúa en modo de revisión y noindex.', 'Selecciona un municipio para consultar sus servicios de antenas, porteros y videoporteros.')
+    .replaceAll('Cada enlace abre una página local generada para esa localidad.', 'Selecciona un municipio para consultar sus servicios de antenas, porteros y videoporteros.')
+    .replaceAll('La web continúa en modo de revisión y noindex.', '')
+    .replace(/<p class="notice">[^<]*(?:vista previa|modo de revisión|noindex|página de prueba|selección parcial|web actual|generada para esa localidad)[^<]*<\/p>/gi, '')
+    .replace(/<details><summary>Información de esta vista previa y privacidad<\/summary><p>[\s\S]*?<\/p><\/details>/gi, '')
     .replaceAll('Antenas Rapid · Versión de revisión. La web actual permanece en su alojamiento. Fotografías y listado completo de localidades pendientes de revisión.', 'Antenas Rapid · Propiedad de R.F.G. · 641 589 394')
     .replaceAll('Página no incluida en esta vista previa', 'Página no disponible')
     .replaceAll('El inventario de la renovación está en revisión. Esto no indica que la página se haya eliminado de la web actual.', 'La dirección solicitada no está disponible. Puedes volver al inicio o contactar con Antenas Rapid.');
+
+  const visible = visibleText(html);
+  for (const pattern of forbiddenVisible) {
+    if (pattern.test(visible)) {
+      const rel = path.relative(root, file).split(path.sep).join('/');
+      throw new Error(`${rel}: queda texto interno visible: ${pattern}`);
+    }
+  }
 
   if (html !== before) {
     fs.writeFileSync(file, html);
@@ -88,4 +130,4 @@ if (fs.existsSync(cssFile)) {
   fs.writeFileSync(cssFile, css + mobileOverflowFix);
 }
 
-console.log(`COPY FINAL OK: ${changed} HTML limpiados; cabecera móvil compacta, sin scroll lateral y sin CTA duplicado en el hero.`);
+console.log(`COPY FINAL OK: ${changed} HTML limpiados; 0 textos visibles de preview/desarrollo y móvil cerrado.`);
