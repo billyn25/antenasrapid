@@ -1,0 +1,62 @@
+name: Verificar web completa
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: verificar-web-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Comprobar HTML que sirve la vista previa
+        continue-on-error: true
+        run: |
+          python3 - <<'PY'
+          import json, pathlib, urllib.request, datetime
+          folder = pathlib.Path('qa'); folder.mkdir(exist_ok=True)
+          report = {'checkedAt': datetime.datetime.now(datetime.timezone.utc).isoformat(), 'url': 'https://antenasrapid.netlify.app/'}
+          try:
+              request = urllib.request.Request(report['url'], headers={'Cache-Control': 'no-cache', 'User-Agent': 'AntenasRapid-build-check'})
+              with urllib.request.urlopen(request, timeout=20) as response:
+                  html = response.read().decode('utf-8')
+                  report.update(status=response.status, finalUrl=response.url,
+                      heroCorregido='class="hero-copy"' in html,
+                      marcaDuplicada='class="wordmark"' in html,
+                      cssCorregido='cabecera-hero-2' in html)
+                  (folder/'published.html').write_text(html)
+          except Exception as error:
+              report['error'] = str(error)
+          print(json.dumps(report, ensure_ascii=False, indent=2))
+          (folder/'published-check.json').write_text(json.dumps(report, ensure_ascii=False, indent=2))
+          PY
+      - name: Pruebas, generación y auditoría de todos los pueblos
+        run: npm run build
+      - name: Guardar salida y fuentes de diagnóstico
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: antenasrapid-verificacion
+          retention-days: 2
+          include-hidden-files: true
+          path: |
+            src/
+            scripts/
+            tests/
+            content/
+            config/
+            package.json
+            netlify.toml
+            .cache/municipios-selected.json
+            dist/
+            qa/
