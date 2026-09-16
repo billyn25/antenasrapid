@@ -87,21 +87,27 @@ for (const page of localPages) {
 }
 
 // Galería procedente de los recursos fotográficos indicados por el propietario.
+// Se excluye la fotografía de la tienda y se incorpora el videoportero de la portada original.
 const gallerySources = [
-  'antena1.jpg','antena2.jpg','antena3.jpg','antena4.jpg',
-  'antena5.jpg','antena6.jpg','antena7.jpg','antena8.jpg'
+  { url: 'https://www.antenaszalla.com/img/videoportero.jpg', alt: 'Videoportero' },
+  { url: 'https://www.antenaszalla.com/img/galeria/antena2.jpg', alt: 'Trabajo técnico de antena 2' },
+  { url: 'https://www.antenaszalla.com/img/galeria/antena3.jpg', alt: 'Trabajo técnico de antena 3' },
+  { url: 'https://www.antenaszalla.com/img/galeria/antena4.jpg', alt: 'Trabajo técnico de antena 4' },
+  { url: 'https://www.antenaszalla.com/img/galeria/antena5.jpg', alt: 'Trabajo técnico de antena 5' },
+  { url: 'https://www.antenaszalla.com/img/galeria/antena6.jpg', alt: 'Trabajo técnico de antena 6' },
+  { url: 'https://www.antenaszalla.com/img/galeria/antena7.jpg', alt: 'Trabajo técnico de antena 7' },
+  { url: 'https://www.antenaszalla.com/img/galeria/antena8.jpg', alt: 'Trabajo técnico de antena 8' }
 ];
 const galleryDir = path.join(root, 'assets', 'galeria');
 fs.mkdirSync(galleryDir, { recursive: true });
 const imported = [];
 
 for (let i = 0; i < gallerySources.length; i++) {
-  const sourceName = gallerySources[i];
-  const url = `https://www.antenaszalla.com/img/galeria/${sourceName}`;
+  const source = gallerySources[i];
   try {
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), 12000);
-    const response = await fetch(url, {
+    const response = await fetch(source.url, {
       headers: { 'user-agent': 'AntenasRapid-gallery-migration' },
       signal: controller.signal
     });
@@ -113,7 +119,7 @@ for (let i = 0; i < gallerySources.length; i++) {
     if (bytes.length < 2000) continue;
     const localName = `trabajo-${String(i + 1).padStart(2, '0')}.jpg`;
     fs.writeFileSync(path.join(galleryDir, localName), bytes);
-    imported.push(localName);
+    imported.push({ name: localName, alt: source.alt });
   } catch {
     // Si una foto concreta no responde, seguimos con las demás.
   }
@@ -132,7 +138,7 @@ const galleryStyle = `<style id="rapid-gallery-style">
 @media(max-width:900px){.gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){.gallery-section{padding:34px 0}.gallery-head{display:block}.gallery-head p{margin-top:8px}.gallery-grid{gap:9px}.gallery-grid figure{border-radius:9px}}
 </style>`;
-const galleryHtml = `<section class="gallery-section" id="galeria"><div class="wrap"><div class="gallery-head"><div><span class="eyebrow">Trabajos e instalaciones</span><h2>Galería de trabajos</h2></div><p>Una muestra visual de instalaciones y trabajos técnicos de antena.</p></div><div class="gallery-grid">${imported.map((name, index) => `<figure><img src="/assets/galeria/${name}" alt="Trabajo técnico de antena ${index + 1}" loading="lazy" decoding="async" width="640" height="480"></figure>`).join('')}</div></div></section>`;
+const galleryHtml = `<section class="gallery-section" id="galeria"><div class="wrap"><div class="gallery-head"><div><span class="eyebrow">Trabajos e instalaciones</span><h2>Galería de trabajos</h2></div><p>Una muestra visual de instalaciones y trabajos técnicos de antena y videoportero.</p></div><div class="gallery-grid">${imported.map(item => `<figure><img src="/assets/galeria/${item.name}" alt="${item.alt}" loading="lazy" decoding="async" width="640" height="480"></figure>`).join('')}</div></div></section>`;
 
 const homeFile = path.join(root, 'index.html');
 let home = fs.readFileSync(homeFile, 'utf8');
