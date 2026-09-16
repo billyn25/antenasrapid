@@ -133,12 +133,41 @@ const galleryStyle = `<style id="rapid-gallery-style">
 .gallery-head h2{margin:8px 0 0}.gallery-head p{max-width:580px;margin:0;color:var(--muted);font-size:14px}
 .gallery-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
 .gallery-grid figure{margin:0;overflow:hidden;border-radius:12px;border:1px solid var(--line);background:#eceae6;aspect-ratio:4/3;box-shadow:0 8px 22px rgba(29,31,35,.07)}
+.gallery-open{display:block;width:100%;height:100%;padding:0;border:0;background:transparent;cursor:zoom-in}
 .gallery-grid img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .25s ease}
-.gallery-grid figure:hover img{transform:scale(1.025)}
+.gallery-open:hover img,.gallery-open:focus-visible img{transform:scale(1.025)}
+.gallery-open:focus-visible{outline:3px solid var(--brand);outline-offset:-4px}
+.gallery-lightbox{width:min(94vw,1180px);max-width:none;padding:0;border:0;border-radius:12px;background:#111;box-shadow:0 28px 90px rgba(0,0,0,.55)}
+.gallery-lightbox::backdrop{background:rgba(8,9,12,.88);backdrop-filter:blur(2px)}
+.gallery-lightbox-inner{position:relative;display:grid;place-items:center;min-height:200px}
+.gallery-lightbox img{display:block;max-width:94vw;max-height:88vh;width:auto;height:auto;object-fit:contain}
+.gallery-lightbox-close{position:absolute;z-index:2;top:12px;right:12px;width:44px;height:44px;border:0;border-radius:50%;background:rgba(20,20,22,.86);color:#fff;font-size:30px;line-height:1;cursor:pointer;box-shadow:0 4px 18px rgba(0,0,0,.3)}
+.gallery-lightbox-close:hover{background:var(--brand)}
 @media(max-width:900px){.gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:600px){.gallery-section{padding:34px 0}.gallery-head{display:block}.gallery-head p{margin-top:8px}.gallery-grid{gap:9px}.gallery-grid figure{border-radius:9px}}
+@media(max-width:600px){.gallery-section{padding:34px 0}.gallery-head{display:block}.gallery-head p{margin-top:8px}.gallery-grid{gap:9px}.gallery-grid figure{border-radius:9px}.gallery-lightbox{width:96vw}.gallery-lightbox img{max-width:96vw;max-height:82vh}.gallery-lightbox-close{top:8px;right:8px;width:42px;height:42px}}
 </style>`;
-const galleryHtml = `<section class="gallery-section" id="galeria"><div class="wrap"><div class="gallery-head"><div><span class="eyebrow">Trabajos e instalaciones</span><h2>Galería de trabajos</h2></div><p>Una muestra visual de instalaciones y trabajos técnicos de antena y videoportero.</p></div><div class="gallery-grid">${imported.map(item => `<figure><img src="/assets/galeria/${item.name}" alt="${item.alt}" loading="lazy" decoding="async" width="640" height="480"></figure>`).join('')}</div></div></section>`;
+
+const galleryHtml = `<section class="gallery-section" id="galeria"><div class="wrap"><div class="gallery-head"><div><span class="eyebrow">Trabajos e instalaciones</span><h2>Galería de trabajos</h2></div><p>Una muestra visual de instalaciones y trabajos técnicos de antena y videoportero.</p></div><div class="gallery-grid">${imported.map(item => `<figure><button class="gallery-open" type="button" data-src="/assets/galeria/${item.name}" data-alt="${item.alt}" aria-label="Ampliar: ${item.alt}"><img src="/assets/galeria/${item.name}" alt="${item.alt}" loading="lazy" decoding="async" width="640" height="480"></button></figure>`).join('')}</div></div></section><dialog class="gallery-lightbox" id="gallery-lightbox" aria-label="Imagen ampliada"><div class="gallery-lightbox-inner"><button class="gallery-lightbox-close" type="button" aria-label="Cerrar imagen">×</button><img src="" alt=""></div></dialog>`;
+
+const galleryScript = `<script id="rapid-gallery-script">
+(()=>{
+  const dialog=document.getElementById('gallery-lightbox');
+  if(!dialog) return;
+  const modalImg=dialog.querySelector('img');
+  const close=dialog.querySelector('.gallery-lightbox-close');
+  let opener=null;
+  document.querySelectorAll('.gallery-open').forEach(btn=>btn.addEventListener('click',()=>{
+    opener=btn;
+    modalImg.src=btn.dataset.src||'';
+    modalImg.alt=btn.dataset.alt||'';
+    dialog.showModal();
+  }));
+  const shut=()=>{if(dialog.open) dialog.close();};
+  close.addEventListener('click',shut);
+  dialog.addEventListener('click',event=>{if(event.target===dialog) shut();});
+  dialog.addEventListener('close',()=>{modalImg.src='';if(opener) opener.focus();});
+})();
+</script>`;
 
 const homeFile = path.join(root, 'index.html');
 let home = fs.readFileSync(homeFile, 'utf8');
@@ -148,6 +177,7 @@ if (!home.includes('id="galeria"')) {
   if (!home.includes(marker)) throw new Error('No se encontró el punto de inserción de la galería en portada');
   home = home.replace(marker, `${galleryHtml}${marker}`);
 }
+if (!home.includes('id="rapid-gallery-script"')) home = home.replace('</body>', `${galleryScript}</body>`);
 fs.writeFileSync(homeFile, home);
 
-console.log(`SEO/GALERÍA OK: ${localPages.length} páginas locales; title máx. ${maxTitle}, meta ${minDescription}-${maxDescription}; 8 imágenes migradas a assets/galeria, sin fachada de Antenas Zalla.`);
+console.log(`SEO/GALERÍA OK: ${localPages.length} páginas locales; title máx. ${maxTitle}, meta ${minDescription}-${maxDescription}; 8 imágenes migradas, sin fachada de Antenas Zalla y con zoom modal accesible.`);
