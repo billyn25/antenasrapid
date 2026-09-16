@@ -78,4 +78,10 @@ for (const page of manifest) {
   if (!existsForHref(page.path)) throw new Error(`Falta HTML para ${page.path}`);
 }
 
-console.log(`CIERRE PREPRODUCCIÓN OK: ${manifest.length} páginas locales, ${canonicals} canonicals finales, ${checkedLinks} enlaces internos comprobados, 0 rotos y 0 textos internos visibles.`);
+const cssFile = path.join(root, 'assets', 'site.css');
+const css = fs.readFileSync(cssFile, 'utf8');
+if (!css.includes('Cierre móvil sin scroll lateral')) throw new Error('CSS: falta el cierre móvil sin scroll lateral');
+if (!/@media\(max-width:760px\)[\s\S]*?\.head nav\{[^}]*overflow-x:visible/.test(css)) throw new Error('CSS: el menú móvil sigue dependiendo de scroll horizontal');
+if (!/@media\(max-width:480px\)[\s\S]*?\.strip \.wrap\{[^}]*overflow-x:visible!important/.test(css)) throw new Error('CSS: la tira móvil sigue dependiendo de scroll horizontal');
+
+console.log(`CIERRE PREPRODUCCIÓN OK: ${manifest.length} páginas locales, ${canonicals} canonicals finales, ${checkedLinks} enlaces internos comprobados, 0 rotos, 0 textos internos visibles y móvil sin scroll lateral forzado.`);
