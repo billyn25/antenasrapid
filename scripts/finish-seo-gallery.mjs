@@ -98,7 +98,11 @@ const gallerySources = [
   { url: 'https://www.antenaszalla.com/img/galeria/antena4.jpg', alt: 'Instalación de antena' },
   { url: 'https://www.antenaszalla.com/img/galeria/antena6.jpg', alt: 'Trabajo técnico de antena' },
   { url: 'https://www.antenaszalla.com/img/galeria/antenas17.jpg', alt: 'Instalación técnica de antena' },
-  { url: 'https://www.antenaszalla.com/img/galeria/antena8.jpg', alt: 'Antena parabólica e instalación TDT' }
+  { url: 'https://www.antenaszalla.com/img/galeria/antena8.jpg', alt: 'Antena parabólica e instalación TDT' },
+  { url: 'https://www.antenaszalla.com/img/galeria/antena9.jpg', alt: 'Instalación técnica de antena' },
+  { url: 'https://www.antenaszalla.com/img/galeria/antenas13.jpg', alt: 'Instalación de antena' },
+  { url: 'https://www.antenaszalla.com/img/galeria/antenas16.jpg', alt: 'Trabajo técnico de antena' },
+  { url: 'https://www.antenaszalla.com/img/galeria/antenas18.jpg', alt: 'Instalación técnica de antena' }
 ];
 const galleryDir = path.join(root, 'assets', 'galeria');
 fs.rmSync(galleryDir, { recursive: true, force: true });
@@ -127,7 +131,7 @@ for (const source of gallerySources) {
   }
 }
 
-if (imported.length !== 8) throw new Error(`La galería debe tener exactamente 8 imágenes y tiene ${imported.length}`);
+if (imported.length !== 12) throw new Error(`La galería debe tener exactamente 12 imágenes y tiene ${imported.length}`);
 
 const galleryStyle = `<style id="rapid-gallery-style">
 .gallery-section{padding:48px 0;background:#fff;border-top:1px solid var(--line)}
@@ -182,4 +186,4 @@ if (!home.includes('id="galeria"')) {
 if (!home.includes('id="rapid-gallery-script"')) home = home.replace('</body>', `${galleryScript}</body>`);
 fs.writeFileSync(homeFile, home);
 
-console.log(`SEO/GALERÍA OK: ${localPages.length} páginas locales; title máx. ${maxTitle}, meta ${minDescription}-${maxDescription}; 8 imágenes migradas, sin fachada de Antenas Zalla y con zoom modal accesible.`);
+console.log(`SEO/GALERÍA OK: ${localPages.length} páginas locales; title máx. ${maxTitle}, meta ${minDescription}-${maxDescription}; 12 imágenes migradas, sin fachada de Antenas Zalla y con zoom modal accesible.`);
