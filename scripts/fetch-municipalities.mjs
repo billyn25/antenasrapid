@@ -12,21 +12,27 @@ const PROVINCES = {
   '26': { name: 'La Rioja', path: '/Antenas-La-Rioja/' },
   '24': { name: 'León', path: '/Antenas-Leon/' },
   '47': { name: 'Valladolid', path: '/Antenas-Valladolid/' },
-  '49': { name: 'Zamora', path: '/Antenas-Zamora/' }
+  '49': { name: 'Zamora', path: '/Antenas-Zamora/' },
+  '05': { name: 'Ávila', path: '/Antenas-Avila/' },
+  '34': { name: 'Palencia', path: '/Antenas-Palencia/' },
+  '37': { name: 'Salamanca', path: '/Antenas-Salamanca/' },
+  '40': { name: 'Segovia', path: '/Antenas-Segovia/' },
+  '42': { name: 'Soria', path: '/Antenas-Soria/' }
 };
 
 const response = await fetch(SOURCE, { headers: { 'user-agent': 'AntenasRapid-build' } });
 if (!response.ok) throw new Error(`No se pudo cargar el listado de municipios: HTTP ${response.status}`);
 const all = await response.json();
 const selected = all.filter(item => PROVINCES[item.provincia_id]);
-if (selected.length < 1800) throw new Error(`Listado municipal incompleto: solo ${selected.length} municipios`);
 
 const grouped = {};
 for (const [id, info] of Object.entries(PROVINCES)) {
-  grouped[info.path] = selected
+  const items = selected
     .filter(item => item.provincia_id === id)
     .map(item => ({ id: item.municipio_id, name: item.nombre.replaceAll('\\/', '/') }))
     .sort((a,b) => a.name.localeCompare(b.name, 'es', { sensitivity: 'base' }));
+  if (!items.length) throw new Error(`Dataset municipal sin datos para ${info.name} (${id})`);
+  grouped[info.path] = items;
 }
 
 const out = path.resolve('.cache/municipios-selected.json');
