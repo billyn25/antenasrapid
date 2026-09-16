@@ -83,5 +83,7 @@ const css = fs.readFileSync(cssFile, 'utf8');
 if (!css.includes('Cierre móvil sin scroll lateral')) throw new Error('CSS: falta el cierre móvil sin scroll lateral');
 if (!/@media\(max-width:760px\)[\s\S]*?\.head nav\{[^}]*overflow-x:visible/.test(css)) throw new Error('CSS: el menú móvil sigue dependiendo de scroll horizontal');
 if (!/@media\(max-width:480px\)[\s\S]*?\.strip \.wrap\{[^}]*overflow-x:visible!important/.test(css)) throw new Error('CSS: la tira móvil sigue dependiendo de scroll horizontal');
+if (!/@media\(max-width:640px\)[\s\S]*?\.head nav\{[^}]*grid-template-columns:repeat\(5,minmax\(0,1fr\)\)/.test(css)) throw new Error('CSS: falta el menú móvil compacto de cinco accesos');
+if (!/@media\(max-width:640px\)[\s\S]*?\.hero \.actions\{display:none!important\}/.test(css)) throw new Error('CSS: el hero móvil sigue duplicando los botones de llamada y WhatsApp');
 
-console.log(`CIERRE PREPRODUCCIÓN OK: ${manifest.length} páginas locales, ${canonicals} canonicals finales, ${checkedLinks} enlaces internos comprobados, 0 rotos, 0 textos internos visibles y móvil sin scroll lateral forzado.`);
+console.log(`CIERRE PREPRODUCCIÓN OK: ${manifest.length} páginas locales, ${canonicals} canonicals finales, ${checkedLinks} enlaces internos comprobados, 0 rotos, 0 textos internos visibles y móvil compacto sin CTA duplicado.`);
