@@ -21,6 +21,13 @@ jobs:
           node-version: '22'
       - name: Pruebas, generación y auditoría de todos los pueblos
         run: npm run build
+      - name: Simular paquete final sin publicarlo
+        run: |
+          rm -rf .production-check
+          cp -a dist .production-check
+          CONFIRM_PRODUCTION_PREP=1 PRODUCTION_ROOT=.production-check node scripts/prepare-production-assets.mjs
+          PRODUCTION_ROOT=.production-check npm run audit:production
+          rm -rf .production-check
       - name: Comparar la web publicada con la salida comprobada
         run: |
           python3 - <<'PY'
@@ -90,11 +97,9 @@ jobs:
 
           expected_raw = {route: (pathlib.Path('dist') / file).read_bytes() for route, file in files.items()}
           report = {'commit': os.environ['GITHUB_SHA'], 'url': domain, 'published': False}
-          last_published_html = {}
 
           for attempt in range(12):
               checks = []
-              last_published_html = {}
               for route, file in files.items():
                   source = expected_raw[route]
                   check = {'path': route, 'expectedSha256': digest(source)}
@@ -116,8 +121,6 @@ jobs:
                           saved = folder / 'published' / file
                           saved.parent.mkdir(parents=True, exist_ok=True)
                           saved.write_bytes(data)
-                          if is_html:
-                              last_published_html[route] = data.decode('utf-8', 'replace')
                   except Exception as error:
                       check.update(matches=False, error=str(error))
                   checks.append(check)
@@ -135,8 +138,6 @@ jobs:
 
           route_checks = []
           if report['published']:
-              # Netlify convierte algunos href internos a minúsculas y sin .html.
-              # Verificamos que varias de esas rutas que ve el usuario respondan realmente.
               smoke_routes = ['/aviso-legal', '/privacidad', '/cookies', '/antenas-burgos/lerma']
               for route in smoke_routes:
                   item = {'path': route}
