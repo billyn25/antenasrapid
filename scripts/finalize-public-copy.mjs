@@ -37,7 +37,8 @@ for (const file of walk(root)) {
   }
 }
 
-// Cierre responsive: en móvil ningún bloque principal depende de scroll horizontal.
+// Cierre responsive: en móvil ningún bloque principal depende de scroll horizontal
+// y evitamos repetir la misma llamada a la acción en el hero y en la barra fija.
 const cssFile = path.join(root, 'assets', 'site.css');
 const mobileOverflowFix = `
 
@@ -46,10 +47,35 @@ const mobileOverflowFix = `
   .head nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 10px;overflow-x:visible;scrollbar-width:none}
   .head nav a{white-space:normal;text-align:center;line-height:1.25;padding:7px 4px;min-width:0}
 }
+@media(max-width:640px){
+  .head{grid-template-columns:minmax(0,1fr) auto;column-gap:10px;padding-block:7px 0}
+  .brand{width:min(205px,100%)}
+  .brand-tagline{font-size:9px;margin:-2px 0 5px}
+  .contact-top{padding-left:10px}
+  .contact-top a{font-size:20px;line-height:1.15}
+  .contact-top small{font-size:10px}
+  .urgent-line{gap:3px!important;margin-top:3px!important}
+  .urgent-24h{font-size:9px!important;padding:4px 7px!important}
+  .head nav{grid-template-columns:repeat(5,minmax(0,1fr));gap:0!important;border-top:1px solid #48494e}
+  .head nav a{min-height:44px;padding:7px 2px!important;font-size:0!important;white-space:normal!important;line-height:1.1!important;border-left:1px solid rgba(255,255,255,.08)}
+  .head nav a:first-child{border-left:0}
+  .head nav a::after{font-size:10px;font-weight:800}
+  .head nav a:nth-child(1)::after{content:'Antenas'}
+  .head nav a:nth-child(2)::after{content:'Porteros'}
+  .head nav a:nth-child(3)::after{content:'4G/5G'}
+  .head nav a:nth-child(4)::after{content:'Pueblos'}
+  .head nav a:nth-child(5)::after{content:'Contacto'}
+  .hero .actions{display:none!important}
+}
 @media(max-width:480px){
   .strip .wrap{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:7px!important;overflow-x:visible!important;flex-wrap:wrap!important;padding-bottom:14px!important}
   .strip span{white-space:normal!important;min-width:0!important;max-width:100%;display:flex;align-items:center}
   .strip span:last-child{grid-column:1/-1}
+}
+@media(max-width:380px){
+  .brand{width:min(180px,100%)}
+  .contact-top a{font-size:18px}
+  .head nav a::after{font-size:9px}
 }
 @media(max-width:359px){
   .strip .wrap{grid-template-columns:1fr!important}
@@ -57,8 +83,9 @@ const mobileOverflowFix = `
 }
 `;
 if (fs.existsSync(cssFile)) {
-  const css = fs.readFileSync(cssFile, 'utf8');
-  if (!css.includes('Cierre móvil sin scroll lateral')) fs.writeFileSync(cssFile, css + mobileOverflowFix);
+  let css = fs.readFileSync(cssFile, 'utf8');
+  css = css.replace(/\n\n\/\* Cierre móvil sin scroll lateral \*\/[\s\S]*$/m, '');
+  fs.writeFileSync(cssFile, css + mobileOverflowFix);
 }
 
-console.log(`COPY FINAL OK: ${changed} HTML limpiados; sin textos de demo, revisión, página de prueba ni inventario pendiente visibles; móvil sin scroll lateral forzado.`);
+console.log(`COPY FINAL OK: ${changed} HTML limpiados; cabecera móvil compacta, sin scroll lateral y sin CTA duplicado en el hero.`);
