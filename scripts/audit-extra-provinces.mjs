@@ -15,7 +15,12 @@ const checks = [
   { name: 'La Rioja', route: '/Antenas-La-Rioja/' },
   { name: 'León', route: '/Antenas-Leon/' },
   { name: 'Valladolid', route: '/Antenas-Valladolid/' },
-  { name: 'Zamora', route: '/Antenas-Zamora/' }
+  { name: 'Zamora', route: '/Antenas-Zamora/' },
+  { name: 'Ávila', route: '/Antenas-Avila/' },
+  { name: 'Palencia', route: '/Antenas-Palencia/' },
+  { name: 'Salamanca', route: '/Antenas-Salamanca/' },
+  { name: 'Segovia', route: '/Antenas-Segovia/' },
+  { name: 'Soria', route: '/Antenas-Soria/' }
 ];
 
 let expectedTotal = 0;
