@@ -5,7 +5,7 @@ const root = path.resolve('dist');
 const phone = '641 589 394';
 const tel = '+34641589394';
 
-const legalLinks = '<nav class="legal-links" aria-label="Información legal"><a href="/aviso-legal.html">Aviso legal</a><span aria-hidden="true">·</span><a href="/privacidad.html">Privacidad y RGPD</a><span aria-hidden="true">·</span><a href="/cookies.html">Cookies</a></nav>';
+const legalLinks = '<nav class="legal-links" aria-label="Información legal" style="display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;margin:4px 0 16px"><a href="/aviso-legal.html">Aviso legal</a><span aria-hidden="true" style="opacity:.45">·</span><a href="/privacidad.html">Privacidad y RGPD</a><span aria-hidden="true" style="opacity:.45">·</span><a href="/cookies.html">Cookies</a></nav>';
 
 function injectFooterLinks(html) {
   if (html.includes('class="legal-links"')) return html;
@@ -47,4 +47,4 @@ function walk(dir) {
   return files;
 }
 
-console.log('LEGAL OK: propiedad R.F.G., Aviso legal, Privacidad/RGPD y Cookies sin textos internos ni datos inventados.');
+console.log('LEGAL OK: propiedad R.F.G., Aviso legal, Privacidad/RGPD y Cookies con enlaces separados y sin datos inventados.');
