@@ -23,15 +23,15 @@ export function doorphones(page, phone, tel, esc) {
   const styles = `<style>
 .stars{font-size:31px;letter-spacing:4px;color:#d89a00;margin:10px 0 15px;text-shadow:0 2px 8px rgba(216,154,0,.16)}
 .trust{background:linear-gradient(180deg,#fbfaf8 0%,#f4f1ed 100%)!important;border-top:1px solid #e7e1dd;border-bottom:1px solid #e7e1dd}
-.trust-grid{display:grid;grid-template-columns:1.05fr 1.4fr;gap:42px;align-items:stretch}
+.trust-grid{display:grid;grid-template-columns:1.05fr 1.4fr;gap:42px;align-items:start}
 .trust-grid>div:first-child{padding:8px 0}
 .trust-grid h2,.brands-block h2{color:#242529!important}
 .trust-grid .section-lead,.brands-block .section-lead{color:#55575c!important}
-.trust-points{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;border:0;background:transparent}
-.trust-points article{padding:24px 20px;background:#fff;border:1px solid #ded8d3!important;border-radius:14px;box-shadow:0 12px 28px rgba(29,31,35,.08)}
+.trust-points{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;border:0;background:transparent;align-items:start;align-content:start;grid-auto-rows:max-content;height:auto;min-height:0}
+.trust-points article{padding:20px 18px;background:#fff;border:1px solid #ded8d3!important;border-radius:14px;box-shadow:0 10px 24px rgba(29,31,35,.065);height:auto;min-height:0;align-self:start}
 .trust-points article+article{border-left:1px solid #ded8d3!important}
-.trust-points strong{display:block;font-size:16px;color:#25262a;line-height:1.35}
-.trust-points p{margin:8px 0 0;color:#5d5f64;font-size:13px;line-height:1.55}
+.trust-points strong{display:block;font-size:16px;color:#25262a;line-height:1.3}
+.trust-points p{margin:7px 0 0;color:#5d5f64;font-size:13px;line-height:1.5}
 .brands-block{margin-top:38px;padding:30px;border:1px solid #ded8d3;border-radius:16px;background:#fff;box-shadow:0 14px 34px rgba(29,31,35,.07)}
 .brand-group{margin-top:22px}
 .brand-group h3{font-size:15px;margin:0 0 11px;color:#2b2c30}
