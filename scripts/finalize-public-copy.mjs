@@ -37,4 +37,28 @@ for (const file of walk(root)) {
   }
 }
 
-console.log(`COPY FINAL OK: ${changed} HTML limpiados; sin textos de demo, revisión, página de prueba ni inventario pendiente visibles.`);
+// Cierre responsive: en móvil ningún bloque principal depende de scroll horizontal.
+const cssFile = path.join(root, 'assets', 'site.css');
+const mobileOverflowFix = `
+
+/* Cierre móvil sin scroll lateral */
+@media(max-width:760px){
+  .head nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 10px;overflow-x:visible;scrollbar-width:none}
+  .head nav a{white-space:normal;text-align:center;line-height:1.25;padding:7px 4px;min-width:0}
+}
+@media(max-width:480px){
+  .strip .wrap{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:7px!important;overflow-x:visible!important;flex-wrap:wrap!important;padding-bottom:14px!important}
+  .strip span{white-space:normal!important;min-width:0!important;max-width:100%;display:flex;align-items:center}
+  .strip span:last-child{grid-column:1/-1}
+}
+@media(max-width:359px){
+  .strip .wrap{grid-template-columns:1fr!important}
+  .strip span:last-child{grid-column:auto}
+}
+`;
+if (fs.existsSync(cssFile)) {
+  const css = fs.readFileSync(cssFile, 'utf8');
+  if (!css.includes('Cierre móvil sin scroll lateral')) fs.writeFileSync(cssFile, css + mobileOverflowFix);
+}
+
+console.log(`COPY FINAL OK: ${changed} HTML limpiados; sin textos de demo, revisión, página de prueba ni inventario pendiente visibles; móvil sin scroll lateral forzado.`);
