@@ -5,15 +5,22 @@ const root = path.resolve('dist');
 const phone = '641 589 394';
 const tel = '+34641589394';
 
-const legalLinks = '<nav class="legal-links" aria-label="Información legal" style="display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;margin:4px 0 16px"><a href="/aviso-legal.html">Aviso legal</a><span aria-hidden="true" style="opacity:.45">·</span><a href="/privacidad.html">Privacidad y RGPD</a><span aria-hidden="true" style="opacity:.45">·</span><a href="/cookies.html">Cookies</a></nav>';
+const legalLinks = '<nav class="legal-links" aria-label="Información legal"><a href="/aviso-legal.html">Aviso legal</a><span class="legal-sep" aria-hidden="true">·</span><a href="/privacidad.html">Privacidad y RGPD</a><span class="legal-sep" aria-hidden="true">·</span><a href="/cookies.html">Cookies</a></nav>';
+const legalStyle = `<style id="legal-links-style">
+.legal-links{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;margin:4px 0 16px}
+.legal-links a{display:inline-flex;align-items:center;min-height:32px}
+.legal-sep{opacity:.45}
+@media(max-width:480px){.legal-links{gap:7px 14px;margin-bottom:18px}.legal-sep{display:none}.legal-links a{min-height:36px}}
+</style>`;
 
 function injectFooterLinks(html) {
+  if (!html.includes('id="legal-links-style"')) html = html.replace('</head>', `${legalStyle}</head>`);
   if (html.includes('class="legal-links"')) return html;
   return html.replace('<p class="fine">', `${legalLinks}<p class="fine">`);
 }
 
 function page(title, body) {
-  return `<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${title} | Antenas Rapid</title><meta name="robots" content="noindex,nofollow"><link rel="stylesheet" href="/assets/site.css?v=cabecera-hero-2"></head><body><main class="wrap section legal-page"><a href="/">← Volver a Antenas Rapid</a><h1>${title}</h1>${body}<p><a href="tel:${tel}">${phone}</a></p></main></body></html>`;
+  return `<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${title} | Antenas Rapid</title><meta name="robots" content="noindex,nofollow"><link rel="stylesheet" href="/assets/site.css?v=cabecera-hero-2">${legalStyle}</head><body><main class="wrap section legal-page"><a href="/">← Volver a Antenas Rapid</a><h1>${title}</h1>${body}<p><a href="tel:${tel}">${phone}</a></p></main></body></html>`;
 }
 
 for (const file of walk(root)) {
@@ -47,4 +54,4 @@ function walk(dir) {
   return files;
 }
 
-console.log('LEGAL OK: propiedad R.F.G., Aviso legal, Privacidad/RGPD y Cookies con enlaces separados y sin datos inventados.');
+console.log('LEGAL OK: propiedad R.F.G., enlaces separados y pie móvil sin separadores huérfanos.');
