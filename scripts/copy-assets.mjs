@@ -16,7 +16,6 @@ if (fs.existsSync(home)) {
   fs.writeFileSync(home, html);
 }
 
-// Rutas históricas verificadas en la web real. Se preservan para no perder señales SEO.
 const historicRoutes = new Map([
   ['/Antenas-Burgos/aranda-de-duero.html', '/Antenas-Burgos/aranda_duero.html']
 ]);
@@ -46,9 +45,7 @@ function replaceHistoricRoutes(text) {
 if (localPages.length) {
   fs.writeFileSync(manifestFile, JSON.stringify(localPages, null, 2));
   const previewFile = path.join(root, 'preview-manifest.json');
-  if (fs.existsSync(previewFile)) {
-    fs.writeFileSync(previewFile, replaceHistoricRoutes(fs.readFileSync(previewFile, 'utf8')));
-  }
+  if (fs.existsSync(previewFile)) fs.writeFileSync(previewFile, replaceHistoricRoutes(fs.readFileSync(previewFile, 'utf8')));
 }
 
 const urgentStyles = `<style id="urgent-24h-style">
@@ -122,17 +119,17 @@ function fixHtml(dir) {
     else if (entry.isFile() && entry.name.endsWith('.html')) {
       let html = replaceHistoricRoutes(fs.readFileSync(file, 'utf8')).replaceAll('Antennistas', 'Antenistas');
 
-      // Orden comercial: hero -> antenas -> porteros -> 4G/5G -> confianza/estrellas -> marcas.
       html = moveSectionBefore(html, 'servicios', 'porteros-videoporteros');
 
-      // Urgencias 24h visibles en cabecera y hero.
       html = html.replace('<small>Consulta tu instalación</small>', '<small class="urgent-line"><span class="urgent-24h">Urgencias 24h</span><span>Consulta tu instalación</span></small>');
       html = html.replace(/(<section class="hero"><div class="wrap hero-inner"><div class="hero-copy">)/, '$1<span class="urgent-hero">Urgencias 24h</span>');
       if (!html.includes('id="urgent-24h-style"')) html = html.replace('</head>', urgentStyles + '</head>');
 
-      // Acceso rápido directo a cobertura móvil / antenas 4G-5G.
+      html = html.replaceAll('>Porteros y videoporteros<', '>Porteros automáticos y videoporteros<');
+      html = html.replaceAll('<strong>Porteros y videoporteros</strong>', '<strong>Porteros automáticos y videoporteros</strong>');
+
       if (!html.includes('class="nav-mobile-coverage"')) {
-        html = html.replace('<a href="#porteros-videoporteros">Porteros y videoporteros</a>', '<a href="#porteros-videoporteros">Porteros y videoporteros</a><a class="nav-mobile-coverage" href="#cobertura-movil">Antenas 4G/5G y cobertura móvil</a>');
+        html = html.replace('<a href="#porteros-videoporteros">Porteros automáticos y videoporteros</a>', '<a href="#porteros-videoporteros">Porteros automáticos y videoporteros</a><a class="nav-mobile-coverage" href="#cobertura-movil">Antenas 4G/5G y cobertura móvil</a>');
       }
       if (!html.includes('<span>Cobertura móvil 4G/5G</span>')) {
         html = html.replace('<span>Porteros automáticos y videoporteros</span><span>Instalación y mantenimiento</span>', '<span>Porteros automáticos y videoporteros</span><span>Cobertura móvil 4G/5G</span><span>Instalación y mantenimiento</span>');
@@ -148,4 +145,4 @@ function fixHtml(dir) {
 }
 fixHtml(root);
 
-console.log(`ASSET/HTML OK: ${localPages.length} páginas locales reforzadas; antenas primero, Urgencias 24h en SEO, enlazado provincial y URL histórica de Aranda preservada.`);
+console.log(`ASSET/HTML OK: ${localPages.length} páginas locales reforzadas; Porteros automáticos y videoporteros en accesos, antenas primero, Urgencias 24h en SEO, enlazado provincial y URL histórica de Aranda preservada.`);
