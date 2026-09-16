@@ -2,11 +2,13 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 if (process.env.CONFIRM_PRODUCTION_PREP !== '1') {
-  throw new Error('Preparación de producción bloqueada. Usa CONFIRM_PRODUCTION_PREP=1 solo en el cambio final.');
+  throw new Error('Preparación de producción bloqueada. Usa CONFIRM_PRODUCTION_PREP=1 solo en el cambio final o en la auditoría aislada.');
 }
 
-const root = path.resolve('dist');
+const root = path.resolve(process.env.PRODUCTION_ROOT || 'dist');
 const domain = 'https://www.antenasrapid.com';
+
+if (!fs.existsSync(root)) throw new Error(`No existe el directorio a preparar: ${root}`);
 
 function walk(dir) {
   const out = [];
@@ -29,6 +31,9 @@ for (const file of walk(root).filter(f => f.endsWith('.html'))) {
   if (!canonical.startsWith(domain + '/')) throw new Error(`${rel}: canonical fuera del dominio final`);
 
   html = html.replace('<meta name="robots" content="noindex,nofollow">', '<meta name="robots" content="index,follow">');
+  if (!html.includes('<meta name="robots" content="index,follow">')) {
+    throw new Error(`${rel}: no se pudo activar index,follow`);
+  }
   fs.writeFileSync(file, html);
   urls.push(canonical);
 }
@@ -52,4 +57,4 @@ if (fs.existsSync(headersFile)) {
 const previewManifest = path.join(root, 'preview-manifest.json');
 if (fs.existsSync(previewManifest)) fs.rmSync(previewManifest);
 
-console.log(`PRODUCCIÓN PREPARADA EN DIST: ${unique.length} URLs indexables, sitemap.xml y robots.txt listos. Aún hay que retirar el noindex global de netlify.toml antes de conectar el dominio.`);
+console.log(`PRODUCCIÓN PREPARADA: ${unique.length} URLs indexables, sitemap.xml y robots.txt listos en ${root}. El noindex global de netlify.toml se retira únicamente en el cambio final del dominio.`);
