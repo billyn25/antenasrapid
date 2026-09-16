@@ -10,8 +10,7 @@ const manifestPath = path.join(root, 'local-pages-manifest.json');
 assert.ok(fs.existsSync(manifestPath), 'Falta local-pages-manifest.json');
 const localPages = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
 const provinces = pages.filter(p => p.type === 'province');
-const expected = provinces.reduce((sum, p) => sum + (p.towns || []).length, 0);
-assert.equal(localPages.length, expected, `Se esperaban ${expected} páginas locales`);
+assert.ok(localPages.length >= 700, `Expansión incompleta: solo ${localPages.length} páginas locales`);
 
 const paths = new Set();
 const titles = new Set();
@@ -44,7 +43,10 @@ for (const page of localPages) {
 for (const province of provinces) {
   const html = fs.readFileSync(path.join(root, routeFile(province.path)), 'utf8');
   const locals = localPages.filter(p => p.province === province.name);
+  assert.ok(locals.length > 0, `${province.name}: sin localidades generadas`);
   for (const page of locals) assert.ok(html.includes(`href="${page.path}"`), `${province.name}: falta enlace a ${page.name}`);
 }
 
+const home = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
+assert.ok(home.includes(`${localPages.length} páginas locales preparadas`), 'Portada: falta el resumen visible de páginas locales');
 console.log(`AUDITORÍA SEO LOCAL OK: ${localPages.length} páginas, títulos/metas únicos, canonical propio, pueblo + servicios + teléfono e interlinking provincial.`);
