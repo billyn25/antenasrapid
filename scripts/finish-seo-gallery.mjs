@@ -89,44 +89,43 @@ for (const page of localPages) {
 // Galería procedente de los recursos fotográficos indicados por el propietario.
 // antena5.jpg se excluye expresamente porque muestra la fachada de Antenas Zalla.
 const gallerySources = [
-  { file: 'videoportero.jpg', alt: 'Videoportero' },
-  { file: 'antena1.jpg', alt: 'Instalación de antena' },
-  { file: 'antena2.jpg', alt: 'Instalación de antena' },
-  { file: 'antena3.jpg', alt: 'Instalación de antena' },
-  { file: 'antena4.jpg', alt: 'Instalación de antena' },
-  { file: 'antena6.jpg', alt: 'Trabajo técnico de antena' },
-  { file: 'antena7.jpg', alt: 'Equipo de distribución de señal' },
-  { file: 'antena8.jpg', alt: 'Antena parabólica e instalación TDT' }
+  { url: 'https://www.antenaszalla.com/img/videoportero.jpg', alt: 'Videoportero' },
+  { url: 'https://www.antenaszalla.com/img/galeria/antena1.jpg', alt: 'Instalación de antena' },
+  { url: 'https://www.antenaszalla.com/img/galeria/antena2.jpg', alt: 'Instalación de antena' },
+  { url: 'https://www.antenaszalla.com/img/galeria/antena3.jpg', alt: 'Instalación de antena' },
+  { url: 'https://www.antenaszalla.com/img/galeria/antena4.jpg', alt: 'Instalación de antena' },
+  { url: 'https://www.antenaszalla.com/img/galeria/antena6.jpg', alt: 'Trabajo técnico de antena' },
+  { url: 'https://www.antenaszalla.com/img/galeria/antena7.jpg', alt: 'Equipo de distribución de señal' },
+  { url: 'https://www.antenaszalla.com/img/galeria/antena8.jpg', alt: 'Antena parabólica e instalación TDT' }
 ];
 const galleryDir = path.join(root, 'assets', 'galeria');
+fs.rmSync(galleryDir, { recursive: true, force: true });
 fs.mkdirSync(galleryDir, { recursive: true });
 const imported = [];
 
-for (let i = 0; i < gallerySources.length; i++) {
-  const source = gallerySources[i];
-  const url = `https://www.antenaszalla.com/img/galeria/${source.file}`;
+for (const source of gallerySources) {
   try {
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), 12000);
-    const response = await fetch(url, {
+    const response = await fetch(source.url, {
       headers: { 'user-agent': 'AntenasRapid-gallery-migration' },
       signal: controller.signal
     });
     clearTimeout(timer);
-    if (!response.ok) continue;
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const type = response.headers.get('content-type') || '';
-    if (!type.startsWith('image/')) continue;
+    if (!type.startsWith('image/')) throw new Error(`Tipo inválido: ${type}`);
     const bytes = Buffer.from(await response.arrayBuffer());
-    if (bytes.length < 2000) continue;
+    if (bytes.length < 2000) throw new Error('Imagen demasiado pequeña');
     const localName = `trabajo-${String(imported.length + 1).padStart(2, '0')}.jpg`;
     fs.writeFileSync(path.join(galleryDir, localName), bytes);
     imported.push({ name: localName, alt: source.alt });
-  } catch {
-    // Si una foto concreta no responde, seguimos con las demás.
+  } catch (error) {
+    throw new Error(`No se pudo migrar ${source.url}: ${error.message}`);
   }
 }
 
-if (imported.length < 4) throw new Error(`Galería insuficiente: solo se pudieron migrar ${imported.length} imágenes`);
+if (imported.length !== 8) throw new Error(`La galería debe tener exactamente 8 imágenes y tiene ${imported.length}`);
 
 const galleryStyle = `<style id="rapid-gallery-style">
 .gallery-section{padding:48px 0;background:#fff;border-top:1px solid var(--line)}
@@ -151,4 +150,4 @@ if (!home.includes('id="galeria"')) {
 }
 fs.writeFileSync(homeFile, home);
 
-console.log(`SEO/GALERÍA OK: ${localPages.length} páginas locales; title máx. ${maxTitle}, meta ${minDescription}-${maxDescription}; ${imported.length} imágenes migradas a assets/galeria, sin fachada de Antenas Zalla.`);
+console.log(`SEO/GALERÍA OK: ${localPages.length} páginas locales; title máx. ${maxTitle}, meta ${minDescription}-${maxDescription}; 8 imágenes migradas a assets/galeria, sin fachada de Antenas Zalla.`);
