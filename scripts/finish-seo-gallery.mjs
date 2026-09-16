@@ -6,6 +6,7 @@ const manifestFile = path.join(root, 'local-pages-manifest.json');
 const PHONE = '641 589 394';
 const MAX_TITLE = 70;
 const MAX_DESCRIPTION = 165;
+const MIN_DESCRIPTION = 115;
 
 if (!fs.existsSync(manifestFile)) throw new Error('Falta local-pages-manifest.json');
 const localPages = JSON.parse(fs.readFileSync(manifestFile, 'utf8'));
@@ -52,13 +53,17 @@ function fitDescription(page) {
   ];
   const start = stableHash(`${page.path}|description-final`) % variants.length;
   const ordered = [...variants.slice(start), ...variants.slice(0, start)];
-  return ordered.find(value => value.length <= MAX_DESCRIPTION) ||
-    `Antenista en ${page.name}, ${page.province}. ${PHONE}. Urgencias 24h. TDT, parabólicas, porteros y videoporteros.`;
+  let description = ordered.find(value => value.length >= MIN_DESCRIPTION && value.length <= MAX_DESCRIPTION);
+  if (!description) description = ordered.find(value => value.length <= MAX_DESCRIPTION);
+  if (!description) description = `Antenista en ${page.name}, ${page.province}. ${PHONE}. Urgencias 24h. TDT, parabólicas, porteros y videoporteros.`;
+  if (description.length < MIN_DESCRIPTION) description += ' Instalación y reparación.';
+  return description;
 }
 
 const usedTitles = new Set();
 let maxTitle = 0;
 let maxDescription = 0;
+let minDescription = Infinity;
 for (const page of localPages) {
   const file = path.join(root, page.path.replace(/^\//, ''));
   if (!fs.existsSync(file)) throw new Error(`Falta HTML local ${page.path}`);
@@ -72,6 +77,7 @@ for (const page of localPages) {
   const description = fitDescription(page);
   maxTitle = Math.max(maxTitle, title.length);
   maxDescription = Math.max(maxDescription, description.length);
+  minDescription = Math.min(minDescription, description.length);
 
   html = html.replace(`<title>${oldTitle}</title>`, `<title>${title}</title>`);
   html = html.replace(`<meta property="og:title" content="${oldTitle}">`, `<meta property="og:title" content="${title}">`);
@@ -138,4 +144,4 @@ if (!home.includes('id="galeria"')) {
 }
 fs.writeFileSync(homeFile, home);
 
-console.log(`SEO/GALERÍA OK: ${localPages.length} páginas locales; title máx. ${maxTitle}, description máx. ${maxDescription}; ${imported.length} imágenes migradas a assets/galeria.`);
+console.log(`SEO/GALERÍA OK: ${localPages.length} páginas locales; title máx. ${maxTitle}, meta ${minDescription}-${maxDescription}; ${imported.length} imágenes migradas a assets/galeria.`);
