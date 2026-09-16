@@ -12,6 +12,25 @@ const localPages = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
 const provinces = pages.filter(p => p.type === 'province');
 assert.ok(localPages.length >= 700, `Expansión incompleta: solo ${localPages.length} páginas locales`);
 
+const antenistaCercaPhrases = [
+  'Servicio de proximidad',
+  'Trato directo con el técnico',
+  'Información útil para',
+  'Te atiende una persona que conoce el trabajo',
+  'sin centralitas ni intermediarios',
+  'trataremos de atenderte lo antes posible'
+];
+const inventedLocalPatterns = [
+  /más de\s+\d+\s+reparaciones/i,
+  /\d+\s*(?:minutos|min)\s+(?:de llegada|aproximadamente|aprox)/i,
+  /llegamos en\s+\d+/i,
+  /técnico de la zona/i,
+  /oficina en\s+[A-ZÁÉÍÓÚÑ]/i,
+  /sede en\s+[A-ZÁÉÍÓÚÑ]/i,
+  /trabajos realizados en\s+[A-ZÁÉÍÓÚÑ]/i,
+  /clientes de\s+[A-ZÁÉÍÓÚÑ].*nos recomiendan/i
+];
+
 function checkPresentation(html, route) {
   const header = html.match(/<header>([\s\S]*?)<\/header>/)?.[1];
   assert.ok(header, `${route}: falta cabecera`);
@@ -32,9 +51,23 @@ function checkPresentation(html, route) {
   assert.ok(experiencia > movil, `${route}: experiencia/marcas deben ir después de los servicios`);
 }
 
+function normalizeVisible(html) {
+  return html
+    .replace(/<style[\s\S]*?<\/style>/gi, ' ')
+    .replace(/<script[\s\S]*?<\/script>/gi, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&[^;]+;/g, ' ')
+    .replace(/\b\d{3}\s?\d{3}\s?\d{3}\b/g, ' PHONE ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
 const paths = new Set();
 const titles = new Set();
 const descriptions = new Set();
+const localVariants = new Set();
+const localBodyFingerprints = new Map();
+
 for (const page of localPages) {
   assert.ok(!paths.has(page.path), `Ruta local duplicada: ${page.path}`);
   paths.add(page.path);
@@ -42,6 +75,7 @@ for (const page of localPages) {
   assert.ok(fs.existsSync(file), `Falta HTML local: ${page.path}`);
   const html = fs.readFileSync(file, 'utf8');
   checkPresentation(html, page.path);
+
   assert.equal((html.match(/<h1\b/g) || []).length, 1, `${page.path}: debe tener un H1`);
   assert.match(html, /<meta name="robots" content="noindex,nofollow">/, `${page.path}: noindex de preview`);
   assert.ok(html.includes(`href="${new URL(page.path, site.domain).href}"`), `${page.path}: canonical propio`);
@@ -56,6 +90,13 @@ for (const page of localPages) {
   assert.ok(html.includes('class="related-towns"'), `${page.path}: falta enlazado interno a otros pueblos`);
   assert.ok((html.match(/class="related-town-links"[\s\S]*?<\/div>/)?.[0].match(/<a href=/g) || []).length >= 4, `${page.path}: pocos enlaces internos a pueblos`);
 
+  for (const phrase of antenistaCercaPhrases) {
+    assert.ok(!html.includes(phrase), `${page.path}: reutiliza frase propia de Antenista Cerca: ${phrase}`);
+  }
+  for (const pattern of inventedLocalPatterns) {
+    assert.ok(!pattern.test(html), `${page.path}: posible dato local no verificado: ${pattern}`);
+  }
+
   const title = html.match(/<title>(.*?)<\/title>/)?.[1];
   const description = html.match(/<meta name="description" content="([^"]*)">/)?.[1];
   assert.ok(title && /Urgencias 24h/i.test(title), `${page.path}: título sin Urgencias 24h`);
@@ -64,7 +105,24 @@ for (const page of localPages) {
   assert.ok(description && !descriptions.has(description), `${page.path}: meta description duplicada`);
   titles.add(title);
   descriptions.add(description);
+
+  const variant = html.match(/data-local-variant="(\d+)"/)?.[1];
+  if (variant) localVariants.add(variant);
+
+  const localBlock = html.match(/<section class="section soft local-intent-section"[\s\S]*?<\/section>/)?.[0] || '';
+  const normalized = normalizeVisible(localBlock)
+    .replaceAll(page.name, 'LOCALIDAD')
+    .replaceAll(page.province || '', 'PROVINCIA');
+  if (normalized) {
+    const count = localBodyFingerprints.get(normalized) || 0;
+    localBodyFingerprints.set(normalized, count + 1);
+  }
 }
+
+// Debe existir una variedad real de combinaciones, no solo sustituir el nombre del pueblo.
+assert.ok(localVariants.size >= 150, `Poca diversidad determinista: solo ${localVariants.size} variantes`);
+const largestFingerprintGroup = Math.max(...localBodyFingerprints.values());
+assert.ok(largestFingerprintGroup <= 12, `Demasiadas páginas locales con el mismo bloque normalizado: ${largestFingerprintGroup}`);
 
 // URL histórica real comprobada en antenasrapid.com: debe mantenerse exactamente.
 const aranda = localPages.find(p => p.name === 'Aranda de Duero' && p.province === 'Burgos');
@@ -91,4 +149,4 @@ for (const province of provinces) {
   assert.equal(zones.split(`href="${province.path}"`).length - 1, 1, `Portada: acceso único a ${province.name}`);
 }
 assert.ok(fs.statSync(path.join(root, 'assets/logo-antenasrapid.webp')).size > 0, 'Falta el archivo de logo publicado');
-console.log(`AUDITORÍA SEO LOCAL OK: ${localPages.length} páginas; Urgencias 24h en title/meta, URL histórica de Aranda, interlinking entre pueblos, servicios antes que marcas, canonical propio y sin duplicados.`);
+console.log(`AUDITORÍA SEO LOCAL OK: ${localPages.length} páginas; ${localVariants.size} variantes deterministas, sin frases de Antenista Cerca ni datos locales inventados, Urgencias 24h, URL histórica de Aranda, interlinking provincial y servicios antes que marcas.`);
