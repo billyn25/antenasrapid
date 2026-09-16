@@ -71,3 +71,66 @@ header{position:sticky;top:0;z-index:40;background:var(--deep);color:#fff;border
 }
 @media(max-width:359px){.brand{width:150px}.brand-tagline{font-size:7px}.contact-top{padding-left:8px}.contact-top a{font-size:17px}.contact-top small{font-size:8px}.head nav{gap:16px}.hero h1{font-size:32px}.service-statement{font-size:17px}.hero-tags{font-size:10px;gap:8px}.desk-title{font-size:20px}}
 @media(prefers-reduced-motion:reduce){.btn{transition:none}.btn:hover{transform:none}}
+
+/* Calidad visual 2026: más jerarquía sin alterar contenido ni SEO. */
+body{background:linear-gradient(#fff 0 72%,#fbfaf8 100%)}
+.section{position:relative;padding:64px 0}
+.section.soft{background:linear-gradient(180deg,#f6f4f1 0%,#f1efeb 100%)}
+.section>.wrap,.section.wrap{position:relative}
+.section h2{font-size:clamp(28px,3vw,40px);letter-spacing:-1.15px;margin-bottom:16px}
+.section-lead{font-size:16px;line-height:1.72;max-width:900px}
+.eyebrow{font-size:10px;letter-spacing:.17em}
+.strip{box-shadow:0 10px 26px rgba(20,20,24,.04)}
+.strip .wrap{justify-content:flex-start;gap:10px 12px;padding-block:18px}
+.strip span{border:1px solid #e7e2df;border-left:3px solid var(--brand);border-radius:999px;background:#fff;padding:7px 12px;font-size:11px;box-shadow:0 3px 10px rgba(20,20,24,.035)}
+.service-grid{gap:20px}
+.service-card{padding:26px 26px 26px 72px;border-color:#e5e1de;border-radius:16px;box-shadow:0 12px 32px rgba(29,31,35,.07);transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+.service-card:hover{transform:translateY(-3px);border-color:#d9b7bd;box-shadow:0 20px 38px rgba(29,31,35,.11)}
+.service-card .icon-box{top:28px;left:24px;display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:#faecef}
+.service-card h3{font-size:22px;margin-bottom:7px}
+.service-card p{font-size:14px;line-height:1.65}
+.service-card a{text-decoration:none;border-bottom:1px solid rgba(182,36,53,.35);padding-bottom:2px}
+.service-card a:hover{border-color:var(--brand)}
+.doorphones{background:#fff}
+.doorphone-work{gap:14px;border:0;background:transparent}
+.doorphone-work article{border:1px solid #e5e1de!important;border-radius:15px;background:linear-gradient(180deg,#fff,#fbfaf9);box-shadow:0 10px 26px rgba(29,31,35,.055)}
+.work-number{display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:30px;border-radius:8px;background:#faecef}
+.help-box{border:1px solid #e6dedb;border-left:5px solid var(--brand);border-radius:16px!important;box-shadow:0 14px 30px rgba(29,31,35,.07)}
+.steps li{padding:14px 16px;margin:10px 0;border:1px solid #e5e1de;border-radius:12px;background:#fff}
+.steps li:before{display:grid;place-items:center;flex:0 0 34px;height:34px;border-radius:9px;background:#faecef}
+.province-grid{gap:16px}
+.province-card{padding:26px 20px;border-color:#e4dfdc;border-radius:16px;box-shadow:0 12px 28px rgba(29,31,35,.06);transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+.province-card:hover{background:#fff;transform:translateY(-3px);border-color:#d8b5bb;box-shadow:0 18px 36px rgba(29,31,35,.10)}
+.province-card strong{font-size:21px}
+.province-card .arrow{margin-top:18px}
+.search-field{border-color:#cfc8c4;border-radius:12px;box-shadow:0 5px 16px rgba(29,31,35,.05);transition:border-color .18s,box-shadow .18s}
+.search-field:focus{border-color:var(--brand);box-shadow:0 0 0 4px rgba(182,36,53,.09)}
+.alphabet{gap:8px}
+.alphabet a{border-radius:10px;border-color:#ddd7d3;box-shadow:0 3px 9px rgba(29,31,35,.035)}
+.letter-group{margin:34px 0}
+.letter-group h3{font-size:30px;font-weight:900}
+.town-list{gap:10px 16px}
+.town-list li{border:1px solid #e5e0dc;border-radius:10px;padding:0;background:#fff;overflow:hidden}
+.town-list a{display:block;padding:11px 13px;text-decoration:none;transition:background .16s,color .16s,transform .16s}
+.town-list a:hover{background:#faecef;color:#8f1727;transform:translateX(2px)}
+.faq details{margin:10px 0;border:1px solid #e4dfdc;border-radius:12px;background:#fff;box-shadow:0 6px 18px rgba(29,31,35,.04);overflow:hidden}
+.faq summary{padding:18px 20px;list-style:none;position:relative;padding-right:50px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:after{content:"+";position:absolute;right:18px;top:50%;transform:translateY(-50%);display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:#f6eeee;color:var(--brand);font-size:18px;font-weight:900}
+.faq details[open] summary:after{content:"−"}
+.faq details p{padding:0 20px 20px}
+.contact-panel{position:relative;border:0;border-radius:18px!important;padding:36px 38px;background:radial-gradient(circle at 85% 10%,#56303a 0%,transparent 40%),linear-gradient(125deg,#1b1d22,#292c32);box-shadow:0 22px 46px rgba(23,24,28,.16)}
+.contact-panel:before{content:"";position:absolute;inset:0 auto 0 0;width:6px;background:var(--brand);border-radius:18px 0 0 18px}
+.contact-panel h2{font-size:clamp(28px,3vw,38px)}
+.contact-panel .btn{box-shadow:0 8px 20px rgba(0,0,0,.18)}
+.footer{border-top:4px solid var(--brand);background:linear-gradient(180deg,#202126,#18191d);padding-top:40px}
+.related-towns{box-shadow:0 12px 30px rgba(29,31,35,.06)!important}
+.related-town-links a{transition:background .16s,border-color .16s,transform .16s}
+.related-town-links a:hover{transform:translateY(-1px);border-color:#d8b5bb}
+@media(max-width:760px){
+ .section{padding-block:44px}.section h2{font-size:clamp(27px,7vw,34px)}.section-lead{font-size:15px}.strip .wrap{gap:7px}.strip span{font-size:10px;padding:6px 10px}.service-card{padding:22px 18px 22px 64px;border-radius:14px}.service-card .icon-box{left:18px;top:23px}.province-grid{gap:10px}.province-card{border-radius:13px}.doorphone-work{gap:10px}.town-list{gap:8px}.letter-group{margin:26px 0}.faq details{margin:8px 0}.contact-panel{padding:28px 24px}.contact-panel .actions{width:100%}.contact-panel .btn{flex:1 1 140px}
+}
+@media(max-width:480px){
+ .section{padding-block:38px}.strip .wrap{display:flex;overflow-x:auto;flex-wrap:nowrap;padding-bottom:14px}.strip span{white-space:nowrap;flex:0 0 auto}.province-grid{grid-template-columns:1fr 1fr}.province-card{padding:18px 14px}.province-card strong{font-size:18px}.province-card span{font-size:10px}.town-list{grid-template-columns:1fr}.faq summary{font-size:14px}.contact-panel{border-radius:14px!important}.mobilebar{box-shadow:0 -10px 28px rgba(24,25,29,.14)}
+}
+@media(prefers-reduced-motion:reduce){.service-card,.province-card,.town-list a,.related-town-links a{transition:none}.service-card:hover,.province-card:hover,.town-list a:hover,.related-town-links a:hover{transform:none}}
