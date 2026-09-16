@@ -11,7 +11,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 8
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
         with:
@@ -22,47 +22,158 @@ jobs:
       - name: Pruebas, generación y auditoría de todos los pueblos
         run: npm run build
       - name: Comparar la web publicada con la salida comprobada
-        continue-on-error: true
         run: |
           python3 - <<'PY'
           import json, pathlib, urllib.request, datetime, hashlib, time, os
-          folder = pathlib.Path('qa'); folder.mkdir(exist_ok=True)
+          from html.parser import HTMLParser
+
+          folder = pathlib.Path('qa')
+          folder.mkdir(exist_ok=True)
           domain = 'https://antenasrapid.netlify.app'
-          files = {'/': 'index.html', '/Antenas-Alava/': 'Antenas-Alava/index.html', '/Antenas-Burgos/lerma.html': 'Antenas-Burgos/lerma.html', '/assets/site.css': 'assets/site.css', '/assets/logo-antenasrapid.webp': 'assets/logo-antenasrapid.webp'}
+          files = {
+              '/': 'index.html',
+              '/Antenas-Alava/': 'Antenas-Alava/index.html',
+              '/Antenas-Burgos/lerma.html': 'Antenas-Burgos/lerma.html',
+              '/assets/site.css': 'assets/site.css',
+              '/assets/logo-antenasrapid.webp': 'assets/logo-antenasrapid.webp'
+          }
+
           def digest(data):
               return hashlib.sha256(data).hexdigest()
-          expected = {route: digest((pathlib.Path('dist')/file).read_bytes()) for route, file in files.items()}
+
+          def normalize_internal_url(value):
+              if not value or not value.startswith('/') or value.startswith('//'):
+                  return value
+              if value.startswith('/#'):
+                  return value
+              path, hashmark, fragment = value.partition('#')
+              query = ''
+              if '?' in path:
+                  path, query = path.split('?', 1)
+                  query = '?' + query
+              if path.lower().endswith('.html'):
+                  path = path[:-5]
+              if path != '/':
+                  path = path.rstrip('/')
+              path = path.lower() or '/'
+              return path + query + (('#' + fragment) if hashmark else '')
+
+          class SemanticHTML(HTMLParser):
+              def __init__(self):
+                  super().__init__(convert_charrefs=True)
+                  self.tokens = []
+              def _attrs(self, attrs):
+                  normalized = []
+                  for key, value in attrs:
+                      if key in {'href', 'action'} and value:
+                          value = normalize_internal_url(value)
+                      normalized.append((key, value))
+                  return tuple(sorted(normalized))
+              def handle_starttag(self, tag, attrs):
+                  self.tokens.append(('start', tag, self._attrs(attrs)))
+              def handle_startendtag(self, tag, attrs):
+                  self.tokens.append(('empty', tag, self._attrs(attrs)))
+              def handle_endtag(self, tag):
+                  self.tokens.append(('end', tag))
+              def handle_data(self, data):
+                  self.tokens.append(('data', data))
+              def handle_comment(self, data):
+                  self.tokens.append(('comment', data))
+              def handle_decl(self, decl):
+                  self.tokens.append(('decl', decl.lower()))
+
+          def semantic_html(data):
+              parser = SemanticHTML()
+              parser.feed(data.decode('utf-8', 'replace'))
+              parser.close()
+              return parser.tokens
+
+          expected_raw = {route: (pathlib.Path('dist') / file).read_bytes() for route, file in files.items()}
           report = {'commit': os.environ['GITHUB_SHA'], 'url': domain, 'published': False}
-          for attempt in range(7):
+          last_published_html = {}
+
+          for attempt in range(12):
               checks = []
+              last_published_html = {}
               for route, file in files.items():
-                  check = {'path': route, 'expectedSha256': expected[route]}
+                  source = expected_raw[route]
+                  check = {'path': route, 'expectedSha256': digest(source)}
                   try:
-                      request = urllib.request.Request(domain+route, headers={'Cache-Control': 'no-cache', 'User-Agent': 'AntenasRapid-build-check'})
+                      request = urllib.request.Request(
+                          domain + route,
+                          headers={'Cache-Control': 'no-cache', 'User-Agent': 'AntenasRapid-build-check'}
+                      )
                       with urllib.request.urlopen(request, timeout=15) as response:
                           data = response.read()
-                          check.update(status=response.status, receivedSha256=digest(data), matches=digest(data)==expected[route])
-                          saved = folder/'published'/file
+                          is_html = file.endswith('.html')
+                          matches = semantic_html(data) == semantic_html(source) if is_html else digest(data) == digest(source)
+                          check.update(
+                              status=response.status,
+                              receivedSha256=digest(data),
+                              comparison='semantic-html' if is_html else 'sha256',
+                              matches=matches
+                          )
+                          saved = folder / 'published' / file
                           saved.parent.mkdir(parents=True, exist_ok=True)
                           saved.write_bytes(data)
+                          if is_html:
+                              last_published_html[route] = data.decode('utf-8', 'replace')
                   except Exception as error:
                       check.update(matches=False, error=str(error))
                   checks.append(check)
-              report.update(checkedAt=datetime.datetime.now(datetime.timezone.utc).isoformat(), checks=checks, published=all(c['matches'] for c in checks))
-              print('PUBLICACIÓN', attempt+1, json.dumps(report, ensure_ascii=False))
+
+              report.update(
+                  checkedAt=datetime.datetime.now(datetime.timezone.utc).isoformat(),
+                  checks=checks,
+                  published=all(c['matches'] for c in checks)
+              )
+              print('PUBLICACIÓN', attempt + 1, json.dumps(report, ensure_ascii=False))
               if report['published']:
                   break
-              if attempt < 6:
+              if attempt < 11:
                   time.sleep(10)
-          (folder/'published-check.json').write_text(json.dumps(report, ensure_ascii=False, indent=2))
+
+          route_checks = []
+          if report['published']:
+              # Netlify convierte algunos href internos a minúsculas y sin .html.
+              # Verificamos que varias de esas rutas que ve el usuario respondan realmente.
+              smoke_routes = ['/aviso-legal', '/privacidad', '/cookies', '/antenas-burgos/lerma']
+              for route in smoke_routes:
+                  item = {'path': route}
+                  try:
+                      request = urllib.request.Request(
+                          domain + route,
+                          headers={'Cache-Control': 'no-cache', 'User-Agent': 'AntenasRapid-route-check'}
+                      )
+                      with urllib.request.urlopen(request, timeout=15) as response:
+                          response.read(256)
+                          item.update(status=response.status, ok=200 <= response.status < 400)
+                  except Exception as error:
+                      item.update(ok=False, error=str(error))
+                  route_checks.append(item)
+              report['routeChecks'] = route_checks
+              report['published'] = report['published'] and all(item['ok'] for item in route_checks)
+
+          (folder / 'published-check.json').write_text(json.dumps(report, ensure_ascii=False, indent=2))
+
           with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as summary:
               summary.write('## Verificación de publicación\n')
-              summary.write('HTML, CSS y logo coinciden con el build comprobado.\n' if report['published'] else 'Build comprobado; la publicación en Netlify aún no coincide.\n')
-              summary.write('| Recurso | HTTP | Coincide |\n|---|---|---|\n')
-              for check in checks:
-                  summary.write('| '+check['path']+' | '+str(check.get('status','error'))+' | '+str(check['matches'])+' |\n')
+              summary.write(
+                  'HTML publicado equivalente al build; CSS/logo idénticos y rutas bonitas operativas.\n'
+                  if report['published'] else
+                  'El build es correcto, pero la publicación de Netlify todavía no es equivalente o alguna ruta publicada falla.\n'
+              )
+              summary.write('| Recurso | HTTP | Comparación | Coincide |\n|---|---|---|---|\n')
+              for check in report['checks']:
+                  summary.write('| ' + check['path'] + ' | ' + str(check.get('status', 'error')) + ' | ' + check.get('comparison', '-') + ' | ' + str(check['matches']) + ' |\n')
+              if route_checks:
+                  summary.write('\n### Rutas reescritas por Netlify\n')
+                  summary.write('| Ruta | HTTP | OK |\n|---|---|---|\n')
+                  for item in route_checks:
+                      summary.write('| ' + item['path'] + ' | ' + str(item.get('status', 'error')) + ' | ' + str(item['ok']) + ' |\n')
+
           if not report['published']:
-              print('::warning::Netlify todavía no sirve los mismos archivos que el build. No dar por confirmada la publicación.')
+              raise SystemExit('Netlify no está sincronizado con el build comprobado o alguna ruta reescrita no responde correctamente.')
           PY
       - name: Guardar salida y fuentes de diagnóstico
         if: always()
