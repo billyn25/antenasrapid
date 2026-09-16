@@ -7,7 +7,7 @@
     "node": ">=22"
   },
   "scripts": {
-    "build": "node scripts/prepare-provinces.mjs && node --test tests/*.test.mjs && node scripts/fetch-municipalities.mjs && node scripts/build.mjs && node scripts/generate-town-pages.mjs && node scripts/expand-town-pages.mjs && node scripts/copy-assets.mjs && node scripts/legal-pages.mjs && node scripts/finalize-public-copy.mjs && node scripts/audit.mjs && node scripts/audit-town-pages.mjs && node scripts/audit-extra-provinces.mjs && node scripts/audit-release-readiness.mjs",
+    "build": "node scripts/prepare-provinces.mjs && node --test tests/*.test.mjs && node scripts/fetch-municipalities.mjs && node scripts/build.mjs && node scripts/generate-town-pages.mjs && node scripts/expand-town-pages.mjs && node scripts/copy-assets.mjs && node scripts/finish-seo-gallery.mjs && node scripts/legal-pages.mjs && node scripts/finalize-public-copy.mjs && node scripts/audit.mjs && node scripts/audit-town-pages.mjs && node scripts/audit-extra-provinces.mjs && node scripts/audit-release-readiness.mjs",
     "test": "node --test tests/*.test.mjs",
     "preview": "node scripts/serve.mjs",
     "prepare:production": "node scripts/prepare-production-assets.mjs",
