@@ -57,9 +57,16 @@ const urgentStyles = `<style id="urgent-24h-style">
 .urgent-24h:before{content:'●';font-size:8px;color:#ffd2d7}
 .urgent-hero{display:inline-flex;align-items:center;gap:8px;margin:0 0 12px;padding:8px 12px;border-radius:999px;background:#c3263b;color:#fff;font-size:12px;font-weight:900;letter-spacing:.05em;text-transform:uppercase;box-shadow:0 10px 22px rgba(195,38,59,.2)}
 .urgent-hero:before{content:'●';font-size:8px;color:#ffd2d7}
-.related-towns{margin-top:28px;padding:22px;background:#fff;border:1px solid var(--line);border-radius:12px}.related-towns h3{margin:0 0 8px;font-size:18px}.related-towns p{margin:0 0 12px;color:var(--muted);font-size:13px}.related-town-links{display:flex;flex-wrap:wrap;gap:8px}.related-town-links a{display:inline-flex;padding:7px 10px;border:1px solid var(--line);border-radius:999px;background:#fff;font-size:13px;font-weight:800}.related-town-links a:hover{background:var(--soft);text-decoration:none}
-@media(max-width:760px){.urgent-line{align-items:flex-end}.urgent-24h{font-size:10px;padding:4px 8px}.urgent-hero{font-size:11px;padding:7px 10px;margin-bottom:10px}}
-@media(max-width:480px){.urgent-line>span:last-child{display:none}}
+.related-towns-section{padding:28px 0 6px;background:#fff}
+.related-towns{margin:0;padding:20px 22px;background:#fff;border:1px solid #e3dedb;border-left:4px solid var(--brand);border-radius:14px;box-shadow:0 8px 24px rgba(29,31,35,.05)}
+.related-towns h3{margin:0 0 5px;font-size:18px;line-height:1.3;color:var(--ink)}
+.related-towns p{margin:0 0 13px;color:var(--muted);font-size:13px}
+.related-town-links{display:flex;flex-wrap:wrap;gap:7px}
+.related-town-links a{display:inline-flex;align-items:center;min-height:34px;padding:6px 10px;border:1px solid #ddd7d3;border-radius:9px;background:#fbfaf9;color:var(--brand);font-size:13px;font-weight:800;transition:background .16s,border-color .16s,transform .16s}
+.related-town-links a:hover{background:#faecef;border-color:#d6b8bd;text-decoration:none;transform:translateY(-1px)}
+.related-towns-section + .faq{padding-top:34px}
+@media(max-width:760px){.urgent-line{align-items:flex-end}.urgent-24h{font-size:10px;padding:4px 8px}.urgent-hero{font-size:11px;padding:7px 10px;margin-bottom:10px}.related-towns-section{padding:20px 0 0}.related-towns{padding:17px 16px;border-radius:12px}.related-town-links{gap:6px}.related-town-links a{font-size:12px;min-height:32px}.related-towns-section + .faq{padding-top:28px}}
+@media(max-width:480px){.urgent-line>span:last-child{display:none}.related-towns h3{font-size:16px}.related-towns p{font-size:12px}}
 </style>`;
 
 function moveSectionBefore(html, sectionId, beforeId) {
@@ -92,7 +99,7 @@ function relatedTownBlock(page) {
     const candidate = list[(index + offset + list.length) % list.length];
     if (candidate && candidate.path !== page.path && !selected.some(x => x.path === candidate.path)) selected.push(candidate);
   }
-  return `<div class="related-towns"><h3>Servicio de antenista en otros pueblos de ${page.province}</h3><p>Consulta también nuestras páginas de servicio en otros municipios de la provincia.</p><div class="related-town-links">${selected.map(p => `<a href="${p.path}">${p.name}</a>`).join('')}</div></div>`;
+  return `<section class="related-towns-section" aria-label="Otros pueblos de ${page.province}"><div class="wrap"><div class="related-towns"><h3>Servicio de antenista en otros pueblos de ${page.province}</h3><p>Consulta también nuestras páginas de servicio en otros municipios de la provincia.</p><div class="related-town-links">${selected.map(p => `<a href="${p.path}">${p.name}</a>`).join('')}</div></div></div></section>`;
 }
 
 function stableHash(value) {
@@ -218,4 +225,4 @@ function fixHtml(dir) {
 }
 fixHtml(root);
 
-console.log(`ASSET/HTML OK: ${localPages.length} páginas locales con titles/metas variados, schema Service sin dirección ficticia, interlinking provincial, Urgencias 24h y URLs históricas preservadas.`);
+console.log(`ASSET/HTML OK: ${localPages.length} páginas locales con bloque de pueblos centrado, titles/metas variados, schema Service sin dirección ficticia, interlinking provincial, Urgencias 24h y URLs históricas preservadas.`);
