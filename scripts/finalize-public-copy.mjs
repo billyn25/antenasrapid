@@ -91,9 +91,11 @@ const stats = { towns: localPages.length, provinces: provinceSegments.size, serv
 const statsHtml = `<section class="rapid-stats" id="rapid-stats" aria-labelledby="rapid-stats-title"><div class="wrap"><div class="rapid-stats-head"><span class="eyebrow">Antenas Rapid en cifras</span><h2 id="rapid-stats-title">Servicio organizado por localidades</h2><p>La web reúne páginas locales y servicios técnicos para facilitar la consulta por municipio.</p></div><div class="rapid-stats-grid"><article><strong>${stats.towns.toLocaleString('es-ES')}</strong><span>Pueblos con página local</span></article><article><strong>${stats.provinces}</strong><span>Provincias organizadas</span></article><article><strong>${stats.services}</strong><span>Servicios técnicos</span></article></div></div></section>`;
 const homeFile = path.join(root, 'index.html');
 let homeHtml = fs.readFileSync(homeFile, 'utf8');
-if (homeHtml.includes('id="rapid-stats"')) homeHtml = homeHtml.replace(/<section class="rapid-stats" id="rapid-stats"[\\s\\S]*?<\\/section>/, statsHtml);
-else if (homeHtml.includes('<footer class="footer">')) homeHtml = homeHtml.replace('<footer class="footer">', `${statsHtml}<footer class="footer">`);
-else throw new Error('No se encontró el footer para insertar las cifras de portada');
+if (!homeHtml.includes('id="rapid-stats"') && homeHtml.includes('<footer class="footer">')) {
+  homeHtml = homeHtml.replace('<footer class="footer">', `${statsHtml}<footer class="footer">`);
+} else if (!homeHtml.includes('id="rapid-stats"')) {
+  throw new Error('No se encontró el footer para insertar las cifras de portada');
+}
 fs.writeFileSync(homeFile, homeHtml);
 
 // Cierre responsive: en móvil ningún bloque principal depende de scroll horizontal
