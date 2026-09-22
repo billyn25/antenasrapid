@@ -27,7 +27,6 @@ jobs:
           cp -a dist .production-check
           CONFIRM_PRODUCTION_PREP=1 PRODUCTION_ROOT=.production-check node scripts/prepare-production-assets.mjs
           PRODUCTION_ROOT=.production-check npm run audit:production
-          rm -rf .production-check
       - name: Comparar la web publicada con la salida comprobada
         run: |
           python3 - <<'PY'
@@ -95,7 +94,7 @@ jobs:
               parser.close()
               return parser.tokens
 
-          expected_raw = {route: (pathlib.Path('dist') / file).read_bytes() for route, file in files.items()}
+          expected_raw = {route: (pathlib.Path('.production-check') / file).read_bytes() for route, file in files.items()}
           report = {'commit': os.environ['GITHUB_SHA'], 'url': domain, 'published': False}
 
           for attempt in range(12):
@@ -176,6 +175,9 @@ jobs:
           if not report['published']:
               raise SystemExit('Netlify no está sincronizado con el build comprobado o alguna ruta reescrita no responde correctamente.')
           PY
+      - name: Limpiar paquete temporal de producción
+        if: success()
+        run: rm -rf .production-check
       - name: Guardar salida y fuentes de diagnóstico
         if: always()
         uses: actions/upload-artifact@v4
