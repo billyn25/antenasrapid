@@ -79,13 +79,35 @@ for (const file of walk(root)) {
   }
 }
 
+// Bloque final de cifras de la portada, calculado desde los datos reales del build.
+const manifestFile = path.join(root, 'local-pages-manifest.json');
+const servicesFile = path.resolve('content', 'services.json');
+if (!fs.existsSync(manifestFile)) throw new Error('Falta local-pages-manifest.json para generar las cifras de portada');
+if (!fs.existsSync(servicesFile)) throw new Error('Falta content/services.json para generar las cifras de portada');
+const localPages = JSON.parse(fs.readFileSync(manifestFile, 'utf8'));
+const services = JSON.parse(fs.readFileSync(servicesFile, 'utf8'));
+const provinceSegments = new Set(localPages.map(page => String(page.path || '').replace(/^\\//, '').split('/')[0]).filter(Boolean));
+const stats = { towns: localPages.length, provinces: provinceSegments.size, services: services.length };
+const statsHtml = `<section class="rapid-stats" id="rapid-stats" aria-labelledby="rapid-stats-title"><div class="wrap"><div class="rapid-stats-head"><span class="eyebrow">Antenas Rapid en cifras</span><h2 id="rapid-stats-title">Servicio organizado por localidades</h2><p>La web reúne páginas locales y servicios técnicos para facilitar la consulta por municipio.</p></div><div class="rapid-stats-grid"><article><strong>${stats.towns.toLocaleString('es-ES')}</strong><span>Pueblos con página local</span></article><article><strong>${stats.provinces}</strong><span>Provincias organizadas</span></article><article><strong>${stats.services}</strong><span>Servicios técnicos</span></article></div></div></section>`;
+const homeFile = path.join(root, 'index.html');
+let homeHtml = fs.readFileSync(homeFile, 'utf8');
+if (homeHtml.includes('id="rapid-stats"')) homeHtml = homeHtml.replace(/<section class="rapid-stats" id="rapid-stats"[\\s\\S]*?<\\/section>/, statsHtml);
+else if (homeHtml.includes('<footer class="footer">')) homeHtml = homeHtml.replace('<footer class="footer">', `${statsHtml}<footer class="footer">`);
+else throw new Error('No se encontró el footer para insertar las cifras de portada');
+fs.writeFileSync(homeFile, homeHtml);
+
 // Cierre responsive: en móvil ningún bloque principal depende de scroll horizontal
 // y evitamos repetir la misma llamada a la acción en el hero y en la barra fija.
 const cssFile = path.join(root, 'assets', 'site.css');
 const mobileOverflowFix = `
 
 /* Cierre móvil sin scroll lateral */
+.rapid-stats{padding:52px 0;background:#202126;color:#fff;border-top:1px solid rgba(255,255,255,.08)}
+.rapid-stats-head{max-width:760px;margin-bottom:24px}.rapid-stats .eyebrow{color:#f04a4a}.rapid-stats h2{margin:7px 0 8px;color:#fff}.rapid-stats-head p{margin:0;color:#c9ccd2}
+.rapid-stats-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.rapid-stats-grid article{padding:24px 22px;border:1px solid rgba(255,255,255,.12);border-radius:12px;background:rgba(255,255,255,.045)}
+.rapid-stats-grid strong{display:block;font-size:38px;line-height:1;font-weight:900;letter-spacing:-.03em;color:#fff}.rapid-stats-grid span{display:block;margin-top:8px;color:#d8dbe0;font-size:14px;font-weight:700}
 @media(max-width:760px){
+  .rapid-stats{padding:38px 0}.rapid-stats-grid{grid-template-columns:1fr}.rapid-stats-grid article{display:flex;align-items:baseline;justify-content:space-between;gap:18px;padding:17px 18px}.rapid-stats-grid strong{font-size:31px}.rapid-stats-grid span{margin-top:0;text-align:right}
   .head nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 10px;overflow-x:visible;scrollbar-width:none}
   .head nav a{white-space:normal;text-align:center;line-height:1.25;padding:7px 4px;min-width:0}
 }
