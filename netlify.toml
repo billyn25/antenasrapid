@@ -1,6 +1,6 @@
-# Primera versión exclusivamente de revisión. NO conectar el dominio actual.
+# Producción Antenas Rapid: genera, prepara y audita el paquete indexable antes de publicar.
 [build]
-  command = "npm run build"
+  command = "npm run build:production"
   publish = "dist"
 [build.environment]
   NODE_VERSION = "22"
@@ -10,7 +10,6 @@
 [[headers]]
   for = "/*"
   [headers.values]
-    X-Robots-Tag = "noindex, nofollow"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Cache-Control = "public, max-age=0, must-revalidate"
