@@ -95,6 +95,11 @@ for (const href of ['/aviso-legal.html','/privacidad.html','/cookies.html']) {
 
 const manifest = JSON.parse(fs.readFileSync(path.join(root, 'local-pages-manifest.json'), 'utf8'));
 if (!manifest.length) throw new Error('Manifiesto local vacío');
+const services = JSON.parse(fs.readFileSync(path.resolve('content', 'services.json'), 'utf8'));
+const provinceSegmentsForStats = new Set(manifest.map(page => String(page.path || '').replace(/^\\//, '').split('/')[0]).filter(Boolean));
+if (!home.includes('id="rapid-stats"') || !home.includes('id="rapid-stats-title"')) throw new Error('Portada: falta el bloque final de cifras');
+const expectedStats = [manifest.length.toLocaleString('es-ES'), String(provinceSegmentsForStats.size), String(services.length)];
+for (const value of expectedStats) if (!home.includes(`<strong>${value}</strong>`)) throw new Error(`Portada: cifra real ausente ${value}`);
 for (const page of manifest) {
   if (!existsForHref(page.path)) throw new Error(`Falta HTML para ${page.path}`);
 }
