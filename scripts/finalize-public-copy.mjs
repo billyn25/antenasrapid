@@ -86,7 +86,7 @@ if (!fs.existsSync(manifestFile)) throw new Error('Falta local-pages-manifest.js
 if (!fs.existsSync(servicesFile)) throw new Error('Falta content/services.json para generar las cifras de portada');
 const localPages = JSON.parse(fs.readFileSync(manifestFile, 'utf8'));
 const services = JSON.parse(fs.readFileSync(servicesFile, 'utf8'));
-const provinceSegments = new Set(localPages.map(page => String(page.path || '').replace(/^\\//, '').split('/')[0]).filter(Boolean));
+const provinceSegments = new Set(localPages.map(page => String(page.path || '').replace(/^\//, '').split('/')[0]).filter(Boolean));
 const stats = { towns: localPages.length, provinces: provinceSegments.size, services: services.length };
 const statsHtml = `<section class="rapid-stats" id="rapid-stats" aria-labelledby="rapid-stats-title"><div class="wrap"><div class="rapid-stats-head"><span class="eyebrow">Antenas Rapid en cifras</span><h2 id="rapid-stats-title">Servicio organizado por localidades</h2><p>La web reúne páginas locales y servicios técnicos para facilitar la consulta por municipio.</p></div><div class="rapid-stats-grid"><article><strong>${stats.towns.toLocaleString('es-ES')}</strong><span>Pueblos con página local</span></article><article><strong>${stats.provinces}</strong><span>Provincias organizadas</span></article><article><strong>${stats.services}</strong><span>Servicios técnicos</span></article></div></div></section>`;
 const homeFile = path.join(root, 'index.html');
