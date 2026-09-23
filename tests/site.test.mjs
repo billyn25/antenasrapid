@@ -12,6 +12,44 @@ test('preview noindex sin analítica en todas las páginas',()=>{for(const p of 
 test('cada municipio de la selección está en HTML sin JavaScript',()=>{for(const p of pages.filter(p=>p.type==='province'))for(const n of p.towns)assert.ok(townIndex(p).includes(esc(n)));});
 test('enlaces locales conocidos se conservan',()=>{assert.match(townIndex(pages.find(p=>p.name==='Bizkaia')),/href="\/Antenas-Bizkaia\/bilbao.html"/);assert.match(townIndex(pages.find(p=>p.name==='Burgos')),/href="\/Antenas-Burgos\/lerma.html"/);});
 test('generación determinista y libre de duplicados',()=>{for(const p of pages)assert.equal(renderPage(p),renderPage(p));assert.equal(new Set(pages.map(p=>p.path)).size,pages.length);});
-test('modo de producción bloqueado',()=>{const old=process.env.SITE_MODE;process.env.SITE_MODE='production';try{assert.throws(()=>build(),/bloqueada/);}finally{if(old===undefined)delete process.env.SITE_MODE;else process.env.SITE_MODE=old;}});
-test('no permite construir con el dominio vivo conectado',()=>{const old=process.env.URL;process.env.URL=site.domain;try{assert.throws(()=>build(),/dominio actual/);}finally{if(old===undefined)delete process.env.URL;else process.env.URL=old;}});
-test('crea HTML real, 404 y cabeceras sin sitemap incompleto',()=>{const dir=fs.mkdtempSync(path.join(os.tmpdir(),'rapid-test-'));try{assert.equal(build(dir),18);assert.ok(fs.existsSync(path.join(dir,'404.html')));assert.match(fs.readFileSync(path.join(dir,'_headers'),'utf8'),/noindex/);assert.ok(!fs.existsSync(path.join(dir,'sitemap.xml')));}finally{fs.rmSync(dir,{recursive:true,force:true});}});
+// Entornos explícitos: los tests no heredan URL, DEPLOY_PRIME_URL ni SITE_MODE de Netlify.
+test('modo de producción bloqueado en el generador base',()=>{
+ assert.throws(()=>build('dist',{SITE_MODE:'production'}),/bloqueada/);
+});
+test('no permite una preview con URL o DEPLOY_PRIME_URL del dominio vivo',()=>{
+ for(const key of ['URL','DEPLOY_PRIME_URL']){
+  for(const host of [site.domain,site.domain.replace('www.','')]){
+   assert.throws(()=>build('dist',{SITE_MODE:'preview',[key]:host}),/dominio actual/);
+  }
+ }
+});
+test('crea HTML real, 404 y cabeceras sin sitemap incompleto',()=>{
+ const dir=fs.mkdtempSync(path.join(os.tmpdir(),'rapid-test-'));
+ try{
+  assert.equal(build(dir,{SITE_MODE:'preview'}),18);
+  assert.ok(fs.existsSync(path.join(dir,'404.html')));
+  assert.match(fs.readFileSync(path.join(dir,'_headers'),'utf8'),/noindex/);
+  assert.ok(!fs.existsSync(path.join(dir,'sitemap.xml')));
+ }finally{fs.rmSync(dir,{recursive:true,force:true});}
+});
+test('pipeline autorizado admite el dominio vivo sin abrir indexación antes de auditar',()=>{
+ const dir=fs.mkdtempSync(path.join(os.tmpdir(),'rapid-netlify-'));
+ const env={SITE_MODE:'preview',ANTENASRAPID_BUILD_TARGET:'production',NETLIFY:'true',CONTEXT:'production',URL:site.domain,DEPLOY_PRIME_URL:site.domain};
+ const original={...env};
+ try{
+  assert.equal(build(dir,env),18);
+  assert.deepEqual(env,original,'El build no debe mutar el entorno recibido');
+  assert.match(fs.readFileSync(path.join(dir,'index.html'),'utf8'),/content="noindex,nofollow"/);
+  assert.match(fs.readFileSync(path.join(dir,'_headers'),'utf8'),/X-Robots-Tag: noindex/);
+  assert.ok(!fs.existsSync(path.join(dir,'sitemap.xml')));
+ }finally{fs.rmSync(dir,{recursive:true,force:true});}
+});
+test('el marcador de producción no permite indexar deploy previews ni ramas',()=>{
+ for(const context of ['deploy-preview','branch-deploy','dev']){
+  assert.throws(()=>build('dist',{SITE_MODE:'preview',ANTENASRAPID_BUILD_TARGET:'production',CONTEXT:context}),/bloqueada/);
+ }
+});
+test('build:production autoriza la fase base y conserva ambas auditorías',()=>{
+ const pkg=JSON.parse(fs.readFileSync('package.json','utf8'));
+ assert.match(pkg.scripts['build:production'],/^ANTENASRAPID_BUILD_TARGET=production SITE_MODE=preview npm run build && CONFIRM_PRODUCTION_PREP=1 npm run prepare:production && npm run audit:production$/);
+});

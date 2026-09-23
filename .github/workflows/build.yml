@@ -19,8 +19,14 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Pruebas, generación y auditoría de todos los pueblos
-        run: npm run build
+      - name: Pruebas y build de producción con el entorno real de Netlify
+        env:
+          NETLIFY: 'true'
+          CONTEXT: production
+          SITE_MODE: preview
+          URL: https://www.antenasrapid.com
+          DEPLOY_PRIME_URL: https://www.antenasrapid.com
+        run: npm run build:production
       - name: Simular paquete final sin publicarlo
         run: |
           rm -rf .production-check
@@ -41,7 +47,13 @@ jobs:
               '/Antenas-Alava/': 'Antenas-Alava/index.html',
               '/Antenas-Burgos/lerma.html': 'Antenas-Burgos/lerma.html',
               '/assets/site.css': 'assets/site.css',
-              '/assets/logo-antenasrapid.webp': 'assets/logo-antenasrapid.webp'
+              '/assets/site.js': 'assets/site.js',
+              '/assets/logo-antenasrapid.webp': 'assets/logo-antenasrapid.webp',
+              '/favicon.png': 'favicon.png',
+              '/favicon.ico': 'favicon.ico',
+              '/aviso-legal.html': 'aviso-legal.html',
+              '/privacidad.html': 'privacidad.html',
+              '/cookies.html': 'cookies.html'
           }
 
           def digest(data):
@@ -159,7 +171,7 @@ jobs:
           with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as summary:
               summary.write('## Verificación de publicación\n')
               summary.write(
-                  'HTML publicado equivalente al build; CSS/logo idénticos y rutas bonitas operativas.\n'
+                  'HTML publicado equivalente al build; CSS, JS, logo y favicon idénticos; políticas y rutas operativas.\n'
                   if report['published'] else
                   'El build es correcto, pero la publicación de Netlify todavía no es equivalente o alguna ruta publicada falla.\n'
               )

@@ -3,6 +3,21 @@ import path from 'node:path';
 
 const root = path.resolve('dist');
 
+// Favicon cuadrado derivado del símbolo del logotipo aprobado; sin dependencias de red.
+const favicon=Buffer.from(fs.readFileSync(path.resolve('src','favicon.png.b64'),'utf8').trim(),'base64');
+if(favicon.length<24||!favicon.subarray(0,8).equals(Buffer.from([137,80,78,71,13,10,26,10]))||favicon.readUInt32BE(16)!==96||favicon.readUInt32BE(20)!==96){
+  throw new Error('Favicon: se requiere el PNG original cuadrado de 96 x 96.');
+}
+fs.writeFileSync(path.join(root,'favicon.png'),favicon);
+// ICO con PNG incrustado (96 x 96), compartiendo exactamente el mismo símbolo.
+const icoHeader=Buffer.alloc(22);
+icoHeader.writeUInt16LE(1,2);icoHeader.writeUInt16LE(1,4);
+icoHeader[6]=96;icoHeader[7]=96;icoHeader.writeUInt16LE(1,10);icoHeader.writeUInt16LE(32,12);
+icoHeader.writeUInt32LE(favicon.length,14);icoHeader.writeUInt32LE(22,18);
+fs.writeFileSync(path.join(root,'favicon.ico'),Buffer.concat([icoHeader,favicon]));
+const faviconLinks='<link rel="icon" type="image/x-icon" sizes="96x96" href="/favicon.ico"><link rel="icon" type="image/png" sizes="96x96" href="/favicon.png">';
+
+
 function walk(dir) {
   const out = [];
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
@@ -48,6 +63,7 @@ for (const file of walk(root)) {
   if (!file.endsWith('.html')) continue;
   let html = fs.readFileSync(file, 'utf8');
   const before = html;
+  if(!html.includes('href="/favicon.png"')) html=html.replace('</head>',faviconLinks+'</head>');
 
   // Ningún texto interno de desarrollo debe quedar visible para el cliente.
   // El noindex técnico de la preview se conserva únicamente en <head>/cabeceras.

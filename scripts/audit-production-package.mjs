@@ -34,6 +34,9 @@ for (const file of htmlFiles) {
   const rel = path.relative(root, file).split(path.sep).join('/');
   const html = fs.readFileSync(file, 'utf8');
 
+  for(const icon of ['favicon.png','favicon.ico']){
+    if(!html.includes(`href="/${icon}"`)) throw new Error(`${rel}: falta enlace al ${icon}`);
+  }
   if (excluded.has(rel)) continue;
 
   if (!html.includes('<meta name="robots" content="index,follow">')) {
@@ -55,6 +58,16 @@ if (expectedCanonicals.length < 3000) {
 if (new Set(expectedCanonicals).size !== expectedCanonicals.length) {
   throw new Error('Canonicals duplicados en el paquete final');
 }
+
+const favicon=fs.readFileSync(path.join(root,'favicon.png'));
+const ico=fs.readFileSync(path.join(root,'favicon.ico'));
+if(favicon.length<24||!favicon.subarray(0,8).equals(Buffer.from([137,80,78,71,13,10,26,10]))||favicon.readUInt32BE(16)!==96||favicon.readUInt32BE(20)!==96){
+  throw new Error('Favicon PNG no válido o no cuadrado de 96 x 96.');
+}
+if(ico.length<22||ico.readUInt16LE(0)!==0||ico.readUInt16LE(2)!==1||ico.readUInt16LE(4)!==1||ico[6]!==96||ico[7]!==96||ico.readUInt32LE(14)!==favicon.length||ico.readUInt32LE(18)!==22||!ico.subarray(22).equals(favicon)){
+  throw new Error('Favicon ICO no coincide con el PNG aprobado.');
+}
+console.log(`FAVICON OK: PNG + ICO de 96 x 96 enlazados en los ${htmlFiles.length} HTML, incluidos legal y 404.`);
 
 const expectedGroups = new Map();
 for (const url of expectedCanonicals) {
