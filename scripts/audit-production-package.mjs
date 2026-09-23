@@ -42,8 +42,11 @@ for (const file of htmlFiles) {
   if (!html.includes('<meta name="robots" content="index,follow">')) {
     throw new Error(`${rel}: falta index,follow en el paquete final`);
   }
-  if (/<meta[^>]+name=[#']robots["'][^>]+content=[#'][^"']*noindex/i.test(html)) {
-    throw new Error(`${rel}: conserva noindex en el paquete final`);
+  if (/<meta[^>]+name=["']robots["'][^>]+content=["'][^"']*(?:noindex|nofollow)/i.test(html)) {
+    throw new Error(`${rel}: conserva noindex/nofollow en el paquete final`);
+  }
+  if (/\b(?:noindex|nofollow)\b/i.test(html.replace(/<meta\s+name=["']robots["'][^>]*>/gi,''))) {
+    throw new Error(`${rel}: aparece una directiva noindex/nofollow residual fuera del meta robots final`);
   }
 
   const canonical = html.match(/<link rel="canonical" href="([^"]+)"/)?.[1];
