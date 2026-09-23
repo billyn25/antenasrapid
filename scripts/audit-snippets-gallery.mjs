@@ -47,7 +47,8 @@ if (/www\.antenaszalla\.com\/img\/galeria/i.test(home)) throw new Error('Galerí
 
 if (!home.includes('class="legal-links"')) throw new Error('Portada: faltan enlaces legales');
 if (!home.includes('class="legal-sep"')) throw new Error('Portada: faltan separadores legales controlados');
-if (!/@media\(max-width:480px\)[\s\S]*?\.legal-sep\{display:none\}/.test(home)) {
+const css = fs.readFileSync(path.join(root, 'assets', 'site.css'), 'utf8');
+if (!/@media\(max-width:640px\)[\s\S]*?\.legal-sep\{display:none\}/.test(css)) {
   throw new Error('Pie legal: los separadores no se ocultan en móvil');
 }
 for (const href of ['/aviso-legal.html','/privacidad.html','/cookies.html']) {
