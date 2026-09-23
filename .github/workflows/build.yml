@@ -122,11 +122,16 @@ jobs:
                       with urllib.request.urlopen(request, timeout=15) as response:
                           data = response.read()
                           is_html = file.endswith('.html')
-                          matches = semantic_html(data) == semantic_html(source) if is_html else digest(data) == digest(source)
+                          xrobots = response.headers.get('X-Robots-Tag', '')
+                          header_blocks = 'noindex' in xrobots.lower() or 'nofollow' in xrobots.lower()
+                          html_blocks = is_html and (b'noindex' in data.lower() or b'nofollow' in data.lower())
+                          matches = (semantic_html(data) == semantic_html(source) if is_html else digest(data) == digest(source)) and not header_blocks and not html_blocks
                           check.update(
                               status=response.status,
                               receivedSha256=digest(data),
-                              comparison='semantic-html' if is_html else 'sha256',
+                              comparison='semantic-html+indexability' if is_html else 'sha256',
+                              xRobotsTag=xrobots,
+                              indexable=not header_blocks and not html_blocks,
                               matches=matches
                           )
                           saved = folder / 'published' / file
