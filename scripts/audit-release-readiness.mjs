@@ -92,6 +92,15 @@ const home = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 for (const href of ['/aviso-legal.html','/privacidad.html','/cookies.html']) {
   if (!home.includes(`href="${href}"`)) throw new Error(`Portada: falta enlace legal ${href}`);
 }
+if (!home.includes('data-cookie-notice') || !home.includes('data-cookie-dismiss')) throw new Error('Portada: falta aviso informativo de privacidad/cookies');
+const siteJs = fs.readFileSync(path.join(root, 'assets', 'site.js'), 'utf8');
+if (!siteJs.includes('antenasrapid-cookie-info-v1') || !siteJs.includes('data-cookie-dismiss')) throw new Error('site.js: gestión del aviso informativo incompleta');
+if (/gtag\(|googletagmanager|google-analytics|clarity\(|fbq\(/i.test(siteJs)) throw new Error('site.js: se ha detectado analítica o tracking no previsto');
+for (const legal of ['aviso-legal.html','privacidad.html','cookies.html']) {
+  const legalHtml = fs.readFileSync(path.join(root, legal), 'utf8');
+  if (!legalHtml.includes('class="legal-page"') || !legalHtml.includes('class="legal-aside"')) throw new Error(`${legal}: diseño legal incompleto`);
+  if (!legalHtml.includes('data-cookie-notice')) throw new Error(`${legal}: falta aviso informativo`);
+}
 
 const manifest = JSON.parse(fs.readFileSync(path.join(root, 'local-pages-manifest.json'), 'utf8'));
 if (!manifest.length) throw new Error('Manifiesto local vacío');

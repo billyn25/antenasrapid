@@ -27,3 +27,12 @@ Ocho páginas de revisión: portada, cinco provincias, Bilbao y Lerma. Las direc
 ## Antes de producción
 
 Completar mapa de URLs y consultas de Search Console, revisar cobertura y contenido, recuperar fotografías, completar datos del titular y preparar respaldo y redirecciones cuando sean necesarias. La sustitución del dominio real requiere revisión y autorización expresa. No se garantizan posiciones ni que Google muestre íntegro el teléfono o la descripción.
+
+
+## Privacidad y legal
+
+- Aviso legal, privacidad/RGPD y política de cookies generados en cada build.
+- Titular publicado con los datos disponibles: R.F.G. · Antenas Rapid · 641 589 394.
+- Sin analítica, publicidad ni cookies de seguimiento en la versión actual.
+- Aviso informativo de privacidad con almacenamiento local técnico para recordar su cierre.
+- Si se incorpora analítica o publicidad en el futuro, deberá implantarse consentimiento previo con aceptación y rechazo equivalentes antes de activarla.

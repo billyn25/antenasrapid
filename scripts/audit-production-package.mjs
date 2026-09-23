@@ -173,7 +173,13 @@ if (fs.existsSync(path.join(root, 'preview-manifest.json'))) {
 }
 
 for (const legal of ['aviso-legal.html', 'privacidad.html', 'cookies.html']) {
-  if (!fs.existsSync(path.join(root, legal))) throw new Error(`Falta ${legal}`);
+  const file = path.join(root, legal);
+  if (!fs.existsSync(file)) throw new Error(`Falta ${legal}`);
+  const html = fs.readFileSync(file, 'utf8');
+  if (!html.includes('class="legal-page"') || !html.includes('data-cookie-notice')) throw new Error(`${legal}: cierre legal/privacidad incompleto`);
 }
+const siteJs = fs.readFileSync(path.join(root, 'assets', 'site.js'), 'utf8');
+if (!siteJs.includes('antenasrapid-cookie-info-v1')) throw new Error('Producción: falta memoria técnica del aviso de privacidad');
+if (/gtag\(|googletagmanager|google-analytics|clarity\(|fbq\(/i.test(siteJs)) throw new Error('Producción: tracking inesperado sin consentimiento');
 
 console.log(`PAQUETE PRODUCCIÓN OK: ${expectedCanonicals.length} URLs indexables; ${provinceSegments.size} provincias con sitemap propio + core, robots abierto, canonicals únicos, enlazado provincial completo y 0 URLs fuera del índice.`);
