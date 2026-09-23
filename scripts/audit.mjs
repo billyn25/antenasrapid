@@ -24,7 +24,9 @@ for(const page of pages){
  }
 }
 const runtime=fs.readFileSync(path.join(root,'assets/site.js'),'utf8');
-assert.ok(!/localStorage|sessionStorage|document\.cookie|fetch\(|gtag\(/.test(runtime),'Vista previa sin seguimiento');
+assert.ok(!/sessionStorage|document\.cookie|fetch\(|gtag\(|googletagmanager|google-analytics|clarity\(|fbq\(/i.test(runtime),'Vista previa sin seguimiento');
+assert.ok(runtime.includes("const privacyKey = 'antenasrapid-cookie-info-v1'"),'Aviso de privacidad sin clave técnica');
+assert.equal((runtime.match(/localStorage/g)||[]).length,2,'Solo se permite localStorage para recordar el cierre del aviso');
 assert.match(fs.readFileSync(path.join(root,'_headers'),'utf8'),/X-Robots-Tag: noindex/);
 assert.ok(!/Disallow:\s*\//.test(fs.readFileSync(path.join(root,'robots.txt'),'utf8')),'Permitir lectura de noindex');
 assert.ok(!fs.existsSync(path.join(root,'_redirects')),'Sin reescritura SPA que oculte 404');
