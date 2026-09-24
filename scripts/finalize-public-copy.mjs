@@ -152,18 +152,12 @@ fs.writeFileSync(homeFile, homeHtml);
 const cssFile = path.join(root, 'assets', 'site.css');
 const mobileOverflowFix = `
 
-/* Portada Rapid aprobada: hero técnico, limpio y sin círculos */
-.home-clean-hero{position:relative;isolation:isolate;overflow:hidden;background:#101820;border-bottom:4px solid var(--brand)}
-.home-clean-hero::before{content:''!important;display:block!important;position:absolute!important;inset:0!important;z-index:-1!important;width:auto!important;height:auto!important;right:0!important;top:0!important;border:0!important;border-radius:0!important;box-shadow:none!important;background:linear-gradient(90deg,rgba(8,15,21,.98) 0%,rgba(8,15,21,.93) 34%,rgba(8,15,21,.72) 50%,rgba(8,15,21,.18) 72%,rgba(8,15,21,.05) 100%),url('https://images.pexels.com/photos/15483315/pexels-photo-15483315/free-photo-of-worker-walking-near-satellites.jpeg?auto=compress&cs=tinysrgb&w=2000') 70% 46%/cover no-repeat!important}
-.home-clean-hero .hero-inner{display:block;min-height:600px;padding-block:68px 58px}
-.home-clean-hero .hero-copy{position:relative;z-index:2;width:min(680px,58%)}
-.home-clean-hero .service-desk{display:none!important}
-.home-clean-hero h1{font-size:clamp(44px,5vw,70px);max-width:680px;margin:15px 0 20px}
-.home-clean-hero .service-statement{max-width:650px;font-size:21px}.home-clean-hero .lead{max-width:610px;color:#eef0f2}
-.home-clean-hero .hero-tags{margin-top:30px;padding-top:20px;border-top:1px solid rgba(255,255,255,.2);max-width:650px}
-.home-clean-hero .hero-tags span{color:#fff}.home-clean-hero .hero-tags span::before{color:#ff4055}
-@media(max-width:900px){.home-clean-hero::before{background:linear-gradient(90deg,rgba(8,15,21,.98) 0%,rgba(8,15,21,.91) 48%,rgba(8,15,21,.45) 76%,rgba(8,15,21,.18) 100%),url('https://images.pexels.com/photos/15483315/pexels-photo-15483315/free-photo-of-worker-walking-near-satellites.jpeg?auto=compress&cs=tinysrgb&w=1600') 66% center/cover no-repeat!important}.home-clean-hero .hero-copy{width:min(650px,70%)}}
-@media(max-width:640px){.home-clean-hero::before{background:linear-gradient(180deg,rgba(8,15,21,.9) 0%,rgba(8,15,21,.84) 55%,rgba(8,15,21,.94) 100%),url('https://images.pexels.com/photos/15483315/pexels-photo-15483315/free-photo-of-worker-walking-near-satellites.jpeg?auto=compress&cs=tinysrgb&w=1100') 62% center/cover no-repeat!important}.home-clean-hero .hero-inner{min-height:0;padding-block:42px 36px}.home-clean-hero .hero-copy{width:100%}.home-clean-hero h1{font-size:clamp(38px,11vw,52px)}.home-clean-hero .service-statement{font-size:18px}.home-clean-hero .lead{font-size:15px}.home-clean-hero .hero-tags{background:rgba(8,15,21,.32);padding:14px;border-radius:8px}}
+/* Hero estable de portada: se retira la prueba fotográfica hasta disponer del recurso aprobado */
+.home-clean-hero{background:linear-gradient(135deg,#202126 0%,#292b30 70%,#33252a 100%);border-bottom:4px solid var(--brand)}
+.home-clean-hero::before{display:none!important;content:none!important;border:0!important;border-radius:0!important;box-shadow:none!important}
+.home-clean-hero .hero-inner{grid-template-columns:minmax(0,1.35fr) minmax(360px,.85fr);gap:48px}
+.home-clean-hero .service-desk{display:block!important;border-radius:6px;border-top:5px solid var(--brand);box-shadow:0 18px 42px rgba(0,0,0,.22)}
+@media(max-width:760px){.home-clean-hero .hero-inner{grid-template-columns:1fr;gap:24px}}
 
 /* Cierre móvil sin scroll lateral */
 .featured-localities{padding:52px 0;background:#f5f6f7;border-top:1px solid #e2e3e5}.featured-localities h2{margin:7px 0 8px}.featured-lead{max-width:820px;margin:0 0 24px;color:#5d6066}.featured-province-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.featured-province{padding:20px;border:1px solid #dedfe2;background:#fff;border-radius:12px}.featured-province h3{margin:0 0 12px;font-size:20px}.featured-province h3 a{color:#202126}.featured-towns{display:flex;flex-wrap:wrap;gap:7px}.featured-towns a{padding:7px 9px;border:1px solid #e0e1e4;background:#f8f8f9;border-radius:7px;font-size:13px;font-weight:700}.featured-all{display:inline-block;margin-top:14px;color:#c91f25;font-size:13px;font-weight:900}
