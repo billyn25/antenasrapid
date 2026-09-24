@@ -154,7 +154,7 @@ const mobileOverflowFix = `
 
 /* Hero aprobado Antenas Rapid */
 .home-clean-hero{position:relative;isolation:isolate;overflow:hidden;background:#07121d;border-bottom:4px solid var(--brand)}
-.home-clean-hero::before{content:''!important;display:block!important;position:absolute!important;inset:0!important;z-index:-1!important;width:auto!important;height:auto!important;right:0!important;top:0!important;border:0!important;border-radius:0!important;box-shadow:none!important;background:url('/assets/hero-antenasrapid.png') center center/cover no-repeat!important}
+.home-clean-hero::before{content:''!important;display:block!important;position:absolute!important;inset:0!important;z-index:-1!important;width:auto!important;height:auto!important;right:0!important;top:0!important;border:0!important;border-radius:0!important;box-shadow:none!important;background:url('/assets/hero-antenasrapid-HQ.jpg') center center/cover no-repeat!important}
 .home-clean-hero .hero-inner{display:block;min-height:clamp(500px,45vw,610px);padding-block:58px 52px}
 .home-clean-hero .hero-copy{position:relative;z-index:2;width:min(700px,58%)}
 .home-clean-hero .service-desk{display:none!important}
