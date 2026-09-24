@@ -104,9 +104,40 @@ const localPages = JSON.parse(fs.readFileSync(manifestFile, 'utf8'));
 const services = JSON.parse(fs.readFileSync(servicesFile, 'utf8'));
 const provinceSegments = new Set(localPages.map(page => String(page.path || '').replace(/^\//, '').split('/')[0]).filter(Boolean));
 const stats = { towns: localPages.length, provinces: provinceSegments.size, services: services.length };
+const featuredByProvince={
+  'Antenas-Alava':['Vitoria-Gasteiz','Laudio / Llodio','Amurrio','Agurain / Salvatierra','Laguardia','Alegría-Dulantzi'],
+  'Antenas-Bizkaia':['Bilbao','Barakaldo','Getxo','Portugalete','Santurtzi','Durango'],
+  'Antenas-Burgos':['Burgos','Miranda de Ebro','Aranda de Duero','Briviesca','Medina de Pomar','Lerma'],
+  'Antenas-Cantabria':['Santander','Torrelavega','Castro-Urdiales','Camargo','Laredo','Santoña'],
+  'Antenas-Guipuzcoa':['Donostia / San Sebastián','Irun','Errenteria','Eibar','Zarautz','Hernani'],
+  'Antenas-La-Rioja':['Logroño','Calahorra','Arnedo','Haro','Alfaro','Nájera'],
+  'Antenas-Leon':['León','Ponferrada','San Andrés del Rabanedo','Astorga','La Bañeza','Villablino'],
+  'Antenas-Navarra':['Pamplona / Iruña','Tudela','Barañáin / Barañain','Estella-Lizarra','Tafalla','Burlada / Burlata'],
+  'Antenas-Palencia':['Palencia','Aguilar de Campoo','Guardo','Venta de Baños','Villamuriel de Cerrato','Cervera de Pisuerga'],
+  'Antenas-Salamanca':['Salamanca','Béjar','Ciudad Rodrigo','Santa Marta de Tormes','Peñaranda de Bracamonte','Villamayor'],
+  'Antenas-Segovia':['Segovia','Cuéllar','El Espinar','San Ildefonso','Cantalejo','Nava de la Asunción'],
+  'Antenas-Soria':['Soria','Almazán','El Burgo de Osma','Ólvega','San Esteban de Gormaz','Ágreda'],
+  'Antenas-Valladolid':['Valladolid','Laguna de Duero','Medina del Campo','Arroyo de la Encomienda','Tordesillas','Tudela de Duero'],
+  'Antenas-Zamora':['Zamora','Benavente','Toro','Puebla de Sanabria','Morales del Vino','Villaralbo'],
+  'Antenas-Asturias':['Gijón','Oviedo','Avilés','Siero','Langreo','Mieres']
+};
+const normTown=v=>String(v||'').toLocaleLowerCase('es').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,' ').trim();
+const localByProvince=new Map();
+for(const page of localPages){const seg=String(page.path||'').replace(/^\//,'').split('/')[0];if(!localByProvince.has(seg))localByProvince.set(seg,[]);localByProvince.get(seg).push(page);}
+const featuredCards=[...provinceSegments].sort((a,b)=>a.localeCompare(b,'es')).map(seg=>{
+ const pagesFor=localByProvince.get(seg)||[],byName=new Map(pagesFor.map(p=>[normTown(p.name),p]));
+ const requested=featuredByProvince[seg]||[];
+ const chosen=requested.map(n=>byName.get(normTown(n))).filter(Boolean).slice(0,6);
+ const provinceName=seg.replace(/^Antenas-/,'').replace('Guipuzcoa','Gipuzkoa').replace('Alava','Álava').replaceAll('-',' ');
+ if(chosen.length<4) throw new Error(`Portada: faltan pueblos destacados válidos para ${seg} (${chosen.length}/6)`);
+ return `<article class="featured-province"><h3><a href="/${seg}/">${provinceName}</a></h3><div class="featured-towns">${chosen.map(p=>`<a href="${p.path}">${p.name}</a>`).join('')}</div><a class="featured-all" href="/${seg}/">Ver todos los pueblos →</a></article>`;
+}).join('');
+const featuredHtml=`<section class="featured-localities" id="pueblos-destacados"><div class="wrap"><span class="eyebrow">Localidades principales</span><h2>Pueblos y ciudades con servicio</h2><p class="featured-lead">Accesos directos a algunas de las localidades principales de cada provincia. Consulta la provincia para ver el listado completo.</p><div class="featured-province-grid">${featuredCards}</div></div></section>`;
+
 const statsHtml = `<section class="rapid-stats" id="rapid-stats" aria-labelledby="rapid-stats-title"><div class="wrap"><div class="rapid-stats-head"><span class="eyebrow">Antenas Rapid en cifras</span><h2 id="rapid-stats-title">Servicio organizado por localidades</h2><p>La web reúne páginas locales y servicios técnicos para facilitar la consulta por municipio.</p></div><div class="rapid-stats-grid"><article><strong>${stats.towns.toLocaleString('es-ES')}</strong><span>Pueblos con página local</span></article><article><strong>${stats.provinces}</strong><span>Provincias organizadas</span></article><article><strong>${stats.services}</strong><span>Servicios técnicos</span></article></div></div></section>`;
 const homeFile = path.join(root, 'index.html');
 let homeHtml = fs.readFileSync(homeFile, 'utf8');
+if (!homeHtml.includes('id="pueblos-destacados"')) { const marker='<section class="section wrap faq" id="preguntas">'; if(!homeHtml.includes(marker)) throw new Error('Portada: no se encontró el punto para insertar pueblos destacados'); homeHtml=homeHtml.replace(marker,featuredHtml+marker); }
 if (!homeHtml.includes('id="rapid-stats"') && homeHtml.includes('<footer class="footer">')) {
   homeHtml = homeHtml.replace('<footer class="footer">', `${statsHtml}<footer class="footer">`);
 } else if (!homeHtml.includes('id="rapid-stats"')) {
@@ -120,11 +151,13 @@ const cssFile = path.join(root, 'assets', 'site.css');
 const mobileOverflowFix = `
 
 /* Cierre móvil sin scroll lateral */
+.featured-localities{padding:52px 0;background:#f5f6f7;border-top:1px solid #e2e3e5}.featured-localities h2{margin:7px 0 8px}.featured-lead{max-width:820px;margin:0 0 24px;color:#5d6066}.featured-province-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.featured-province{padding:20px;border:1px solid #dedfe2;background:#fff;border-radius:12px}.featured-province h3{margin:0 0 12px;font-size:20px}.featured-province h3 a{color:#202126}.featured-towns{display:flex;flex-wrap:wrap;gap:7px}.featured-towns a{padding:7px 9px;border:1px solid #e0e1e4;background:#f8f8f9;border-radius:7px;font-size:13px;font-weight:700}.featured-all{display:inline-block;margin-top:14px;color:#c91f25;font-size:13px;font-weight:900}
 .rapid-stats{padding:52px 0;background:#202126;color:#fff;border-top:1px solid rgba(255,255,255,.08)}
 .rapid-stats-head{max-width:760px;margin-bottom:24px}.rapid-stats .eyebrow{color:#f04a4a}.rapid-stats h2{margin:7px 0 8px;color:#fff}.rapid-stats-head p{margin:0;color:#c9ccd2}
 .rapid-stats-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.rapid-stats-grid article{padding:24px 22px;border:1px solid rgba(255,255,255,.12);border-radius:12px;background:rgba(255,255,255,.045)}
 .rapid-stats-grid strong{display:block;font-size:38px;line-height:1;font-weight:900;letter-spacing:-.03em;color:#fff}.rapid-stats-grid span{display:block;margin-top:8px;color:#d8dbe0;font-size:14px;font-weight:700}
 @media(max-width:760px){
+  .featured-localities{padding:38px 0}.featured-province-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .rapid-stats{padding:38px 0}.rapid-stats-grid{grid-template-columns:1fr}.rapid-stats-grid article{display:flex;align-items:baseline;justify-content:space-between;gap:18px;padding:17px 18px}.rapid-stats-grid strong{font-size:31px}.rapid-stats-grid span{margin-top:0;text-align:right}
   .head nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 10px;overflow-x:visible;scrollbar-width:none}
   .head nav a{white-space:normal;text-align:center;line-height:1.25;padding:7px 4px;min-width:0}
@@ -150,6 +183,7 @@ const mobileOverflowFix = `
   .hero .actions{display:none!important}
 }
 @media(max-width:480px){
+  .featured-province-grid{grid-template-columns:1fr}.featured-province{padding:17px}.featured-localities{padding:32px 0}
   .strip .wrap{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:7px!important;overflow-x:visible!important;flex-wrap:wrap!important;padding-bottom:14px!important}
   .strip span{white-space:normal!important;min-width:0!important;max-width:100%;display:flex;align-items:center}
   .strip span:last-child{grid-column:1/-1}
