@@ -154,14 +154,14 @@ const mobileOverflowFix = `
 
 /* Hero aprobado Antenas Rapid */
 .home-clean-hero{position:relative;isolation:isolate;overflow:hidden;background:#07121d;border-bottom:4px solid var(--brand)}
-.home-clean-hero::before{content:''!important;display:block!important;position:absolute!important;inset:0!important;z-index:-1!important;width:auto!important;height:auto!important;right:0!important;top:0!important;border:0!important;border-radius:0!important;box-shadow:none!important;background:url('/assets/hero-antenasrapid.jpg') 50% 50%/cover no-repeat!important}
-.home-clean-hero .hero-inner{display:block;min-height:600px;padding-block:68px 58px}
+.home-clean-hero::before{content:''!important;display:block!important;position:absolute!important;inset:0!important;z-index:-1!important;width:auto!important;height:auto!important;right:0!important;top:0!important;border:0!important;border-radius:0!important;box-shadow:none!important;background:url('/assets/hero-antenasrapid.jpg') center center/cover no-repeat!important}
+.home-clean-hero .hero-inner{display:block;min-height:clamp(500px,45vw,610px);padding-block:58px 52px}
 .home-clean-hero .hero-copy{position:relative;z-index:2;width:min(700px,58%)}
 .home-clean-hero .service-desk{display:none!important}
 .home-clean-hero h1{font-size:clamp(44px,5vw,70px);max-width:690px;margin:15px 0 20px}
 .home-clean-hero .service-statement{max-width:650px;font-size:21px}.home-clean-hero .lead{max-width:610px;color:#eef0f2}
 .home-clean-hero .hero-tags{margin-top:30px;padding-top:20px;border-top:1px solid rgba(255,255,255,.22);max-width:650px}
-@media(max-width:900px){.home-clean-hero::before{background-position:58% 50%!important}.home-clean-hero .hero-copy{width:min(650px,70%)}}
+@media(max-width:900px){.home-clean-hero::before{background-position:62% 50%!important}.home-clean-hero .hero-copy{width:min(650px,70%)}}
 @media(max-width:640px){.home-clean-hero::before{background-position:72% center!important}.home-clean-hero::after{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(3,10,17,.72) 0%,rgba(3,10,17,.8) 58%,rgba(3,10,17,.9) 100%)}.home-clean-hero .hero-inner{min-height:0;padding-block:42px 36px}.home-clean-hero .hero-copy{width:100%;text-shadow:0 2px 8px rgba(0,0,0,.75)}.home-clean-hero h1{font-size:clamp(38px,11vw,52px);color:#fff}.home-clean-hero .service-statement{font-size:18px;color:#fff}.home-clean-hero .lead{font-size:15px;color:#fff}.home-clean-hero .micro{color:#f2f3f5}.home-clean-hero .hero-tags{padding:14px;background:rgba(3,10,17,.58);border:1px solid rgba(255,255,255,.14);border-radius:8px;color:#fff}}
 
 /* Cierre móvil sin scroll lateral */
