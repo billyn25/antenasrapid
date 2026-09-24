@@ -11,6 +11,10 @@ const DOMAIN = 'https://www.antenasrapid.com';
 fs.mkdirSync(path.dirname(target), { recursive: true });
 const encoded = fs.readFileSync(source, 'utf8').trim();
 fs.writeFileSync(target, Buffer.from(encoded, 'base64'));
+const heroSource=path.join('src','hero-antenasrapid.jpg');
+const heroTarget=path.join(root,'assets','hero-antenasrapid.jpg');
+if(!fs.existsSync(heroSource)) throw new Error('Falta src/hero-antenasrapid.jpg');
+fs.copyFileSync(heroSource,heroTarget);
 
 const home = path.join(root, 'index.html');
 if (fs.existsSync(home)) {
