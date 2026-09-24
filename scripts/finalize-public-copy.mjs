@@ -138,6 +138,7 @@ const featuredHtml=`<section class="featured-localities" id="pueblos-destacados"
 const statsHtml = `<section class="rapid-stats" id="rapid-stats" aria-labelledby="rapid-stats-title"><div class="wrap"><div class="rapid-stats-head"><span class="eyebrow">Antenas Rapid en cifras</span><h2 id="rapid-stats-title">Servicio organizado por localidades</h2><p>La web reúne páginas locales y servicios técnicos para facilitar la consulta por municipio.</p></div><div class="rapid-stats-grid"><article><strong>${stats.towns.toLocaleString('es-ES')}</strong><span>Pueblos con página local</span></article><article><strong>${stats.provinces}</strong><span>Provincias organizadas</span></article><article><strong>${stats.services}</strong><span>Servicios técnicos</span></article></div></div></section>`;
 const homeFile = path.join(root, 'index.html');
 let homeHtml = fs.readFileSync(homeFile, 'utf8');
+homeHtml=homeHtml.replace('<section class="hero">','<section class="hero home-photo-hero">');
 if (!homeHtml.includes('id="pueblos-destacados"')) { const marker='<section class="section wrap faq" id="preguntas">'; if(!homeHtml.includes(marker)) throw new Error('Portada: no se encontró el punto para insertar pueblos destacados'); homeHtml=homeHtml.replace(marker,featuredHtml+marker); }
 if (!homeHtml.includes('id="rapid-stats"') && homeHtml.includes('<footer class="footer">')) {
   homeHtml = homeHtml.replace('<footer class="footer">', `${statsHtml}<footer class="footer">`);
@@ -150,6 +151,12 @@ fs.writeFileSync(homeFile, homeHtml);
 // y evitamos repetir la misma llamada a la acción en el hero y en la barra fija.
 const cssFile = path.join(root, 'assets', 'site.css');
 const mobileOverflowFix = `
+
+/* Hero fotográfico de portada */
+.home-photo-hero{position:relative;isolation:isolate;background:#202126 url('https://images.pexels.com/photos/15532217/pexels-photo-15532217.jpeg?auto=compress&cs=tinysrgb&w=1800') center 54%/cover no-repeat}
+.home-photo-hero::before{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(20,21,24,.94) 0%,rgba(20,21,24,.86) 45%,rgba(20,21,24,.48) 72%,rgba(20,21,24,.28) 100%)}
+.home-photo-hero .hero-copy{color:#fff}.home-photo-hero .hero-copy h1,.home-photo-hero .hero-copy h2,.home-photo-hero .hero-copy .service-statement{color:#fff}.home-photo-hero .hero-copy .lead,.home-photo-hero .hero-copy .micro{color:#eef0f3}.home-photo-hero .hero-tags span{background:rgba(255,255,255,.11);border-color:rgba(255,255,255,.3);color:#fff;backdrop-filter:blur(3px)}
+@media(max-width:760px){.home-photo-hero{background-position:58% center}.home-photo-hero::before{background:linear-gradient(180deg,rgba(20,21,24,.92) 0%,rgba(20,21,24,.82) 62%,rgba(20,21,24,.7) 100%)}}
 
 /* Cierre móvil sin scroll lateral */
 .featured-localities{padding:52px 0;background:#f5f6f7;border-top:1px solid #e2e3e5}.featured-localities h2{margin:7px 0 8px}.featured-lead{max-width:820px;margin:0 0 24px;color:#5d6066}.featured-province-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.featured-province{padding:20px;border:1px solid #dedfe2;background:#fff;border-radius:12px}.featured-province h3{margin:0 0 12px;font-size:20px}.featured-province h3 a{color:#202126}.featured-towns{display:flex;flex-wrap:wrap;gap:7px}.featured-towns a{padding:7px 9px;border:1px solid #e0e1e4;background:#f8f8f9;border-radius:7px;font-size:13px;font-weight:700}.featured-all{display:inline-block;margin-top:14px;color:#c91f25;font-size:13px;font-weight:900}
