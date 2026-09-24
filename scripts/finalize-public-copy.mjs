@@ -105,11 +105,11 @@ const services = JSON.parse(fs.readFileSync(servicesFile, 'utf8'));
 const provinceSegments = new Set(localPages.map(page => String(page.path || '').replace(/^\//, '').split('/')[0]).filter(Boolean));
 const stats = { towns: localPages.length, provinces: provinceSegments.size, services: services.length };
 const featuredByProvince={
-  'Antenas-Alava':['Vitoria-Gasteiz','Laudio / Llodio','Amurrio','Agurain / Salvatierra','Laguardia','Alegría-Dulantzi'],
-  'Antenas-Bizkaia':['Bilbao','Barakaldo','Getxo','Portugalete','Santurtzi','Durango'],
-  'Antenas-Burgos':['Burgos','Miranda de Ebro','Aranda de Duero','Briviesca','Medina de Pomar','Lerma'],
-  'Antenas-Cantabria':['Santander','Torrelavega','Castro-Urdiales','Camargo','Laredo','Santoña'],
-  'Antenas-Guipuzcoa':['Donostia / San Sebastián','Irun','Errenteria','Eibar','Zarautz','Hernani'],
+  'Antenas-Alava':['Vitoria-Gasteiz','Laudio / Llodio','Amurrio','Agurain / Salvatierra','Laguardia','Alegría-Dulantzi','Artziniega','Elciego'],
+  'Antenas-Bizkaia':['Bilbao','Barakaldo','Getxo','Portugalete','Santurtzi','Durango','Gernika-Lumo','Mungia'],
+  'Antenas-Burgos':['Burgos','Miranda de Ebro','Aranda de Duero','Briviesca','Medina de Pomar','Lerma','Belorado','Salas de los Infantes'],
+  'Antenas-Cantabria':['Santander','Torrelavega','Castro-Urdiales','Camargo','Laredo','Santoña','Noja','Reinosa'],
+  'Antenas-Guipuzcoa':['Donostia / San Sebastián','Irun','Errenteria','Eibar','Zarautz','Hernani','Hondarribia','Beasain'],
   'Antenas-La-Rioja':['Logroño','Calahorra','Arnedo','Haro','Alfaro','Nájera'],
   'Antenas-Leon':['León','Ponferrada','San Andrés del Rabanedo','Astorga','La Bañeza','Villablino'],
   'Antenas-Navarra':['Pamplona / Iruña','Tudela','Barañáin / Barañain','Estella-Lizarra','Tafalla','Burlada / Burlata'],
@@ -128,9 +128,9 @@ for(const page of localPages){const seg=String(page.path||'').replace(/^\//,'').
 const featuredCards=[...provinceSegments].sort((a,b)=>a.localeCompare(b,'es')).map(seg=>{
  const pagesFor=localByProvince.get(seg)||[],byName=new Map(pagesFor.map(p=>[normTown(p.name),p]));
  const requested=featuredByProvince[seg]||[];
- const chosen=requested.map(n=>byName.get(normTown(n))).filter(Boolean).slice(0,6);
+ const chosen=requested.map(n=>byName.get(normTown(n))).filter(Boolean).slice(0,8);
  const provinceName=seg.replace(/^Antenas-/,'').replace('Guipuzcoa','Gipuzkoa').replace('Alava','Álava').replaceAll('-',' ');
- if(chosen.length<4) throw new Error(`Portada: faltan pueblos destacados válidos para ${seg} (${chosen.length}/6)`);
+ if(chosen.length<4) throw new Error(`Portada: faltan pueblos destacados válidos para ${seg} (${chosen.length}/8)`);
  return `<article class="featured-province"><h3><a href="/${seg}/">${provinceName}</a></h3><div class="featured-towns">${chosen.map(p=>`<a href="${p.path}">${p.name}</a>`).join('')}</div><a class="featured-all" href="/${seg}/">Ver todos los pueblos →</a></article>`;
 }).join('');
 const featuredHtml=`<section class="featured-localities" id="pueblos-destacados"><div class="wrap"><span class="eyebrow">Localidades principales</span><h2>Pueblos y ciudades con servicio</h2><p class="featured-lead">Accesos directos a algunas de las localidades principales de cada provincia. Consulta la provincia para ver el listado completo.</p><div class="featured-province-grid">${featuredCards}</div></div></section>`;
