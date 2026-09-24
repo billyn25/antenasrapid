@@ -154,8 +154,8 @@ const mobileOverflowFix = `
 
 /* Hero fotográfico de portada */
 .home-photo-hero{position:relative;isolation:isolate;background:#202126 url('https://images.pexels.com/photos/15483315/pexels-photo-15483315/free-photo-of-worker-walking-near-satellites.jpeg?auto=compress&cs=tinysrgb&w=1800') center 44%/cover no-repeat}
-.home-photo-hero::before{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(20,21,24,.96) 0%,rgba(20,21,24,.88) 42%,rgba(20,21,24,.52) 68%,rgba(20,21,24,.24) 100%)}
-.home-photo-hero .hero-copy{color:#fff}.home-photo-hero .hero-copy h1,.home-photo-hero .hero-copy h2,.home-photo-hero .hero-copy .service-statement{color:#fff}.home-photo-hero .hero-copy .lead,.home-photo-hero .hero-copy .micro{color:#eef0f3}.home-photo-hero .hero-tags span{background:rgba(255,255,255,.11);border-color:rgba(255,255,255,.3);color:#fff;backdrop-filter:blur(3px)}
+.home-photo-hero::before{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(12,18,22,.97) 0%,rgba(12,18,22,.9) 42%,rgba(12,18,22,.52) 68%,rgba(12,18,22,.2) 100%)}
+.home-photo-hero.hero::before{border-radius:0!important;box-shadow:none!important;width:auto!important;height:auto!important;right:0!important;top:0!important}.home-photo-hero .hero-copy{color:#fff}.home-photo-hero .hero-copy h1,.home-photo-hero .hero-copy h2,.home-photo-hero .hero-copy .service-statement{color:#fff}.home-photo-hero .hero-copy .lead,.home-photo-hero .hero-copy .micro{color:#eef0f3}.home-photo-hero .hero-tags span{background:rgba(255,255,255,.11);border-color:rgba(255,255,255,.3);color:#fff;backdrop-filter:blur(3px)}
 @media(max-width:760px){.home-photo-hero{background-position:66% center}.home-photo-hero::before{background:linear-gradient(180deg,rgba(20,21,24,.94) 0%,rgba(20,21,24,.82) 64%,rgba(20,21,24,.68) 100%)}}
 
 /* Cierre móvil sin scroll lateral */
