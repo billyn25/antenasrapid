@@ -91,7 +91,7 @@ for (const page of localPages) {
 // no quedan enlazadas externamente a Antenas Zalla.
 // antena5.jpg se excluye expresamente porque muestra la fachada de Antenas Zalla.
 const gallerySources = [
-  { url: 'https://www.antenaszalla.com/img/videoportero.jpg', alt: 'Videoportero' },
+  { url: 'https://images.pexels.com/photos/20370759/pexels-photo-20370759.jpeg?auto=compress&cs=tinysrgb&w=1200', alt: 'Antenas y parabólicas sobre un tejado' },
   { url: 'https://www.antenaszalla.com/img/galeria/antena1.jpg', alt: 'Instalación de antena' },
   { url: 'https://www.antenaszalla.com/img/galeria/antena2.jpg', alt: 'Instalación de antena' },
   { url: 'https://www.antenaszalla.com/img/galeria/antena3.jpg', alt: 'Instalación de antena' },
