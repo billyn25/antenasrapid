@@ -150,6 +150,15 @@ const serviceModules = [
     ]
   },
   {
+    id: 'tdt-satelite-local',
+    title: t => `Instalación de TDT por satélite en HD en ${t}`,
+    texts: [
+      t => `Para viviendas de ${t} donde la recepción terrestre no resulta adecuada, valoramos una instalación de TDT por satélite con antena parabólica y receptor compatible. Se comprueba orientación, señal y cableado antes de configurar el equipo.`,
+      t => `Instalamos antena parabólica y receptor para recepción de TDT por satélite en ${t}. La recepción en alta definición depende de la emisión disponible y de que el receptor sea compatible con HD.`,
+      t => `Si necesitas recibir la TDT por satélite en ${t}, revisamos ubicación de la parabólica, LNB, cableado y receptor para dejar la instalación preparada y comprobar la sintonización.`
+    ]
+  },
+  {
     id: 'satelite-local',
     title: t => `Antenas parabólicas y señal de satélite en ${t}`,
     texts: [
