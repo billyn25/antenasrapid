@@ -91,18 +91,18 @@ for (const page of localPages) {
 // no quedan enlazadas externamente a Antenas Zalla.
 // antena5.jpg se excluye expresamente porque muestra la fachada de Antenas Zalla.
 const gallerySources = [
-  { url: 'https://images.pexels.com/photos/20370759/pexels-photo-20370759.jpeg?auto=compress&cs=tinysrgb&w=1200', alt: 'Antenas y parabólicas sobre un tejado' },
-  { url: 'https://www.antenaszalla.com/img/galeria/antena1.jpg', alt: 'Instalación de antena' },
-  { url: 'https://www.antenaszalla.com/img/galeria/antena2.jpg', alt: 'Instalación de antena' },
-  { url: 'https://www.antenaszalla.com/img/galeria/antena3.jpg', alt: 'Instalación de antena' },
-  { url: 'https://www.antenaszalla.com/img/galeria/antena4.jpg', alt: 'Instalación de antena' },
-  { url: 'https://www.antenaszalla.com/img/galeria/antena6.jpg', alt: 'Trabajo técnico de antena' },
-  { url: 'https://www.antenaszalla.com/img/galeria/antenas17.jpg', alt: 'Instalación técnica de antena' },
-  { url: 'https://www.antenaszalla.com/img/galeria/antena8.jpg', alt: 'Antena parabólica e instalación TDT' },
-  { url: 'https://www.antenaszalla.com/img/galeria/antena9.jpg', alt: 'Instalación técnica de antena' },
-  { url: 'https://www.antenaszalla.com/img/galeria/antenas13.jpg', alt: 'Instalación de antena' },
-  { url: 'https://www.antenaszalla.com/img/galeria/antenas16.jpg', alt: 'Trabajo técnico de antena' },
-  { url: 'https://www.antenaszalla.com/img/galeria/antenas18.jpg', alt: 'Instalación técnica de antena' }
+  { url: 'https://antenaszalla.netlify.app/assets/galeria/trabajo-01.jpg', alt: 'Antenas y parabólicas sobre un tejado' },
+  { url: 'https://antenaszalla.netlify.app/assets/galeria/trabajo-02.jpg', alt: 'Instalación de antena' },
+  { url: 'https://antenaszalla.netlify.app/assets/galeria/trabajo-03.jpg', alt: 'Instalación de antena' },
+  { url: 'https://antenaszalla.netlify.app/assets/galeria/trabajo-04.jpg', alt: 'Instalación de antena' },
+  { url: 'https://antenaszalla.netlify.app/assets/galeria/trabajo-05.jpg', alt: 'Instalación de antena' },
+  { url: 'https://antenaszalla.netlify.app/assets/galeria/trabajo-06.jpg', alt: 'Trabajo técnico de antena' },
+  { url: 'https://antenaszalla.netlify.app/assets/galeria/trabajo-07.jpg', alt: 'Instalación técnica de antena' },
+  { url: 'https://antenaszalla.netlify.app/assets/galeria/trabajo-08.jpg', alt: 'Antena parabólica e instalación TDT' },
+  { url: 'https://antenaszalla.netlify.app/assets/galeria/trabajo-09.jpg', alt: 'Instalación técnica de antena' },
+  { url: 'https://antenaszalla.netlify.app/assets/galeria/trabajo-10.jpg', alt: 'Instalación de antena' },
+  { url: 'https://antenaszalla.netlify.app/assets/galeria/trabajo-11.jpg', alt: 'Trabajo técnico de antena' },
+  { url: 'https://antenaszalla.netlify.app/assets/galeria/trabajo-12.jpg', alt: 'Instalación técnica de antena' }
 ];
 const galleryDir = path.join(root, 'assets', 'galeria');
 fs.rmSync(galleryDir, { recursive: true, force: true });
