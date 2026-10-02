@@ -10,45 +10,55 @@ jobs:
     timeout-minutes: 12
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-      - name: Construcción de referencia
+      - name: Agrupar códigos postales de Madrid desde CartoCiudad
         run: |
           mkdir -p .quality
-          npm run build:production > .quality/base-build.log 2>&1
-      - name: Obtener información de las fuentes oficiales
-        if: always()
-        run: |
-          python3 - <<'PY'
-          import json,concurrent.futures,urllib.request,urllib.parse
+          python3 -u - <<'PY'
+          import json,math,time,hashlib,concurrent.futures,urllib.request,urllib.parse
           from pathlib import Path
-          out=Path('.quality/sources'); out.mkdir(parents=True,exist_ok=True)
-          queries={
-            'cnig-catalog.html':'https://centrodedescargas.cnig.es/CentroDescargas/cartociudad',
-            'api-schema.json':'https://api-features.idee.es/collections/address/queryables?f=json',
-            'api-sample.json':'https://api-features.idee.es/collections/address/items?f=json&limit=1',
-            'municipios.json':'https://raw.githubusercontent.com/codeforspain/ds-organizacion-administrativa/1e9c99280ef4d7a12def33cafc3df59d9fc1f688/data/municipios.json'
-          }
-          def get(pair):
-            name,url=pair
-            try:
-              req=urllib.request.Request(url,headers={'User-Agent':'AntenasRapid-data-review/1.0'})
-              with urllib.request.urlopen(req,timeout=50) as r:
-                b=r.read();(out/name).write_bytes(b)
-                return {'file':name,'url':url,'status':r.status,'bytes':len(b)}
-            except Exception as e:
-              return {'file':name,'url':url,'error':str(e)}
-          with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
-            report=list(pool.map(get,queries.items()))
-          (out/'fetch-report.json').write_text(json.dumps(report,indent=2));print(json.dumps(report))
+          from collections import defaultdict,Counter
+          base='https://api-features.idee.es/collections/address/items'
+          params={'f':'json','component_AdminUnitName_3':'Madrid','properties':'component_AdminUnitName_4,component_PostalDescriptor,component_AdminUnitName_3','skipGeometry':'true','limit':'10000'}
+          def get(offset):
+            url=base+'?'+urllib.parse.urlencode({**params,'offset':offset})
+            for attempt in range(3):
+              try:
+                req=urllib.request.Request(url,headers={'User-Agent':'AntenasRapid-postal-data-review/1.0'})
+                with urllib.request.urlopen(req,timeout=90) as r: raw=r.read()
+                data=json.loads(raw)
+                assert isinstance(data.get('features'),list),str(data)[:300]
+                return offset,data,hashlib.sha256(raw).hexdigest()
+              except Exception:
+                if attempt==2:raise
+                time.sleep(2*(attempt+1))
+          first=get(0);total=first[1]['numberMatched'];batch=first[1]['numberReturned']
+          print('Direcciones Madrid:',total,'por lote:',batch,flush=True)
+          assert total>10000 and batch>0 and math.ceil(total/batch)<=250
+          params['limit']=str(batch)
+          places=defaultdict(set);counts=Counter();invalid=Counter();proof=[];processed=0
+          def consume(result):
+            global processed
+            offset,data,digest=result
+            assert data['numberMatched']==total,'El conjunto de direcciones cambió durante la extracción'
+            for feature in data['features']:
+              p=feature['properties'];assert p['component_AdminUnitName_3']=='Madrid',str(p)
+              name=p['component_AdminUnitName_4'];code=p.get('component_PostalDescriptor')
+              counts[name]+=1
+              if isinstance(code,str) and len(code)==5 and code.isdigit() and code.startswith('28'):places[name].add(code)
+              else:invalid[name]+=1
+            processed+=len(data['features']);proof.append({'offset':offset,'records':len(data['features']),'sha256':digest})
+            print('Procesadas',processed,'/',total,'municipios',len(places),flush=True)
+          consume(first)
+          with concurrent.futures.ThreadPoolExecutor(max_workers=3) as pool:
+            for result in pool.map(get,range(batch,total,batch)):consume(result)
+          assert processed==total
+          result={'source':'CartoCiudad (IGN/CNIG)','sourceUrl':base,'sourceFilter':params,'retrievedAt':time.strftime('%Y-%m-%dT%H:%M:%SZ',time.gmtime()),'addressRecords':total,'municipalities':[{ 'name':name,'postalCodes':sorted(places[name]),'addresses':counts[name],'addressesWithoutPostalCode':invalid[name]} for name in sorted(counts)],'proof':proof}
+          Path('.quality/madrid-postal-source.json').write_text(json.dumps(result,ensure_ascii=False,indent=2))
+          print('COMPLETO:',len(result['municipalities']),'municipios;',sum(len(x['postalCodes']) for x in result['municipalities']),'asignaciones CP')
           PY
-      - name: Guardar fuentes y referencia para pruebas locales
-        if: always()
-        run: tar --exclude=.git --exclude=.quality --exclude=node_modules -czf .quality/repo.tar.gz .
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: madrid-review
+          name: madrid-postal-source
           path: .quality/
           include-hidden-files: true
