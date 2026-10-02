@@ -17,7 +17,8 @@ const PROVINCES = {
   '34': { name: 'Palencia', path: '/Antenas-Palencia/' },
   '37': { name: 'Salamanca', path: '/Antenas-Salamanca/' },
   '40': { name: 'Segovia', path: '/Antenas-Segovia/' },
-  '42': { name: 'Soria', path: '/Antenas-Soria/' }
+  '42': { name: 'Soria', path: '/Antenas-Soria/' },
+  '28': { name: 'Madrid', path: '/Antenas-Madrid/' }
 };
 
 const response = await fetch(SOURCE, { headers: { 'user-agent': 'AntenasRapid-build' } });
@@ -29,7 +30,7 @@ const grouped = {};
 for (const [id, info] of Object.entries(PROVINCES)) {
   const items = selected
     .filter(item => item.provincia_id === id)
-    .map(item => ({ id: item.municipio_id, name: item.nombre.replaceAll('\\/', '/') }))
+    .map(item => ({ id: item.municipio_id, name: item.provincia_id === '28' ? item.nombre.replaceAll('\\/', '/').replace(/^(.+),\s*(El|La|Los|Las)$/, '$2 $1') : item.nombre.replaceAll('\\/', '/') }))
     .sort((a,b) => a.name.localeCompare(b.name, 'es', { sensitivity: 'base' }));
   if (!items.length) throw new Error(`Dataset municipal sin datos para ${info.name} (${id})`);
   grouped[info.path] = items;

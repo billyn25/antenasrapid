@@ -20,7 +20,8 @@ const checks = [
   { name: 'Palencia', route: '/Antenas-Palencia/' },
   { name: 'Salamanca', route: '/Antenas-Salamanca/' },
   { name: 'Segovia', route: '/Antenas-Segovia/' },
-  { name: 'Soria', route: '/Antenas-Soria/' }
+  { name: 'Soria', route: '/Antenas-Soria/' },
+  { name: 'Madrid', route: '/Antenas-Madrid/' }
 ];
 
 let expectedTotal = 0;

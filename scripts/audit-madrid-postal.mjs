@@ -1,0 +1,32 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import assert from 'node:assert/strict';
+import {validatePostalData,MADRID_ROUTE} from './madrid-postal.mjs';
+const root = path.resolve(process.env.PRODUCTION_ROOT || 'dist');
+const data=validatePostalData(JSON.parse(fs.readFileSync('content/postal-codes-madrid.json','utf8')));
+const rows=new Map(data.municipalities.map(x=>[x.id,x]));
+const manifest=JSON.parse(fs.readFileSync(path.join(root,'local-pages-manifest.json'),'utf8'));
+const locals=manifest.filter(p=>p.path.startsWith(MADRID_ROUTE));
+assert.equal(locals.length,179);
+assert.equal(manifest.length,3227,'Deben conservarse las 3048 localidades anteriores');
+assert.equal(new Set(manifest.map(p=>p.province)).size,16);
+const directory=fs.readFileSync(path.join(root,'Antenas-Madrid/index.html'),'utf8');
+assert.ok(directory.includes('Buscar municipio o código postal'));
+for(const p of locals){
+  const html=fs.readFileSync(path.join(root,p.path.slice(1)),'utf8'),row=rows.get(String(p.municipioId));
+  assert.ok(row,p.path+': falta dato postal');
+  assert.equal((html.match(/id="codigos-postales"/g)||[]).length,1);
+  const codes=[...html.matchAll(/class="postal-code">(\d{5})<\/span>/g)].map(x=>x[1]);
+  assert.deepEqual(codes,row.postalCodes,p.path+': códigos en HTML incoherentes');
+  assert.ok(directory.includes(`data-postal-codes="${codes.join(' ')}" data-municipio-id="${row.id}"`));
+  assert.ok(html.includes('TDT por satélite HD'),p.path+': falta TDT-SAT');
+  assert.ok(html.includes('641 589 394')&&html.includes('Antenas Rapid'));
+  assert.ok(html.includes('<meta name="robots" content="index,follow">'));
+  assert.ok(!/"(?:streetAddress|postalCode)"\s*:/.test(html),'No convertir códigos del área atendida en domicilios de empresa');
+}
+const xml=fs.readFileSync(path.join(root,'sitemaps/sitemap-madrid.xml'),'utf8');
+const urls=[...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m=>m[1]);
+assert.equal(urls.length,180);assert.equal(new Set(urls).size,180);
+for(const page of locals)assert.ok(urls.includes('https://www.antenasrapid.com'+page.path));
+assert.ok(fs.readFileSync(path.join(root,'sitemap.xml'),'utf8').includes('/sitemaps/sitemap-madrid.xml'));
+console.log(`AUDITORÍA MADRID OK: 179 municipios, códigos postales exactos en HTML y buscador, 180 URLs en sitemap; 3227 localidades en 16 provincias.`);

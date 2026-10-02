@@ -35,8 +35,16 @@ test('porteros y videoporteros: menú, sección y fichas separadas', () => {
     assert.ok(html.includes('<h3>Videoporteros</h3>'));
   }
 });
-test('las dieciocho rutas base permanecen, sin generar clones nuevos', () => {
-  assert.deepEqual(pages.map(p => p.path), ['/', '/Antenas-Alava/', '/Antenas-Bizkaia/', '/Antenas-Burgos/', '/Antenas-Cantabria/', '/Antenas-Guipuzcoa/', '/Antenas-Navarra/', '/Antenas-La-Rioja/', '/Antenas-Leon/', '/Antenas-Valladolid/', '/Antenas-Zamora/', '/Antenas-Avila/', '/Antenas-Palencia/', '/Antenas-Salamanca/', '/Antenas-Segovia/', '/Antenas-Soria/', '/Antenas-Bizkaia/bilbao.html', '/Antenas-Burgos/lerma.html']);
+test('las rutas base permanecen y se añade solo el índice de Madrid', () => {
+  const originalRoutes = [
+    '/', '/Antenas-Alava/', '/Antenas-Bizkaia/', '/Antenas-Burgos/', '/Antenas-Cantabria/', '/Antenas-Guipuzcoa/',
+    '/Antenas-Navarra/', '/Antenas-La-Rioja/', '/Antenas-Leon/', '/Antenas-Valladolid/', '/Antenas-Zamora/',
+    '/Antenas-Avila/', '/Antenas-Palencia/', '/Antenas-Salamanca/', '/Antenas-Segovia/', '/Antenas-Soria/',
+    '/Antenas-Bizkaia/bilbao.html', '/Antenas-Burgos/lerma.html'
+  ];
+  assert.deepEqual(pages.filter(p => p.path !== '/Antenas-Madrid/').map(p => p.path), originalRoutes);
+  assert.equal(pages.length, originalRoutes.length + 1);
+  assert.equal(pages.filter(p => p.path === '/Antenas-Madrid/' && p.type === 'province').length, 1);
 });
 test('identidad grafito y rojo, sin la ilustración ni estilos azules anteriores', () => {
   const css = fs.readFileSync('src/site.css', 'utf8');
