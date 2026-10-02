@@ -1,64 +1,275 @@
-name: Revisar Madrid y códigos postales
+name: Verificar Madrid y códigos postales
 on:
   push:
     branches: [feature/madrid-postal-20261002]
 permissions:
-  contents: read
+  contents: write
+  actions: read
 jobs:
   review:
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
-      - name: Agrupar códigos postales de Madrid desde CartoCiudad
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Recuperar la extracción postal ya contrastada y preparar Madrid
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           mkdir -p .quality
-          python3 -u - <<'PY'
-          import json,math,time,hashlib,concurrent.futures,urllib.request,urllib.parse
+          python3 - <<'PY'
+          import os,json,io,zipfile,urllib.request,urllib.error,unicodedata,re,hashlib
           from pathlib import Path
-          from collections import defaultdict,Counter
-          base='https://api-features.idee.es/collections/address/items'
-          params={'f':'json','component_AdminUnitName_3':'Madrid','properties':'component_AdminUnitName_4,component_PostalDescriptor,component_AdminUnitName_3','skipGeometry':'true','limit':'10000'}
-          def get(offset):
-            url=base+'?'+urllib.parse.urlencode({**params,'offset':offset})
-            for attempt in range(3):
-              try:
-                req=urllib.request.Request(url,headers={'User-Agent':'AntenasRapid-postal-data-review/1.0'})
-                with urllib.request.urlopen(req,timeout=90) as r: raw=r.read()
-                data=json.loads(raw)
-                assert isinstance(data.get('features'),list),str(data)[:300]
-                return offset,data,hashlib.sha256(raw).hexdigest()
-              except Exception:
-                if attempt==2:raise
-                time.sleep(2*(attempt+1))
-          first=get(0);total=first[1]['numberMatched'];batch=first[1]['numberReturned']
-          print('Direcciones Madrid:',total,'por lote:',batch,flush=True)
-          assert total>10000 and batch>0 and math.ceil(total/batch)<=250
-          params['limit']=str(batch)
-          places=defaultdict(set);counts=Counter();invalid=Counter();proof=[];processed=0
-          def consume(result):
-            global processed
-            offset,data,digest=result
-            assert data['numberMatched']==total,'El conjunto de direcciones cambió durante la extracción'
-            for feature in data['features']:
-              p=feature['properties'];assert p['component_AdminUnitName_3']=='Madrid',str(p)
-              name=p['component_AdminUnitName_4'];code=p.get('component_PostalDescriptor')
-              counts[name]+=1
-              if isinstance(code,str) and len(code)==5 and code.isdigit() and code.startswith('28'):places[name].add(code)
-              else:invalid[name]+=1
-            processed+=len(data['features']);proof.append({'offset':offset,'records':len(data['features']),'sha256':digest})
-            print('Procesadas',processed,'/',total,'municipios',len(places),flush=True)
-          consume(first)
-          with concurrent.futures.ThreadPoolExecutor(max_workers=3) as pool:
-            for result in pool.map(get,range(batch,total,batch)):consume(result)
-          assert processed==total
-          result={'source':'CartoCiudad (IGN/CNIG)','sourceUrl':base,'sourceFilter':params,'retrievedAt':time.strftime('%Y-%m-%dT%H:%M:%SZ',time.gmtime()),'addressRecords':total,'municipalities':[{ 'name':name,'postalCodes':sorted(places[name]),'addresses':counts[name],'addressesWithoutPostalCode':invalid[name]} for name in sorted(counts)],'proof':proof}
-          Path('.quality/madrid-postal-source.json').write_text(json.dumps(result,ensure_ascii=False,indent=2))
-          print('COMPLETO:',len(result['municipalities']),'municipios;',sum(len(x['postalCodes']) for x in result['municipalities']),'asignaciones CP')
+          class NoRedirect(urllib.request.HTTPRedirectHandler):
+              def redirect_request(self,req,fp,code,msg,headers,newurl):return None
+          req=urllib.request.Request('https://api.github.com/repos/billyn25/antenasrapid/actions/artifacts/11236863893/zip',headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json'})
+          try:
+              response=urllib.request.build_opener(NoRedirect).open(req,timeout=60)
+              raw=response.read()
+          except urllib.error.HTTPError as e:
+              if e.code not in (301,302,303,307,308):raise
+              raw=urllib.request.urlopen(e.headers['Location'],timeout=60).read()
+          with zipfile.ZipFile(io.BytesIO(raw)) as z:
+              d=json.loads(z.read(next(n for n in z.namelist() if n.endswith('madrid-postal-source.json'))))
+          assert d['addressRecords']==930450 and len(d['municipalities'])==180
+          municipal_source='https://raw.githubusercontent.com/codeforspain/ds-organizacion-administrativa/1e9c99280ef4d7a12def33cafc3df59d9fc1f688/data/municipios.json'
+          municipios=[x for x in json.load(urllib.request.urlopen(municipal_source,timeout=60)) if x['provincia_id']=='28']
+          def name(v):return re.sub(r'^(.+),\s*(El|La|Los|Las)$',r'\2 \1',v)
+          def norm(v):
+              v=re.sub(r'^(.+)\s+\((El|La|Los|Las)\)$',r'\2 \1',name(v))
+              return re.sub('[^a-z0-9]','',unicodedata.normalize('NFD',v).encode('ascii','ignore').decode().lower())
+          lookup={norm(x['name']):x for x in d['municipalities']}
+          rows=[{'id':m['municipio_id'],'name':name(m['nombre']),'postalCodes':lookup[norm(m['nombre'])]['postalCodes']} for m in municipios]
+          result={'provinceId':'28','source':'CartoCiudad (IGN/CNIG)','sourceUrl':d['sourceUrl'],'sourceFilter':{'component_AdminUnitName_3':'Madrid'},'checkedOn':d['retrievedAt'][:10],'license':'Obra derivada de CartoCiudad CC BY 4.0 scne.es','addressRecords':d['addressRecords'],'sourceMunicipalities':len(d['municipalities']),'municipalities':rows}
+          content=(json.dumps(result,ensure_ascii=False,indent=2)+'\n').encode()
+          assert hashlib.sha256(content).hexdigest()=='668760413bf54474779c6e38825338786e8230bbe6d17b37e7b190d2db647834'
+          Path('content/postal-codes-madrid.json').write_bytes(content)
+          def change(file,a,b):
+              p=Path(file);s=p.read_text();assert s.count(a)==1,(file,s.count(a));p.write_text(s.replace(a,b))
+          province="""  {
+              type: 'province', path: '/Antenas-Madrid/', name: 'Madrid',
+              title: 'Antenistas en la Comunidad de Madrid | 641 589 394', heading: 'Antenas y porteros en la Comunidad de Madrid',
+              lead: 'Instalación y reparación de antenas TDT, parabólicas, TDT por satélite HD, porteros automáticos y videoporteros. Busca Madrid capital o tu municipio y consulta el servicio.',
+              intro: 'Para preparar un aviso en la Comunidad de Madrid, indica municipio, código postal y calle. El directorio distingue los municipios de la provincia de Madrid y permite localizar los códigos postales asociados a cada uno.',
+              focus: 'Antenista por municipio y código postal', advice: 'Describe si el fallo afecta a una toma, a toda la vivienda o a varios vecinos. El código postal ayuda a localizar el aviso, pero puede compartirse entre municipios: confirma también calle y localidad.',
+              towns: [], source: 'dataset-municipal-publico', evidence: 'generated-province-preview'
+            },
+          """
+          change('scripts/prepare-provinces.mjs','const extras = [\n','const extras = [\n'+province)
+          change('scripts/fetch-municipalities.mjs',"  '42': { name: 'Soria', path: '/Antenas-Soria/' }","  '42': { name: 'Soria', path: '/Antenas-Soria/' },\n  '28': { name: 'Madrid', path: '/Antenas-Madrid/' }")
+          change('scripts/fetch-municipalities.mjs',r"name: item.nombre.replaceAll('\\/', '/')",r"name: item.provincia_id === '28' ? item.nombre.replaceAll('\\/', '/').replace(/^(.+),\s*(El|La|Los|Las)$/, '$2 $1') : item.nombre.replaceAll('\\/', '/')")
+          change('scripts/audit-extra-provinces.mjs',"  { name: 'Soria', route: '/Antenas-Soria/' }","  { name: 'Soria', route: '/Antenas-Soria/' },\n  { name: 'Madrid', route: '/Antenas-Madrid/' }")
+          change('scripts/finalize-public-copy.mjs','const featuredByProvince={\n',"const featuredByProvince={\n  'Antenas-Madrid':['Madrid','Alcalá de Henares','Móstoles','Alcorcón','Getafe','Leganés','Torrejón de Ardoz','Alcobendas'],\n")
+          p=Path('tests/site.test.mjs');s=p.read_text().replace('dieciocho páginas base','diecinueve páginas base').replace('pages.length,18','pages.length,19').replace("p.type==='province').length,15","p.type==='province').length,16").replace("build(dir,{SITE_MODE:'preview'}),18","build(dir,{SITE_MODE:'preview'}),19").replace('build(dir,env),18','build(dir,env),19');p.write_text(s)
+          p=Path('tests/identity.test.mjs');s=p.read_text().replace('las dieciocho rutas base permanecen, sin generar clones nuevos','las rutas base permanecen y se añade solo el índice de Madrid').replace("'/Antenas-Soria/', '/Antenas-Bizkaia/bilbao.html'","'/Antenas-Soria/', '/Antenas-Madrid/', '/Antenas-Bizkaia/bilbao.html'");p.write_text(s)
+          change('package.json','node scripts/finalize-public-copy.mjs &&','node scripts/finalize-public-copy.mjs && node scripts/madrid-postal.mjs &&')
+          change('package.json','"audit:production": "node scripts/audit-production-package.mjs"','"audit:production": "node scripts/audit-production-package.mjs && node scripts/audit-madrid-postal.mjs"')
           PY
+      - name: Incorporar buscador y presentación postal sin cambiar otras provincias
+        run: |
+          cat > scripts/madrid-postal.mjs <<'JS'
+          import fs from 'node:fs';
+          import path from 'node:path';
+          import assert from 'node:assert/strict';
+          import {pathToFileURL} from 'node:url';
+
+          export const MADRID_ROUTE = '/Antenas-Madrid/';
+          const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+          export function validatePostalData(data) {
+            assert.equal(data.provinceId, '28', 'El fichero postal debe corresponder a Madrid');
+            assert.equal(data.municipalities.length, 179, 'Deben figurar los 179 municipios de Madrid');
+            assert.equal(new Set(data.municipalities.map(x => x.id)).size, 179, 'IDs municipales repetidos');
+            for (const row of data.municipalities) {
+              assert.match(row.id, /^28\d{3}$/, 'Código INE municipal inválido');
+              assert.ok(row.name && row.postalCodes.length, `Sin códigos postales: ${row.name}`);
+              assert.deepEqual(row.postalCodes, [...new Set(row.postalCodes)].sort(), `Códigos repetidos o desordenados: ${row.name}`);
+              for (const code of row.postalCodes) assert.match(code, /^28\d{3}$/, `Código postal inválido: ${row.name}`);
+            }
+            return data;
+          }
+          const codeList = codes => codes.map(code => `<span class="postal-code">${esc(code)}</span>`).join(' ');
+          function sourceNote(data) {
+            return `<p class="postal-source">Códigos asociados a direcciones municipales de <a href="https://www.cartociudad.es/web/portal/directorio-de-servicios/descarga">CartoCiudad (IGN/CNIG)</a>. Consulta de datos: ${esc(data.checkedOn)}. Obra derivada de CartoCiudad, <a href="https://www.scne.es/">CC BY 4.0 · SCNE</a>.</p>`;
+          }
+          export function postalBlock(page, row, data) {
+            const place = esc(page.name);
+            const shown = row.postalCodes.slice(0, 12), rest = row.postalCodes.slice(12);
+            return `<section class="section soft postal-coverage" id="codigos-postales"><div class="wrap"><span class="eyebrow">Localiza tu aviso</span><h2>Códigos postales de ${place}</h2><p>Para consultar una instalación o reparación de antena, portero o videoportero en ${place}, indica la calle y el código postal junto al municipio.</p><div class="postal-code-list" aria-label="Códigos postales de ${place}">${codeList(shown)}</div>${rest.length ? `<details class="postal-more"><summary>Ver los ${rest.length} códigos restantes</summary><div class="postal-code-list">${codeList(rest)}</div></details>` : ''}<p class="postal-help">Un municipio puede tener varios códigos y un mismo código puede compartirse entre municipios. Confirma el correspondiente a tu dirección al preparar el aviso.</p>${sourceNote(data)}<a class="text-link" href="${MADRID_ROUTE}#localidades">Buscar otro municipio o código postal de Madrid →</a></div></section>`;
+          }
+          export function enrichMadridTown(html, page, row, data) {
+            if (!page.path.startsWith(MADRID_ROUTE)) return html;
+            if (html.includes('id="codigos-postales"')) throw new Error('El bloque postal ya está insertado');
+            const marker = '<section class="section wrap faq" id="preguntas">';
+            assert.equal(html.split(marker).length, 2, `${page.path}: punto de inserción postal ausente o duplicado`);
+            return html.replace(marker, postalBlock(page, row, data)).replace('</head>', '<link rel="stylesheet" href="/assets/madrid-postal.css"></head>');
+          }
+          export function enrichMadridDirectory(html, locals, lookup, data) {
+            let output = html;
+            for (const page of locals) {
+              const row = lookup.get(String(page.municipioId));
+              assert.ok(row, `${page.path}: sin asignación postal`);
+              const before = `<li data-town="${esc(page.name)}"><a href="${page.path}">${esc(page.name)} →</a></li>`;
+              assert.equal(output.split(before).length, 2, `${page.path}: falta en el directorio de Madrid`);
+              const sample = row.postalCodes.slice(0, 4).join(' · ');
+              const more = row.postalCodes.length > 4 ? ` · y ${row.postalCodes.length - 4} más` : '';
+              output = output.replace(before, `<li data-town="${esc(page.name)} ${row.postalCodes.join(' ')}" data-postal-codes="${row.postalCodes.join(' ')}" data-municipio-id="${row.id}"><a href="${page.path}">${esc(page.name)} →</a><a class="postal-directory-codes" href="${page.path}#codigos-postales">Códigos postales: ${sample}${more}</a></li>`);
+            }
+            output = output.replace('for="town-search">Buscar localidad</label>', 'for="town-search">Buscar municipio o código postal</label>')
+              .replace('placeholder="Escribe el nombre de tu localidad" autocomplete="off">', 'placeholder="Ej.: Alcalá de Henares o 28801" autocomplete="off" aria-describedby="postal-search-help"><p class="postal-help" id="postal-search-help">Busca por nombre o por código postal. Si un código está compartido, se muestran todos los municipios correspondientes. Los 179 municipios se pueden consultar también en el listado.</p>')
+              .replace('</head>', '<link rel="stylesheet" href="/assets/madrid-postal.css"></head>');
+            const marker = '<section class="section wrap faq" id="preguntas">';
+            assert.ok(output.includes(marker), 'Directorio de Madrid sin FAQ');
+            return output.replace(marker, `<section class="section wrap postal-province-note">${sourceNote(data)}</section>` + marker);
+          }
+          function main() {
+            const root = path.resolve('dist');
+            const data = validatePostalData(JSON.parse(fs.readFileSync('content/postal-codes-madrid.json','utf8')));
+            const lookup = new Map(data.municipalities.map(row => [row.id, row]));
+            const manifest = JSON.parse(fs.readFileSync(path.join(root, 'local-pages-manifest.json'), 'utf8'));
+            const locals = manifest.filter(page => page.path.startsWith(MADRID_ROUTE));
+            assert.equal(locals.length, 179, 'Cobertura de Madrid incompleta');
+            assert.deepEqual(locals.map(x => String(x.municipioId)).sort(), [...lookup.keys()].sort(), 'Municipios postales y páginas no coinciden');
+            for (const page of locals) {
+              const file = path.join(root, page.path.slice(1));
+              fs.writeFileSync(file, enrichMadridTown(fs.readFileSync(file, 'utf8'), page, lookup.get(String(page.municipioId)), data));
+            }
+            const directoryFile = path.join(root, MADRID_ROUTE.slice(1), 'index.html');
+            fs.writeFileSync(directoryFile, enrichMadridDirectory(fs.readFileSync(directoryFile,'utf8'), locals, lookup, data));
+            fs.copyFileSync('src/madrid-postal.css',path.join(root,'assets/madrid-postal.css'));
+            const homeFile = path.join(root,'index.html');
+            let home = fs.readFileSync(homeFile,'utf8');
+            const marker = '<h3><a href="/Antenas-Madrid/">Madrid</a></h3>';
+            assert.equal(home.split(marker).length,2,'Madrid debe aparecer una vez en destacados');
+            home=home.replace(marker,marker+'<p><a href="/Antenas-Madrid/#localidades">Buscar municipio o código postal →</a></p>');
+            fs.writeFileSync(homeFile, home);
+            const report = {municipalities:locals.length, postalAssignments:data.municipalities.reduce((n,x)=>n+x.postalCodes.length,0), distinctPostalCodes:new Set(data.municipalities.flatMap(x=>x.postalCodes)).size, source:data.source, checkedOn:data.checkedOn};
+            fs.writeFileSync(path.join(root,'madrid-postal-report.json'),JSON.stringify(report,null,2));
+            console.log('MADRID POSTAL OK:', JSON.stringify(report));
+          }
+          if(process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href) main();
+          JS
+          cat > scripts/audit-madrid-postal.mjs <<'JS'
+          import fs from 'node:fs';
+          import path from 'node:path';
+          import assert from 'node:assert/strict';
+          import {validatePostalData,MADRID_ROUTE} from './madrid-postal.mjs';
+          const root = path.resolve(process.env.PRODUCTION_ROOT || 'dist');
+          const data=validatePostalData(JSON.parse(fs.readFileSync('content/postal-codes-madrid.json','utf8')));
+          const rows=new Map(data.municipalities.map(x=>[x.id,x]));
+          const manifest=JSON.parse(fs.readFileSync(path.join(root,'local-pages-manifest.json'),'utf8'));
+          const locals=manifest.filter(p=>p.path.startsWith(MADRID_ROUTE));
+          assert.equal(locals.length,179);
+          assert.equal(manifest.length,3227,'Deben conservarse las 3048 localidades anteriores');
+          assert.equal(new Set(manifest.map(p=>p.province)).size,16);
+          const directory=fs.readFileSync(path.join(root,'Antenas-Madrid/index.html'),'utf8');
+          assert.ok(directory.includes('Buscar municipio o código postal'));
+          for(const p of locals){
+            const html=fs.readFileSync(path.join(root,p.path.slice(1)),'utf8'),row=rows.get(String(p.municipioId));
+            assert.ok(row,p.path+': falta dato postal');
+            assert.equal((html.match(/id="codigos-postales"/g)||[]).length,1);
+            const codes=[...html.matchAll(/class="postal-code">(\d{5})<\/span>/g)].map(x=>x[1]);
+            assert.deepEqual(codes,row.postalCodes,p.path+': códigos en HTML incoherentes');
+            assert.ok(directory.includes(`data-postal-codes="${codes.join(' ')}" data-municipio-id="${row.id}"`));
+            assert.ok(html.includes('TDT por satélite HD'),p.path+': falta TDT-SAT');
+            assert.ok(html.includes('641 589 394')&&html.includes('Antenas Rapid'));
+            assert.ok(html.includes('<meta name="robots" content="index,follow">'));
+            assert.ok(!/"(?:streetAddress|postalCode)"\s*:/.test(html),'No convertir códigos del área atendida en domicilios de empresa');
+          }
+          const xml=fs.readFileSync(path.join(root,'sitemaps/sitemap-madrid.xml'),'utf8');
+          const urls=[...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m=>m[1]);
+          assert.equal(urls.length,180);assert.equal(new Set(urls).size,180);
+          for(const page of locals)assert.ok(urls.includes('https://www.antenasrapid.com'+page.path));
+          assert.ok(fs.readFileSync(path.join(root,'sitemap.xml'),'utf8').includes('/sitemaps/sitemap-madrid.xml'));
+          console.log(`AUDITORÍA MADRID OK: 179 municipios, códigos postales exactos en HTML y buscador, 180 URLs en sitemap; 3227 localidades en 16 provincias.`);
+          JS
+          cat > src/madrid-postal.css <<'CSS'
+          /* Madrid: información postal visible y buscable sin crear páginas por código. */
+          .postal-code-list{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0}
+          .postal-code{display:inline-block;padding:7px 12px;border:1px solid var(--line);border-radius:7px;background:#fff;color:var(--deep);font-weight:800;letter-spacing:.03em}
+          .postal-help,.postal-source{max-width:880px;color:var(--muted);line-height:1.6;font-size:14px}
+          .postal-source{font-size:12px}.postal-source a{text-decoration:underline;text-underline-offset:2px}
+          .postal-more summary{cursor:pointer;font-weight:700;padding:8px 0}
+          .postal-directory-codes{display:block!important;font-size:12px!important;font-weight:500!important;color:var(--muted)!important;line-height:1.5!important;padding-top:4px!important;overflow-wrap:anywhere}
+          .town-list [data-postal-codes]{min-width:0}.town-list [data-postal-codes][hidden]{display:none!important}
+          @media(max-width:640px){.postal-coverage h2{font-size:27px;overflow-wrap:anywhere}.postal-code{padding:6px 10px}.postal-help{font-size:13px}}
+          /* Cuando hay búsqueda activa, los resultados quedan junto al campo. */
+          #localidades:has(#town-search:not(:placeholder-shown)) .alphabet{display:none}
+          CSS
+          cat > tests/madrid-postal.test.mjs <<'JS'
+          import test from 'node:test';
+          import assert from 'node:assert/strict';
+          import fs from 'node:fs';
+          import {validatePostalData,postalBlock,enrichMadridTown} from '../scripts/madrid-postal.mjs';
+          const load=()=>JSON.parse(fs.readFileSync('content/postal-codes-madrid.json','utf8'));
+          test('Madrid contiene 179 municipios y solo códigos postales contrastados',()=>validatePostalData(load()));
+          test('un código postal puede pertenecer a varios municipios sin perder relaciones',()=>{
+           const rows=load().municipalities;const n=rows.reduce((n,r)=>n+r.postalCodes.length,0);
+           assert.ok(n>new Set(rows.flatMap(r=>r.postalCodes)).size);
+          });
+          test('Madrid capital y provincia no se confunden y la lista no genera rutas por CP',()=>{
+           const data=load(),row=data.municipalities.find(r=>r.id==='28079');
+           const html=postalBlock({name:'Madrid'},row,data);
+           assert.match(html,/<h2>Códigos postales de Madrid<\/h2>/);
+           assert.ok(row.postalCodes.length>12);assert.match(html,/<details/);
+           for(const code of row.postalCodes)assert.ok(html.includes(`>${code}</span>`));
+           assert.ok(!/href="\/[0-9]{5}/.test(html));
+          });
+          test('no se modifican otras provincias ni los metadatos de las páginas de Madrid',()=>{
+           const data=load(),row=data.municipalities.find(r=>r.id==='28005');
+           const html='<html><head><title>Se conserva</title></head><body><h1>Antenista en Alcalá de Henares</h1><section class="section wrap faq" id="preguntas"></section></body></html>';
+           assert.equal(enrichMadridTown(html,{path:'/Antenas-Burgos/lerma.html'},row,data),html);
+           const updated=enrichMadridTown(html,{path:'/Antenas-Madrid/alcala-de-henares.html',name:'Alcalá de Henares'},row,data);
+           assert.ok(updated.includes('<title>Se conserva</title>'));assert.equal((updated.match(/<h1>/g)||[]).length,1);
+           assert.throws(()=>enrichMadridTown(updated,{path:'/Antenas-Madrid/alcala-de-henares.html'},row,data),/ya está/);
+          });
+          JS
+          mkdir -p docs
+          cat > docs/madrid-codigos-postales.md <<'DOC'
+          # Madrid y códigos postales
+
+          ## Alcance
+
+          Ampliación de Antenas Rapid con los 179 municipios de Madrid, sin modificar el dominio, teléfono, servicios ni rutas anteriores. Una página por municipio y un directorio provincial; no se crean páginas adicionales por código postal.
+
+          ## Datos y mantenimiento
+
+          Los identificadores INE de los municipios y sus códigos postales son datos distintos. El inventario municipal conserva la fuente fijada que ya usa el proyecto. Solo para los municipios nuevos de Madrid se colocan al principio los artículos que el inventario guarda al final.
+
+          Las relaciones municipio/código postal proceden de los atributos de direcciones de CartoCiudad (IGN/CNIG), consultados mediante su API pública. Se incluyen fuente y fecha en `content/postal-codes-madrid.json`. No se almacenan ni se publican direcciones individuales. La correspondencia postal se guarda en el repositorio: no se consulta el servicio externo durante cada build ni al navegar por la web.
+
+          Obra derivada de CartoCiudad CC BY 4.0 scne.es. Información del servicio: https://www.cartociudad.es/web/portal/directorio-de-servicios/descarga
+
+          La extracción del 2 de octubre de 2026 leyó 930450 registros de direcciones de la provincia. La fuente incluye «Los Baldios» como ámbito adicional; se excluye porque no forma parte de los 179 municipios del inventario INE. Se conservan 395 relaciones entre municipio y código postal, correspondientes a 296 códigos distintos. Las direcciones sin un código válido no generan asignaciones inventadas.
+
+          La lista informa de los códigos asociados a las direcciones presentes en esa fuente; no certifica todos los códigos de usos especiales de Correos. Un municipio puede tener varios códigos y uno puede compartirse entre municipios. Para una dirección concreta se debe confirmar calle y código postal.
+
+          ## Presentación y comprobaciones
+
+          El directorio permite buscar por municipio (sin tildes) o por código postal. Un código compartido muestra todos los municipios que lo tienen asociado. Los códigos se incluyen como texto HTML en la página municipal y los listados largos se despliegan, sin crear URLs nuevas. No se declaran como dirección fiscal o sede de la empresa en datos estructurados.
+
+          `npm run build:production` comprueba la cobertura, los 179 municipios y su correspondencia exacta con la lista postal, los servicios, las 180 URLs del sitemap de Madrid y el total de 3227 municipios en 16 provincias. Las pruebas unitarias cubren códigos compartidos, Madrid capital, conservación de metadatos y que no se alteren otras provincias.
+          DOC
+      - name: Construcción completa con todas las auditorías
+        run: |
+          set -o pipefail
+          git diff --check
+          npm run build:production 2>&1 | tee .quality/madrid-build.log
+          cp dist/madrid-postal-report.json .quality/
+          cp dist/release-readiness-report.json .quality/ 2>/dev/null || true
+      - name: Guardar solo las fuentes comprobadas en la rama de revisión
+        run: |
+          git add content/pages.json content/postal-codes-madrid.json docs/madrid-codigos-postales.md package.json scripts/audit-extra-provinces.mjs scripts/audit-madrid-postal.mjs scripts/fetch-municipalities.mjs scripts/finalize-public-copy.mjs scripts/madrid-postal.mjs scripts/prepare-provinces.mjs src/madrid-postal.css tests/identity.test.mjs tests/madrid-postal.test.mjs tests/site.test.mjs
+          git diff --cached --check
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Añade Madrid: 179 municipios, códigos postales contrastados y buscador'
+          git push origin HEAD:feature/madrid-postal-20261002
+          git rev-parse HEAD > .quality/verified-commit.txt
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: madrid-postal-source
+          name: madrid-verified
           path: .quality/
           include-hidden-files: true
