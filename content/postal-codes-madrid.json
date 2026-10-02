@@ -1,0 +1,1483 @@
+{
+  "provinceId": "28",
+  "source": "CartoCiudad (IGN/CNIG)",
+  "sourceUrl": "https://api-features.idee.es/collections/address/items",
+  "sourceFilter": {
+    "component_AdminUnitName_3": "Madrid"
+  },
+  "checkedOn": "2026-10-02",
+  "license": "Obra derivada de CartoCiudad CC BY 4.0 scne.es",
+  "addressRecords": 930450,
+  "sourceMunicipalities": 180,
+  "municipalities": [
+    {
+      "id": "28001",
+      "name": "La Acebeda",
+      "postalCodes": [
+        "28755"
+      ]
+    },
+    {
+      "id": "28002",
+      "name": "Ajalvir",
+      "postalCodes": [
+        "28864"
+      ]
+    },
+    {
+      "id": "28003",
+      "name": "Alameda del Valle",
+      "postalCodes": [
+        "28749"
+      ]
+    },
+    {
+      "id": "28004",
+      "name": "El Álamo",
+      "postalCodes": [
+        "28607"
+      ]
+    },
+    {
+      "id": "28005",
+      "name": "Alcalá de Henares",
+      "postalCodes": [
+        "28801",
+        "28802",
+        "28803",
+        "28804",
+        "28805",
+        "28806",
+        "28807",
+        "28814"
+      ]
+    },
+    {
+      "id": "28006",
+      "name": "Alcobendas",
+      "postalCodes": [
+        "28100",
+        "28108",
+        "28109"
+      ]
+    },
+    {
+      "id": "28007",
+      "name": "Alcorcón",
+      "postalCodes": [
+        "28668",
+        "28670",
+        "28917",
+        "28921",
+        "28922",
+        "28923",
+        "28924",
+        "28925",
+        "28936"
+      ]
+    },
+    {
+      "id": "28008",
+      "name": "Aldea del Fresno",
+      "postalCodes": [
+        "28620"
+      ]
+    },
+    {
+      "id": "28009",
+      "name": "Algete",
+      "postalCodes": [
+        "28110",
+        "28119",
+        "28120"
+      ]
+    },
+    {
+      "id": "28010",
+      "name": "Alpedrete",
+      "postalCodes": [
+        "28430"
+      ]
+    },
+    {
+      "id": "28011",
+      "name": "Ambite",
+      "postalCodes": [
+        "28580"
+      ]
+    },
+    {
+      "id": "28012",
+      "name": "Anchuelo",
+      "postalCodes": [
+        "28818"
+      ]
+    },
+    {
+      "id": "28013",
+      "name": "Aranjuez",
+      "postalCodes": [
+        "28300",
+        "28310",
+        "28311",
+        "28312"
+      ]
+    },
+    {
+      "id": "28014",
+      "name": "Arganda del Rey",
+      "postalCodes": [
+        "28500"
+      ]
+    },
+    {
+      "id": "28015",
+      "name": "Arroyomolinos",
+      "postalCodes": [
+        "28939",
+        "28950"
+      ]
+    },
+    {
+      "id": "28016",
+      "name": "El Atazar",
+      "postalCodes": [
+        "28189"
+      ]
+    },
+    {
+      "id": "28017",
+      "name": "Batres",
+      "postalCodes": [
+        "28939",
+        "28976",
+        "28979"
+      ]
+    },
+    {
+      "id": "28018",
+      "name": "Becerril de la Sierra",
+      "postalCodes": [
+        "28490"
+      ]
+    },
+    {
+      "id": "28019",
+      "name": "Belmonte de Tajo",
+      "postalCodes": [
+        "28390"
+      ]
+    },
+    {
+      "id": "28021",
+      "name": "El Berrueco",
+      "postalCodes": [
+        "28192"
+      ]
+    },
+    {
+      "id": "28020",
+      "name": "Berzosa del Lozoya",
+      "postalCodes": [
+        "28194"
+      ]
+    },
+    {
+      "id": "28022",
+      "name": "Boadilla del Monte",
+      "postalCodes": [
+        "28660",
+        "28668",
+        "28669"
+      ]
+    },
+    {
+      "id": "28023",
+      "name": "El Boalo",
+      "postalCodes": [
+        "28411",
+        "28412",
+        "28413",
+        "28492"
+      ]
+    },
+    {
+      "id": "28024",
+      "name": "Braojos",
+      "postalCodes": [
+        "28737"
+      ]
+    },
+    {
+      "id": "28025",
+      "name": "Brea de Tajo",
+      "postalCodes": [
+        "28596"
+      ]
+    },
+    {
+      "id": "28026",
+      "name": "Brunete",
+      "postalCodes": [
+        "28690",
+        "28691"
+      ]
+    },
+    {
+      "id": "28027",
+      "name": "Buitrago del Lozoya",
+      "postalCodes": [
+        "28730"
+      ]
+    },
+    {
+      "id": "28028",
+      "name": "Bustarviejo",
+      "postalCodes": [
+        "28720"
+      ]
+    },
+    {
+      "id": "28029",
+      "name": "Cabanillas de la Sierra",
+      "postalCodes": [
+        "28721"
+      ]
+    },
+    {
+      "id": "28030",
+      "name": "La Cabrera",
+      "postalCodes": [
+        "28751"
+      ]
+    },
+    {
+      "id": "28031",
+      "name": "Cadalso de los Vidrios",
+      "postalCodes": [
+        "28640",
+        "28648"
+      ]
+    },
+    {
+      "id": "28032",
+      "name": "Camarma de Esteruelas",
+      "postalCodes": [
+        "28816"
+      ]
+    },
+    {
+      "id": "28033",
+      "name": "Campo Real",
+      "postalCodes": [
+        "28510"
+      ]
+    },
+    {
+      "id": "28034",
+      "name": "Canencia",
+      "postalCodes": [
+        "28743"
+      ]
+    },
+    {
+      "id": "28035",
+      "name": "Carabaña",
+      "postalCodes": [
+        "28560"
+      ]
+    },
+    {
+      "id": "28036",
+      "name": "Casarrubuelos",
+      "postalCodes": [
+        "28977",
+        "28978"
+      ]
+    },
+    {
+      "id": "28037",
+      "name": "Cenicientos",
+      "postalCodes": [
+        "28649",
+        "28650"
+      ]
+    },
+    {
+      "id": "28038",
+      "name": "Cercedilla",
+      "postalCodes": [
+        "28460",
+        "28470",
+        "28479"
+      ]
+    },
+    {
+      "id": "28039",
+      "name": "Cervera de Buitrago",
+      "postalCodes": [
+        "28193"
+      ]
+    },
+    {
+      "id": "28051",
+      "name": "Chapinería",
+      "postalCodes": [
+        "28694"
+      ]
+    },
+    {
+      "id": "28052",
+      "name": "Chinchón",
+      "postalCodes": [
+        "28370",
+        "28530"
+      ]
+    },
+    {
+      "id": "28040",
+      "name": "Ciempozuelos",
+      "postalCodes": [
+        "28343",
+        "28350"
+      ]
+    },
+    {
+      "id": "28041",
+      "name": "Cobeña",
+      "postalCodes": [
+        "28863"
+      ]
+    },
+    {
+      "id": "28046",
+      "name": "Collado Mediano",
+      "postalCodes": [
+        "28430",
+        "28450",
+        "28491"
+      ]
+    },
+    {
+      "id": "28047",
+      "name": "Collado Villalba",
+      "postalCodes": [
+        "28400"
+      ]
+    },
+    {
+      "id": "28043",
+      "name": "Colmenar de Oreja",
+      "postalCodes": [
+        "28380"
+      ]
+    },
+    {
+      "id": "28042",
+      "name": "Colmenar del Arroyo",
+      "postalCodes": [
+        "28213"
+      ]
+    },
+    {
+      "id": "28045",
+      "name": "Colmenar Viejo",
+      "postalCodes": [
+        "28120",
+        "28707",
+        "28750",
+        "28770"
+      ]
+    },
+    {
+      "id": "28044",
+      "name": "Colmenarejo",
+      "postalCodes": [
+        "28270"
+      ]
+    },
+    {
+      "id": "28048",
+      "name": "Corpa",
+      "postalCodes": [
+        "28811"
+      ]
+    },
+    {
+      "id": "28049",
+      "name": "Coslada",
+      "postalCodes": [
+        "28052",
+        "28821",
+        "28822",
+        "28823"
+      ]
+    },
+    {
+      "id": "28050",
+      "name": "Cubas de la Sagra",
+      "postalCodes": [
+        "28978",
+        "28979"
+      ]
+    },
+    {
+      "id": "28053",
+      "name": "Daganzo de Arriba",
+      "postalCodes": [
+        "28806",
+        "28814",
+        "28864"
+      ]
+    },
+    {
+      "id": "28054",
+      "name": "El Escorial",
+      "postalCodes": [
+        "28211",
+        "28219",
+        "28280",
+        "28292"
+      ]
+    },
+    {
+      "id": "28055",
+      "name": "Estremera",
+      "postalCodes": [
+        "28595"
+      ]
+    },
+    {
+      "id": "28056",
+      "name": "Fresnedillas de la Oliva",
+      "postalCodes": [
+        "28214"
+      ]
+    },
+    {
+      "id": "28057",
+      "name": "Fresno de Torote",
+      "postalCodes": [
+        "28815"
+      ]
+    },
+    {
+      "id": "28058",
+      "name": "Fuenlabrada",
+      "postalCodes": [
+        "28914",
+        "28941",
+        "28942",
+        "28943",
+        "28944",
+        "28945",
+        "28946",
+        "28947"
+      ]
+    },
+    {
+      "id": "28059",
+      "name": "Fuente el Saz de Jarama",
+      "postalCodes": [
+        "28140"
+      ]
+    },
+    {
+      "id": "28060",
+      "name": "Fuentidueña de Tajo",
+      "postalCodes": [
+        "28597"
+      ]
+    },
+    {
+      "id": "28061",
+      "name": "Galapagar",
+      "postalCodes": [
+        "28229",
+        "28232",
+        "28250",
+        "28260",
+        "28292",
+        "28400",
+        "28420"
+      ]
+    },
+    {
+      "id": "28062",
+      "name": "Garganta de los Montes",
+      "postalCodes": [
+        "28743",
+        "28749"
+      ]
+    },
+    {
+      "id": "28063",
+      "name": "Gargantilla del Lozoya y Pinilla de Buitrago",
+      "postalCodes": [
+        "28739"
+      ]
+    },
+    {
+      "id": "28064",
+      "name": "Gascones",
+      "postalCodes": [
+        "28730",
+        "28737",
+        "28739"
+      ]
+    },
+    {
+      "id": "28065",
+      "name": "Getafe",
+      "postalCodes": [
+        "28021",
+        "28901",
+        "28902",
+        "28903",
+        "28904",
+        "28905",
+        "28906",
+        "28907",
+        "28909"
+      ]
+    },
+    {
+      "id": "28066",
+      "name": "Griñón",
+      "postalCodes": [
+        "28971"
+      ]
+    },
+    {
+      "id": "28067",
+      "name": "Guadalix de la Sierra",
+      "postalCodes": [
+        "28794"
+      ]
+    },
+    {
+      "id": "28068",
+      "name": "Guadarrama",
+      "postalCodes": [
+        "28430",
+        "28440",
+        "28480"
+      ]
+    },
+    {
+      "id": "28069",
+      "name": "La Hiruela",
+      "postalCodes": [
+        "28191"
+      ]
+    },
+    {
+      "id": "28070",
+      "name": "Horcajo de la Sierra-Aoslos",
+      "postalCodes": [
+        "28755"
+      ]
+    },
+    {
+      "id": "28071",
+      "name": "Horcajuelo de la Sierra",
+      "postalCodes": [
+        "28191"
+      ]
+    },
+    {
+      "id": "28072",
+      "name": "Hoyo de Manzanares",
+      "postalCodes": [
+        "28240",
+        "28248"
+      ]
+    },
+    {
+      "id": "28073",
+      "name": "Humanes de Madrid",
+      "postalCodes": [
+        "28970"
+      ]
+    },
+    {
+      "id": "28074",
+      "name": "Leganés",
+      "postalCodes": [
+        "28054",
+        "28911",
+        "28912",
+        "28913",
+        "28914",
+        "28915",
+        "28916",
+        "28917",
+        "28918",
+        "28919",
+        "28925",
+        "28941"
+      ]
+    },
+    {
+      "id": "28075",
+      "name": "Loeches",
+      "postalCodes": [
+        "28830",
+        "28890"
+      ]
+    },
+    {
+      "id": "28076",
+      "name": "Lozoya",
+      "postalCodes": [
+        "28742"
+      ]
+    },
+    {
+      "id": "28901",
+      "name": "Lozoyuela-Navas-Sieteiglesias",
+      "postalCodes": [
+        "28752",
+        "28753",
+        "28754"
+      ]
+    },
+    {
+      "id": "28078",
+      "name": "Madarcos",
+      "postalCodes": [
+        "28755"
+      ]
+    },
+    {
+      "id": "28079",
+      "name": "Madrid",
+      "postalCodes": [
+        "28001",
+        "28002",
+        "28003",
+        "28004",
+        "28005",
+        "28006",
+        "28007",
+        "28008",
+        "28009",
+        "28010",
+        "28011",
+        "28012",
+        "28013",
+        "28014",
+        "28015",
+        "28016",
+        "28017",
+        "28018",
+        "28019",
+        "28020",
+        "28021",
+        "28022",
+        "28023",
+        "28024",
+        "28025",
+        "28026",
+        "28027",
+        "28028",
+        "28029",
+        "28030",
+        "28031",
+        "28032",
+        "28033",
+        "28034",
+        "28035",
+        "28036",
+        "28037",
+        "28038",
+        "28039",
+        "28040",
+        "28041",
+        "28042",
+        "28043",
+        "28044",
+        "28045",
+        "28046",
+        "28047",
+        "28048",
+        "28049",
+        "28050",
+        "28051",
+        "28052",
+        "28053",
+        "28054",
+        "28055",
+        "28523",
+        "28760",
+        "28925"
+      ]
+    },
+    {
+      "id": "28080",
+      "name": "Majadahonda",
+      "postalCodes": [
+        "28220",
+        "28221",
+        "28222"
+      ]
+    },
+    {
+      "id": "28082",
+      "name": "Manzanares el Real",
+      "postalCodes": [
+        "28410",
+        "28492",
+        "28770"
+      ]
+    },
+    {
+      "id": "28083",
+      "name": "Meco",
+      "postalCodes": [
+        "28880"
+      ]
+    },
+    {
+      "id": "28084",
+      "name": "Mejorada del Campo",
+      "postalCodes": [
+        "28840"
+      ]
+    },
+    {
+      "id": "28085",
+      "name": "Miraflores de la Sierra",
+      "postalCodes": [
+        "28792",
+        "28793"
+      ]
+    },
+    {
+      "id": "28086",
+      "name": "El Molar",
+      "postalCodes": [
+        "28710"
+      ]
+    },
+    {
+      "id": "28087",
+      "name": "Los Molinos",
+      "postalCodes": [
+        "28440",
+        "28460"
+      ]
+    },
+    {
+      "id": "28088",
+      "name": "Montejo de la Sierra",
+      "postalCodes": [
+        "28190"
+      ]
+    },
+    {
+      "id": "28089",
+      "name": "Moraleja de Enmedio",
+      "postalCodes": [
+        "28950"
+      ]
+    },
+    {
+      "id": "28090",
+      "name": "Moralzarzal",
+      "postalCodes": [
+        "28248",
+        "28411",
+        "28490"
+      ]
+    },
+    {
+      "id": "28091",
+      "name": "Morata de Tajuña",
+      "postalCodes": [
+        "28370",
+        "28530"
+      ]
+    },
+    {
+      "id": "28092",
+      "name": "Móstoles",
+      "postalCodes": [
+        "28931",
+        "28932",
+        "28933",
+        "28934",
+        "28935",
+        "28936",
+        "28937",
+        "28938",
+        "28939",
+        "28942"
+      ]
+    },
+    {
+      "id": "28093",
+      "name": "Navacerrada",
+      "postalCodes": [
+        "28491"
+      ]
+    },
+    {
+      "id": "28094",
+      "name": "Navalafuente",
+      "postalCodes": [
+        "28729"
+      ]
+    },
+    {
+      "id": "28095",
+      "name": "Navalagamella",
+      "postalCodes": [
+        "28210",
+        "28212"
+      ]
+    },
+    {
+      "id": "28096",
+      "name": "Navalcarnero",
+      "postalCodes": [
+        "28600"
+      ]
+    },
+    {
+      "id": "28097",
+      "name": "Navarredonda y San Mamés",
+      "postalCodes": [
+        "28739"
+      ]
+    },
+    {
+      "id": "28099",
+      "name": "Navas del Rey",
+      "postalCodes": [
+        "28695"
+      ]
+    },
+    {
+      "id": "28100",
+      "name": "Nuevo Baztán",
+      "postalCodes": [
+        "28514"
+      ]
+    },
+    {
+      "id": "28101",
+      "name": "Olmeda de las Fuentes",
+      "postalCodes": [
+        "28515"
+      ]
+    },
+    {
+      "id": "28102",
+      "name": "Orusco de Tajuña",
+      "postalCodes": [
+        "28570"
+      ]
+    },
+    {
+      "id": "28104",
+      "name": "Paracuellos de Jarama",
+      "postalCodes": [
+        "28860",
+        "28861",
+        "28862"
+      ]
+    },
+    {
+      "id": "28106",
+      "name": "Parla",
+      "postalCodes": [
+        "28981",
+        "28982",
+        "28983",
+        "28984"
+      ]
+    },
+    {
+      "id": "28107",
+      "name": "Patones",
+      "postalCodes": [
+        "28189"
+      ]
+    },
+    {
+      "id": "28108",
+      "name": "Pedrezuela",
+      "postalCodes": [
+        "28723"
+      ]
+    },
+    {
+      "id": "28109",
+      "name": "Pelayos de la Presa",
+      "postalCodes": [
+        "28696"
+      ]
+    },
+    {
+      "id": "28110",
+      "name": "Perales de Tajuña",
+      "postalCodes": [
+        "28540"
+      ]
+    },
+    {
+      "id": "28111",
+      "name": "Pezuela de las Torres",
+      "postalCodes": [
+        "28812"
+      ]
+    },
+    {
+      "id": "28112",
+      "name": "Pinilla del Valle",
+      "postalCodes": [
+        "28749"
+      ]
+    },
+    {
+      "id": "28113",
+      "name": "Pinto",
+      "postalCodes": [
+        "28320"
+      ]
+    },
+    {
+      "id": "28114",
+      "name": "Piñuécar-Gandullas",
+      "postalCodes": [
+        "28737"
+      ]
+    },
+    {
+      "id": "28115",
+      "name": "Pozuelo de Alarcón",
+      "postalCodes": [
+        "28023",
+        "28024",
+        "28223",
+        "28224"
+      ]
+    },
+    {
+      "id": "28116",
+      "name": "Pozuelo del Rey",
+      "postalCodes": [
+        "28813"
+      ]
+    },
+    {
+      "id": "28117",
+      "name": "Prádena del Rincón",
+      "postalCodes": [
+        "28191"
+      ]
+    },
+    {
+      "id": "28118",
+      "name": "Puebla de la Sierra",
+      "postalCodes": [
+        "28190"
+      ]
+    },
+    {
+      "id": "28902",
+      "name": "Puentes Viejas",
+      "postalCodes": [
+        "28195",
+        "28196",
+        "28754"
+      ]
+    },
+    {
+      "id": "28119",
+      "name": "Quijorna",
+      "postalCodes": [
+        "28690",
+        "28693"
+      ]
+    },
+    {
+      "id": "28120",
+      "name": "Rascafría",
+      "postalCodes": [
+        "28740",
+        "28741",
+        "28749"
+      ]
+    },
+    {
+      "id": "28121",
+      "name": "Redueña",
+      "postalCodes": [
+        "28721"
+      ]
+    },
+    {
+      "id": "28122",
+      "name": "Ribatejada",
+      "postalCodes": [
+        "28815"
+      ]
+    },
+    {
+      "id": "28123",
+      "name": "Rivas-Vaciamadrid",
+      "postalCodes": [
+        "28051",
+        "28052",
+        "28500",
+        "28521",
+        "28522",
+        "28523",
+        "28524"
+      ]
+    },
+    {
+      "id": "28124",
+      "name": "Robledillo de la Jara",
+      "postalCodes": [
+        "28194"
+      ]
+    },
+    {
+      "id": "28125",
+      "name": "Robledo de Chavela",
+      "postalCodes": [
+        "28293",
+        "28294"
+      ]
+    },
+    {
+      "id": "28126",
+      "name": "Robregordo",
+      "postalCodes": [
+        "28755"
+      ]
+    },
+    {
+      "id": "28127",
+      "name": "Las Rozas de Madrid",
+      "postalCodes": [
+        "28231",
+        "28232",
+        "28250",
+        "28290"
+      ]
+    },
+    {
+      "id": "28128",
+      "name": "Rozas de Puerto Real",
+      "postalCodes": [
+        "28648",
+        "28649"
+      ]
+    },
+    {
+      "id": "28129",
+      "name": "San Agustín del Guadalix",
+      "postalCodes": [
+        "28750"
+      ]
+    },
+    {
+      "id": "28130",
+      "name": "San Fernando de Henares",
+      "postalCodes": [
+        "28830",
+        "28850"
+      ]
+    },
+    {
+      "id": "28131",
+      "name": "San Lorenzo de El Escorial",
+      "postalCodes": [
+        "28200",
+        "28209",
+        "28280"
+      ]
+    },
+    {
+      "id": "28132",
+      "name": "San Martín de la Vega",
+      "postalCodes": [
+        "28330"
+      ]
+    },
+    {
+      "id": "28133",
+      "name": "San Martín de Valdeiglesias",
+      "postalCodes": [
+        "28680"
+      ]
+    },
+    {
+      "id": "28134",
+      "name": "San Sebastián de los Reyes",
+      "postalCodes": [
+        "28100",
+        "28110",
+        "28701",
+        "28702",
+        "28703",
+        "28706",
+        "28707",
+        "28708",
+        "28709"
+      ]
+    },
+    {
+      "id": "28135",
+      "name": "Santa María de la Alameda",
+      "postalCodes": [
+        "28294",
+        "28296",
+        "28297"
+      ]
+    },
+    {
+      "id": "28136",
+      "name": "Santorcaz",
+      "postalCodes": [
+        "28818"
+      ]
+    },
+    {
+      "id": "28137",
+      "name": "Los Santos de la Humosa",
+      "postalCodes": [
+        "28817"
+      ]
+    },
+    {
+      "id": "28138",
+      "name": "La Serna del Monte",
+      "postalCodes": [
+        "28737"
+      ]
+    },
+    {
+      "id": "28140",
+      "name": "Serranillos del Valle",
+      "postalCodes": [
+        "28979"
+      ]
+    },
+    {
+      "id": "28141",
+      "name": "Sevilla la Nueva",
+      "postalCodes": [
+        "28609"
+      ]
+    },
+    {
+      "id": "28143",
+      "name": "Somosierra",
+      "postalCodes": [
+        "28756"
+      ]
+    },
+    {
+      "id": "28144",
+      "name": "Soto del Real",
+      "postalCodes": [
+        "28770",
+        "28791"
+      ]
+    },
+    {
+      "id": "28145",
+      "name": "Talamanca de Jarama",
+      "postalCodes": [
+        "28160"
+      ]
+    },
+    {
+      "id": "28146",
+      "name": "Tielmes",
+      "postalCodes": [
+        "28550"
+      ]
+    },
+    {
+      "id": "28147",
+      "name": "Titulcia",
+      "postalCodes": [
+        "28359"
+      ]
+    },
+    {
+      "id": "28148",
+      "name": "Torrejón de Ardoz",
+      "postalCodes": [
+        "28830",
+        "28850"
+      ]
+    },
+    {
+      "id": "28149",
+      "name": "Torrejón de la Calzada",
+      "postalCodes": [
+        "28990",
+        "28991"
+      ]
+    },
+    {
+      "id": "28150",
+      "name": "Torrejón de Velasco",
+      "postalCodes": [
+        "28990"
+      ]
+    },
+    {
+      "id": "28151",
+      "name": "Torrelaguna",
+      "postalCodes": [
+        "28180"
+      ]
+    },
+    {
+      "id": "28152",
+      "name": "Torrelodones",
+      "postalCodes": [
+        "28250",
+        "28290"
+      ]
+    },
+    {
+      "id": "28153",
+      "name": "Torremocha de Jarama",
+      "postalCodes": [
+        "28189"
+      ]
+    },
+    {
+      "id": "28154",
+      "name": "Torres de la Alameda",
+      "postalCodes": [
+        "28813"
+      ]
+    },
+    {
+      "id": "28903",
+      "name": "Tres Cantos",
+      "postalCodes": [
+        "28760"
+      ]
+    },
+    {
+      "id": "28155",
+      "name": "Valdaracete",
+      "postalCodes": [
+        "28594"
+      ]
+    },
+    {
+      "id": "28156",
+      "name": "Valdeavero",
+      "postalCodes": [
+        "28816"
+      ]
+    },
+    {
+      "id": "28157",
+      "name": "Valdelaguna",
+      "postalCodes": [
+        "28391"
+      ]
+    },
+    {
+      "id": "28158",
+      "name": "Valdemanco",
+      "postalCodes": [
+        "28729"
+      ]
+    },
+    {
+      "id": "28159",
+      "name": "Valdemaqueda",
+      "postalCodes": [
+        "28295"
+      ]
+    },
+    {
+      "id": "28160",
+      "name": "Valdemorillo",
+      "postalCodes": [
+        "28210"
+      ]
+    },
+    {
+      "id": "28161",
+      "name": "Valdemoro",
+      "postalCodes": [
+        "28341",
+        "28342",
+        "28343"
+      ]
+    },
+    {
+      "id": "28162",
+      "name": "Valdeolmos-Alalpardo",
+      "postalCodes": [
+        "28130"
+      ]
+    },
+    {
+      "id": "28163",
+      "name": "Valdepiélagos",
+      "postalCodes": [
+        "28170"
+      ]
+    },
+    {
+      "id": "28164",
+      "name": "Valdetorres de Jarama",
+      "postalCodes": [
+        "28150"
+      ]
+    },
+    {
+      "id": "28165",
+      "name": "Valdilecha",
+      "postalCodes": [
+        "28511"
+      ]
+    },
+    {
+      "id": "28166",
+      "name": "Valverde de Alcalá",
+      "postalCodes": [
+        "28812"
+      ]
+    },
+    {
+      "id": "28167",
+      "name": "Velilla de San Antonio",
+      "postalCodes": [
+        "28891"
+      ]
+    },
+    {
+      "id": "28168",
+      "name": "El Vellón",
+      "postalCodes": [
+        "28722"
+      ]
+    },
+    {
+      "id": "28169",
+      "name": "Venturada",
+      "postalCodes": [
+        "28729"
+      ]
+    },
+    {
+      "id": "28171",
+      "name": "Villa del Prado",
+      "postalCodes": [
+        "28630"
+      ]
+    },
+    {
+      "id": "28170",
+      "name": "Villaconejos",
+      "postalCodes": [
+        "28360"
+      ]
+    },
+    {
+      "id": "28172",
+      "name": "Villalbilla",
+      "postalCodes": [
+        "28810"
+      ]
+    },
+    {
+      "id": "28173",
+      "name": "Villamanrique de Tajo",
+      "postalCodes": [
+        "28598"
+      ]
+    },
+    {
+      "id": "28174",
+      "name": "Villamanta",
+      "postalCodes": [
+        "28609",
+        "28610"
+      ]
+    },
+    {
+      "id": "28175",
+      "name": "Villamantilla",
+      "postalCodes": [
+        "28609"
+      ]
+    },
+    {
+      "id": "28176",
+      "name": "Villanueva de la Cañada",
+      "postalCodes": [
+        "28229",
+        "28691",
+        "28692"
+      ]
+    },
+    {
+      "id": "28178",
+      "name": "Villanueva de Perales",
+      "postalCodes": [
+        "28609"
+      ]
+    },
+    {
+      "id": "28177",
+      "name": "Villanueva del Pardillo",
+      "postalCodes": [
+        "28229"
+      ]
+    },
+    {
+      "id": "28179",
+      "name": "Villar del Olmo",
+      "postalCodes": [
+        "28512"
+      ]
+    },
+    {
+      "id": "28180",
+      "name": "Villarejo de Salvanés",
+      "postalCodes": [
+        "28590"
+      ]
+    },
+    {
+      "id": "28181",
+      "name": "Villaviciosa de Odón",
+      "postalCodes": [
+        "28670",
+        "28679"
+      ]
+    },
+    {
+      "id": "28182",
+      "name": "Villavieja del Lozoya",
+      "postalCodes": [
+        "28739"
+      ]
+    },
+    {
+      "id": "28183",
+      "name": "Zarzalejo",
+      "postalCodes": [
+        "28293"
+      ]
+    }
+  ]
+}

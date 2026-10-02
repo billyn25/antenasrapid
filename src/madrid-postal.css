@@ -1,0 +1,11 @@
+/* Madrid: información postal visible y buscable sin crear páginas por código. */
+.postal-code-list{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0}
+.postal-code{display:inline-block;padding:7px 12px;border:1px solid var(--line);border-radius:7px;background:#fff;color:var(--deep);font-weight:800;letter-spacing:.03em}
+.postal-help,.postal-source{max-width:880px;color:var(--muted);line-height:1.6;font-size:14px}
+.postal-source{font-size:12px}.postal-source a{text-decoration:underline;text-underline-offset:2px}
+.postal-more summary{cursor:pointer;font-weight:700;padding:8px 0}
+.postal-directory-codes{display:block!important;font-size:12px!important;font-weight:500!important;color:var(--muted)!important;line-height:1.5!important;padding-top:4px!important;overflow-wrap:anywhere}
+.town-list [data-postal-codes]{min-width:0}.town-list [data-postal-codes][hidden]{display:none!important}
+@media(max-width:640px){.postal-coverage h2{font-size:27px;overflow-wrap:anywhere}.postal-code{padding:6px 10px}.postal-help{font-size:13px}}
+/* Cuando hay búsqueda activa, los resultados quedan junto al campo. */
+#localidades:has(#town-search:not(:placeholder-shown)) .alphabet{display:none}

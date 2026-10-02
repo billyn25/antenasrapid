@@ -5,6 +5,14 @@ const pages = JSON.parse(fs.readFileSync(file, 'utf8'));
 
 const extras = [
   {
+    type: 'province', path: '/Antenas-Madrid/', name: 'Madrid',
+    title: 'Antenistas en la Comunidad de Madrid | 641 589 394', heading: 'Antenas y porteros en la Comunidad de Madrid',
+    lead: 'Instalación y reparación de antenas TDT, parabólicas, TDT por satélite HD, porteros automáticos y videoporteros. Busca Madrid capital o tu municipio y consulta el servicio.',
+    intro: 'Para preparar un aviso en la Comunidad de Madrid, indica municipio, código postal y calle. El directorio distingue los municipios de la provincia de Madrid y permite localizar los códigos postales asociados a cada uno.',
+    focus: 'Antenista por municipio y código postal', advice: 'Describe si el fallo afecta a una toma, a toda la vivienda o a varios vecinos. El código postal ayuda a localizar el aviso, pero puede compartirse entre municipios: confirma también calle y localidad.',
+    towns: [], source: 'dataset-municipal-publico', evidence: 'generated-province-preview'
+  },
+  {
     type: 'province', path: '/Antenas-Navarra/', name: 'Navarra',
     title: 'Antenistas en Navarra · Porteros automáticos y videoporteros | 641 589 394', heading: 'Antenas y porteros en Navarra',
     lead: 'Servicio de antenas TDT, parabólicas, amplificación, porteros automáticos, videoporteros y cobertura móvil. Indica tu municipio para preparar el aviso.',
