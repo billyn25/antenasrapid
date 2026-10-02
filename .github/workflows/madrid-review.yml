@@ -1,0 +1,54 @@
+name: Revisar Madrid y códigos postales
+on:
+  push:
+    branches: [feature/madrid-postal-20261002]
+permissions:
+  contents: read
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Construcción de referencia
+        run: |
+          mkdir -p .quality
+          npm run build:production > .quality/base-build.log 2>&1
+      - name: Obtener información de las fuentes oficiales
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import json,concurrent.futures,urllib.request,urllib.parse
+          from pathlib import Path
+          out=Path('.quality/sources'); out.mkdir(parents=True,exist_ok=True)
+          queries={
+            'cnig-catalog.html':'https://centrodedescargas.cnig.es/CentroDescargas/cartociudad',
+            'api-schema.json':'https://api-features.idee.es/collections/address/queryables?f=json',
+            'api-sample.json':'https://api-features.idee.es/collections/address/items?f=json&limit=1',
+            'municipios.json':'https://raw.githubusercontent.com/codeforspain/ds-organizacion-administrativa/1e9c99280ef4d7a12def33cafc3df59d9fc1f688/data/municipios.json'
+          }
+          def get(pair):
+            name,url=pair
+            try:
+              req=urllib.request.Request(url,headers={'User-Agent':'AntenasRapid-data-review/1.0'})
+              with urllib.request.urlopen(req,timeout=50) as r:
+                b=r.read();(out/name).write_bytes(b)
+                return {'file':name,'url':url,'status':r.status,'bytes':len(b)}
+            except Exception as e:
+              return {'file':name,'url':url,'error':str(e)}
+          with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
+            report=list(pool.map(get,queries.items()))
+          (out/'fetch-report.json').write_text(json.dumps(report,indent=2));print(json.dumps(report))
+          PY
+      - name: Guardar fuentes y referencia para pruebas locales
+        if: always()
+        run: tar --exclude=.git --exclude=.quality --exclude=node_modules -czf .quality/repo.tar.gz .
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: madrid-review
+          path: .quality/
+          include-hidden-files: true
