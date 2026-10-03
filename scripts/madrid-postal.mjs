@@ -35,6 +35,7 @@ export function enrichMadridTown(html, page, row, data) {
 }
 export function enrichMadridDirectory(html, locals, lookup, data) {
   let output = html;
+  const indexes = madridServiceIndexes(locals);
   for (const page of locals) {
     const row = lookup.get(String(page.municipioId));
     assert.ok(row, `${page.path}: sin asignación postal`);
@@ -42,7 +43,7 @@ export function enrichMadridDirectory(html, locals, lookup, data) {
     assert.equal(output.split(before).length, 2, `${page.path}: falta en el directorio de Madrid`);
     const sample = row.postalCodes.slice(0, 4).join(' · ');
     const more = row.postalCodes.length > 4 ? ` · y ${row.postalCodes.length - 4} más` : '';
-    output = output.replace(before, `<li data-town="${esc(page.name)} ${row.postalCodes.join(' ')}" data-postal-codes="${row.postalCodes.join(' ')}" data-municipio-id="${row.id}"><a href="${page.path}">${esc(page.name)} →</a><a class="postal-directory-codes" href="${page.path}#codigos-postales">Códigos postales: ${sample}${more}</a></li>`);
+    output = output.replace(before, `<li data-town="${esc(page.name)} ${row.postalCodes.join(' ')}" data-postal-codes="${row.postalCodes.join(' ')}" data-municipio-id="${row.id}">${madridServiceLink(page,indexes.get(page.path))}<a class="postal-directory-codes" href="${page.path}#codigos-postales">Códigos postales: ${sample}${more}</a></li>`);
   }
   output = output.replace('for="town-search">Buscar localidad</label>', 'for="town-search">Buscar municipio o código postal</label>')
     .replace('placeholder="Escribe el nombre de tu localidad" autocomplete="off">', 'placeholder="Ej.: Alcalá de Henares o 28801" autocomplete="off" aria-describedby="postal-search-help"><p class="postal-help" id="postal-search-help">Busca por nombre o por código postal. Si un código está compartido, se muestran todos los municipios correspondientes. Los 179 municipios se pueden consultar también en el listado.</p>')
@@ -51,6 +52,45 @@ export function enrichMadridDirectory(html, locals, lookup, data) {
   assert.ok(output.includes(marker), 'Directorio de Madrid sin FAQ');
   return output.replace(marker, `<section class="section wrap postal-province-note">${sourceNote(data)}</section>` + marker);
 }
+
+// Un mismo municipio conserva el mismo servicio en portada y directorio.
+export const MADRID_LINK_SERVICES = Object.freeze([
+  'Antenista', 'Reparación de porteros automáticos', 'Instalación de videoporteros'
+]);
+export function madridServiceIndexes(locals) {
+  const ordered = [...locals].sort((a,b) => a.name === 'Madrid' ? -1 : b.name === 'Madrid' ? 1 : a.name.localeCompare(b.name,'es',{sensitivity:'base'}));
+  const result = new Map(ordered.map((page,index) => [page.path,index]));
+  assert.equal(result.size, locals.length, 'Madrid: municipios duplicados al asignar servicios');
+  return result;
+}
+export function madridServiceLink(page,index) {
+  assert.ok(Number.isInteger(index) && index >= 0, 'Madrid: falta el índice del servicio');
+  const label = MADRID_LINK_SERVICES[index % MADRID_LINK_SERVICES.length];
+  return `<a class="madrid-service-link" href="${esc(page.path)}"><span class="madrid-service-label">${label} en</span> <strong class="madrid-service-town">${esc(page.name)}<span aria-hidden="true"> →</span></strong></a>`;
+}
+export function labelMadridHomeLinks(html,locals) {
+  if (html.includes('data-madrid-service-links="1"')) return html;
+  const marker = '<h3><a href="/Antenas-Madrid/">Madrid</a></h3>';
+  if (!html.includes(marker)) return html;
+  const indexes = madridServiceIndexes(locals), byPath = new Map(locals.map(page => [page.path,page]));
+  let cards = 0, links = 0;
+  let output = html.replace(/<article class="featured-province">[\s\S]*?<\/article>/g, card => {
+    if (!card.includes(marker)) return card;
+    cards++;
+    return card.replace('<article class="featured-province">','<article class="featured-province" data-madrid-service-links="1">')
+      .replace(/<a href="(\/Antenas-Madrid\/[^"#?]+\.html)">([^<]+)<\/a>/g, (_,href) => {
+        const page=byPath.get(href);
+        assert.ok(page, `Madrid: destino desconocido ${href}`);
+        links++;
+        return madridServiceLink(page,indexes.get(href));
+      });
+  });
+  assert.equal(cards,1,'Madrid debe tener una sola tarjeta en portada');
+  assert.ok(links>0,'Madrid: no se han encontrado enlaces municipales');
+  if (!output.includes('href="/assets/madrid-postal.css"')) output=output.replace('</head>','<link rel="stylesheet" href="/assets/madrid-postal.css"></head>');
+  return output;
+}
+
 function main() {
   const root = path.resolve('dist');
   const data = validatePostalData(JSON.parse(fs.readFileSync('content/postal-codes-madrid.json','utf8')));
@@ -71,6 +111,7 @@ function main() {
   const marker = '<h3><a href="/Antenas-Madrid/">Madrid</a></h3>';
   assert.equal(home.split(marker).length,2,'Madrid debe aparecer una vez en destacados');
   home=home.replace(marker,marker+'<p><a href="/Antenas-Madrid/#localidades">Buscar municipio o código postal →</a></p>');
+  home=labelMadridHomeLinks(home,locals);
   fs.writeFileSync(homeFile, home);
   const report = {municipalities:locals.length, postalAssignments:data.municipalities.reduce((n,x)=>n+x.postalCodes.length,0), distinctPostalCodes:new Set(data.municipalities.flatMap(x=>x.postalCodes)).size, source:data.source, checkedOn:data.checkedOn};
   fs.writeFileSync(path.join(root,'madrid-postal-report.json'),JSON.stringify(report,null,2));
