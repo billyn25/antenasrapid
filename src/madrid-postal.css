@@ -9,3 +9,16 @@
 @media(max-width:640px){.postal-coverage h2{font-size:27px;overflow-wrap:anywhere}.postal-code{padding:6px 10px}.postal-help{font-size:13px}}
 /* Cuando hay búsqueda activa, los resultados quedan junto al campo. */
 #localidades:has(#town-search:not(:placeholder-shown)) .alphabet{display:none}
+
+/* Servicio y municipio: texto HTML legible, sin alterar códigos ni destinos. */
+.madrid-service-link{display:block;min-width:0;line-height:1.4;text-decoration:none!important}
+.madrid-service-link .madrid-service-label{display:block;font-size:12px;font-weight:600;line-height:1.4;color:var(--muted);white-space:normal;overflow-wrap:break-word}
+.madrid-service-link .madrid-service-town{display:block;margin-top:3px;font-size:16px;font-weight:800;line-height:1.35;color:var(--deep);white-space:normal;overflow-wrap:break-word}
+.madrid-service-link .madrid-service-town span{color:var(--brand)}
+.madrid-service-link:hover .madrid-service-town{color:var(--brand)}
+.madrid-service-link:focus-visible{outline:2px solid var(--brand);outline-offset:3px}
+.town-list .madrid-service-link{padding:12px 13px;min-height:68px}
+.featured-province[data-madrid-service-links] .featured-towns,.featured-province[data-madrid-service-links] .featured-more-links{display:grid;grid-template-columns:minmax(0,1fr);gap:8px}
+.featured-province[data-madrid-service-links] .madrid-service-link{padding:10px 12px;border:1px solid #e0e1e4;border-radius:7px;background:#f8f8f9;min-height:64px}
+.featured-province[data-madrid-service-links] .madrid-service-town{font-size:15px}
+.featured-province[data-madrid-service-links] .featured-more-links{max-height:none;overflow:visible}
