@@ -1,0 +1,254 @@
+name: Revisar enlaces de servicios de Madrid
+on:
+  push:
+    branches: [review/madrid-service-links]
+permissions:
+  contents: write
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Guardar referencia de producción
+        run: |
+          mkdir -p .quality
+          npm run build:production > .quality/baseline-build.log 2>&1
+          python3 - <<'PY'
+          from pathlib import Path
+          import json,hashlib
+          root=Path('dist')
+          hashes={str(p.relative_to(root)):hashlib.sha256(p.read_bytes()).hexdigest() for p in root.rglob('*') if p.is_file() and p.suffix in ('.html','.xml')}
+          Path('.quality/baseline.json').write_text(json.dumps(hashes))
+          Path('.quality/home-before.html').write_bytes((root/'index.html').read_bytes())
+          Path('.quality/madrid-before.html').write_bytes((root/'Antenas-Madrid/index.html').read_bytes())
+          PY
+      - name: Alternar textos solo en los enlaces municipales de Madrid
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('scripts/madrid-postal.mjs');s=p.read_text()
+          helper=r'''
+          // Un mismo municipio conserva el mismo servicio en portada y directorio.
+          export const MADRID_LINK_SERVICES = Object.freeze([
+            'Antenista', 'Reparación de porteros automáticos', 'Instalación de videoporteros'
+          ]);
+          export function madridServiceIndexes(locals) {
+            const ordered = [...locals].sort((a,b) => a.name === 'Madrid' ? -1 : b.name === 'Madrid' ? 1 : a.name.localeCompare(b.name,'es',{sensitivity:'base'}));
+            const result = new Map(ordered.map((page,index) => [page.path,index]));
+            assert.equal(result.size, locals.length, 'Madrid: municipios duplicados al asignar servicios');
+            return result;
+          }
+          export function madridServiceLink(page,index) {
+            assert.ok(Number.isInteger(index) && index >= 0, 'Madrid: falta el índice del servicio');
+            const label = MADRID_LINK_SERVICES[index % MADRID_LINK_SERVICES.length];
+            return `<a class="madrid-service-link" href="${esc(page.path)}"><span class="madrid-service-label">${label} en</span> <strong class="madrid-service-town">${esc(page.name)}<span aria-hidden="true"> →</span></strong></a>`;
+          }
+          export function labelMadridHomeLinks(html,locals) {
+            if (html.includes('data-madrid-service-links="1"')) return html;
+            const marker = '<h3><a href="/Antenas-Madrid/">Madrid</a></h3>';
+            if (!html.includes(marker)) return html;
+            const indexes = madridServiceIndexes(locals), byPath = new Map(locals.map(page => [page.path,page]));
+            let cards = 0, links = 0;
+            let output = html.replace(/<article class="featured-province">[\s\S]*?<\/article>/g, card => {
+              if (!card.includes(marker)) return card;
+              cards++;
+              return card.replace('<article class="featured-province">','<article class="featured-province" data-madrid-service-links="1">')
+                .replace(/<a href="(\/Antenas-Madrid\/[^"#?]+\.html)">([^<]+)<\/a>/g, (_,href) => {
+                  const page=byPath.get(href);
+                  assert.ok(page, `Madrid: destino desconocido ${href}`);
+                  links++;
+                  return madridServiceLink(page,indexes.get(href));
+                });
+            });
+            assert.equal(cards,1,'Madrid debe tener una sola tarjeta en portada');
+            assert.ok(links>0,'Madrid: no se han encontrado enlaces municipales');
+            if (!output.includes('href="/assets/madrid-postal.css"')) output=output.replace('</head>','<link rel="stylesheet" href="/assets/madrid-postal.css"></head>');
+            return output;
+          }
+          '''
+          marker='function main() {'
+          assert s.count(marker)==1
+          s=s.replace(marker,helper+'\n'+marker)
+          a='export function enrichMadridDirectory(html, locals, lookup, data) {\n  let output = html;'
+          b=a+'\n  const indexes = madridServiceIndexes(locals);'
+          assert s.count(a)==1;s=s.replace(a,b)
+          a='<a href="${page.path}">${esc(page.name)} →</a><a class="postal-directory-codes"'
+          b='${madridServiceLink(page,indexes.get(page.path))}<a class="postal-directory-codes"'
+          assert s.count(a)==1;s=s.replace(a,b)
+          a='  fs.writeFileSync(homeFile, home);'
+          assert s.count(a)==1;s=s.replace(a,'  home=labelMadridHomeLinks(home,locals);\n'+a)
+          p.write_text(s)
+          PY
+          cat >> src/madrid-postal.css <<'CSS'
+
+          /* Servicio y municipio: texto HTML legible, sin alterar códigos ni destinos. */
+          .madrid-service-link{display:block;min-width:0;line-height:1.4;text-decoration:none!important}
+          .madrid-service-link .madrid-service-label{display:block;font-size:12px;font-weight:600;line-height:1.4;color:var(--muted);white-space:normal;overflow-wrap:break-word}
+          .madrid-service-link .madrid-service-town{display:block;margin-top:3px;font-size:16px;font-weight:800;line-height:1.35;color:var(--deep);white-space:normal;overflow-wrap:break-word}
+          .madrid-service-link .madrid-service-town span{color:var(--brand)}
+          .madrid-service-link:hover .madrid-service-town{color:var(--brand)}
+          .madrid-service-link:focus-visible{outline:2px solid var(--brand);outline-offset:3px}
+          .town-list .madrid-service-link{padding:12px 13px;min-height:68px}
+          .featured-province[data-madrid-service-links] .featured-towns,.featured-province[data-madrid-service-links] .featured-more-links{display:grid;grid-template-columns:minmax(0,1fr);gap:8px}
+          .featured-province[data-madrid-service-links] .madrid-service-link{padding:10px 12px;border:1px solid #e0e1e4;border-radius:7px;background:#f8f8f9;min-height:64px}
+          .featured-province[data-madrid-service-links] .madrid-service-town{font-size:15px}
+          .featured-province[data-madrid-service-links] .featured-more-links{max-height:none;overflow:visible}
+          CSS
+          cat > tests/madrid-service-links.test.mjs <<'JS'
+          import test from 'node:test';
+          import assert from 'node:assert/strict';
+          import {MADRID_LINK_SERVICES,madridServiceIndexes,madridServiceLink,labelMadridHomeLinks,enrichMadridDirectory} from '../scripts/madrid-postal.mjs';
+          const locals=[{name:'Madrid',path:'/Antenas-Madrid/madrid.html',municipioId:'28079'},{name:'Alcalá de Henares',path:'/Antenas-Madrid/alcala-de-henares.html',municipioId:'28005'},{name:'Móstoles',path:'/Antenas-Madrid/mostoles.html',municipioId:'28092'}];
+          const indexes=madridServiceIndexes(locals);
+          const hrefs=h=>[...h.matchAll(/<a\b[^>]*href="([^"]+)"/g)].map(m=>m[1]);
+          const other='<article class="featured-province"><h3><a href="/Antenas-Burgos/">Burgos</a></h3><a href="/Antenas-Burgos/lerma.html">Lerma</a></article>';
+          const card='<article class="featured-province"><h3><a href="/Antenas-Madrid/">Madrid</a></h3><div class="featured-towns"><a href="/Antenas-Madrid/madrid.html">Madrid</a><a href="/Antenas-Madrid/alcala-de-henares.html">Alcalá de Henares</a></div><details class="featured-more"><summary>Más pueblos con servicio</summary><div class="featured-more-links"><a href="/Antenas-Madrid/mostoles.html">Móstoles</a></div></details><a class="featured-all" href="/Antenas-Madrid/">Ver todos los pueblos →</a></article>';
+          const html='<html><head><title>Original</title></head><body>'+other+card+'</body></html>';
+          test('Madrid alterna los tres servicios con un espacio real antes del municipio',()=>{
+            for(const [i,p] of locals.entries()){
+              const s=madridServiceLink(p,indexes.get(p.path));
+              assert.ok(s.includes(MADRID_LINK_SERVICES[i]+' en</span> <strong'));
+              assert.ok(s.includes(p.name));assert.deepEqual(hrefs(s),[p.path]);
+            }
+          });
+          test('portada: conserva destinos, pueblos, desplegable y otras provincias',()=>{
+            const result=labelMadridHomeLinks(html,locals);
+            assert.deepEqual(hrefs(result),hrefs(html));assert.ok(result.includes(other));
+            assert.equal((result.match(/class="madrid-service-link"/g)||[]).length,3);
+            assert.equal((result.match(/href="\/assets\/madrid-postal.css"/g)||[]).length,1);
+            assert.ok(result.includes('<title>Original</title>'));assert.ok(result.includes('<details class="featured-more">'));
+            assert.equal(labelMadridHomeLinks(result,locals),result);
+            assert.equal(labelMadridHomeLinks(other,locals),other);
+          });
+          test('directorio: conserva búsqueda por nombre y código postal y todos los enlaces postales',()=>{
+            const lookup=new Map(locals.map((p,i)=>[p.municipioId,{id:p.municipioId,postalCodes:i===0?['28001']:['28801']}]))
+            const input='<html><head><title>Directorio</title></head><body><ul class="town-list">'+locals.map(p=>`<li data-town="${p.name}"><a href="${p.path}">${p.name} →</a></li>`).join('')+'</ul><section class="section wrap faq" id="preguntas"></section></body></html>';
+            const result=enrichMadridDirectory(input,locals,lookup,{checkedOn:'2026-10-02'});
+            for(const p of locals){
+              assert.ok(result.includes(madridServiceLink(p,indexes.get(p.path))));
+              assert.ok(result.includes(`data-town="${p.name} ${lookup.get(p.municipioId).postalCodes.join(' ')}"`));
+              assert.ok(result.includes(`href="${p.path}#codigos-postales"`));
+            }
+            assert.equal((result.match(/data-postal-codes="28801"/g)||[]).length,2);
+          });
+          test('escapa nombres y rechaza destinos duplicados e índices ausentes',()=>{
+            assert.ok(madridServiceLink({name:'"El Álamo" & <valle>',path:'/Antenas-Madrid/el-alamo.html'},0).includes('&quot;El Álamo&quot; &amp; &lt;valle&gt;'));
+            assert.throws(()=>madridServiceIndexes([locals[0],locals[0]]),/duplicados/);
+            assert.throws(()=>madridServiceLink(locals[0],undefined));
+          });
+          JS
+          git diff --check
+      - name: Construcción completa y conservación de páginas anteriores
+        run: |
+          npm run build:production > .quality/service-links-build.log 2>&1
+          python3 - <<'PY'
+          from pathlib import Path
+          import re,json,hashlib
+          root=Path('dist');base=json.loads(Path('.quality/baseline.json').read_text())
+          now={str(p.relative_to(root)):hashlib.sha256(p.read_bytes()).hexdigest() for p in root.rglob('*') if p.is_file() and p.suffix in ('.html','.xml')}
+          assert set(base)==set(now),'Cambian las rutas publicadas'
+          allowed={'index.html','Antenas-Madrid/index.html'}
+          changed={p for p in base if base[p]!=now[p]}
+          assert changed==allowed,changed
+          hrefs=lambda s:re.findall(r'<a\b[^>]*href="([^"]+)"',s)
+          metas=lambda s:re.findall(r'<title>.*?</title>|<meta [^>]+>|<link rel="canonical"[^>]+>|<h1\b[^>]*>.*?</h1>|<script type="application/ld\+json">.*?</script>',s)
+          for page,before in [('index.html','home-before.html'),('Antenas-Madrid/index.html','madrid-before.html')]:
+              old=Path('.quality/'+before).read_text();new=(root/page).read_text()
+              assert hrefs(old)==hrefs(new),(page,'destinos alterados')
+              assert metas(old)==metas(new),(page,'metadatos alterados')
+          home=(root/'index.html').read_text();directory=(root/'Antenas-Madrid/index.html').read_text()
+          assert home.count('class="madrid-service-link"')==20
+          assert directory.count('class="madrid-service-link"')==179
+          assert directory.count('class="postal-directory-codes"')==179
+          report={'passed':True,'changedHtml':sorted(changed),'municipalLinksInDirectory':179,'municipalLinksOnHome':20,'allRoutesPreserved':True,'anchorDestinationsPreserved':True,'metadataPreserved':True,'sitemapsByteIdentical':True,'municipalPagesByteIdentical':True}
+          Path('.quality/service-links-report.json').write_text(json.dumps(report,indent=2));print(json.dumps(report))
+          PY
+      - name: Preparar navegador
+        run: |
+          python -m pip install playwright==1.57.0
+          python -m playwright install --with-deps chromium webkit
+      - name: Verificar presentación y búsqueda en móvil y escritorio
+        run: |
+          cat > tests/madrid-service-links.browser.py <<'PY'
+          from pathlib import Path
+          from functools import partial
+          from http.server import SimpleHTTPRequestHandler,ThreadingHTTPServer
+          import json,threading
+          from playwright.sync_api import sync_playwright
+          root=Path('dist').resolve();out=Path('.quality');out.mkdir(exist_ok=True)
+          server=ThreadingHTTPServer(('127.0.0.1',0),partial(SimpleHTTPRequestHandler,directory=str(root)))
+          threading.Thread(target=server.serve_forever,daemon=True).start()
+          base='http://127.0.0.1:'+str(server.server_port);results=[]
+          try:
+            with sync_playwright() as p:
+              for engine,widths in [(p.chromium,[320,390,768,1280]),(p.webkit,[390])]:
+                browser=engine.launch()
+                for width in widths:
+                  page=browser.new_page(viewport={'width':width,'height':900})
+                  page.route('**/*',lambda route:route.continue_() if route.request.url.startswith(base) else route.abort())
+                  page.goto(base+'/',wait_until='domcontentloaded')
+                  card=page.locator('[data-madrid-service-links="1"]');card.scroll_into_view_if_needed()
+                  assert card.locator('.featured-towns .madrid-service-link').count()==8
+                  assert card.locator('.featured-more-links .madrid-service-link').count()==12
+                  if engine.name=='chromium' and width==390:card.screenshot(path=str(out/'madrid-portada-servicios-390.png'))
+                  card.locator('summary').click()
+                  assert card.locator('.featured-more-links .madrid-service-link:visible').count()==12
+                  assert card.locator('.featured-more-links').evaluate('(e)=>!(["auto","scroll"].includes(getComputedStyle(e).overflowY)&&e.scrollHeight>e.clientHeight+1)')
+                  assert page.evaluate('document.documentElement.scrollWidth<=innerWidth+1')
+                  page.goto(base+'/Antenas-Madrid/#localidades',wait_until='domcontentloaded')
+                  links=page.locator('.town-list .madrid-service-link');assert links.count()==179
+                  assert page.locator('.postal-directory-codes').count()==179
+                  for label in ['Antenista en','Reparación de porteros automáticos en','Instalación de videoporteros en']:
+                    assert label in page.locator('#localidades').inner_text()
+                  assert page.evaluate('document.documentElement.scrollWidth<=innerWidth+1')
+                  assert links.evaluate_all('(xs)=>xs.every(e=>e.scrollWidth<=e.clientWidth+1)')
+                  if engine.name=='chromium' and width==390:
+                    page.locator('#town-search').scroll_into_view_if_needed()
+                    page.screenshot(path=str(out/'madrid-directorio-servicios-390.png'))
+                  search=page.locator('#town-search');search.fill('28801');page.wait_for_timeout(300)
+                  visible=page.locator('.town-list li:visible')
+                  assert visible.count()==1 and 'Alcalá de Henares' in visible.inner_text()
+                  assert visible.locator('.madrid-service-link').count()==1
+                  search.fill('alcala');page.wait_for_timeout(200)
+                  assert 'Alcalá de Henares' in page.locator('.town-list li:visible').all_inner_texts()[0]
+                  search.fill('zzzzzzzz');page.wait_for_timeout(200)
+                  assert page.locator('.town-list li:visible').count()==0
+                  search.fill('');page.wait_for_timeout(200)
+                  assert page.locator('.town-list li:visible').count()==179
+                  results.append({'engine':engine.name,'width':width,'passed':True});page.close()
+                context=browser.new_context(java_script_enabled=False)
+                page=context.new_page();page.route('**/*',lambda route:route.continue_() if route.request.url.startswith(base) else route.abort())
+                page.goto(base+'/Antenas-Madrid/',wait_until='domcontentloaded')
+                assert page.locator('.town-list .madrid-service-link').count()==179
+                context.close();browser.close()
+          finally:server.shutdown()
+          (out/'browser-service-links.json').write_text(json.dumps(results,indent=2));print(json.dumps(results))
+          PY
+          python tests/madrid-service-links.browser.py
+      - name: Guardar únicamente los cambios comprobados
+        run: |
+          cat > docs/madrid-enlaces-servicios.md <<'DOC'
+          # Enlaces de servicios en Madrid
+
+          Los enlaces municipales del directorio de Madrid y de su tarjeta en portada alternan «Antenista en», «Reparación de porteros automáticos en» e «Instalación de videoporteros en», seguidos del municipio. La asignación es estable y coincide en ambos lugares.
+
+          Alcance: 179 enlaces en el directorio, 8 destacados y 12 en el desplegable de portada. El servicio aparece en una línea secundaria y el municipio resaltado. Los códigos postales y el buscador siguen disponibles. No se cambian los destinos de los enlaces, títulos, H1, descripciones, datos estructurados, sitemaps ni páginas de municipios, que conservan todos sus servicios. No se crean rutas por servicio.
+
+          Verificación: build:production completo, pruebas unitarias, comparación del HTML anterior y posterior (solo cambia portada y directorio de Madrid), mismas rutas y enlaces, XML y páginas municipales idénticos. Pruebas de navegador en Chromium a 320, 390, 768 y 1280 píxeles y WebKit a 390: sin desbordamientos, búsqueda por nombre/CP, listado sin JavaScript y desplegable sin scroll interno.
+          DOC
+          git add scripts/madrid-postal.mjs src/madrid-postal.css tests/madrid-service-links.test.mjs tests/madrid-service-links.browser.py docs/madrid-enlaces-servicios.md
+          git diff --cached --check
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Madrid: alterna antenista, reparación de porteros e instalación de videoporteros en los enlaces'
+          git push origin HEAD:review/madrid-service-links
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: madrid-service-links-verified
+          path: .quality/
+          include-hidden-files: true
