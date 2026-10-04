@@ -1,0 +1,29 @@
+name: Revisar hero y galería de Madrid
+on:
+  push:
+    branches: [review/madrid-hero-gallery]
+permissions:
+  contents: read
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Construir y auditar producción
+        run: |
+          mkdir -p .quality
+          set -o pipefail
+          npm run build:production 2>&1 | tee .quality/build.log
+      - name: Guardar referencia para comparación visual
+        if: always()
+        run: tar --exclude=.git --exclude=.quality --exclude=node_modules -czf .quality/repo.tar.gz .
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: madrid-visual-review
+          path: .quality/
+          include-hidden-files: true
