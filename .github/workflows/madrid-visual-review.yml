@@ -18,12 +18,15 @@ jobs:
           mkdir -p .quality
           set -o pipefail
           npm run build:production 2>&1 | tee .quality/build.log
-      - name: Guardar referencia para comparación visual
-        if: always()
-        run: tar --exclude=.git --exclude=.quality --exclude=node_modules -czf .quality/repo.tar.gz .
+      - name: Preparar navegadores
+        run: |
+          python -m pip install playwright==1.57.0
+          python -m playwright install --with-deps chromium webkit
+      - name: Hero, galería, ampliación y búsqueda en móvil y escritorio
+        run: python tests/madrid-visuals.browser.py
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: madrid-visual-review
+          name: madrid-visual-verified
           path: .quality/
           include-hidden-files: true
