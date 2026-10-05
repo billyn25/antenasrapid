@@ -120,7 +120,7 @@ const featuredByProvince={
   'Antenas-Soria':['Soria','Almazán','El Burgo de Osma','Ólvega','San Esteban de Gormaz','Ágreda','San Leonardo de Yagüe','Golmayo'],
   'Antenas-Valladolid':['Valladolid','Laguna de Duero','Medina del Campo','Arroyo de la Encomienda','Tordesillas','Tudela de Duero','Íscar','Peñafiel'],
   'Antenas-Zamora':['Zamora','Benavente','Toro','Puebla de Sanabria','Morales del Vino','Villaralbo','Fuentesaúco','Fermoselle'],
-  'Antenas-Asturias':['Gijón','Oviedo','Avilés','Siero','Langreo','Mieres'],
+  'Antenas-Asturias':['Gijón','Oviedo','Avilés','Siero','Langreo','Mieres','Llanes','Ribadesella'],
   'Antenas-Avila':['Ávila','Arévalo','Arenas de San Pedro','Las Navas del Marqués','Candeleda','El Tiemblo','Sotillo de la Adrada','Cebreros']
 };
 const normTown=v=>String(v||'').toLocaleLowerCase('es').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,' ').trim();

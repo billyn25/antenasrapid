@@ -18,7 +18,8 @@ const PROVINCES = {
   '37': { name: 'Salamanca', path: '/Antenas-Salamanca/' },
   '40': { name: 'Segovia', path: '/Antenas-Segovia/' },
   '42': { name: 'Soria', path: '/Antenas-Soria/' },
-  '28': { name: 'Madrid', path: '/Antenas-Madrid/' }
+  '28': { name: 'Madrid', path: '/Antenas-Madrid/' },
+  '33': { name: 'Asturias', path: '/Antenas-Asturias/' }
 };
 
 const response = await fetch(SOURCE, { headers: { 'user-agent': 'AntenasRapid-build' } });

@@ -21,7 +21,8 @@ const checks = [
   { name: 'Salamanca', route: '/Antenas-Salamanca/' },
   { name: 'Segovia', route: '/Antenas-Segovia/' },
   { name: 'Soria', route: '/Antenas-Soria/' },
-  { name: 'Madrid', route: '/Antenas-Madrid/' }
+  { name: 'Madrid', route: '/Antenas-Madrid/' },
+  { name: 'Asturias', route: '/Antenas-Asturias/' }
 ];
 
 let expectedTotal = 0;
