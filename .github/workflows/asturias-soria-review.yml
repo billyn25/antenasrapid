@@ -1,0 +1,153 @@
+name: Verificar Asturias y Soria
+on:
+  push:
+    branches: [review/asturias-soria-20261005]
+permissions:
+  contents: write
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Aplicar los cambios comprobados localmente
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import json
+          r=Path('.')
+          def replace(file,a,b):
+           p=r/file;s=p.read_text();assert s.count(a)==1,(file,s.count(a),a);p.write_text(s.replace(a,b))
+          province={
+           'type':'province','path':'/Antenas-Asturias/','name':'Asturias',
+           'title':'Antenistas en Asturias · Porteros automáticos y videoporteros | 641 589 394',
+           'heading':'Antenas y porteros en Asturias',
+           'lead':'Instalación y reparación de antenas TDT, parabólicas, TDT por satélite HD, amplificación, porteros automáticos, videoporteros y cobertura móvil en los municipios de Asturias.',
+           'intro':'Para preparar un aviso en Asturias, indica el concejo y la localidad donde está el inmueble. Comenta si se trata de una vivienda, una comunidad o un negocio y si el fallo afecta a un televisor, a varias tomas o a otros vecinos.',
+           'focus':'Preparar el servicio en tu concejo de Asturias',
+           'advice':'Indica concejo, localidad y síntoma observado. En televisión, explica si faltan todos los canales o solo algunos. En un portero, distingue entre llamada, audio, imagen y apertura. La disponibilidad y las condiciones se confirman al contactar.',
+           'towns':[],'source':'dataset-municipal-publico','evidence':'generated-province-preview'
+          }
+          js=json.dumps(province,ensure_ascii=False,indent=2)
+          js='\n'.join('  '+l for l in js.splitlines())
+          replace('scripts/prepare-provinces.mjs','\n  }\n];','\n  },\n'+js+'\n];')
+          replace('scripts/fetch-municipalities.mjs',"  '28': { name: 'Madrid', path: '/Antenas-Madrid/' }", "  '28': { name: 'Madrid', path: '/Antenas-Madrid/' },\n  '33': { name: 'Asturias', path: '/Antenas-Asturias/' }")
+          replace('scripts/audit-extra-provinces.mjs',"  { name: 'Madrid', route: '/Antenas-Madrid/' }", "  { name: 'Madrid', route: '/Antenas-Madrid/' },\n  { name: 'Asturias', route: '/Antenas-Asturias/' }")
+          replace('scripts/finalize-public-copy.mjs',"'Antenas-Asturias':['Gijón','Oviedo','Avilés','Siero','Langreo','Mieres']", "'Antenas-Asturias':['Gijón','Oviedo','Avilés','Siero','Langreo','Mieres','Llanes','Ribadesella']")
+          replace('scripts/audit-madrid-postal.mjs',"assert.equal(manifest.length,3227,'Deben conservarse las 3048 localidades anteriores');", "assert.equal(manifest.length,3305,'Deben conservarse las 3227 localidades anteriores y añadirse 78 de Asturias');")
+          replace('scripts/audit-madrid-postal.mjs',"assert.equal(new Set(manifest.map(p=>p.province)).size,16);", "assert.equal(new Set(manifest.map(p=>p.province)).size,17);")
+          replace('scripts/audit-madrid-postal.mjs','3227 localidades en 16 provincias.','3305 localidades en 17 provincias.')
+          p=r/'tests/site.test.mjs';s=p.read_text().replace('diecinueve páginas base','veinte páginas base').replace('pages.length,19','pages.length,20').replace("p.type==='province').length,16", "p.type==='province').length,17").replace("build(dir,{SITE_MODE:'preview'}),19","build(dir,{SITE_MODE:'preview'}),20").replace('build(dir,env),19','build(dir,env),20');p.write_text(s)
+          p=r/'tests/identity.test.mjs';s=p.read_text().replace('las rutas base permanecen y se añade solo el índice de Madrid','las rutas base permanecen y se añaden los índices de Madrid y Asturias').replace("p.path !== '/Antenas-Madrid/'", "!['/Antenas-Madrid/','/Antenas-Asturias/'].includes(p.path)").replace('originalRoutes.length + 1','originalRoutes.length + 2')
+          a="  assert.equal(pages.filter(p => p.path === '/Antenas-Madrid/' && p.type === 'province').length, 1);"
+          assert s.count(a)==1;s=s.replace(a,a+"\n  assert.equal(pages.filter(p => p.path === '/Antenas-Asturias/' && p.type === 'province').length, 1);");p.write_text(s)
+          p=r/'content/pages.json';data=json.loads(p.read_text());assert not any(x['path']=='/Antenas-Asturias/' for x in data)
+          data.insert(next(i for i,x in enumerate(data) if x['type']=='town'),province)
+          p.write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n')
+          PY
+          cat > tests/asturias-soria.test.mjs <<'JS'
+          import test from 'node:test';
+          import assert from 'node:assert/strict';
+          import fs from 'node:fs';
+          import { pages, renderPage, site } from '../scripts/build.mjs';
+
+          test('Asturias y Soria tienen un solo directorio y conservan los servicios de Rapid', () => {
+            for (const name of ['Asturias', 'Soria']) {
+              const matches = pages.filter(p => p.path === `/Antenas-${name}/`);
+              assert.equal(matches.length, 1, `${name}: directorio ausente o duplicado`);
+              assert.equal(matches[0].type, 'province');
+              const html = renderPage(matches[0]);
+              assert.equal((html.match(/<h1>/g) || []).length, 1);
+              assert.ok(html.includes(name) && html.includes(site.phone));
+              for (const id of ['servicios', 'porteros', 'videoporteros', 'localidades', 'preguntas']) {
+                assert.ok(html.includes(`id="${id}"`), `${name}: falta ${id}`);
+              }
+              assert.ok(html.includes('TDT por satélite HD'), `${name}: falta TDT-SAT`);
+            }
+          });
+
+          test('el inventario y la auditoría incluyen Asturias y conservan Soria, sin datos postales inventados', () => {
+            const source = fs.readFileSync('scripts/fetch-municipalities.mjs', 'utf8');
+            const audit = fs.readFileSync('scripts/audit-extra-provinces.mjs', 'utf8');
+            assert.match(source, /'33':\s*\{ name: 'Asturias', path: '\/Antenas-Asturias\/' \}/);
+            assert.match(source, /'42':\s*\{ name: 'Soria', path: '\/Antenas-Soria\/' \}/);
+            for (const name of ['Asturias', 'Soria']) assert.ok(audit.includes(`route: '/Antenas-${name}/'`));
+            assert.equal(JSON.parse(fs.readFileSync('content/postal-codes-madrid.json', 'utf8')).provinceId, '28');
+          });
+          JS
+          mkdir -p docs
+          cat > docs/asturias-soria.md <<'MD'
+          # Revisión de Asturias y Soria — 5 de octubre de 2026
+
+          Base revisada: main, commit 7782ffdbbf04ed3c7df282b4a364ea3f050d4c03.
+
+          Soria ya estaba completa: 183 municipios, directorio /Antenas-Soria/ y sitemap-soria.xml con 184 URLs. No se duplica ni se regeneran rutas diferentes.
+
+          Asturias faltaba en la selección municipal y en los directorios. Se incorpora el identificador provincial 33 con los 78 municipios/concejos del mismo dataset fijado que utiliza el proyecto. Se añade /Antenas-Asturias/, una página por municipio y sitemap-asturias.xml con 79 URLs, incluido en el índice principal. La portada muestra ocho destacados y doce adicionales en el desplegable, con enlace al directorio completo.
+
+          Total: 3305 municipios en 17 provincias. Se conservan teléfono 641 589 394, dominio, servicios (incluido TDT por satélite HD) y códigos postales de Madrid. No se añaden códigos postales no contrastados para Asturias o Soria. El hero fotográfico y la galería siguen limitados a la portada y Madrid; no se extienden a otras provincias.
+
+          Validación local: 54 pruebas unitarias y build de producción completo, usando copias del dataset fijado y de las imágenes del build de referencia. Comparación de las 3227 páginas municipales anteriores: head y contenido principal idénticos; solo se amplía la navegación provincial. Sitemaps anteriores, recursos, robots y cabeceras idénticos. Directorios de Madrid y Soria: head y contenido principal conservados.
+
+          Renderizado local del HTML/CSS/JS generado en Chromium a 320, 390 y 1440 píxeles: 15 escenarios sobre Asturias, Llanes, Soria, Almazán y Coslada; búsqueda, preguntas desplegables, conservación del hero y galería de Madrid, sin desbordamientos horizontales. Esta comprobación no certifica el despliegue público de Netlify.
+          MD
+          python3 - <<'PY'
+          import subprocess,json
+          expected={
+           'content/pages.json':'7e1c29b368be1e0a3e27cc6c155160da544fc01c',
+           'docs/asturias-soria.md':'aa7135dc6f9dd1bce5812ec380ce5d464d973544',
+           'scripts/audit-extra-provinces.mjs':'346c41009a802aad617be30c0f25580e6d33e05a',
+           'scripts/audit-madrid-postal.mjs':'d4913abea285261ce7feb1013494eaa5fd6b8cff',
+           'scripts/fetch-municipalities.mjs':'f0fdc9355176d44736ee5ae46c35f7033e2d9008',
+           'scripts/finalize-public-copy.mjs':'10d263c5ad641e873a58b1ab028b39baf9da08a5',
+           'scripts/prepare-provinces.mjs':'b1fcd25dc8189cb221dd0b3021c6f24d15f68970',
+           'tests/asturias-soria.test.mjs':'66ba8bc957dfa529619029d16769d5a2d2023452',
+           'tests/identity.test.mjs':'43cb7486436a2c419e5bcf42ad1ba8dfed255989',
+           'tests/site.test.mjs':'e6412ad42996305cadc9089fb0610e0e868a55e1'
+          }
+          for file,sha in expected.items():
+           actual=subprocess.check_output(['git','hash-object',file],text=True).strip()
+           assert actual==sha,(file,actual,sha)
+          from pathlib import Path
+          Path('/tmp/asturias-files.json').write_text(json.dumps(list(expected)))
+          print('Fuentes idénticas a las comprobadas localmente')
+          PY
+      - name: Build completo de producción y auditorías
+        run: |
+          git diff --check
+          npm run build:production
+          python3 - <<'PY'
+          import json,re
+          from pathlib import Path
+          root=Path('dist');m=json.loads((root/'local-pages-manifest.json').read_text())
+          assert len(m)==3305
+          for name,count in [('Asturias',78),('Soria',183)]:
+           rows=[p for p in m if p['province']==name];assert len(rows)==count
+           directory=(root/f'Antenas-{name}/index.html').read_text()
+           xml=(root/f'sitemaps/sitemap-{name.lower()}.xml').read_text()
+           assert xml.count('<loc>')==count+1
+           for p in rows:
+            assert f'href="{p["path"]}"' in directory
+            assert 'https://www.antenasrapid.com'+p['path'] in xml
+            h=(root/p['path'].lstrip('/')).read_text()
+            assert 'TDT por satélite HD' in h and 'content="index,follow"' in h
+            assert '<section class="section wrap faq" id="preguntas">' in h
+           assert f'/sitemaps/sitemap-{name.lower()}.xml' in (root/'sitemap.xml').read_text()
+          print('ASTURIAS/SORIA OK: 78/183 municipios; sitemaps 79/184 URLs; 3305 municipios en 17 provincias')
+          PY
+      - name: Guardar únicamente las fuentes verificadas
+        run: |
+          python3 - <<'PY'
+          import json,subprocess
+          from pathlib import Path
+          files=json.loads(Path('/tmp/asturias-files.json').read_text())
+          subprocess.run(['git','add','--',*files],check=True)
+          PY
+          git diff --cached --check
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Añade Asturias con 78 municipios y conserva Soria y Madrid'
+          git push origin HEAD:review/asturias-soria-20261005
