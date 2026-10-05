@@ -91,6 +91,20 @@ const extras = [
     intro: 'Antenas Rapid organiza el servicio en Soria por localidad. Una revisión puede centrarse en recepción, amplificación, distribución, cableado, satélite o sistemas de portero según el síntoma comunicado.',
     focus: 'Concretar el problema antes de la revisión', advice: 'Indica municipio, tipo de instalación y qué ha dejado de funcionar. En instalaciones comunitarias, comunica si el problema afecta también a otras viviendas.',
     towns: [], source: 'dataset-municipal-publico', evidence: 'generated-province-preview'
+  },
+  {
+    "type": "province",
+    "path": "/Antenas-Asturias/",
+    "name": "Asturias",
+    "title": "Antenistas en Asturias · Porteros automáticos y videoporteros | 641 589 394",
+    "heading": "Antenas y porteros en Asturias",
+    "lead": "Instalación y reparación de antenas TDT, parabólicas, TDT por satélite HD, amplificación, porteros automáticos, videoporteros y cobertura móvil en los municipios de Asturias.",
+    "intro": "Para preparar un aviso en Asturias, indica el concejo y la localidad donde está el inmueble. Comenta si se trata de una vivienda, una comunidad o un negocio y si el fallo afecta a un televisor, a varias tomas o a otros vecinos.",
+    "focus": "Preparar el servicio en tu concejo de Asturias",
+    "advice": "Indica concejo, localidad y síntoma observado. En televisión, explica si faltan todos los canales o solo algunos. En un portero, distingue entre llamada, audio, imagen y apertura. La disponibilidad y las condiciones se confirman al contactar.",
+    "towns": [],
+    "source": "dataset-municipal-publico",
+    "evidence": "generated-province-preview"
   }
 ];
 

@@ -35,16 +35,17 @@ test('porteros y videoporteros: menú, sección y fichas separadas', () => {
     assert.ok(html.includes('<h3>Videoporteros</h3>'));
   }
 });
-test('las rutas base permanecen y se añade solo el índice de Madrid', () => {
+test('las rutas base permanecen y se añaden los índices de Madrid y Asturias', () => {
   const originalRoutes = [
     '/', '/Antenas-Alava/', '/Antenas-Bizkaia/', '/Antenas-Burgos/', '/Antenas-Cantabria/', '/Antenas-Guipuzcoa/',
     '/Antenas-Navarra/', '/Antenas-La-Rioja/', '/Antenas-Leon/', '/Antenas-Valladolid/', '/Antenas-Zamora/',
     '/Antenas-Avila/', '/Antenas-Palencia/', '/Antenas-Salamanca/', '/Antenas-Segovia/', '/Antenas-Soria/',
     '/Antenas-Bizkaia/bilbao.html', '/Antenas-Burgos/lerma.html'
   ];
-  assert.deepEqual(pages.filter(p => p.path !== '/Antenas-Madrid/').map(p => p.path), originalRoutes);
-  assert.equal(pages.length, originalRoutes.length + 1);
+  assert.deepEqual(pages.filter(p => !['/Antenas-Madrid/','/Antenas-Asturias/'].includes(p.path)).map(p => p.path), originalRoutes);
+  assert.equal(pages.length, originalRoutes.length + 2);
   assert.equal(pages.filter(p => p.path === '/Antenas-Madrid/' && p.type === 'province').length, 1);
+  assert.equal(pages.filter(p => p.path === '/Antenas-Asturias/' && p.type === 'province').length, 1);
 });
 test('identidad grafito y rojo, sin la ilustración ni estilos azules anteriores', () => {
   const css = fs.readFileSync('src/site.css', 'utf8');
