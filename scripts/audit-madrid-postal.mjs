@@ -16,6 +16,10 @@ for(const p of locals){
   const html=fs.readFileSync(path.join(root,p.path.slice(1)),'utf8'),row=rows.get(String(p.municipioId));
   assert.ok(row,p.path+': falta dato postal');
   assert.equal((html.match(/id="codigos-postales"/g)||[]).length,1);
+  assert.equal((html.match(/id="preguntas"/g)||[]).length,1,p.path+': falta o se duplica el ancla de preguntas');
+  const faq=html.match(/<section class="section wrap faq" id="preguntas">([\s\S]*?)<\/section>/);
+  assert.ok(faq && /<details[\s>]/.test(faq[1]),p.path+': preguntas sin contenedor CSS o sin desplegables');
+  assert.equal((html.match(/<section\b/g)||[]).length,(html.match(/<\/section>/g)||[]).length,p.path+': secciones HTML desequilibradas');
   const codes=[...html.matchAll(/class="postal-code">(\d{5})<\/span>/g)].map(x=>x[1]);
   assert.deepEqual(codes,row.postalCodes,p.path+': códigos en HTML incoherentes');
   assert.ok(directory.includes(`data-postal-codes="${codes.join(' ')}" data-municipio-id="${row.id}"`));

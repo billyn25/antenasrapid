@@ -31,7 +31,8 @@ export function enrichMadridTown(html, page, row, data) {
   if (html.includes('id="codigos-postales"')) throw new Error('El bloque postal ya está insertado');
   const marker = '<section class="section wrap faq" id="preguntas">';
   assert.equal(html.split(marker).length, 2, `${page.path}: punto de inserción postal ausente o duplicado`);
-  return html.replace(marker, postalBlock(page, row, data)).replace('</head>', '<link rel="stylesheet" href="/assets/madrid-postal.css"></head>');
+  // Insertar antes de la FAQ sin eliminar su contenedor, clases CSS ni ancla.
+  return html.replace(marker, postalBlock(page, row, data) + marker).replace('</head>', '<link rel="stylesheet" href="/assets/madrid-postal.css"></head>');
 }
 export function enrichMadridDirectory(html, locals, lookup, data) {
   let output = html;

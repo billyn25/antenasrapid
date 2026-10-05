@@ -24,3 +24,18 @@ test('no se modifican otras provincias ni los metadatos de las páginas de Madri
  assert.ok(updated.includes('<title>Se conserva</title>'));assert.equal((updated.match(/<h1>/g)||[]).length,1);
  assert.throws(()=>enrichMadridTown(updated,{path:'/Antenas-Madrid/alcala-de-henares.html'},row,data),/ya está/);
 });
+
+test('el bloque postal conserva la sección FAQ completa, sus estilos y su ancla en todos los municipios',()=>{
+ const data=load();
+ for(const row of data.municipalities){
+  const page={path:`/Antenas-Madrid/prueba-${row.id}.html`,name:row.name};
+  const faq='<section class="section wrap faq" id="preguntas"><span class="eyebrow">Antes de llamar</span><h2>Preguntas prácticas</h2><details><summary>¿Qué datos facilito?</summary><p>Localidad y tipo de instalación.</p></details></section>';
+  const contact='<section class="section wrap" id="contacto"><a href="tel:+34641589394">Llamar 641 589 394</a></section>';
+  const html=`<html><head><title>Se conserva</title></head><body><main>${faq}${contact}</main></body></html>`;
+  const updated=enrichMadridTown(html,page,row,data);
+  assert.ok(updated.includes(faq),`${row.name}: se ha perdido el contenedor o el contenido de preguntas`);
+  assert.equal((updated.match(/id="preguntas"/g)||[]).length,1);
+  assert.equal((updated.match(/<section\b/g)||[]).length,(updated.match(/<\/section>/g)||[]).length);
+  assert.equal(updated.replace(postalBlock(page,row,data),'').replace('<link rel="stylesheet" href="/assets/madrid-postal.css">',''),html,`${row.name}: la inserción postal altera el HTML anterior`);
+ }
+});
