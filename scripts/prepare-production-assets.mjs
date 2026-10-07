@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import rawPages from '../content/pages.json' with { type: 'json' };
 
 if (process.env.CONFIRM_PRODUCTION_PREP !== '1') {
   throw new Error('Preparación de producción bloqueada. Usa CONFIRM_PRODUCTION_PREP=1 solo en el cambio final o en la auditoría aislada.');
@@ -91,6 +92,16 @@ if (fs.existsSync(headersFile)) {
   fs.writeFileSync(headersFile, headers);
 }
 
+// Redirecciones 301 desde las URLs históricas (mayúsculas/.html) a las URLs canónicas limpias.
+const redirects = [];
+for (const page of rawPages) {
+  if (!page.path || page.path === '/') continue;
+  const clean = new URL(page.path.replace(/^\/Antenas-([^/]+)\//i, (_,p)=>'/antenas-'+p.toLowerCase()+'/').replace(/\.html$/i,'').replace(/([^/])$/, '$1/'), domain).pathname;
+  const legacy = page.path;
+  if (legacy !== clean) redirects.push(`${legacy} ${clean} 301`);
+}
+const redirectsFile = path.join(root, '_redirects');
+fs.writeFileSync(redirectsFile, [...new Set(redirects)].join('\n') + (redirects.length ? '\n' : ''));
 const previewManifest = path.join(root, 'preview-manifest.json');
 if (fs.existsSync(previewManifest)) fs.rmSync(previewManifest);
 
