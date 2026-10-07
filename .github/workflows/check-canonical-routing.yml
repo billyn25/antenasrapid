@@ -1,11 +1,11 @@
-name: Diagnostico HTTP y canonicas
+name: Verificar correccion de canonicas
 on:
   push:
     branches: [review/canonical-routing-20261007]
 permissions:
-  contents: read
+  contents: write
 jobs:
-  inspect:
+  verify:
     runs-on: ubuntu-latest
     timeout-minutes: 6
     steps:
@@ -13,69 +13,88 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Guardar fuentes y comprobar respuestas HTTP reales
+      - name: Integrar referencias canonicas sin cambiar ficheros publicados
         run: |
-          mkdir -p .quality/live
-          git ls-tree -r HEAD > .quality/source-tree.txt
-          tar --exclude=.git --exclude=.quality -czf .quality/rapid-source.tar.gz .
-          python3 -u - <<'PY'
-          import urllib.request,urllib.error,urllib.parse,json,concurrent.futures,re,hashlib,xml.etree.ElementTree as ET
+          mkdir -p .quality
+          python3 - <<'PY'
           from pathlib import Path
-          class NoRedirect(urllib.request.HTTPRedirectHandler):
-            def redirect_request(self,*args):return None
-          def get(url):
-            chain=[];current=url
-            for i in range(7):
-              try:
-                request=urllib.request.Request(current,headers={'User-Agent':'Mozilla/5.0 (compatible; OwnerURLAudit/1.0)'})
-                try:r=urllib.request.build_opener(NoRedirect).open(request,timeout=18)
-                except urllib.error.HTTPError as e:r=e
-                with r:body=r.read();status=r.code;headers=dict(r.headers)
-                loc=next((v for k,v in headers.items() if k.lower()=='location'),None)
-                chain.append({'url':current,'status':status,'location':loc,'robotsHeader':next((v for k,v in headers.items() if k.lower()=='x-robots-tag'),None)})
-                if status in [301,302,303,307,308] and loc:
-                  target=urllib.parse.urljoin(current,loc)
-                  if target in [x['url'] for x in chain]:return {'requested':url,'chain':chain,'error':'redirect loop'}
-                  current=target;continue
-                txt=body.decode('utf8','replace')
-                key=hashlib.sha256(url.encode()).hexdigest()[:16]
-                Path('.quality/live',key+'.txt').write_text(txt)
-                return {'requested':url,'final':current,'status':status,'chain':chain,'canonical':re.findall(r'<link[^>]*rel=[\"\']canonical[\"\'][^>]*>',txt),'robots':re.findall(r'<meta[^>]*name=[\"\']robots[\"\'][^>]*>',txt),'title':re.findall(r'<title>(.*?)</title>',txt),'h1':re.findall(r'<h1[^>]*>(.*?)</h1>',txt),'bytes':len(body),'bodyFile':key+'.txt'}
-              except Exception as e:return {'requested':url,'chain':chain,'error':str(e)}
-            return {'requested':url,'chain':chain,'error':'too many redirects'}
-          rapid='https://www.antenasrapid.com';cerca='https://antenistacerca.es'
-          urls=[rapid+'/',rapid+'/Antenas-Cantabria/',rapid+'/Antenas-Madrid/',rapid+'/robots.txt',rapid+'/sitemap.xml',cerca+'/',cerca+'/robots.txt',cerca+'/sitemap.xml','http://antenistacerca.es/','https://www.antenistacerca.es/',cerca+'/madrid/coslada/',cerca+'/burgos/lerma/',cerca+'/bizkaia/galdakao/']
-          for t in ['corpa','alcobendas','getafe','belmonte-de-tajo','cabanillas-de-la-sierra','torrejon-de-la-calzada','pezuela-de-las-torres','lozoya','hoyo-de-manzanares']:
-            urls += [rapid+'/Antenas-Madrid/'+t+'.html',rapid+'/antenas-madrid/'+t,rapid+'/antenas-madrid/'+t+'/']
-          with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:report=list(pool.map(get,urls))
-          children=[]
-          for row in report:
-            if row.get('status')==200 and row['requested'].endswith('/sitemap.xml'):
-              xml=ET.parse(Path('.quality/live',row['bodyFile']))
-              children += [e.text for e in xml.findall('.//{*}sitemap/{*}loc')]
-          with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:sub=list(pool.map(get,children))
-          report+=sub;samples=[];counts=[]
-          for row in sub:
-            if row.get('status')==200:
-              locations=[e.text for e in ET.parse(Path('.quality/live',row['bodyFile'])).findall('.//{*}url/{*}loc')]
-              counts.append({'sitemap':row['requested'],'urls':len(locations),'first':locations[:2]})
-              if locations:samples.append(locations[len(locations)//2])
-          with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:report+=list(pool.map(get,samples))
-          Path('.quality/live-http.json').write_text(json.dumps(report,ensure_ascii=False,indent=2))
-          Path('.quality/sitemap-counts.json').write_text(json.dumps(counts,ensure_ascii=False,indent=2))
-          print(json.dumps({'checked':len(report),'sitemaps':counts,'examples':report[:16]},ensure_ascii=False))
-          url='https://codeload.github.com/billyn25/Antenistacerca/tar.gz/1d97ad59f665727aef8fb40df351ea2e892b883d'
-          with urllib.request.urlopen(url,timeout=40) as r:Path('.quality/cerca-source.tar.gz').write_bytes(r.read())
+          import json
+          def change(name,a,b):
+            p=Path(name);s=p.read_text();assert s.count(a)==1,(name,a,s.count(a));p.write_text(s.replace(a,b))
+          change('scripts/prepare-production-assets.mjs',"import path from 'node:path';","import path from 'node:path';\nimport {normalizeCanonicalHtml} from './canonical-urls.mjs';")
+          change('scripts/prepare-production-assets.mjs','const urls = [];','normalizeCanonicalHtml(root);\nconst urls = [];')
+          change('scripts/audit-production-package.mjs',"import path from 'node:path';","import path from 'node:path';\nimport {canonicalUrl} from './canonical-urls.mjs';")
+          change('scripts/audit-production-package.mjs','const exact = `href="${page.path}"`;','const exact = `href="${canonicalUrl(page.path)}"`;')
+          change('scripts/audit-production-package.mjs','home.includes(`href="/${segment}/"`)','home.includes(`href="${canonicalUrl(`/${segment}/`)}"`)')
+          change('scripts/audit-madrid-postal.mjs',"import assert from 'node:assert/strict';","import assert from 'node:assert/strict';\nimport {canonicalUrl} from './canonical-urls.mjs';")
+          change('scripts/audit-madrid-postal.mjs',"urls.includes('https://www.antenasrapid.com'+page.path)","urls.includes(canonicalUrl('https://www.antenasrapid.com'+page.path))")
+          change('scripts/serve.mjs',"import path from 'node:path';","import path from 'node:path';\nimport {publicRouteMap} from './canonical-urls.mjs';")
+          change('scripts/serve.mjs','const mime=','const publicRoutes=publicRouteMap(root);\nconst mime=')
+          change('scripts/serve.mjs','if(fs.existsSync(file)&&fs.statSync(file).isDirectory())','if(!fs.existsSync(file)&&publicRoutes.has(pathname))file=publicRoutes.get(pathname);\n  if(fs.existsSync(file)&&fs.statSync(file).isDirectory())')
+          p=Path('package.json');d=json.loads(p.read_text());d['scripts']['audit:production']+=' && node scripts/audit-canonical-urls.mjs';p.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n')
           PY
-      - name: Construir referencia de produccion de Rapid
+          git diff --check
+      - name: Build completo y auditorias
         run: |
-          npm run build:production > .quality/baseline-build.log 2>&1
-          tar -czf .quality/rapid-baseline-dist.tar.gz dist
-          tar -czf .quality/rapid-cache.tar.gz .cache
+          npm run build:production > .quality/build.log 2>&1
+          cp -a dist .quality/first-dist
+          CONFIRM_PRODUCTION_PREP=1 npm run prepare:production >> .quality/build.log 2>&1
+          npm run audit:production >> .quality/build.log 2>&1
+          diff -qr dist .quality/first-dist
+          tail -n 20 .quality/build.log
+      - name: Preparar navegador
+        run: |
+          python3 -m pip install playwright==1.51.0
+          python3 -m playwright install --with-deps chromium
+      - name: Probar navegacion canonica y buscador Madrid
+        run: |
+          node scripts/serve.mjs > .quality/server.log 2>&1 &
+          python3 - <<'PY'
+          import time,json,urllib.request
+          from pathlib import Path
+          from playwright.sync_api import sync_playwright
+          for i in range(30):
+            try:urllib.request.urlopen('http://127.0.0.1:4173/',timeout=1);break
+            except Exception:time.sleep(.1)
+          checks=[]
+          with sync_playwright() as p:
+            b=p.chromium.launch(headless=True)
+            for width in [390,1440]:
+              c=b.new_context(viewport={'width':width,'height':844});c.route('https://**/*',lambda r:r.abort());page=c.new_page();page.set_default_timeout(5000)
+              for route in ['/','/antenas-cantabria/','/antenas-madrid/','/antenas-madrid/corpa','/antenas-madrid/alcobendas','/antenas-burgos/lerma']:
+                r=page.goto('http://127.0.0.1:4173'+route,wait_until='domcontentloaded');assert r.status==200,(route,r.status)
+                assert page.locator('h1').count()==1
+                assert page.locator('link[rel="canonical"]').get_attribute('href')=='https://www.antenasrapid.com'+route
+                assert page.evaluate('document.documentElement.scrollWidth<=innerWidth+1'),(width,route)
+                if route=='/antenas-madrid/':
+                  page.locator('input[type="search"]').first.fill('28801');page.wait_for_timeout(200)
+                  visible=page.locator('.madrid-service-link:visible');assert visible.count()==1
+                  href=visible.first.get_attribute('href');assert 'alcala-de-henares' in href
+                  assert page.goto('http://127.0.0.1:4173'+href,wait_until='domcontentloaded').status==200
+                checks.append({'width':width,'route':route,'passed':True})
+              c.close()
+            b.close()
+          Path('.quality/browser.json').write_text(json.dumps(checks,indent=2));print('NAVEGACION OK',len(checks))
+          PY
+      - name: Guardar solo fuentes verificadas
+        run: |
+          git add scripts/prepare-production-assets.mjs scripts/audit-production-package.mjs scripts/audit-madrid-postal.mjs scripts/serve.mjs package.json
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Integra canónicas, sitemaps y enlaces con los destinos HTTP verificados'
+          git push origin HEAD:review/canonical-routing-20261007
+          git rev-parse HEAD > .quality/verified-commit.txt
+          git ls-tree -r HEAD > .quality/verified-tree.txt
+          tar --exclude=.git --exclude=.quality --exclude=dist -czf .quality/verified-source.tar.gz .
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: canonical-routing-baseline
-          path: .quality/
+          name: canonical-routing-verified
+          path: |
+            .quality/build.log
+            .quality/browser.json
+            .quality/verified-commit.txt
+            .quality/verified-tree.txt
+            .quality/verified-source.tar.gz
           include-hidden-files: true
           retention-days: 7
