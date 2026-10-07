@@ -5,6 +5,27 @@ const pages = JSON.parse(fs.readFileSync(file, 'utf8'));
 
 const extras = [
   {
+    type: 'province', path: '/Antenas-Toledo/', name: 'Toledo',
+    title: 'Antenistas en Toledo · Reparación de antenas y porteros | 641 589 394',
+    heading: 'Antenas y porteros en Toledo',
+    lead: 'Reparación de antenas TDT, parabólicas, amplificadores, porteros automáticos y videoporteros en los municipios de Toledo.',
+    intro: 'Consulta la localidad para describir una avería de recepción de televisión, distribución de señal, antena colectiva, portero o videoportero. La disponibilidad del desplazamiento se confirma al contactar.',
+    focus: 'Averías de antena y portero por municipio',
+    advice: 'Indica pueblo, tipo de vivienda y si el problema afecta a un televisor, varias tomas o una comunidad. En porteros, explica si falla la llamada, el audio, la imagen o la apertura.',
+    towns: [], source: 'dataset-municipal-publico', evidence: 'generated-province-preview'
+  },
+  {
+    type: 'province', path: '/Antenas-Guadalajara/', name: 'Guadalajara',
+    title: 'Antenistas en Guadalajara · TDT y videoporteros | 641 589 394',
+    heading: 'Reparación de antenas y porteros en Guadalajara',
+    lead: 'Servicio de reparación e instalación de antenas TDT, parabólicas, amplificación, porteros automáticos y videoporteros en pueblos de Guadalajara.',
+    intro: 'Selecciona el municipio donde se encuentra la instalación. Para orientar la revisión conviene distinguir una pérdida de señal, un problema de amplificación o cableado y una avería del sistema de portero.',
+    focus: 'Diagnóstico de antenas y sistemas de acceso',
+    advice: 'Indica la localidad y los síntomas: canales que faltan, fallos al llover, ausencia de señal o avería de llamada, imagen o apertura del portero. Consulta la disponibilidad antes de organizar la visita.',
+    towns: [], source: 'dataset-municipal-publico', evidence: 'generated-province-preview'
+  },
+
+  {
     type: 'province', path: '/Antenas-Madrid/', name: 'Madrid',
     title: 'Antenistas en la Comunidad de Madrid | 641 589 394', heading: 'Antenas y porteros en la Comunidad de Madrid',
     lead: 'Instalación y reparación de antenas TDT, parabólicas, TDT por satélite HD, porteros automáticos y videoporteros. Busca Madrid capital o tu municipio y consulta el servicio.',

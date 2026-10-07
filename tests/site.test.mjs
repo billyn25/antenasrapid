@@ -7,7 +7,7 @@ import {esc,pages,site,routeFile,renderPage,townIndex,build} from '../scripts/bu
 test('mantiene mayúsculas, carpetas y .html',()=>{assert.equal(routeFile('/Antenas-Burgos/lerma.html'),'Antenas-Burgos/lerma.html');assert.equal(routeFile('/Antenas-Bizkaia/'),'Antenas-Bizkaia/index.html');assert.equal(routeFile('/'),'index.html');});
 test('rechaza rutas fuera del proyecto',()=>{for(const p of ['/../secret','/a?b','/a\\b'])assert.throws(()=>routeFile(p));});
 test('escapa texto y atributos',()=>assert.equal(esc('<a "x"> &'), '&lt;a &quot;x&quot;&gt; &amp;'));
-test('veinte páginas base separadas sin importar otras localidades',()=>{assert.equal(pages.length,20);assert.equal(pages.filter(p=>p.type==='province').length,17);assert.equal(pages.filter(p=>p.type==='town').length,2);});
+test('veintidós páginas base separadas sin importar otras localidades',()=>{assert.equal(pages.length,22);assert.equal(pages.filter(p=>p.type==='province').length,19);assert.equal(pages.filter(p=>p.type==='town').length,2);});
 test('preview noindex sin analítica en todas las páginas',()=>{for(const p of pages){const h=renderPage(p);assert.match(h,/noindex,nofollow/);assert.ok(!/googletagmanager|google-analytics|G-W8L23NJLP6|antenistacerca/i.test(h));assert.equal((h.match(/<h1>/g)||[]).length,1);assert.ok(h.includes(site.tel));}});
 test('cada municipio de la selección está en HTML sin JavaScript',()=>{for(const p of pages.filter(p=>p.type==='province'))for(const n of p.towns)assert.ok(townIndex(p).includes(esc(n)));});
 test('enlaces locales conocidos se conservan',()=>{assert.match(townIndex(pages.find(p=>p.name==='Bizkaia')),/href="\/Antenas-Bizkaia\/bilbao.html"/);assert.match(townIndex(pages.find(p=>p.name==='Burgos')),/href="\/Antenas-Burgos\/lerma.html"/);});
@@ -26,7 +26,7 @@ test('no permite una preview con URL o DEPLOY_PRIME_URL del dominio vivo',()=>{
 test('crea HTML real, 404 y cabeceras sin sitemap incompleto',()=>{
  const dir=fs.mkdtempSync(path.join(os.tmpdir(),'rapid-test-'));
  try{
-  assert.equal(build(dir,{SITE_MODE:'preview'}),20);
+  assert.equal(build(dir,{SITE_MODE:'preview'}),22);
   assert.ok(fs.existsSync(path.join(dir,'404.html')));
   assert.match(fs.readFileSync(path.join(dir,'_headers'),'utf8'),/noindex/);
   assert.ok(!fs.existsSync(path.join(dir,'sitemap.xml')));

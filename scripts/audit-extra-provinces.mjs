@@ -22,7 +22,9 @@ const checks = [
   { name: 'Segovia', route: '/Antenas-Segovia/' },
   { name: 'Soria', route: '/Antenas-Soria/' },
   { name: 'Madrid', route: '/Antenas-Madrid/' },
-  { name: 'Asturias', route: '/Antenas-Asturias/' }
+  { name: 'Asturias', route: '/Antenas-Asturias/' },
+  { name: 'Toledo', route: '/Antenas-Toledo/' },
+  { name: 'Guadalajara', route: '/Antenas-Guadalajara/' }
 ];
 
 let expectedTotal = 0;
