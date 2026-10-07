@@ -1,0 +1,81 @@
+name: Diagnostico HTTP y canonicas
+on:
+  push:
+    branches: [review/canonical-routing-20261007]
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Guardar fuentes y comprobar respuestas HTTP reales
+        run: |
+          mkdir -p .quality/live
+          git ls-tree -r HEAD > .quality/source-tree.txt
+          tar --exclude=.git --exclude=.quality -czf .quality/rapid-source.tar.gz .
+          python3 -u - <<'PY'
+          import urllib.request,urllib.error,urllib.parse,json,concurrent.futures,re,hashlib,xml.etree.ElementTree as ET
+          from pathlib import Path
+          class NoRedirect(urllib.request.HTTPRedirectHandler):
+            def redirect_request(self,*args):return None
+          def get(url):
+            chain=[];current=url
+            for i in range(7):
+              try:
+                request=urllib.request.Request(current,headers={'User-Agent':'Mozilla/5.0 (compatible; OwnerURLAudit/1.0)'})
+                try:r=urllib.request.build_opener(NoRedirect).open(request,timeout=18)
+                except urllib.error.HTTPError as e:r=e
+                with r:body=r.read();status=r.code;headers=dict(r.headers)
+                loc=next((v for k,v in headers.items() if k.lower()=='location'),None)
+                chain.append({'url':current,'status':status,'location':loc,'robotsHeader':next((v for k,v in headers.items() if k.lower()=='x-robots-tag'),None)})
+                if status in [301,302,303,307,308] and loc:
+                  target=urllib.parse.urljoin(current,loc)
+                  if target in [x['url'] for x in chain]:return {'requested':url,'chain':chain,'error':'redirect loop'}
+                  current=target;continue
+                txt=body.decode('utf8','replace')
+                key=hashlib.sha256(url.encode()).hexdigest()[:16]
+                Path('.quality/live',key+'.txt').write_text(txt)
+                return {'requested':url,'final':current,'status':status,'chain':chain,'canonical':re.findall(r'<link[^>]*rel=[\"\']canonical[\"\'][^>]*>',txt),'robots':re.findall(r'<meta[^>]*name=[\"\']robots[\"\'][^>]*>',txt),'title':re.findall(r'<title>(.*?)</title>',txt),'h1':re.findall(r'<h1[^>]*>(.*?)</h1>',txt),'bytes':len(body),'bodyFile':key+'.txt'}
+              except Exception as e:return {'requested':url,'chain':chain,'error':str(e)}
+            return {'requested':url,'chain':chain,'error':'too many redirects'}
+          rapid='https://www.antenasrapid.com';cerca='https://antenistacerca.es'
+          urls=[rapid+'/',rapid+'/Antenas-Cantabria/',rapid+'/Antenas-Madrid/',rapid+'/robots.txt',rapid+'/sitemap.xml',cerca+'/',cerca+'/robots.txt',cerca+'/sitemap.xml','http://antenistacerca.es/','https://www.antenistacerca.es/',cerca+'/madrid/coslada/',cerca+'/burgos/lerma/',cerca+'/bizkaia/galdakao/']
+          for t in ['corpa','alcobendas','getafe','belmonte-de-tajo','cabanillas-de-la-sierra','torrejon-de-la-calzada','pezuela-de-las-torres','lozoya','hoyo-de-manzanares']:
+            urls += [rapid+'/Antenas-Madrid/'+t+'.html',rapid+'/antenas-madrid/'+t,rapid+'/antenas-madrid/'+t+'/']
+          with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:report=list(pool.map(get,urls))
+          children=[]
+          for row in report:
+            if row.get('status')==200 and row['requested'].endswith('/sitemap.xml'):
+              xml=ET.parse(Path('.quality/live',row['bodyFile']))
+              children += [e.text for e in xml.findall('.//{*}sitemap/{*}loc')]
+          with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:sub=list(pool.map(get,children))
+          report+=sub;samples=[];counts=[]
+          for row in sub:
+            if row.get('status')==200:
+              locations=[e.text for e in ET.parse(Path('.quality/live',row['bodyFile'])).findall('.//{*}url/{*}loc')]
+              counts.append({'sitemap':row['requested'],'urls':len(locations),'first':locations[:2]})
+              if locations:samples.append(locations[len(locations)//2])
+          with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:report+=list(pool.map(get,samples))
+          Path('.quality/live-http.json').write_text(json.dumps(report,ensure_ascii=False,indent=2))
+          Path('.quality/sitemap-counts.json').write_text(json.dumps(counts,ensure_ascii=False,indent=2))
+          print(json.dumps({'checked':len(report),'sitemaps':counts,'examples':report[:16]},ensure_ascii=False))
+          url='https://codeload.github.com/billyn25/Antenistacerca/tar.gz/1d97ad59f665727aef8fb40df351ea2e892b883d'
+          with urllib.request.urlopen(url,timeout=40) as r:Path('.quality/cerca-source.tar.gz').write_bytes(r.read())
+          PY
+      - name: Construir referencia de produccion de Rapid
+        run: |
+          npm run build:production > .quality/baseline-build.log 2>&1
+          tar -czf .quality/rapid-baseline-dist.tar.gz dist
+          tar -czf .quality/rapid-cache.tar.gz .cache
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: canonical-routing-baseline
+          path: .quality/
+          include-hidden-files: true
+          retention-days: 7
