@@ -48,5 +48,5 @@ for(const file of fs.readdirSync(path.join(root,'sitemaps'))){
  }
 }
 assert.equal(listed.length,indexed.size);assert.equal(new Set(listed).size,listed.length);
-assert.equal(provinces,17);assert.equal(indexed.size,3324);
+assert.equal(provinces,19);assert.equal(indexed.size,3818);
 console.log(`AUDITORÍA CANÓNICA OK: ${indexed.size} URLs indexables; ${provinces} provincias; ${checkedLinks} enlaces/anclas; sitemap, canónicas y schema coherentes; sin cambios de rutas físicas.`);
