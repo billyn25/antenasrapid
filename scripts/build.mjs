@@ -7,7 +7,9 @@ import services from '../content/services.json' with { type: 'json' };
 import { localMetadata } from './identity.mjs';
 import { doorphones } from './doorphones.mjs';
 import { brandMark } from './logo.mjs';
-const normalizeRoute = route => { if (route === '/') return route; const m = route.match(/^\/Antenas-([^/]+)\/(.*)$/i); if (!m) return route; const province = m[1].toLocaleLowerCase('es'); const rest = m[2].replace(/\.html$/i,'').replace(/\/$/,''); return `/antenas-${province}/${rest ? rest + '/' : ''}`; };\nconst pages = rawPages.map(p => ({ ...p, path: normalizeRoute(p.path), parent: p.parent ? normalizeRoute(p.parent) : p.parent }));\nexport { site, pages, rawPages, normalizeRoute };
+const normalizeRoute = route => { if (route === '/') return route; const m = route.match(/^\/Antenas-([^/]+)\/(.*)$/i); if (!m) return route; const province = m[1].toLocaleLowerCase('es'); const rest = m[2].replace(/\.html$/i,'').replace(/\/$/,''); return `/antenas-${province}/${rest ? rest + '/' : ''}`; }; 
+const pages = rawPages.map(p => ({ ...p, path: normalizeRoute(p.path), parent: p.parent ? normalizeRoute(p.parent) : p.parent }));
+export { site, pages, rawPages, normalizeRoute };
 export const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export function routeFile(route) {
   if (!route.startsWith('/') || route.includes('..') || /[?#\\]/.test(route)) throw new Error(`Ruta no válida: ${route}`);
