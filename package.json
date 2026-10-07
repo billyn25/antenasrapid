@@ -11,7 +11,7 @@
     "test": "node --test tests/*.test.mjs",
     "preview": "node scripts/serve.mjs",
     "prepare:production": "node scripts/prepare-production-assets.mjs",
-    "audit:production": "node scripts/audit-production-package.mjs && node scripts/audit-madrid-postal.mjs",
+    "audit:production": "node scripts/audit-production-package.mjs && node scripts/audit-madrid-postal.mjs && node scripts/audit-canonical-urls.mjs",
     "build:production": "ANTENASRAPID_BUILD_TARGET=production SITE_MODE=preview npm run build && CONFIRM_PRODUCTION_PREP=1 npm run prepare:production && npm run audit:production"
   }
 }
