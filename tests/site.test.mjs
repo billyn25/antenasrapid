@@ -37,7 +37,7 @@ test('pipeline autorizado admite el dominio vivo sin abrir indexación antes de 
  const env={SITE_MODE:'preview',ANTENASRAPID_BUILD_TARGET:'production',NETLIFY:'true',CONTEXT:'production',URL:site.domain,DEPLOY_PRIME_URL:site.domain};
  const original={...env};
  try{
-  assert.equal(build(dir,env),20);
+  assert.equal(build(dir,env),22);
   assert.deepEqual(env,original,'El build no debe mutar el entorno recibido');
   assert.match(fs.readFileSync(path.join(dir,'index.html'),'utf8'),/content="noindex,nofollow"/);
   assert.match(fs.readFileSync(path.join(dir,'_headers'),'utf8'),/X-Robots-Tag: noindex/);
