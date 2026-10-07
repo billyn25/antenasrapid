@@ -105,6 +105,8 @@ const services = JSON.parse(fs.readFileSync(servicesFile, 'utf8'));
 const provinceSegments = new Set(localPages.map(page => String(page.path || '').replace(/^\//, '').split('/')[0]).filter(Boolean));
 const stats = { towns: localPages.length, provinces: provinceSegments.size, services: services.length };
 const featuredByProvince={
+  'Antenas-Guadalajara':['Guadalajara','Azuqueca de Henares','Alovera','Cabanillas del Campo','Marchamalo','El Casar','Sigüenza','Molina de Aragón'],
+  'Antenas-Toledo':['Toledo','Talavera de la Reina','Illescas','Seseña','Torrijos','Ocaña','Consuegra','Sonseca'],
   'Antenas-Madrid':['Madrid','Alcalá de Henares','Móstoles','Alcorcón','Getafe','Leganés','Torrejón de Ardoz','Alcobendas'],
   'Antenas-Alava':['Vitoria-Gasteiz','Laudio / Llodio','Amurrio','Agurain / Salvatierra','Laguardia','Alegría-Dulantzi','Artziniega','Elciego'],
   'Antenas-Bizkaia':['Bilbao','Barakaldo','Getxo','Portugalete','Santurtzi','Durango','Gernika-Lumo','Mungia'],
