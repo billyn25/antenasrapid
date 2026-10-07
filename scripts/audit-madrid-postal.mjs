@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import assert from 'node:assert/strict';
+import {canonicalUrl} from './canonical-urls.mjs';
 import {validatePostalData,MADRID_ROUTE} from './madrid-postal.mjs';
 const root = path.resolve(process.env.PRODUCTION_ROOT || 'dist');
 const data=validatePostalData(JSON.parse(fs.readFileSync('content/postal-codes-madrid.json','utf8')));
@@ -31,6 +32,6 @@ for(const p of locals){
 const xml=fs.readFileSync(path.join(root,'sitemaps/sitemap-madrid.xml'),'utf8');
 const urls=[...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m=>m[1]);
 assert.equal(urls.length,180);assert.equal(new Set(urls).size,180);
-for(const page of locals)assert.ok(urls.includes('https://www.antenasrapid.com'+page.path));
+for(const page of locals)assert.ok(urls.includes(canonicalUrl('https://www.antenasrapid.com'+page.path)));
 assert.ok(fs.readFileSync(path.join(root,'sitemap.xml'),'utf8').includes('/sitemaps/sitemap-madrid.xml'));
 console.log(`AUDITORÍA MADRID OK: 179 municipios, códigos postales exactos en HTML y buscador, 180 URLs en sitemap; 3305 localidades en 17 provincias.`);

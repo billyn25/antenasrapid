@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import {canonicalUrl} from './canonical-urls.mjs';
 
 const root = path.resolve(process.env.PRODUCTION_ROOT || 'dist');
 const domain = 'https://www.antenasrapid.com';
@@ -165,7 +166,7 @@ for (const page of manifest) {
   const provinceFile = path.join(root, segment, 'index.html');
   if (!fs.existsSync(provinceFile)) throw new Error(`Falta página provincial /${segment}/`);
   const provinceHtml = fs.readFileSync(provinceFile, 'utf8');
-  const exact = `href="${page.path}"`;
+  const exact = `href="${canonicalUrl(page.path)}"`;
   const pretty = `href="${String(page.path).replace(/\.html$/, '')}"`;
   if (!provinceHtml.includes(exact) && !provinceHtml.includes(pretty)) {
     throw new Error(`/${segment}/: falta enlace a ${page.path}`);
@@ -173,7 +174,7 @@ for (const page of manifest) {
 }
 
 for (const segment of provinceSegments) {
-  if (!home.includes(`href="/${segment}/"`)) throw new Error(`Portada: falta enlace a /${segment}/`);
+  if (!home.includes(`href="${canonicalUrl(`/${segment}/`)}"`)) throw new Error(`Portada: falta enlace a /${segment}/`);
   const key = segment.replace(/^Antenas-/i, '').toLowerCase();
   if (!seenByKey.has(key)) throw new Error(`Falta sitemap provincial para ${segment}`);
 }
