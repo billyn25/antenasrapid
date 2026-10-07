@@ -9,8 +9,8 @@ const rows=new Map(data.municipalities.map(x=>[x.id,x]));
 const manifest=JSON.parse(fs.readFileSync(path.join(root,'local-pages-manifest.json'),'utf8'));
 const locals=manifest.filter(p=>p.path.startsWith(MADRID_ROUTE));
 assert.equal(locals.length,179);
-assert.equal(manifest.length,3305,'Deben conservarse las 3227 localidades anteriores y añadirse 78 de Asturias');
-assert.equal(new Set(manifest.map(p=>p.province)).size,17);
+assert.equal(manifest.length,3797,'Deben conservarse los 3305 municipios anteriores y añadirse 204 de Toledo y 288 de Guadalajara');
+assert.equal(new Set(manifest.map(p=>p.province)).size,19);
 const directory=fs.readFileSync(path.join(root,'Antenas-Madrid/index.html'),'utf8');
 assert.ok(directory.includes('Buscar municipio o código postal'));
 for(const p of locals){
@@ -34,4 +34,4 @@ const urls=[...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m=>m[1]);
 assert.equal(urls.length,180);assert.equal(new Set(urls).size,180);
 for(const page of locals)assert.ok(urls.includes(canonicalUrl('https://www.antenasrapid.com'+page.path)));
 assert.ok(fs.readFileSync(path.join(root,'sitemap.xml'),'utf8').includes('/sitemaps/sitemap-madrid.xml'));
-console.log(`AUDITORÍA MADRID OK: 179 municipios, códigos postales exactos en HTML y buscador, 180 URLs en sitemap; 3305 localidades en 17 provincias.`);
+console.log(`AUDITORÍA MADRID OK: 179 municipios, códigos postales exactos en HTML y buscador, 180 URLs en sitemap; 3797 localidades en 19 provincias.`);
