@@ -40,7 +40,7 @@ test('las rutas base permanecen y se añaden los índices de Madrid y Asturias',
     '/', '/Antenas-Alava/', '/Antenas-Bizkaia/', '/Antenas-Burgos/', '/Antenas-Cantabria/', '/Antenas-Guipuzcoa/',
     '/Antenas-Navarra/', '/Antenas-La-Rioja/', '/Antenas-Leon/', '/Antenas-Valladolid/', '/Antenas-Zamora/',
     '/Antenas-Avila/', '/Antenas-Palencia/', '/Antenas-Salamanca/', '/Antenas-Segovia/', '/Antenas-Soria/',
-    '/Antenas-Bizkaia/bilbao.html', '/Antenas-Burgos/lerma.html'
+    '/Antenas-Toledo/', '/Antenas-Guadalajara/', '/Antenas-Bizkaia/bilbao.html', '/Antenas-Burgos/lerma.html'
   ];
   assert.deepEqual(pages.filter(p => !['/Antenas-Madrid/','/Antenas-Asturias/'].includes(p.path)).map(p => p.path), originalRoutes);
   assert.equal(pages.length, originalRoutes.length + 2);
