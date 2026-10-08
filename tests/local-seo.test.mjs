@@ -49,7 +49,7 @@ test('prioridad a pueblos en portada y navegación, sin destacar capitales', () 
 });
 test('el enfoque en pueblos no borra las rutas históricas de ciudades', () => {
  assert.ok(pages.some(p=>p.path==='/Antenas-Bizkaia/bilbao.html'));
- for(const p of pages.filter(p=>p.type==='province')) assert.ok(renderPage(p).includes(`<h2>Busca tu pueblo en ${p.name}</h2>`));
+ for(const p of pages.filter(p=>p.type==='province')) assert.ok(renderPage(p).includes(`<h2>Todos los pueblos de ${p.name}</h2>`));
 });
 test('marcas y confianza están visibles sin inventar reseñas estructuradas', () => {
  for (const p of pages) {
