@@ -48,5 +48,11 @@ for(const file of fs.readdirSync(path.join(root,'sitemaps'))){
  }
 }
 assert.equal(listed.length,indexed.size);assert.equal(new Set(listed).size,listed.length);
-assert.equal(provinces,19);assert.equal(indexed.size,3818);
-console.log(`AUDITORÍA CANÓNICA OK: ${indexed.size} URLs indexables; ${provinces} provincias; ${checkedLinks} enlaces/anclas; sitemap, canónicas y schema coherentes; sin cambios de rutas físicas.`);
+const manifest=JSON.parse(fs.readFileSync(path.join(root,'local-pages-manifest.json'),'utf8'));
+const madridDistricts=JSON.parse(fs.readFileSync('content/madrid-districts.json','utf8')).districts;
+const coreIndexable=2; // portada + núcleo indexable histórico fuera de provincias/localidades
+const expectedIndexable=manifest.length+provinces+madridDistricts.length+coreIndexable;
+assert.equal(provinces,19);
+assert.equal(madridDistricts.length,21);
+assert.equal(indexed.size,expectedIndexable,`Total indexable incoherente: esperado ${expectedIndexable} = ${manifest.length} municipios + ${provinces} provincias + ${madridDistricts.length} distritos + ${coreIndexable} core`);
+console.log(`AUDITORÍA CANÓNICA OK: ${indexed.size} URLs indexables; ${provinces} provincias; ${madridDistricts.length} distritos Madrid; ${checkedLinks} enlaces/anclas; sitemap, canónicas y schema coherentes; sin cambios de rutas físicas.`);
