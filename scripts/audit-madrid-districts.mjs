@@ -11,6 +11,8 @@ assert.equal(new Set(data.districts.map(d=>d.slug)).size,21,'Distritos duplicado
 
 const province=fs.readFileSync(path.join(root,'Antenas-Madrid','index.html'),'utf8');
 const city=fs.readFileSync(path.join(root,'Antenas-Madrid','madrid.html'),'utf8');
+assert.ok(province.indexOf('id="distritos-madrid"') < province.indexOf('id="localidades"'),'Madrid: los distritos deben verse antes del directorio de municipios');
+assert.ok(province.includes('class="province-grid madrid-district-grid"'),'Madrid: los distritos deben mostrarse como tarjetas visibles');
 for(const html of [province,city]){
  assert.ok(html.includes('id="distritos-madrid"'),'Falta bloque de distritos de Madrid');
  for(const d of data.districts) assert.ok(html.includes(`href="${canonicalUrl(routeFor(d))}"`)||html.includes(`href="${routeFor(d)}"`),`Falta enlace a ${d.name}`);
