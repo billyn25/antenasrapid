@@ -31,7 +31,9 @@ for(const p of locals){
 }
 const xml=fs.readFileSync(path.join(root,'sitemaps/sitemap-madrid.xml'),'utf8');
 const urls=[...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m=>m[1]);
-assert.equal(urls.length,180);assert.equal(new Set(urls).size,180);
+const districtData=JSON.parse(fs.readFileSync('content/madrid-districts.json','utf8'));
+const expectedMadridUrls=180+districtData.districts.length;
+assert.equal(urls.length,expectedMadridUrls);assert.equal(new Set(urls).size,expectedMadridUrls);
 for(const page of locals)assert.ok(urls.includes(canonicalUrl('https://www.antenasrapid.com'+page.path)));
 assert.ok(fs.readFileSync(path.join(root,'sitemap.xml'),'utf8').includes('/sitemaps/sitemap-madrid.xml'));
-console.log(`AUDITORÍA MADRID OK: 179 municipios, códigos postales exactos en HTML y buscador, 180 URLs en sitemap; 3797 localidades en 19 provincias.`);
+console.log(`AUDITORÍA MADRID OK: 179 municipios + ${districtData.districts.length} distritos, códigos postales municipales exactos y ${expectedMadridUrls} URLs en sitemap Madrid; 3797 localidades en 19 provincias.`);
