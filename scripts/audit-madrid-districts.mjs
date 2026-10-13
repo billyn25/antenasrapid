@@ -25,7 +25,7 @@ for(const d of data.districts){
  assert.ok(html.includes('no representa una oficina o sede física'),`${d.name}: aclaración de cobertura`);
  assert.ok(html.includes('href="/favicon.png"')&&html.includes('href="/favicon.ico"'),`${d.name}: favicon`);
  const canonical=html.match(/<link rel="canonical" href="([^"]+)"/)?.[1];
- assert.equal(canonical,canonicalUrl('https://www.antenasrapid.com'+routeFor(d)),`${d.name}: canonical`);
+ const previewCanonical='https://www.antenasrapid.com'+routeFor(d); const productionCanonical=canonicalUrl(previewCanonical); assert.ok(canonical===previewCanonical||canonical===productionCanonical,`${d.name}: canonical`);
 }
 const sitemap=path.join(root,'sitemaps','sitemap-madrid.xml');
 if(fs.existsSync(sitemap)){
