@@ -70,8 +70,9 @@ for(const d of data.districts){
  fs.writeFileSync(file,page(d));
 }
 for(const route of [PROVINCE_ROUTE,CITY_ROUTE]){
- const file=path.join(ROOT,route.slice(1).replace(/\/$/,'index.html'));
- if(!fs.existsSync(file)) throw new Error('Madrid: falta página base '+route);
+ const relative=route.endsWith('/') ? path.join(route.slice(1),'index.html') : route.slice(1);
+ const file=path.join(ROOT,relative);
+ if(!fs.existsSync(file)) throw new Error('Madrid: falta página base '+route+' ('+relative+')');
  fs.writeFileSync(file,injectIndex(fs.readFileSync(file,'utf8')));
 }
 fs.writeFileSync(path.join(ROOT,'madrid-districts-report.json'),JSON.stringify({districts:21,routes:data.districts.map(routeFor),checkedOn:data.checkedOn},null,2));
