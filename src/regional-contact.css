@@ -1,0 +1,12 @@
+/* Footer-only contacts; other page layout and brand colours remain unchanged. */
+.footer .regional-contacts{min-width:0}
+.footer .regional-contact{margin:14px 0 0;padding:0;line-height:1.5}
+.footer .regional-contact+.regional-contact{margin-top:18px}
+.footer .regional-contact>strong{display:block;font-size:13px;line-height:1.5;overflow-wrap:break-word}
+.footer .regional-phone{display:block;width:fit-content;max-width:100%;padding:8px 0 6px;font-size:20px;font-weight:800;line-height:1.5;white-space:nowrap;text-decoration:none}
+.footer .regional-whatsapp{display:inline-flex;align-items:center;min-height:44px;font-size:13px;font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.footer .regional-contact a:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+@media(max-width:760px){.footer .regional-contacts{padding-block:6px 12px}}
+.footer .wrap>.regional-contacts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 30px;margin-top:22px}
+.footer .wrap>.regional-contacts>strong{grid-column:1/-1}
+@media(max-width:760px){.footer .wrap>.regional-contacts{grid-template-columns:1fr}}

@@ -1,9 +1,11 @@
-name: Verificar contacto Madrid publicado
+name: Verificar contactos regionales publicados
 on:
   push:
     branches: [main]
     paths:
       - 'scripts/**'
+      - 'src/regional-contact.css'
+      - 'tests/madrid-contact.test.mjs'
       - 'config/**'
       - 'content/**'
       - 'package.json'
@@ -25,14 +27,14 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Probar aislamiento y contacto de las 201 paginas
+      - name: Probar 695 paginas centrales y aislamiento del pie regional
         run: node --test tests/madrid-contact.test.mjs
-      - name: Comprobar Madrid en el dominio de produccion
+      - name: Comprobar contactos regionales en el dominio de produccion
         run: npm run audit:madrid:live
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: contacto-madrid-publicado
+          name: contactos-regionales-publicados
           path: .cache/madrid-contact-live.json
           include-hidden-files: true
           retention-days: 7
