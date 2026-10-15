@@ -1,0 +1,40 @@
+name: Verificar diseño distritos Madrid
+on:
+  push:
+    branches: [main]
+    paths: ['scripts/madrid-*.mjs', 'scripts/logo.mjs', 'src/**', 'content/madrid-districts.json', 'package.json', 'tests/madrid-district-design*', '.github/workflows/madrid-district-design.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: madrid-district-design-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Generar y auditar producción
+        run: npm run build:production
+        env:
+          CONTEXT: production
+          URL: https://www.antenasrapid.com
+          DEPLOY_PRIME_URL: https://www.antenasrapid.com
+      - name: Instalar navegador de comprobación
+        run: |
+          npm install --no-save --package-lock=false --ignore-scripts playwright@1.56.1
+          npx playwright install chromium
+      - name: Comprobar 21 distritos publicados, CSS, logo, teléfonos y móvil
+        run: node tests/madrid-district-design-live.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: distritos-madrid-diseno-verificado
+          path: qa/district-design/
+          retention-days: 7
