@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import {normalizeCanonicalHtml} from './canonical-urls.mjs';
+import {applyMadridContact} from './madrid-contact.mjs';
 
 if (process.env.CONFIRM_PRODUCTION_PREP !== '1') {
   throw new Error('Preparación de producción bloqueada. Usa CONFIRM_PRODUCTION_PREP=1 solo en el cambio final o en la auditoría aislada.');
@@ -31,6 +32,7 @@ function sitemapKey(url) {
   return 'core';
 }
 
+applyMadridContact(root);
 normalizeCanonicalHtml(root);
 const urls = [];
 for (const file of walk(root).filter(f => f.endsWith('.html'))) {

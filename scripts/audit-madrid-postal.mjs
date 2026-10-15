@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import assert from 'node:assert/strict';
 import {canonicalUrl} from './canonical-urls.mjs';
+import {MADRID_CONTACT,assertMadridContact} from './madrid-contact.mjs';
 import {validatePostalData,MADRID_ROUTE} from './madrid-postal.mjs';
 const root = path.resolve(process.env.PRODUCTION_ROOT || 'dist');
 const data=validatePostalData(JSON.parse(fs.readFileSync('content/postal-codes-madrid.json','utf8')));
@@ -25,7 +26,8 @@ for(const p of locals){
   assert.deepEqual(codes,row.postalCodes,p.path+': códigos en HTML incoherentes');
   assert.ok(directory.includes(`data-postal-codes="${codes.join(' ')}" data-municipio-id="${row.id}"`));
   assert.ok(html.includes('TDT por satélite HD'),p.path+': falta TDT-SAT');
-  assert.ok(html.includes('641 589 394')&&html.includes('Antenas Rapid'));
+  assert.ok(html.includes(MADRID_CONTACT.phone)&&html.includes('Antenas Rapid'));
+  assertMadridContact(html,p.path);
   assert.ok(html.includes('<meta name="robots" content="index,follow">'));
   assert.ok(!/"(?:streetAddress|postalCode)"\s*:/.test(html),'No convertir códigos del área atendida en domicilios de empresa');
 }
