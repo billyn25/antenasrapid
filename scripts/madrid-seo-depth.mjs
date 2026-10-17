@@ -24,15 +24,16 @@ export function improveMadrid(html,route){
 }
 export function applyMadridDepth(root='dist'){
  const dir=path.join(root,'Antenas-Madrid');
- let changed=0;
+ let changed=0, verified=0;
  for(const name of fs.readdirSync(dir)){
   if(!name.endsWith('.html')||name==='index.html')continue;
   const file=path.join(dir,name),before=fs.readFileSync(file,'utf8'),route='/Antenas-Madrid/'+name;
   const after=improveMadrid(before,route);
   if(after!==before){fs.writeFileSync(file,after);changed++;}
+  if(after.includes('data-madrid-seo-depth="1"'))verified++;
  }
- assert(changed>=179,'No se han reforzado los municipios de Madrid: '+changed);
- console.log('MADRID SEO: '+changed+' fichas con orientación técnica y enlaces internos.');
+ assert(verified>=200,'Faltan fichas de Madrid reforzadas: '+verified);
+ console.log('MADRID SEO: '+verified+' fichas verificadas; '+changed+' nuevas transformaciones.');
  return changed;
 }
 if(process.argv[1]&&import.meta.url===pathToFileURL(path.resolve(process.argv[1])).href)applyMadridDepth();
