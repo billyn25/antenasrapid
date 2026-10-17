@@ -34,7 +34,7 @@ export function applyMadridDepth(root='dist'){
   const file=path.join(dir,name),before=fs.readFileSync(file,'utf8'),route='/Antenas-Madrid/'+name;
   const after=improveMadrid(before,route);
   if(after!==before){fs.writeFileSync(file,after);changed++;}
-  if(after.includes('data-madrid-seo-depth="1"'))verified++;
+  if(after.includes('data-madrid-seo-depth="2"'))verified++;
  }
  assert(verified>=200,'Faltan fichas de Madrid reforzadas: '+verified);
  console.log('MADRID SEO: '+verified+' fichas verificadas; '+changed+' nuevas transformaciones.');
