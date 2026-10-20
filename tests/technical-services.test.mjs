@@ -32,3 +32,11 @@ test('casos y preguntas varían y las nueve tarjetas conservan anclas y enlaces'
  const cases=new Set(Array.from({length:100},(_,i)=>localCase('Villa','/caso-'+i).match(/data-case="(\d+)"/)[1]));
  assert.equal(cases.size,16);
 });
+
+test('hero de directorios provinciales: misma fotografía que portada y municipios',async()=>{
+ const {provinceHero}=await import('../scripts/technical-services.mjs');
+ assert.equal(provinceHero('<section class="hero"><h1>Zamora</h1></section>'),'<section class="hero home-clean-hero province-photo-hero"><h1>Zamora</h1></section>');
+ const madrid='<section class="hero home-clean-hero madrid-photo-hero" data-madrid-visuals="1">';
+ assert.equal(provinceHero(madrid),madrid);
+ assert.throws(()=>provinceHero('<main>sin hero</main>'));
+});
