@@ -141,7 +141,7 @@ const featuredCards=[...provinceSegments].sort((a,b)=>a.localeCompare(b,'es')).m
 }).join('');
 const featuredHtml=`<section class="featured-localities" id="pueblos-destacados"><div class="wrap"><span class="eyebrow">Localidades principales</span><h2>Pueblos y ciudades con servicio</h2><p class="featured-lead">Accesos directos a algunas de las localidades principales de cada provincia. Consulta la provincia para ver el listado completo.</p><div class="featured-province-grid">${featuredCards}</div></div></section>`;
 
-const statsHtml = `<section class="rapid-stats" id="rapid-stats" aria-labelledby="rapid-stats-title"><div class="wrap"><div class="rapid-stats-head"><span class="eyebrow">Antenas Rapid en cifras</span><h2 id="rapid-stats-title">Servicio organizado por localidades</h2><p>La web reúne páginas locales y servicios técnicos para facilitar la consulta por municipio.</p></div><div class="rapid-stats-grid"><article><strong>${stats.towns.toLocaleString('es-ES')}</strong><span>Pueblos con página local</span></article><article><strong>${stats.provinces}</strong><span>Provincias organizadas</span></article><article><strong>${stats.services}</strong><span>Servicios técnicos</span></article></div></div></section>`;
+const statsHtml = `<section class="rapid-stats" id="rapid-stats" aria-labelledby="rapid-stats-title"><div class="wrap"><h2 id="rapid-stats-title">Antenas Rapid, por localidades.</h2><div class="rapid-stats-grid"><article><strong>${stats.towns.toLocaleString('es-ES')}</strong><span>Municipios en el directorio</span></article><article><strong>${stats.provinces}</strong><span>Provincias</span></article><article><strong>${stats.services}</strong><span>Servicios técnicos</span></article></div></div></section>`;
 const homeFile = path.join(root, 'index.html');
 let homeHtml = fs.readFileSync(homeFile, 'utf8');
 homeHtml=homeHtml.replace('<section class="hero">','<section class="hero home-clean-hero">');
@@ -172,13 +172,15 @@ const mobileOverflowFix = `
 
 /* Cierre móvil sin scroll lateral */
 .featured-localities{padding:52px 0;background:#f5f6f7;border-top:1px solid #e2e3e5}.featured-localities h2{margin:7px 0 8px}.featured-lead{max-width:820px;margin:0 0 24px;color:#5d6066}.featured-province-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.featured-province{padding:20px;border:1px solid #dedfe2;background:#fff;border-radius:12px}.featured-province h3{margin:0 0 12px;font-size:20px}.featured-province h3 a{color:#202126}.featured-towns{display:flex;flex-wrap:wrap;gap:7px}.featured-towns a{padding:7px 9px;border:1px solid #e0e1e4;background:#f8f8f9;border-radius:7px;font-size:13px;font-weight:700}.featured-all{display:inline-block;margin-top:14px;color:#c91f25;font-size:13px;font-weight:900}.featured-more{margin-top:12px;border-top:1px solid #ececef;padding-top:10px}.featured-more summary{cursor:pointer;color:#4e5157;font-size:12px;font-weight:900}.featured-more-links{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}.featured-more-links a{font-size:12px;color:#555a61;text-decoration:underline;text-underline-offset:2px}
-.rapid-stats{padding:52px 0;background:#202126;color:#fff;border-top:1px solid rgba(255,255,255,.08)}
-.rapid-stats-head{max-width:760px;margin-bottom:24px}.rapid-stats .eyebrow{color:#f04a4a}.rapid-stats h2{margin:7px 0 8px;color:#fff}.rapid-stats-head p{margin:0;color:#c9ccd2}
-.rapid-stats-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.rapid-stats-grid article{padding:24px 22px;border:1px solid rgba(255,255,255,.12);border-radius:12px;background:rgba(255,255,255,.045)}
-.rapid-stats-grid strong{display:block;font-size:38px;line-height:1;font-weight:900;letter-spacing:-.03em;color:#fff}.rapid-stats-grid span{display:block;margin-top:8px;color:#d8dbe0;font-size:14px;font-weight:700}
+.rapid-stats{padding:22px 0;background:#191b20;color:#fff;border-top:3px solid var(--brand)}
+.rapid-stats>.wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-bottom:22px;border-bottom:1px solid #34363d}
+.rapid-stats h2{margin:0;color:#d5d7dd;font-size:18px;font-weight:600;line-height:1.3;letter-spacing:-.3px}
+.rapid-stats-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:44px}
+.rapid-stats-grid article{min-width:0}.rapid-stats-grid strong{display:block;color:#fff;font-size:27px;line-height:1;font-weight:800;letter-spacing:-.04em}.rapid-stats-grid span{display:block;margin-top:7px;color:#a8abb4;font-size:11px;line-height:1.4}
+.rapid-stats+.footer{border-top:0;padding-top:10px}
 @media(max-width:760px){
   .featured-localities{padding:38px 0}.featured-province-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .rapid-stats{padding:38px 0}.rapid-stats-grid{grid-template-columns:1fr}.rapid-stats-grid article{display:flex;align-items:baseline;justify-content:space-between;gap:18px;padding:17px 18px}.rapid-stats-grid strong{font-size:31px}.rapid-stats-grid span{margin-top:0;text-align:right}
+  .rapid-stats{padding:20px 0 14px}.rapid-stats>.wrap{display:block;padding-bottom:18px}.rapid-stats h2{font-size:16px;margin-bottom:18px}.rapid-stats-grid{gap:16px}.rapid-stats-grid strong{font-size:25px}.rapid-stats-grid span{font-size:10px}.rapid-stats+.footer{padding-top:10px}
 }
 @media(max-width:640px){
   .hero .actions{display:none!important}

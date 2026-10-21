@@ -43,6 +43,14 @@
     mobileMenu.addEventListener('change', () => setMenuOpen(false));
   }
 
+  for (const network of document.querySelectorAll('[data-footer-network]')) {
+    const compactFooter = window.matchMedia('(max-width:640px)');
+    // El HTML mantiene todos los destinos abiertos cuando no hay JavaScript.
+    const fitNetwork = () => { network.open = !compactFooter.matches; };
+    fitNetwork();
+    compactFooter.addEventListener('change', fitNetwork);
+  }
+
   for (const block of document.querySelectorAll('[data-locality-search]')) {
     const input = block.querySelector('input');
     const groups = [...block.querySelectorAll('[data-letter-group]')];

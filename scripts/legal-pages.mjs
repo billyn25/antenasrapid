@@ -1,13 +1,12 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { renderFooter, legalLinks } from './footer.mjs';
 
 const root = path.resolve('dist');
 const phone = '641 589 394';
 const tel = '+34641589394';
 const whatsapp = '34641589394';
 const domain = 'https://www.antenasrapid.com';
-
-const legalLinks = '<nav class="legal-links" aria-label="Información legal"><a href="/aviso-legal.html">Aviso legal</a><span class="legal-sep" aria-hidden="true">·</span><a href="/privacidad.html">Privacidad y RGPD</a><span class="legal-sep" aria-hidden="true">·</span><a href="/cookies.html">Cookies</a></nav>';
 
 const cookieNotice = `<aside class="cookie-notice" data-cookie-notice hidden aria-label="Información sobre cookies y privacidad"><div class="cookie-notice-copy"><strong>Privacidad clara, sin cookies publicitarias</strong><p>Antenas Rapid no utiliza cookies de analítica, publicidad ni seguimiento en esta versión. Solo guardamos en este navegador que ya has cerrado este aviso.</p></div><div class="cookie-notice-actions"><a href="/cookies.html">Política de cookies</a><button type="button" data-cookie-dismiss>Entendido</button></div></aside>`;
 
@@ -26,7 +25,7 @@ function injectShared(html) {
 }
 
 function legalHead(title, description, route) {
-  return `<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${title} | Antenas Rapid</title><meta name="description" content="${description}"><meta name="robots" content="noindex,nofollow"><link rel="canonical" href="${domain}${route}"><meta name="theme-color" content="#222327"><link rel="stylesheet" href="/assets/site.css?v=cabecera-hero-2"><script src="/assets/site.js" defer></script></head>`;
+  return `<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${title} | Antenas Rapid</title><meta name="description" content="${description}"><meta name="robots" content="noindex,nofollow"><link rel="canonical" href="${domain}${route}"><meta name="theme-color" content="#222327"><link rel="stylesheet" href="/assets/site.css?v=pie-conexiones-20261021"><script src="/assets/site.js?v=pie-conexiones-20261021" defer></script></head>`;
 }
 
 function legalHeader() {
@@ -34,7 +33,7 @@ function legalHeader() {
 }
 
 function legalFooter() {
-  return `<footer class="footer legal-footer"><div class="wrap"><div class="foot-grid"><div><strong>Antenas Rapid</strong><p>Instalación y reparación de antenas, porteros automáticos y videoporteros.</p></div><div><strong>Contacto</strong><p><a href="tel:${tel}">${phone}</a><br><a href="https://wa.me/${whatsapp}">WhatsApp</a></p></div><div><strong>Información</strong>${legalLinks}</div></div><p class="fine">Antenas Rapid · Propiedad de R.F.G. · ${phone}</p></div></footer><div class="mobilebar"><a href="tel:${tel}">☎ ${phone}</a><a href="https://wa.me/${whatsapp}">WhatsApp</a></div>`;
+  return `${renderFooter()}<div class="mobilebar"><a href="tel:${tel}">☎ ${phone}</a><a href="https://wa.me/${whatsapp}">WhatsApp</a></div>`;
 }
 
 function page({title, description, route, kicker, lead, body}) {
