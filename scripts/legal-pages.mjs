@@ -25,7 +25,7 @@ function injectShared(html) {
 }
 
 function legalHead(title, description, route) {
-  return `<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${title} | Antenas Rapid</title><meta name="description" content="${description}"><meta name="robots" content="noindex,nofollow"><link rel="canonical" href="${domain}${route}"><meta name="theme-color" content="#222327"><link rel="stylesheet" href="/assets/site.css?v=pie-conexiones-20261021"><script src="/assets/site.js?v=pie-conexiones-20261021" defer></script></head>`;
+  return `<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${title} | Antenas Rapid</title><meta name="description" content="${description}"><meta name="robots" content="noindex,nofollow"><link rel="canonical" href="${domain}${route}"><meta name="theme-color" content="#222327"><link rel="stylesheet" href="/assets/site.css?v=movil-uniforme-20261021"><script src="/assets/site.js?v=pie-conexiones-20261021" defer></script></head>`;
 }
 
 function legalHeader() {

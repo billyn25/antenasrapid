@@ -187,12 +187,7 @@ const mobileOverflowFix = `
 }
 @media(max-width:480px){
   .featured-province-grid{grid-template-columns:1fr}.featured-province{padding:17px}.featured-localities{padding:32px 0}
-  .strip .wrap{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:7px!important;overflow-x:visible!important;flex-wrap:wrap!important;padding-bottom:14px!important}
-  .strip span{white-space:normal!important;min-width:0!important;max-width:100%;display:flex;align-items:center}
-}
-@media(max-width:359px){
-  .strip .wrap{grid-template-columns:1fr!important}
-  .strip span:last-child{grid-column:auto}
+  .strip .wrap{overflow-x:visible!important}
 }
 `;
 if (fs.existsSync(cssFile)) {
