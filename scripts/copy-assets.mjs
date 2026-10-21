@@ -215,6 +215,11 @@ function fixHtml(dir) {
       if (!html.includes('class="nav-mobile-coverage"')) {
         html = html.replace('<a href="#porteros-videoporteros">Porteros automáticos y videoporteros</a>', '<a href="#porteros-videoporteros">Porteros automáticos y videoporteros</a><a class="nav-mobile-coverage" href="#cobertura-movil">Antenas 4G/5G y cobertura móvil</a>');
       }
+      // Etiquetas breves en la cabecera; los servicios conservan sus nombres completos.
+      html = html.replace(/<nav id="primary-nav"[\s\S]*?<\/nav>/, nav => nav
+        .replace('>Porteros automáticos y videoporteros<', '>Porteros y videoporteros<')
+        .replace('>Antenas 4G/5G y cobertura móvil<', '>Cobertura móvil<'));
+
       if (!html.includes('<span>Cobertura móvil 4G/5G</span>')) {
         html = html.replace('<span>Porteros automáticos y videoporteros</span><span>Instalación y mantenimiento</span>', '<span>Porteros automáticos y videoporteros</span><span>Cobertura móvil 4G/5G</span><span>Instalación y mantenimiento</span>');
       }

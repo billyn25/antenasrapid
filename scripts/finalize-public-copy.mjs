@@ -161,14 +161,14 @@ const mobileOverflowFix = `
 /* Hero aprobado Antenas Rapid */
 .home-clean-hero{position:relative;isolation:isolate;overflow:hidden;background:#07121d;border-bottom:4px solid var(--brand)}
 .home-clean-hero::before{content:''!important;display:block!important;position:absolute!important;inset:0!important;z-index:-1!important;width:auto!important;height:auto!important;right:0!important;top:0!important;border:0!important;border-radius:0!important;box-shadow:none!important;background:url('/assets/hero-antenasrapid-HQ.jpg') center center/cover no-repeat!important}
-.home-clean-hero .hero-inner{display:block;min-height:clamp(500px,45vw,610px);padding-block:58px 52px}
+.home-clean-hero .hero-inner{display:block;min-height:clamp(420px,34vw,490px);padding-block:32px}
 .home-clean-hero .hero-copy{position:relative;z-index:2;width:min(700px,58%)}
 .home-clean-hero .service-desk{display:none!important}
-.home-clean-hero h1{font-size:clamp(44px,5vw,70px);max-width:690px;margin:15px 0 20px}
-.home-clean-hero .service-statement{max-width:650px;font-size:21px}.home-clean-hero .lead{max-width:610px;color:#eef0f2}
-.home-clean-hero .hero-tags{margin-top:30px;padding-top:20px;border-top:1px solid rgba(255,255,255,.22);max-width:650px}
+.home-clean-hero h1{font-size:clamp(38px,4vw,56px);max-width:690px;margin:12px 0 16px}
+.home-clean-hero .service-statement{max-width:650px;font-size:19px;margin-bottom:12px}.home-clean-hero .lead{max-width:610px;color:#eef0f2;font-size:15px;line-height:1.6;margin-bottom:20px}
+.home-clean-hero .hero-tags{margin-top:18px;padding-top:14px;border-top:1px solid rgba(255,255,255,.22);max-width:650px}
 @media(max-width:900px){.home-clean-hero::before{background-position:62% 50%!important}.home-clean-hero .hero-copy{width:min(650px,70%)}}
-@media(max-width:640px){.home-clean-hero::before{background-position:72% center!important}.home-clean-hero::after{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(3,10,17,.38) 0%,rgba(3,10,17,.48) 58%,rgba(3,10,17,.62) 100%)}.home-clean-hero .hero-inner{min-height:0;padding-block:42px 36px}.home-clean-hero .hero-copy{width:100%;text-shadow:0 2px 9px rgba(0,0,0,.9)}.home-clean-hero h1{font-size:clamp(38px,11vw,52px);color:#fff}.home-clean-hero .service-statement{font-size:18px;color:#fff}.home-clean-hero .lead{font-size:15px;color:#fff}.home-clean-hero .micro{color:#f2f3f5}.home-clean-hero .hero-tags{padding:14px;background:rgba(3,10,17,.44);border:1px solid rgba(255,255,255,.14);border-radius:8px;color:#fff}}
+@media(max-width:640px){.home-clean-hero::before{background-position:72% center!important}.home-clean-hero::after{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(3,10,17,.38) 0%,rgba(3,10,17,.48) 58%,rgba(3,10,17,.62) 100%)}.home-clean-hero .hero-inner{min-height:0;padding-block:26px}.home-clean-hero .hero-copy{width:100%;text-shadow:0 2px 9px rgba(0,0,0,.9)}.home-clean-hero h1{font-size:clamp(34px,9vw,40px);color:#fff}.home-clean-hero .service-statement{font-size:17px;color:#fff}.home-clean-hero .lead{font-size:15px;color:#fff}.home-clean-hero .micro{color:#f2f3f5}.home-clean-hero .hero-tags{padding:10px 12px;background:rgba(3,10,17,.44);border:1px solid rgba(255,255,255,.14);border-radius:8px;color:#fff}}
 
 /* Cierre móvil sin scroll lateral */
 .featured-localities{padding:52px 0;background:#f5f6f7;border-top:1px solid #e2e3e5}.featured-localities h2{margin:7px 0 8px}.featured-lead{max-width:820px;margin:0 0 24px;color:#5d6066}.featured-province-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.featured-province{padding:20px;border:1px solid #dedfe2;background:#fff;border-radius:12px}.featured-province h3{margin:0 0 12px;font-size:20px}.featured-province h3 a{color:#202126}.featured-towns{display:flex;flex-wrap:wrap;gap:7px}.featured-towns a{padding:7px 9px;border:1px solid #e0e1e4;background:#f8f8f9;border-radius:7px;font-size:13px;font-weight:700}.featured-all{display:inline-block;margin-top:14px;color:#c91f25;font-size:13px;font-weight:900}.featured-more{margin-top:12px;border-top:1px solid #ececef;padding-top:10px}.featured-more summary{cursor:pointer;color:#4e5157;font-size:12px;font-weight:900}.featured-more-links{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}.featured-more-links a{font-size:12px;color:#555a61;text-decoration:underline;text-underline-offset:2px}
@@ -179,39 +179,14 @@ const mobileOverflowFix = `
 @media(max-width:760px){
   .featured-localities{padding:38px 0}.featured-province-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .rapid-stats{padding:38px 0}.rapid-stats-grid{grid-template-columns:1fr}.rapid-stats-grid article{display:flex;align-items:baseline;justify-content:space-between;gap:18px;padding:17px 18px}.rapid-stats-grid strong{font-size:31px}.rapid-stats-grid span{margin-top:0;text-align:right}
-  .head nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 10px;overflow-x:visible;scrollbar-width:none}
-  .head nav a{white-space:normal;text-align:center;line-height:1.25;padding:7px 4px;min-width:0}
 }
 @media(max-width:640px){
-  .head{grid-template-columns:minmax(0,1fr) auto;column-gap:10px;padding-block:7px 0}
-  .brand{width:min(205px,100%)}
-  .brand-tagline{font-size:9px;margin:-2px 0 5px}
-  .contact-top{padding-left:10px}
-  .contact-top a{font-size:20px;line-height:1.15}
-  .contact-top small{font-size:10px}
-  .urgent-line{gap:3px!important;margin-top:3px!important}
-  .urgent-24h{font-size:9px!important;padding:4px 7px!important}
-  .head nav{grid-template-columns:repeat(5,minmax(0,1fr));gap:0!important;border-top:1px solid #48494e}
-  .head nav a{min-height:44px;padding:7px 2px!important;font-size:0!important;white-space:normal!important;line-height:1.1!important;border-left:1px solid rgba(255,255,255,.08)}
-  .head nav a:first-child{border-left:0}
-  .head nav a::after{font-size:10px;font-weight:800}
-  .head nav a:nth-child(1)::after{content:'Antenas'}
-  .head nav a:nth-child(2)::after{content:'Porteros'}
-  .head nav a:nth-child(3)::after{content:'4G/5G'}
-  .head nav a:nth-child(4)::after{content:'Pueblos'}
-  .head nav a:nth-child(5)::after{content:'Contacto'}
   .hero .actions{display:none!important}
 }
 @media(max-width:480px){
   .featured-province-grid{grid-template-columns:1fr}.featured-province{padding:17px}.featured-localities{padding:32px 0}
   .strip .wrap{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:7px!important;overflow-x:visible!important;flex-wrap:wrap!important;padding-bottom:14px!important}
   .strip span{white-space:normal!important;min-width:0!important;max-width:100%;display:flex;align-items:center}
-  .strip span:last-child{grid-column:1/-1}
-}
-@media(max-width:380px){
-  .brand{width:min(180px,100%)}
-  .contact-top a{font-size:18px}
-  .head nav a::after{font-size:9px}
 }
 @media(max-width:359px){
   .strip .wrap{grid-template-columns:1fr!important}
