@@ -64,9 +64,10 @@ export function madridServiceIndexes(locals) {
   assert.equal(result.size, locals.length, 'Madrid: municipios duplicados al asignar servicios');
   return result;
 }
-export function madridServiceLink(page,index) {
+export function madridServiceLink(page,index,compact=false) {
   assert.ok(Number.isInteger(index) && index >= 0, 'Madrid: falta el índice del servicio');
   const label = MADRID_LINK_SERVICES[index % MADRID_LINK_SERVICES.length];
+  if (compact) return `<a class="madrid-service-link" href="${esc(page.path)}" aria-label="${esc(label+' en '+page.name)}">${esc(page.name)}</a>`;
   return `<a class="madrid-service-link" href="${esc(page.path)}"><span class="madrid-service-label">${label} en</span> <strong class="madrid-service-town">${esc(page.name)}<span aria-hidden="true"> →</span></strong></a>`;
 }
 export function labelMadridHomeLinks(html,locals) {
@@ -83,7 +84,7 @@ export function labelMadridHomeLinks(html,locals) {
         const page=byPath.get(href);
         assert.ok(page, `Madrid: destino desconocido ${href}`);
         links++;
-        return madridServiceLink(page,indexes.get(href));
+        return madridServiceLink(page,indexes.get(href),true);
       });
   });
   assert.equal(cards,1,'Madrid debe tener una sola tarjeta en portada');

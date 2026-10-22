@@ -18,7 +18,7 @@
 .madrid-service-link:hover .madrid-service-town{color:var(--brand)}
 .madrid-service-link:focus-visible{outline:2px solid var(--brand);outline-offset:3px}
 .town-list .madrid-service-link{padding:12px 13px;min-height:68px}
-.featured-province[data-madrid-service-links] .featured-towns,.featured-province[data-madrid-service-links] .featured-more-links{display:grid;grid-template-columns:minmax(0,1fr);gap:8px}
-.featured-province[data-madrid-service-links] .madrid-service-link{padding:10px 12px;border:1px solid #e0e1e4;border-radius:7px;background:#f8f8f9;min-height:64px}
-.featured-province[data-madrid-service-links] .madrid-service-town{font-size:15px}
-.featured-province[data-madrid-service-links] .featured-more-links{max-height:none;overflow:visible}
+/* En portada, Madrid comparte el formato compacto de las demás provincias. */
+.featured-province[data-madrid-service-links]>p{margin:0 0 12px;font-size:13px;line-height:1.5}
+.featured-province[data-madrid-service-links] .madrid-service-link{display:inline-flex;align-items:center;line-height:inherit}
+.featured-province[data-madrid-service-links] .featured-more-links .madrid-service-link{display:inline;text-decoration:underline!important}
