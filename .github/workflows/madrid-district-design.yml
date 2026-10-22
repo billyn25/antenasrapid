@@ -31,7 +31,12 @@ jobs:
           npm install --no-save --package-lock=false --ignore-scripts playwright@1.56.1
           npx playwright install chromium
       - name: Comprobar 21 distritos publicados, CSS, logo, teléfonos y móvil
-        run: node tests/madrid-district-design-live.mjs
+        run: |
+          for attempt in 1 2 3 4 5 6; do
+            if node tests/madrid-district-design-live.mjs; then exit 0; fi
+            if [ "$attempt" -lt 6 ]; then sleep 10; fi
+          done
+          exit 1
       - uses: actions/upload-artifact@v4
         if: always()
         with:

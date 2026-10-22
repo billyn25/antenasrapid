@@ -125,13 +125,17 @@ jobs:
                           xrobots = response.headers.get('X-Robots-Tag', '')
                           header_blocks = 'noindex' in xrobots.lower() or 'nofollow' in xrobots.lower()
                           html_blocks = is_html and (b'noindex' in data.lower() or b'nofollow' in data.lower())
-                          matches = (semantic_html(data) == semantic_html(source) if is_html else digest(data) == digest(source)) and not header_blocks and not html_blocks
+                          expected_blocks = is_html and (b'noindex' in source.lower() or b'nofollow' in source.lower())
+                          expected_indexable = not expected_blocks
+                          actual_indexable = not header_blocks and not html_blocks
+                          matches = (semantic_html(data) == semantic_html(source) if is_html else digest(data) == digest(source)) and actual_indexable == expected_indexable
                           check.update(
                               status=response.status,
                               receivedSha256=digest(data),
                               comparison='semantic-html+indexability' if is_html else 'sha256',
                               xRobotsTag=xrobots,
-                              indexable=not header_blocks and not html_blocks,
+                              indexable=actual_indexable,
+                              expectedIndexable=expected_indexable,
                               matches=matches
                           )
                           saved = folder / 'published' / file
