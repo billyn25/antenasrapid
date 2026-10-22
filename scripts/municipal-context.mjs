@@ -53,8 +53,8 @@ export function enhanceMunicipality(html,p,nearby,ring){
  const oldRelated=/<section class="related-towns-section"[\s\S]*?<\/section>/;
  assert(oldRelated.test(html),`${p.path}: falta navegación municipal`);
  html=html.replace(oldContext,contextBlock(p)).replace(oldRelated,nearbyBlock(p,nearby,ring));
- // Remove the older, non-geographic second list, keeping the local contact block.
- html=html.replace(/<div class="other-localities">[\s\S]*?<\/div>(?=<div class="local-contact">)/,'');
+ // Remove the older, non-geographic second list independently of the contact layout.
+ html=html.replace(/<div class="other-localities">[\s\S]*?<\/div>/,'');
  const items=nearby.map((t,i)=>({'@type':'ListItem',position:i+1,name:`Antenista en ${t.name}`,url:PRODUCTION_DOMAIN+canonicalPath(t.path)}));
  const schema={'@context':'https://schema.org','@type':'ItemList','@id':PRODUCTION_DOMAIN+canonicalPath(p.path)+'#pueblos-cercanos',name:`Localidades próximas a ${p.name}`,itemListElement:items};
  html=html.replace('</head>',`<script id="nearby-municipalities-schema" type="application/ld+json">${JSON.stringify(schema).replace(/</g,'\\u003c')}</script></head>`);

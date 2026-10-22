@@ -3,7 +3,8 @@ import path from 'node:path';
 import assert from 'node:assert/strict';
 import pages from '../content/pages.json' with { type: 'json' };
 import site from '../config/site.json' with { type: 'json' };
-import { routeFile } from './build.mjs';
+import { routeFile, esc } from './build.mjs';
+import { MADRID_CONTACT } from './madrid-contact.mjs';
 
 const root = path.resolve('dist');
 const manifestPath = path.join(root, 'local-pages-manifest.json');
@@ -69,6 +70,9 @@ const titlePatterns = new Set();
 const descriptionPatterns = new Set();
 const localVariants = new Set();
 const localBodyFingerprints = new Map();
+const mainPhonePatterns = [site.phone, MADRID_CONTACT.phone].map(phone => new RegExp(
+  '(?:^|\\D)(?:\\+?34[\\s().-]*)?' + phone.replace(/\D/g, '').split('').join('[\\s().-]*') + '(?:\\D|$)'
+));
 
 for (const page of localPages) {
   assert.ok(!paths.has(page.path), `Ruta local duplicada: ${page.path}`);
@@ -82,12 +86,26 @@ for (const page of localPages) {
   assert.match(html, /<meta name="robots" content="noindex,nofollow">/, `${page.path}: noindex de preview`);
   assert.ok(html.includes(`href="${new URL(page.path, site.domain).href}"`), `${page.path}: canonical propio`);
   assert.ok(html.includes(`Antenista en ${page.name}`), `${page.path}: intención antenista + pueblo`);
-  assert.ok(html.includes(`Servicio en ${page.name} · ${site.phone}`), `${page.path}: servicio + pueblo + teléfono`);
+  assert.ok(html.includes(`<span class="eyebrow">Servicio en ${esc(page.name)}</span>`), `${page.path}: servicio + pueblo sin teléfono repetido`);
   assert.ok(html.includes(`Reparación de antenas en ${page.name}`), `${page.path}: reparación + pueblo`);
   assert.ok(html.includes(`Porteros automáticos y videoporteros en ${page.name}`), `${page.path}: porteros + pueblo`);
   assert.ok(html.includes(`Cobertura móvil 4G/5G en vivienda individual en ${page.name}`), `${page.path}: cobertura móvil + pueblo`);
   assert.ok(html.includes('data-local-variant='), `${page.path}: variante local`);
   assert.ok(html.includes(site.phone), `${page.path}: teléfono`);
+  const main = html.match(/<main\b[^>]*>([\s\S]*?)<\/main>/i)?.[1];
+  assert.ok(main, `${page.path}: falta contenido principal`);
+  assert.ok(!/\bhref\s*=\s*["'](?:tel:|(?:https?:)?\/\/wa\.me(?:\/|[?#"']))/i.test(main), `${page.path}: contacto directo repetido dentro del contenido principal`);
+  const visibleMain = main
+    .replace(/<style\b[\s\S]*?<\/style>/gi, ' ')
+    .replace(/<script\b[\s\S]*?<\/script>/gi, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&(?:nbsp|#160|#x0*a0);/gi, ' ');
+  for (const pattern of mainPhonePatterns) assert.ok(!pattern.test(visibleMain), `${page.path}: teléfono visible repetido dentro del contenido principal`);
+  assert.equal((main.match(/<form\b/g) || []).length, 1, `${page.path}: debe haber un solo formulario`);
+  assert.equal((html.match(/\bid="contacto"/g) || []).length, 1, `${page.path}: debe haber un único destino de contacto`);
+  assert.equal((main.match(/\bdata-whatsapp-form(?=\s|>)/g) || []).length, 1, `${page.path}: debe haber un solo formulario de WhatsApp`);
+  const contactSection = main.match(/<section\b[^>]*\bid="contacto"[^>]*>([\s\S]*?)<\/section>/)?.[1];
+  assert.ok(contactSection && /<form\b[^>]*\bdata-whatsapp-form(?=\s|>)/.test(contactSection), `${page.path}: el formulario debe estar en la sección de contacto`);
   assert.ok(!/AggregateRating|Review/.test(html), `${page.path}: no inventar reseñas estructuradas`);
   assert.ok(html.includes('class="related-towns"'), `${page.path}: falta enlazado interno a otros pueblos`);
   assert.ok((html.match(/class="related-town-links"[\s\S]*?<\/div>/)?.[0].match(/<a href=/g) || []).length >= 4, `${page.path}: pocos enlaces internos a pueblos`);

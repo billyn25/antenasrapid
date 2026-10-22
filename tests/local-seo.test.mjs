@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { pages, site, renderPage } from '../scripts/build.mjs';
+import { pages, site, renderPage, esc } from '../scripts/build.mjs';
 import { localMetadata } from '../scripts/identity.mjs';
 
 test('portada de marca: sin Bizkaia en título, H1, descripción o encabezados', () => {
@@ -26,7 +26,7 @@ test('antenas y porteros tienen encabezados propios de cada localidad', () => {
   assert.ok(h.includes(`<h2>Instalación y reparación de antenas en ${p.name}</h2>`));
   assert.ok(h.includes(`Porteros automáticos y videoporteros en ${p.name}</h2>`));
   assert.ok(h.includes(`Cobertura móvil 4G/5G en ${p.name}</h2>`));
-  assert.ok(h.includes(`Servicio en ${p.name} · ${site.phone}`));
+  assert.ok(h.includes(`<span class="eyebrow">Servicio en ${esc(p.name)}</span>`));
  }
 });
 test('logotipo oficial local en la marca, sin imagen remota', () => {

@@ -2,7 +2,6 @@ import fs from 'node:fs';
 import path from 'node:path';
 import assert from 'node:assert/strict';
 import {pathToFileURL} from 'node:url';
-import site from '../config/site.json' with {type:'json'};
 import {canonicalPath,publicRouteMap} from './canonical-urls.mjs';
 const escape=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export const services=[
@@ -14,10 +13,8 @@ export const services=[
  ['tomas','Tomas y cableado de televisión','La televisión funciona en una habitación y falla en otra, o necesitas un nuevo punto.','Indica cuántas tomas hay, cuáles fallan y si el recorrido del cable es accesible. Para una ampliación, explica dónde quieres colocar los televisores.','Se valora continuidad del coaxial, conectores, repartidores, derivadores y tipo de toma. Añadir una salida puede alterar el reparto de señal; el presupuesto debe concretar recorrido, materiales y comprobación final.']
 ];
 export function serviceBlock(name,province,provinceRoute,isProvince=false){
- const place=isProvince?province:`${name}, ${province}`;
  const cards=services.map(([id,title,symptom,intake,check])=>{
-  const message=`Hola, necesito consultar ${title.toLowerCase()} en ${place}. Es una vivienda/comunidad. ¿Qué datos necesitáis y cuáles son las condiciones de desplazamiento y diagnóstico?`;
-  return `<details id="revision-${id}" class="local-depth-card"><summary>${escape(title)}${isProvince?'':' en '+escape(name)}</summary><p><strong>Qué ocurre:</strong> ${escape(symptom)}</p><p><strong>Antes de pedir asistencia:</strong> ${escape(intake)}</p><p><strong>Qué se valora:</strong> ${escape(check)}</p><a href="https://wa.me/${site.whatsapp}?text=${escape(encodeURIComponent(message))}">Consultar ${escape(title.toLowerCase())} en ${escape(isProvince?province:name)} →</a>${isProvince?'':`<p><a href="${provinceRoute}#revision-${id}">Ver orientación de este servicio en ${escape(province)}</a></p>`}</details>`;
+  return `<details id="revision-${id}" class="local-depth-card"><summary>${escape(title)}${isProvince?'':' en '+escape(name)}</summary><p><strong>Qué ocurre:</strong> ${escape(symptom)}</p><p><strong>Antes de pedir asistencia:</strong> ${escape(intake)}</p><p><strong>Qué se valora:</strong> ${escape(check)}</p><a href="#contacto" data-contact-service="${escape(id)}">Consultar ${escape(title.toLowerCase())} en ${escape(isProvince?province:name)} →</a>${isProvince?'':`<p><a href="${provinceRoute}#revision-${id}">Ver orientación de este servicio en ${escape(province)}</a></p>`}</details>`;
  }).join('');
  return `<section class="section wrap local-service-depth" data-local-service-depth="20261017" aria-labelledby="local-depth-title"><span class="eyebrow">Viviendas y comunidades</span><h2 id="local-depth-title">Antenas, porteros y videoporteros en ${escape(isProvince?province:name)}</h2><p>Elige el problema de tu instalación${isProvince?'':` en ${escape(name)}`} para preparar el aviso. La disponibilidad, el desplazamiento y el alcance del trabajo se confirman antes de organizar la visita.</p><div class="local-depth-grid">${cards}</div><h3>Qué concretar en el presupuesto</h3><p>Consulta si el diagnóstico y el desplazamiento tienen coste, qué materiales incluye la propuesta y si se aprovecha el cableado existente. En una comunidad, indica quién autoriza la intervención y facilita el acceso a las zonas comunes. La comprobación final debe corresponder al trabajo acordado: recepción en las tomas afectadas o llamada, audio, imagen y apertura, según el servicio.</p>${isProvince?'<a href="#localidades">Elegir municipio y consultar el servicio →</a>':`<a href="${provinceRoute}#localidades">Consultar otros municipios de ${escape(province)} →</a>`}</section>`;
 }
