@@ -21,6 +21,11 @@ const esc = value => String(value ?? '').replace(/[&<>"']/g, character => ({
 const normalize = value => String(value ?? '').trim().toLocaleLowerCase('es')
   .normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
+// Official directories may sort the article last; questions use normal speech.
+export function formatReceptionLocality(value) {
+  return String(value ?? '').trim().replace(/^(.+),\s*(El|La|Los|Las)$/, '$2 $1');
+}
+
 const provinceAliases = {
   alava: 'alava', araba: 'alava', 'araba-alava': 'alava',
   asturias: 'asturias', 'principado-de-asturias': 'asturias', avila: 'avila',
@@ -136,7 +141,7 @@ const sanFernandoQuestion = {
 };
 
 export function tvReceptionContent({ name, province = '', provincePath = '', municipioId = '', path = '' } = {}) {
-  const place = String(name ?? '').trim();
+  const place = formatReceptionLocality(name);
   if (!place) throw new TypeError('La sección de recepción necesita el nombre de la localidad o distrito');
   const provinceKey = provinceFor({ province, provincePath, path });
   const identity = String(municipioId ?? '').trim() || String(path).trim() || normalize(place);

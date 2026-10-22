@@ -5,6 +5,7 @@ import pages from '../content/pages.json' with { type: 'json' };
 import site from '../config/site.json' with { type: 'json' };
 import { routeFile, esc } from './build.mjs';
 import { MADRID_CONTACT } from './madrid-contact.mjs';
+import { formatReceptionLocality } from './tv-reception.mjs';
 
 const root = path.resolve('dist');
 const manifestPath = path.join(root, 'local-pages-manifest.json');
@@ -110,7 +111,7 @@ for (const page of localPages) {
   assert.equal(receptionSections.length, 1, `${page.path}: debe haber una sola guía de problemas de televisión`);
   const receptionSection = receptionSections[0][0];
   assert.equal((receptionSection.match(/<details\b/g) || []).length, 3, `${page.path}: tres preguntas de recepción`);
-  assert.ok(receptionSection.includes(esc(page.name)), `${page.path}: falta el municipio en la guía de recepción`);
+  assert.ok(receptionSection.includes(esc(formatReceptionLocality(page.name))), `${page.path}: falta el municipio en la guía de recepción`);
   assert.ok(main.indexOf('id="problemas-tdt"') < main.indexOf('id="contacto"'), `${page.path}: guía antes del formulario`);
   assert.ok(receptionSection.includes('data-contact-service="tdt"'), `${page.path}: consulta de recepción sin servicio TDT`);
   for (const name of ['channels', 'timing']) assert.ok(contactSection.includes(`name="${name}"`), `${page.path}: falta el campo ${name}`);

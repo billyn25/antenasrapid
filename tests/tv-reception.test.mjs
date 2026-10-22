@@ -1,8 +1,17 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {renderTvReception, tvReceptionContent} from '../scripts/tv-reception.mjs';
+import {renderTvReception, tvReceptionContent, formatReceptionLocality} from '../scripts/tv-reception.mjs';
 
 const locality = (name, province, provincePath, municipioId) => ({name, province, provincePath, municipioId});
+
+test('los artículos del directorio se leen como nombres naturales y los distritos se conservan', () => {
+  for (const [source, expected] of [['Espinar, El', 'El Espinar'], ['Adrada, La', 'La Adrada'], ['Corrales de Buelna, Los', 'Los Corrales de Buelna'], ['Navas del Marqués, Las', 'Las Navas del Marqués'], ['Chamberí, Madrid', 'Chamberí, Madrid'], ['Donostia / San Sebastián', 'Donostia / San Sebastián']]) {
+    assert.equal(formatReceptionLocality(source), expected);
+  }
+  const questions = tvReceptionContent(locality('Espinar, El', 'Segovia', '/Antenas-Segovia/', '40076')).questions;
+  assert(questions.every(question => question.title.includes('en El Espinar')));
+  assert(!questions.some(question => question.title.includes('Espinar, El')));
+});
 
 test('las preguntas regionales respetan la comunidad y la edición provincial', () => {
   const cases = [
