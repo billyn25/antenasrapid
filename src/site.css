@@ -326,3 +326,44 @@ body{background:linear-gradient(#fff 0 72%,#fbfaf8 100%)}
   .legal-data>div{grid-template-columns:1fr}.legal-data dt{padding-bottom:5px}.legal-data dd{padding-top:5px}
   .legal-links{gap:6px 12px}.legal-sep{display:none}
 }
+
+/* Consulta de portada: un único formulario, con destino según la provincia. */
+.hero-contact-link{display:inline-flex;align-items:center;gap:12px;min-height:44px;padding:8px 0;margin-bottom:4px;border-bottom:1px solid rgba(255,255,255,.55);color:#fff;font-size:14px;font-weight:800;line-height:1.4}
+.hero-contact-link:hover{color:#fff;text-decoration:none;border-bottom-color:#fff}
+.contact-service-link{display:inline-flex;align-items:center;gap:8px;min-height:44px;font-size:14px;font-weight:800;line-height:1.45}
+.mobile-coverage .contact-service-link{margin-top:14px}
+.home-contact{scroll-margin-top:110px}
+.home-contact-layout{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);align-items:start;gap:42px;padding:40px;background:#f5f5f7;border:1px solid #dedee2;border-top:4px solid var(--brand);border-radius:16px}
+.home-contact-copy{min-width:0;padding-top:10px}
+.home-contact-copy h2{max-width:390px;font-size:clamp(30px,3.1vw,42px);line-height:1.12}
+.home-contact-copy p{max-width:420px;margin:0 0 18px;color:var(--muted);font-size:16px;line-height:1.7}
+.home-contact-copy .eyebrow{margin-bottom:14px}
+.whatsapp-form{min-width:0;padding:28px;background:#fff;border:1px solid #dfe0e4;border-radius:12px;box-shadow:0 12px 32px rgba(29,31,35,.06)}
+.whatsapp-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 16px}
+.whatsapp-field{display:flex;flex-direction:column;gap:7px;min-width:0}
+.whatsapp-field-wide{grid-column:1/-1}
+.whatsapp-field label{font-size:14px;font-weight:700;line-height:1.45}
+.whatsapp-field input,.whatsapp-field select,.whatsapp-field textarea{width:100%;min-width:0;min-height:50px;margin:0;padding:11px 12px;border:1px solid #bfc1c8;border-radius:7px;background:#fff;color:var(--ink);font:400 16px/1.45 Arial,Helvetica,sans-serif}
+.whatsapp-field textarea{min-height:112px;resize:vertical}
+.whatsapp-field input::placeholder,.whatsapp-field textarea::placeholder{color:#73757c;opacity:1}
+.whatsapp-field input:focus-visible,.whatsapp-field select:focus-visible,.whatsapp-field textarea:focus-visible,.whatsapp-submit:focus-visible{outline:3px solid var(--brand);outline-offset:3px}
+.whatsapp-submit{width:100%;min-height:52px;margin-top:20px;cursor:pointer;font:700 16px/1.4 Arial,Helvetica,sans-serif}
+.whatsapp-submit svg{width:22px;height:22px;flex:none}
+.whatsapp-note{margin:14px 0 0;color:var(--muted);font-size:12px;line-height:1.6}
+.whatsapp-note a{text-decoration:underline;text-underline-offset:2px}
+.whatsapp-status{margin:12px 0 0;color:#494c54;font-size:13px;line-height:1.5}
+.whatsapp-status.is-error{color:#a41f31}
+.whatsapp-status:empty{display:none}
+@media(max-width:900px){
+ .home-contact-layout{grid-template-columns:1fr;gap:24px;padding:28px}
+ .home-contact-copy{padding-top:0}.home-contact-copy h2,.home-contact-copy p{max-width:620px}
+ .home-contact-copy p:last-child{margin-bottom:0}
+ .whatsapp-form{padding:24px}
+}
+@media(max-width:540px){
+ .home-contact-layout{padding:24px 0 0;gap:22px;border:0;border-top:3px solid var(--brand);border-radius:0;background:transparent}
+ .home-contact-copy h2{font-size:32px}.home-contact-copy p{font-size:15px}
+ .whatsapp-fields{grid-template-columns:1fr;gap:16px}
+ .whatsapp-form{padding:20px;box-shadow:none}
+ .whatsapp-submit{font-size:15px}
+}

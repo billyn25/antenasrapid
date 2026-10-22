@@ -25,7 +25,7 @@ function injectShared(html) {
 }
 
 function legalHead(title, description, route) {
-  return `<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${title} | Antenas Rapid</title><meta name="description" content="${description}"><meta name="robots" content="noindex,nofollow"><link rel="canonical" href="${domain}${route}"><meta name="theme-color" content="#222327"><link rel="stylesheet" href="/assets/site.css?v=movil-uniforme-20261021"><script src="/assets/site.js?v=pie-conexiones-20261021" defer></script></head>`;
+  return `<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${title} | Antenas Rapid</title><meta name="description" content="${description}"><meta name="robots" content="noindex,nofollow"><link rel="canonical" href="${domain}${route}"><meta name="theme-color" content="#222327"><link rel="stylesheet" href="/assets/site.css?v=contacto-portada-20261022"><script src="/assets/site.js?v=contacto-portada-20261022" defer></script></head>`;
 }
 
 function legalHeader() {
@@ -99,7 +99,7 @@ fs.writeFileSync(path.join(root, 'privacidad.html'), page({
   <div><dt>WhatsApp</dt><dd><a href="https://wa.me/${whatsapp}">Abrir conversación</a></dd></div>
 </dl>
 <h2>Qué datos podemos tratar</h2>
-<p>La web no dispone de formulario de contacto. Si llamas o escribes por WhatsApp, podremos tratar los datos que facilites voluntariamente para entender y atender tu solicitud: por ejemplo nombre, teléfono, localidad o dirección del servicio, tipo de inmueble y detalles de la avería o instalación.</p>
+<p>El formulario de la portada prepara en tu navegador un mensaje con la provincia, localidad, servicio y detalles que indiques. Al continuar se abre WhatsApp, donde puedes revisar el mensaje y decidir si lo envías. La web no recibe ni guarda los campos del formulario.</p><p>Si llamas o envías un mensaje por WhatsApp, podremos tratar los datos que facilites voluntariamente para entender y atender tu solicitud: por ejemplo nombre, teléfono, localidad o dirección del servicio, tipo de inmueble y detalles de la avería o instalación.</p>
 <h2>Finalidades</h2>
 <ul><li>Responder consultas y solicitudes de presupuesto.</li><li>Organizar avisos, visitas, instalaciones y reparaciones.</li><li>Mantener las comunicaciones necesarias durante la prestación del servicio.</li><li>Cumplir obligaciones administrativas o legales cuando correspondan.</li></ul>
 <h2>Base jurídica</h2>
