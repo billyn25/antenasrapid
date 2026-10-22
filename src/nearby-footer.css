@@ -1,0 +1,19 @@
+/* Navegación secundaria al final: sin contactos ni tarjetas de altura desigual. */
+.geographic-neighbors{padding:28px 0 36px;background:#f6f5f3;border-top:1px solid #e3e0dc}
+.geographic-neighbors .related-towns{padding:0;border:0;background:transparent;box-shadow:none!important}
+.geographic-neighbors .related-towns h2{margin:8px 0 10px;color:var(--ink);font-size:clamp(21px,2.2vw,28px);line-height:1.25;letter-spacing:-.4px;overflow-wrap:break-word}
+.geographic-neighbors .related-towns>p{margin:0 0 18px;color:var(--muted);font-size:14px;line-height:1.55}
+.geographic-neighbors .related-town-links{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:1fr;gap:10px;align-items:stretch}
+.geographic-neighbors .related-town-links a{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:5px;min-width:0;width:100%;height:100%;min-height:80px;padding:13px 14px;border:1px solid #dedbd7;border-radius:8px;background:#fff;color:var(--brand);font-size:14px;font-weight:700;line-height:1.4;overflow-wrap:break-word;text-decoration:none}
+.geographic-neighbors .related-town-links a:hover{border-color:var(--brand);background:#fff;transform:none}
+.geographic-neighbors .related-town-links a:focus-visible,.geographic-neighbors .nearby-all:focus-visible{outline:3px solid var(--brand);outline-offset:3px}
+.geographic-neighbors .related-town-links small{display:block;margin:0;color:var(--muted);font-size:11px;font-weight:400;line-height:1.4}
+.geographic-neighbors .related-towns .distance-note{margin:14px 0 0;font-size:11px;line-height:1.5}
+.geographic-neighbors .province-neighbor-nav{gap:6px 12px;margin-top:12px;font-size:12px}
+.geographic-neighbors .nearby-all{display:inline-flex;align-items:center;gap:8px;max-width:100%;min-height:44px;margin-top:8px;color:var(--brand);font-size:13px;font-weight:700;line-height:1.4;text-decoration:underline;text-underline-offset:3px}
+@media(max-width:760px){
+ .geographic-neighbors{padding:24px 0 28px}
+ .geographic-neighbors .related-town-links{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ .geographic-neighbors .related-town-links a{padding:12px 10px;font-size:13px}
+ .geographic-neighbors .related-towns>p{font-size:13px}
+}
