@@ -201,6 +201,11 @@ function fixHtml(dir) {
     const file = path.join(dir, entry.name);
     if (entry.isDirectory()) fixHtml(file);
     else if (entry.isFile() && entry.name.endsWith('.html')) {
+      fixHtmlFile(file);
+    }
+  }
+}
+function fixHtmlFile(file) {
       let html = replaceHistoricRoutes(fs.readFileSync(file, 'utf8')).replaceAll('Antennistas', 'Antenistas');
 
       html = moveSectionBefore(html, 'servicios', 'porteros-videoporteros');
@@ -229,9 +234,18 @@ function fixHtml(dir) {
       if (page) html = strengthenLocalSeo(html, page);
 
       fs.writeFileSync(file, html);
-    }
-  }
 }
 fixHtml(root);
+// The generic generator can leave an alias beside a historical document that
+// already had its canonical path in the manifest. Redirects handle the alias.
+for (const [from,to] of historicRoutes) {
+  if (fs.existsSync(path.join(root,to.slice(1))) && fs.existsSync(path.join(root,from.slice(1)))) fs.unlinkSync(path.join(root,from.slice(1)));
+}
+// The manifest is the authoritative set of generated documents. Check every
+// town explicitly so a directory traversal cannot leave an unprocessed page.
+for (const page of localPages) {
+  const file=path.join(root,page.path.slice(1));
+  if (!fs.readFileSync(file,'utf8').includes('id="local-service-schema"')) fixHtmlFile(file);
+}
 
 console.log(`ASSET/HTML OK: ${localPages.length} páginas locales con bloque de pueblos centrado, titles/metas variados, schema Service sin dirección ficticia, interlinking provincial, Urgencias 24h y URLs históricas preservadas.`);
