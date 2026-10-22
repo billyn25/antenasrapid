@@ -342,6 +342,12 @@ body{background:linear-gradient(#fff 0 72%,#fbfaf8 100%)}
 .whatsapp-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 16px}
 .whatsapp-field{display:flex;flex-direction:column;gap:7px;min-width:0}
 .whatsapp-field-wide{grid-column:1/-1}
+.whatsapp-reception{min-width:0;margin:0;padding:16px;border:1px solid #dedee4;border-radius:8px;background:#f7f7f9}
+.whatsapp-reception[hidden]{display:none}
+.whatsapp-reception legend{max-width:100%;padding:0 6px;font-size:13px;font-weight:700;line-height:1.5;color:var(--ink)}
+.whatsapp-reception legend span{font-weight:400;color:var(--muted)}
+.whatsapp-reception-note{margin:0 0 14px;font-size:12px;line-height:1.6;color:var(--muted)}
+.whatsapp-reception .whatsapp-fields{grid-template-columns:minmax(0,1fr);gap:14px}
 .whatsapp-field label{font-size:14px;font-weight:700;line-height:1.45}
 .whatsapp-field input,.whatsapp-field select,.whatsapp-field textarea{width:100%;min-width:0;min-height:50px;margin:0;padding:11px 12px;border:1px solid #bfc1c8;border-radius:7px;background:#fff;color:var(--ink);font:400 16px/1.45 Arial,Helvetica,sans-serif}
 .whatsapp-field textarea{min-height:112px;resize:vertical}
@@ -367,3 +373,26 @@ body{background:linear-gradient(#fff 0 72%,#fbfaf8 100%)}
  .whatsapp-form{padding:20px;box-shadow:none}
  .whatsapp-submit{font-size:15px}
 }
+
+/* Local reception questions: readable content and native keyboard disclosures. */
+.tv-reception{scroll-margin-top:110px;padding-bottom:18px}
+.tv-reception-layout{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:44px;align-items:start;border-top:1px solid var(--line);padding-top:36px}
+.tv-reception-copy,.tv-reception-questions{min-width:0}
+.tv-reception-copy h2{font-size:clamp(28px,3vw,38px);line-height:1.18;max-width:440px;margin-bottom:18px;overflow-wrap:break-word}
+.tv-reception-copy>p{font-size:15px;line-height:1.7;color:var(--muted);margin:0 0 18px}
+.tv-reception-copy .eyebrow{margin-bottom:12px}
+.tv-reception-copy>a[data-contact-reception]{display:inline-flex;align-items:center;gap:10px;min-height:44px;margin-top:2px;font-size:14px;line-height:1.5;font-weight:700;color:var(--brand);text-decoration:underline;text-underline-offset:4px}
+.tv-reception-copy>a:focus-visible,.tv-reception-question>summary:focus-visible{outline:3px solid var(--brand);outline-offset:4px}
+.tv-reception-question>summary:focus-visible{outline-offset:-4px}
+.tv-reception-copy .tv-reception-sources{margin-top:18px;font-size:11px;line-height:1.65;color:var(--muted)}
+.tv-reception-sources a{text-decoration:underline;text-underline-offset:2px}
+.tv-reception-question{border:1px solid #dddde3;border-radius:10px;background:#fff;overflow:clip}
+.tv-reception-question+.tv-reception-question{margin-top:10px}
+.tv-reception-question>summary{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;padding:19px 20px;min-height:64px;list-style:none;font-size:16px;font-weight:700;line-height:1.5;cursor:pointer;overflow-wrap:break-word}
+.tv-reception-question>summary::-webkit-details-marker{display:none}
+.tv-reception-question>summary::after{content:'+';flex:none;color:var(--brand);font-size:23px;font-weight:500;line-height:1}
+.tv-reception-question[open]{border-color:#c8a6ad;background:#faf8f9}
+.tv-reception-question[open]>summary::after{content:'−'}
+.tv-reception-question>p{margin:0;padding:0 20px 21px;color:var(--muted);font-size:14px;line-height:1.75}
+@media(max-width:900px){.tv-reception-layout{grid-template-columns:minmax(0,1fr);gap:22px;padding-top:28px}.tv-reception-copy h2{max-width:650px}.tv-reception-copy>p{max-width:680px}.tv-reception-copy .tv-reception-sources{margin-bottom:0}}
+@media(max-width:540px){.tv-reception{padding-bottom:12px}.tv-reception-copy h2{font-size:29px}.tv-reception-question>summary{font-size:15px;gap:12px;padding:17px 16px}.tv-reception-question>p{padding:0 16px 18px;font-size:14px}.whatsapp-reception{padding:13px 12px}.whatsapp-reception legend{font-size:12px;padding:0 4px}}

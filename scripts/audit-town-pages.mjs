@@ -106,6 +106,14 @@ for (const page of localPages) {
   assert.equal((main.match(/\bdata-whatsapp-form(?=\s|>)/g) || []).length, 1, `${page.path}: debe haber un solo formulario de WhatsApp`);
   const contactSection = main.match(/<section\b[^>]*\bid="contacto"[^>]*>([\s\S]*?)<\/section>/)?.[1];
   assert.ok(contactSection && /<form\b[^>]*\bdata-whatsapp-form(?=\s|>)/.test(contactSection), `${page.path}: el formulario debe estar en la sección de contacto`);
+  const receptionSections = [...main.matchAll(/<section\b[^>]*\bid="problemas-tdt"[^>]*>([\s\S]*?)<\/section>/g)];
+  assert.equal(receptionSections.length, 1, `${page.path}: debe haber una sola guía de problemas de televisión`);
+  const receptionSection = receptionSections[0][0];
+  assert.equal((receptionSection.match(/<details\b/g) || []).length, 3, `${page.path}: tres preguntas de recepción`);
+  assert.ok(receptionSection.includes(esc(page.name)), `${page.path}: falta el municipio en la guía de recepción`);
+  assert.ok(main.indexOf('id="problemas-tdt"') < main.indexOf('id="contacto"'), `${page.path}: guía antes del formulario`);
+  assert.ok(receptionSection.includes('data-contact-service="tdt"'), `${page.path}: consulta de recepción sin servicio TDT`);
+  for (const name of ['channels', 'timing']) assert.ok(contactSection.includes(`name="${name}"`), `${page.path}: falta el campo ${name}`);
   assert.ok(!/AggregateRating|Review/.test(html), `${page.path}: no inventar reseñas estructuradas`);
   assert.ok(html.includes('class="related-towns"'), `${page.path}: falta enlazado interno a otros pueblos`);
   assert.ok((html.match(/class="related-town-links"[\s\S]*?<\/div>/)?.[0].match(/<a href=/g) || []).length >= 4, `${page.path}: pocos enlaces internos a pueblos`);
