@@ -82,12 +82,21 @@ for (const page of localPages) {
   assert.ok(fs.existsSync(file), `Falta HTML local: ${page.path}`);
   const html = fs.readFileSync(file, 'utf8');
   checkPresentation(html, page.path);
+  const serviceCards = [...html.matchAll(/<article class="service-card" id="([^"]+)"[^>]*>([\s\S]*?)<\/article>/g)];
+  assert.equal(serviceCards.length, 9, `${page.path}: deben aparecer los nueve servicios completos`);
+  for (const card of serviceCards) {
+    assert.match(card[2], /<p>[^<]+<\/p>/, `${page.path}: falta la explicación de ${card[1]}`);
+  }
 
   assert.equal((html.match(/<h1\b/g) || []).length, 1, `${page.path}: debe tener un H1`);
   assert.match(html, /<meta name="robots" content="noindex,nofollow">/, `${page.path}: noindex de preview`);
   assert.ok(html.includes(`href="${new URL(page.path, site.domain).href}"`), `${page.path}: canonical propio`);
   assert.ok(html.includes(`Antenista en ${page.name}`), `${page.path}: intención antenista + pueblo`);
-  for (const id of ['tdt','porteros','videoporteros','cobertura-movil-servicio']) assert.ok(html.includes(`id="${id}"`), `${page.path}: servicio ausente ${id}`);
+  assert.ok(html.includes(`<span class="eyebrow">Servicio en ${esc(page.name)}</span>`), `${page.path}: servicio + pueblo sin teléfono repetido`);
+  assert.ok(html.includes(`Reparación de antenas en ${page.name}`), `${page.path}: reparación + pueblo`);
+  assert.ok(html.includes(`Porteros automáticos y videoporteros en ${page.name}`), `${page.path}: porteros + pueblo`);
+  assert.ok(html.includes(`Cobertura móvil 4G/5G en vivienda individual en ${page.name}`), `${page.path}: cobertura móvil + pueblo`);
+  assert.ok(html.includes('data-local-variant='), `${page.path}: variante local`);
   assert.ok(html.includes(site.phone), `${page.path}: teléfono`);
   const main = html.match(/<main\b[^>]*>([\s\S]*?)<\/main>/i)?.[1];
   assert.ok(main, `${page.path}: falta contenido principal`);
@@ -148,12 +157,7 @@ for (const page of localPages) {
   const variant = html.match(/data-local-variant="(\d+)"/)?.[1];
   if (variant) localVariants.add(variant);
 
-  // After consolidation the local-intent block is a service menu. Measure the
-  // developed technical content, not intentionally shared navigation labels.
-  const localBlock = html.includes('data-editorial-consolidation=')
-    ? html.match(/<section class="section wrap technical-services"[\s\S]*?<\/section>/)?.[0] || ''
-    : html.match(/<section class="section soft local-intent-section"[\s\S]*?<\/section>/)?.[0] || '';
-  assert.ok(localBlock, `${page.path}: falta contenido desarrollado para auditar`);
+  const localBlock = html.match(/<section class="section soft local-intent-section"[\s\S]*?<\/section>/)?.[0] || '';
   const normalized = normalizeVisible(localBlock)
     .replaceAll(page.name, 'LOCALIDAD')
     .replaceAll(page.province || '', 'PROVINCIA');
@@ -165,6 +169,7 @@ for (const page of localPages) {
 
 assert.ok(titlePatterns.size >= 4, `Poca variedad de title SEO: ${titlePatterns.size} patrones`);
 assert.ok(descriptionPatterns.size >= 6, `Poca variedad de meta descriptions: ${descriptionPatterns.size} patrones`);
+assert.ok(localVariants.size >= 150, `Poca diversidad determinista: solo ${localVariants.size} variantes`);
 const largestFingerprintGroup = Math.max(...localBodyFingerprints.values());
 assert.ok(largestFingerprintGroup <= 12, `Demasiadas páginas locales con el mismo bloque normalizado: ${largestFingerprintGroup}`);
 
@@ -199,4 +204,4 @@ for (const province of provinces) {
   assert.equal(zones.split(`href="${province.path}"`).length - 1, 1, `Portada: acceso único a ${province.name}`);
 }
 assert.ok(fs.statSync(path.join(root, 'assets/logo-antenasrapid.webp')).size > 0, 'Falta el archivo de logo publicado');
-console.log(`AUDITORÍA SEO LOCAL OK: ${localPages.length} páginas; ${titlePatterns.size} patrones de title, ${descriptionPatterns.size} metas, ${localBodyFingerprints.size} bloques desarrollados distintos, schema Service sin dirección inventada, Urgencias 24h, URLs históricas de Bilbao/Aranda/Lerma e interlinking provincial.`);
+console.log(`AUDITORÍA SEO LOCAL OK: ${localPages.length} páginas; ${titlePatterns.size} patrones de title, ${descriptionPatterns.size} metas, ${localVariants.size} variantes de contenido, schema Service sin dirección inventada, Urgencias 24h, URLs históricas de Bilbao/Aranda/Lerma e interlinking provincial.`);
