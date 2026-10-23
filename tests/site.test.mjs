@@ -51,5 +51,5 @@ test('el marcador de producción no permite indexar deploy previews ni ramas',()
 });
 test('build:production autoriza la fase base y conserva ambas auditorías',()=>{
  const pkg=JSON.parse(fs.readFileSync('package.json','utf8'));
- assert.match(pkg.scripts['build:production'],/^ANTENASRAPID_BUILD_TARGET=production SITE_MODE=preview npm run build && CONFIRM_PRODUCTION_PREP=1 npm run prepare:production && npm run audit:production$/);
+ assert.match(pkg.scripts['build:production'],/^ANTENASRAPID_BUILD_TARGET=production SITE_MODE=preview npm run build && CONFIRM_PRODUCTION_PREP=1 npm run prepare:production && node scripts\/town-section-order\.mjs && npm run audit:production$/);
 });
