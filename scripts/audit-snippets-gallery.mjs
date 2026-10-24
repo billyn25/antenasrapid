@@ -18,7 +18,7 @@ for (const page of manifest) {
   if (!title || !description) throw new Error(`${page.path}: faltan title o description`);
   if (!title.includes(page.name)) throw new Error(`${page.path}: el title ha perdido el nombre de la localidad`);
   if (!/Urgencias 24h/i.test(title)) throw new Error(`${page.path}: title sin Urgencias 24h`);
-  if (!description.includes(page.name) || !description.includes(page.province)) throw new Error(`${page.path}: meta sin localidad/provincia`);
+  if (!description.includes(page.name) || (page.province === 'Bizkaia' ? description.includes('Bizkaia') : !description.includes(page.province))) throw new Error(`${page.path}: meta sin localidad/provincia`);
   if (!description.includes('641 589 394')) throw new Error(`${page.path}: meta sin teléfono`);
   if (!/Urgencias 24h/i.test(description)) throw new Error(`${page.path}: meta sin Urgencias 24h`);
   if (title.length > 70) throw new Error(`${page.path}: title demasiado largo (${title.length})`);

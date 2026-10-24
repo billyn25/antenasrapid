@@ -27,7 +27,7 @@ export function localVisibleCopy(html){
   if(tag){
    if(/^<meta\b/i.test(tag)&&/(?:name|property)="(?:description|og:description|og:title|twitter:title|twitter:description)"/i.test(tag)){
     const cleaned=tag.replace(/, Bizkaia/g,'').replace(/ en Bizkaia/g,'');
-    if(/(?:name|property)="(?:description|og:description|twitter:description)"/i.test(cleaned))return cleaned.replace(/content="([^"]*)"/,(_,value)=>`content="${value.length<115?value+' Consulta tu instalación.':value}"`);
+    if(/(?:name|property)="(?:description|og:description|twitter:description)"/i.test(cleaned))return cleaned.replace(/content="([^"]*)"/,(_,value)=>`content="${value.length<115&&!value.includes(' Consulta tu instalación.')?value+' Consulta tu instalación.':value}"`);
     return cleaned;
    }
    return tag;
