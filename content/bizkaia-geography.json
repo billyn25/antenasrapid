@@ -1,0 +1,4030 @@
+{
+  "provinceId": "48",
+  "checkedOn": "24/10/2026",
+  "sourceUrl": "https://api-features.idee.es/collections/address/items",
+  "sourceFilter": {
+    "component_AdminUnitName_3": "Bizkaia"
+  },
+  "addressRecords": 97331,
+  "license": "Obra derivada CartoCiudad CC BY 4.0 SCNE; barrios Eustat CC BY 4.0",
+  "neighborhoodSource": "https://www.eustat.eus/elementos/xls0013711_c.csv",
+  "neighborhoodReference": "01/01/2025",
+  "municipalities": [
+    {
+      "id": "48001",
+      "name": "Abadiño",
+      "sourceName": "Abadiño",
+      "records": 839,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48211",
+        "48215",
+        "48220"
+      ],
+      "streets": [
+        "BARRIADA MUNTSARATZ",
+        "CALLE ARRANKURRI",
+        "BARRIADA ASTOLA",
+        "BARRIADA MENDIOLA",
+        "BARRIADA GEREDIAGA",
+        "BARRIADA GAZTELUA",
+        "CALLE ITURRITXO",
+        "AVENIDA TRAÑABARREN",
+        "AVENIDA ALFREDO BAESCHLIN",
+        "CALLE LAUBIDETA",
+        "CALLE ARZUBIA",
+        "BARRIADA URKIOLA"
+      ],
+      "areas": [
+        "Abadiño-Zelaieta",
+        "Gaztelua",
+        "Gerediaga",
+        "Mendiola",
+        "Muntsaratz",
+        "Traña-Matiena",
+        "Urkiola"
+      ],
+      "neighborhoods": [],
+      "streetCount": 66
+    },
+    {
+      "id": "48002",
+      "name": "Abanto y Ciérvana-Abanto Zierbena",
+      "sourceName": "Abanto y Ciérvana-Abanto Zierbena",
+      "records": 1703,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48500",
+        "48508",
+        "48530",
+        "48550"
+      ],
+      "streets": [
+        "BARRIADA EL CAMPILLO",
+        "AVENIDA AMBROSIO DE LOS HEROS",
+        "BARRIADA COTARRO",
+        "BARRIADA COTORRIO",
+        "AVENIDA LOS CHOPOS",
+        "AVENIDA EL MINERO",
+        "BARRIADA PUTXETA",
+        "URBANIZACION LA MAGDALENA",
+        "CALLE EL CERRO",
+        "URBANIZACION MONTELLANO",
+        "BARRIADA LOREDO",
+        "BARRIADA SANTA JULIANA"
+      ],
+      "areas": [
+        "Abanto",
+        "Cotorrio",
+        "El Campillo",
+        "Gallarta",
+        "La Balastera",
+        "La Florida",
+        "Las Calizas",
+        "Las Carreras",
+        "Las Cortes",
+        "Los Castaños",
+        "Murrieta",
+        "Picon",
+        "Putxeta",
+        "Sanfuentes",
+        "San Pedro",
+        "Santa Juliana",
+        "Triano"
+      ],
+      "neighborhoods": [],
+      "streetCount": 80
+    },
+    {
+      "id": "48003",
+      "name": "Amorebieta-Etxano",
+      "sourceName": "Amorebieta-Etxano",
+      "records": 1876,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48330",
+        "48340",
+        "48391"
+      ],
+      "streets": [
+        "BARRIADA SAN MIGUEL DUDEA",
+        "CALLE UGARTE BIDEA",
+        "BARRIADA BOROA",
+        "CALLE SAN PEDRO",
+        "BARRIADA DUDEA",
+        "BARRIADA EUBA",
+        "BARRIADA SAN ANTONIO ELGEZABAL",
+        "CALLE AITA ROMAN URTIAGA",
+        "BARRIADA GUMUZIO",
+        "CALLE GUDARI",
+        "CALLE KARMEN",
+        "CALLE LUIS URRENGOETXEA"
+      ],
+      "areas": [
+        "Aldana",
+        "Amorebieta",
+        "Astepe",
+        "Autzagana",
+        "Bernagoitia",
+        "Boroa",
+        "Dudea",
+        "Etxano",
+        "Euba",
+        "Oromiño"
+      ],
+      "neighborhoods": [
+        "Astepe",
+        "Centro",
+        "Ogenabekoa",
+        "San José",
+        "Zona Rural",
+        "Zubikurtze"
+      ],
+      "streetCount": 131
+    },
+    {
+      "id": "48004",
+      "name": "Amoroto",
+      "sourceName": "Amoroto",
+      "records": 148,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48289"
+      ],
+      "streets": [
+        "BARRIADA ELEXALDE",
+        "BARRIADA ODIAGA",
+        "BARRIADA UGARAN",
+        "BARRIADA URRUTIA",
+        "CARRETERA BI-2405",
+        "CARRETERA BI-4406",
+        "CARRETERA BI-3447"
+      ],
+      "areas": [
+        "Elexalde",
+        "Odiaga",
+        "Ugaran",
+        "Urrutia"
+      ],
+      "neighborhoods": [],
+      "streetCount": 7
+    },
+    {
+      "id": "48005",
+      "name": "Arakaldo",
+      "sourceName": "Arakaldo",
+      "records": 69,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48498"
+      ],
+      "streets": [
+        "BARRIADA MADARIAGA",
+        "BARRIADA LA ISLA DE UGARRIZA",
+        "BARRIADA ELEXALDE",
+        "BARRIADA GOIKIRI",
+        "BARRIADA IBARRETXE",
+        "PROLONGACION USILARRA",
+        "BARRIADA EPERRETXE",
+        "BARRIADA PECHABI",
+        "CARRETERA AP-68",
+        "BARRIADA ETXEBARRI",
+        "BARRIADA ETXETXU",
+        "BARRIADA ETXEZURI"
+      ],
+      "areas": [
+        "Arakaldo"
+      ],
+      "neighborhoods": [],
+      "streetCount": 14
+    },
+    {
+      "id": "48006",
+      "name": "Arantzazu",
+      "sourceName": "Arantzazu",
+      "records": 120,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48140"
+      ],
+      "streets": [
+        "BARRIADA ZELAIA",
+        "BARRIADA OLARRA",
+        "BARRIADA ARANTZAZUGOITI",
+        "BARRIADA ZALBIDE",
+        "BARRIADA OILAKORBE",
+        "CARRETERA N-240",
+        "CARRETERA BI-3527"
+      ],
+      "areas": [
+        "Arantzazugoiti",
+        "Olarra",
+        "Zelaia"
+      ],
+      "neighborhoods": [],
+      "streetCount": 7
+    },
+    {
+      "id": "48007",
+      "name": "Munitibar-Arbatzegi Gerrikaitz",
+      "sourceName": "Munitibar-Arbatzegi Gerrikaitz",
+      "records": 254,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48278",
+        "48381"
+      ],
+      "streets": [
+        "BARRIADA GERRIKAITZ",
+        "BARRIADA MUNITIBAR",
+        "BARRIADA BERREÑO",
+        "BARRIADA TOTORIKA",
+        "BARRIADA GERRIKA",
+        "CALLE GILLISTEGI BEHEKOA",
+        "CALLE ALDAKA BIDEA",
+        "CARRETERA BI-2224",
+        "CALLE GILLISTEGI GOIKOA",
+        "PLAZA HERRIKO PLAZA",
+        "BARRIADA ZEINKA - ZEARREGI",
+        "CALLE OLABARRI"
+      ],
+      "areas": [
+        "Berreño",
+        "Gerrika",
+        "Gerrikaitz",
+        "Munitibar",
+        "Totorika"
+      ],
+      "neighborhoods": [],
+      "streetCount": 14
+    },
+    {
+      "id": "48008",
+      "name": "Artzentales",
+      "sourceName": "Artzentales",
+      "records": 388,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48879"
+      ],
+      "streets": [
+        "BARRIADA SAN MIGUEL DE LINARES",
+        "BARRIADA SANTA CRUZ",
+        "AVENIDA LEHENDAKARI AGIRRE",
+        "BARRIADA TRASLOSHEROS",
+        "BARRIADA LAURETA",
+        "BARRIADA REBOLLAR",
+        "BARRIADA EL PESO",
+        "BARRIADA LA RENEJA",
+        "BARRIADA GÓRGOLAS",
+        "BARRIADA LA VÍA",
+        "BARRIADA SANTELICES",
+        "URBANIZACION KOLITXA BEGIRA"
+      ],
+      "areas": [
+        "Gorgolas",
+        "San Miguel de Linares",
+        "Santa Cruz",
+        "Traslaviña",
+        "Traslosheros"
+      ],
+      "neighborhoods": [],
+      "streetCount": 47
+    },
+    {
+      "id": "48009",
+      "name": "Arrankudiaga-Zollo",
+      "sourceName": "Arrankudiaga-Zollo",
+      "records": 462,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48490",
+        "48498",
+        "48499"
+      ],
+      "streets": [
+        "ID BAKIOLA",
+        "BARRIADA ELEXALDE",
+        "BARRIADA URIBARRI",
+        "ESPALDA MANUEL DE IRUJO",
+        "BARRIADA GARONDO",
+        "BARRIADA ARENE",
+        "BARRIADA ASPIUNZA",
+        "BARRIADA ATXETA",
+        "BARRIADA ZOLLO - ELEXALDE",
+        "BARRIADA OTXANDURI",
+        "BARRIADA GASTAKA - GOIKOA",
+        "BARRIADA ZABALE"
+      ],
+      "areas": [
+        "Arene",
+        "Aspiuntza",
+        "Uribarri",
+        "Zollo-Elexalde",
+        "Zuloaga"
+      ],
+      "neighborhoods": [],
+      "streetCount": 47
+    },
+    {
+      "id": "48010",
+      "name": "Arrieta",
+      "sourceName": "Arrieta",
+      "records": 285,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48114",
+        "48116",
+        "48350"
+      ],
+      "streets": [
+        "BARRIADA LIBAO",
+        "BARRIADA AGIRRE",
+        "BARRIADA JAINKO",
+        "BARRIADA GOIRI",
+        "BARRIADA MENDIGUREN",
+        "BARRIADA OXIÑAGA",
+        "BARRIADA BAIENETA",
+        "BARRIADA LEXARRAGA",
+        "BARRIADA GEREKA",
+        "BARRIADA LANDAGUREN",
+        "BARRIADA LEKERIKA",
+        "BARRIADA MADARIAGA"
+      ],
+      "areas": [
+        "Agirre",
+        "Jainko-Oleaga",
+        "Libao",
+        "Olatxua-Olabarri"
+      ],
+      "neighborhoods": [],
+      "streetCount": 27
+    },
+    {
+      "id": "48011",
+      "name": "Arrigorriaga",
+      "sourceName": "Arrigorriaga",
+      "records": 835,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48003",
+        "48480",
+        "48970"
+      ],
+      "streets": [
+        "CALLE PADURA",
+        "PASEO URGOITI",
+        "CALLE SEVERO OCHOA",
+        "CALLE JOSE Mª MAKUA",
+        "CALLE SANTA ISABEL",
+        "CALLE PEDRO MURO",
+        "BARRIADA OSASUN ETA HIGIENE",
+        "CALLE ARANDIA",
+        "CALLE BARRENKALEA",
+        "CALLE DONIBANE",
+        "BARRIADA LARRASKO",
+        "CALLE LONBO"
+      ],
+      "areas": [
+        "Abusu/La Peña",
+        "Agirre",
+        "Arrigorriaga",
+        "Martiartu"
+      ],
+      "neighborhoods": [
+        "Abusu/LaPeña",
+        "Atxukarro-Lanbarketa",
+        "Centro-Casco",
+        "Santo Cristo",
+        "Urgoiti"
+      ],
+      "streetCount": 75
+    },
+    {
+      "id": "48012",
+      "name": "Bakio",
+      "sourceName": "Bakio",
+      "records": 867,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48130",
+        "48620"
+      ],
+      "streets": [
+        "CALLE BASIGOKO BIDE NAGUSIA",
+        "BARRIADA GIBELORRATZAGAKO SAN PELAIO",
+        "CALLE SAN PELAIOKO BIDE NAGUSIA",
+        "BARRIADA ZUBIAURREALDE",
+        "BARRIADA GOITISOLOALDE",
+        "CALLE GOIENKALE",
+        "CALLE IBARRETA",
+        "BARRIADA URKITZAURREALDE",
+        "BARRIADA ELEXALDE",
+        "PUERTO, PORTILLO ZINTADUIKO JARDUERA GUNEA",
+        "CALLE URZABAL",
+        "CALLE ATXAGAKO BIDEA"
+      ],
+      "areas": [
+        "Artzalde",
+        "Elexalde",
+        "Gibelorratzagako San Pelaio",
+        "Goitisoloalde",
+        "Urkitzaur",
+        "Zubiaur"
+      ],
+      "neighborhoods": [],
+      "streetCount": 57
+    },
+    {
+      "id": "48013",
+      "name": "Barakaldo",
+      "sourceName": "Barakaldo",
+      "records": 4040,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48013",
+        "48901",
+        "48902",
+        "48903"
+      ],
+      "streets": [
+        "CALLE LA DINAMITA",
+        "CALLE LA FAMILIAR",
+        "CALLE FERRERÍAS",
+        "URBANIZACION IGULIZ",
+        "CALLE FRANCISCO GOMEZ",
+        "AVENIDA LA LIBERTAD",
+        "CALLE GERNIKAKO ARBOLA",
+        "CALLE BIZKAIA",
+        "CALLE LA PAZ",
+        "CALLE ZUBILETA",
+        "AVENIDA ALTOS HORNOS DE VIZCAYA",
+        "CALLE SAN VICENTE"
+      ],
+      "areas": [
+        "Errekatxo/El Regato",
+        "San Vicente de Barakaldo"
+      ],
+      "neighborhoods": [
+        "Arteagabeitia",
+        "Beurko",
+        "Burceña",
+        "Cruces",
+        "El Carmen",
+        "Errekatxo/El Regato",
+        "Fueros",
+        "La Paz",
+        "Landaburu",
+        "Larrea",
+        "Lasesarre",
+        "Llano",
+        "Lutxana",
+        "Retuerto",
+        "Rontegui",
+        "San Vicente",
+        "Santa Teresa",
+        "Zuazo"
+      ],
+      "streetCount": 336
+    },
+    {
+      "id": "48014",
+      "name": "Barrika",
+      "sourceName": "Barrika",
+      "records": 467,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48610",
+        "48620",
+        "48650"
+      ],
+      "streets": [
+        "BARRIADA MUSAURIETA",
+        "CARRETERA CARRETERA GENERAL",
+        "URBANIZACION GARRAMUNE",
+        "BARRIADA ARTEPETA",
+        "CARRETERA GOIERRI",
+        "BARRIADA ARRIAGA",
+        "CARRETERA BARRIKA A SOPELANA",
+        "BARRIADA MENDIETA",
+        "CARRETERA AYUNTAMIENTO",
+        "BARRIADA SAN TELMO",
+        "BARRIADA LARRETXE",
+        "URBANIZACION ZABALETXE"
+      ],
+      "areas": [
+        "Elexalde",
+        "Goierri"
+      ],
+      "neighborhoods": [],
+      "streetCount": 24
+    },
+    {
+      "id": "48015",
+      "name": "Basauri",
+      "sourceName": "Basauri",
+      "records": 1873,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48450",
+        "48480",
+        "48970"
+      ],
+      "streets": [
+        "AVENIDA AGIRRE LEHENDAKARIA",
+        "CALLE KAREAGA GOIKOA",
+        "AVENIDA LANDA DOKTORREN ETORBIDEA",
+        "CALLE KALE NAGUSIA",
+        "CALLE GERNIKA",
+        "CALLE CATALUNYA",
+        "CALLE AXULAR",
+        "AVENIDA URBI",
+        "CALLE BASOZELAI",
+        "CALLE BALENDIN BERRIOTXOA",
+        "CALLE KARMELO TORRE",
+        "CALLE GIPUZKOA"
+      ],
+      "areas": [
+        "Arizgoiti",
+        "Elexalde",
+        "Urbi"
+      ],
+      "neighborhoods": [
+        "Ariz",
+        "Arizgoiti",
+        "Basozelai",
+        "Bentakoiko",
+        "Berriotxoa-Soloarte",
+        "Careaga",
+        "El Calero",
+        "Estación",
+        "Hernán Cortes",
+        "Matadero",
+        "Pozokoetxe",
+        "San Miguel",
+        "San Pedro",
+        "Urbi",
+        "Virgen de Begoña"
+      ],
+      "streetCount": 182
+    },
+    {
+      "id": "48016",
+      "name": "Berango",
+      "sourceName": "Berango",
+      "records": 1202,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48640",
+        "48950"
+      ],
+      "streets": [
+        "AVENIDA SIMON OTXANDATEGI",
+        "CAMINO EGUZKITZA",
+        "CALLE BERANGOTXU BIDEA",
+        "CALLE JESUS MARIA LEIZAOLA",
+        "CALLE LUKATEGITXU BIDEA",
+        "CALLE ERREKAGANA",
+        "CALLE SABINO ARANA",
+        "CALLE BERANGOETA BIDEA",
+        "CAMINO BASOTXU",
+        "CAMINO GORRONDATXE",
+        "CAMINO ABAROTXU",
+        "CALLE AGIRRE LEHENDAKARIAREN KALEA"
+      ],
+      "areas": [
+        "Baserri-Santa Ana",
+        "Berango"
+      ],
+      "neighborhoods": [],
+      "streetCount": 80
+    },
+    {
+      "id": "48017",
+      "name": "Bermeo",
+      "sourceName": "Bermeo",
+      "records": 1562,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48130",
+        "48360",
+        "48370"
+      ],
+      "streets": [
+        "BARRIADA ARANE GIBELORTZAGA",
+        "BARRIADA ARTIKA",
+        "CALLE ZUBIAURTAR KEPA",
+        "BARRIADA MAÑU",
+        "CALLE NARDIZTAR JON",
+        "BARRIADA AGIRRE",
+        "AVENIDA ASKATASUN BIDEA",
+        "CALLE ERREMEDIO",
+        "CALLE ARRESI",
+        "BARRIADA ALMIKA",
+        "BARRIADA SAN MIGEL",
+        "CALLE BIZKAIKO JAURERRIA"
+      ],
+      "areas": [
+        "Agirre",
+        "Almika",
+        "Arane-Gibelortzaga",
+        "Arranotegi",
+        "Artika",
+        "Bermeo",
+        "Demiku",
+        "Mañu",
+        "San Andres",
+        "San Migel"
+      ],
+      "neighborhoods": [
+        "Aren-Ondo",
+        "Casco Viejo",
+        "Diseminado",
+        "Errene-Zubi",
+        "Erribera",
+        "Esparru",
+        "Kurtzio",
+        "Morondo",
+        "Portale",
+        "Tala"
+      ],
+      "streetCount": 115
+    },
+    {
+      "id": "48018",
+      "name": "Berriatua",
+      "sourceName": "Berriatua",
+      "records": 368,
+      "excludedPostalCodes": [
+        "20830"
+      ],
+      "postalCodes": [
+        "48700",
+        "48710"
+      ],
+      "streets": [
+        "BARRIADA ERRIBERA",
+        "BARRIADA ASTERRIKA",
+        "BARRIADA MAGDALENA",
+        "ID GARDOTZA",
+        "BARRIADA MERELLUDI",
+        "CALLE ERRIBERA",
+        "CALLE ZELAIETA",
+        "CALLE ZEHARBIDE",
+        "CALLE ARTAPE",
+        "CALLE ARANSOLO",
+        "CALLE ETXEPINTXO",
+        "CARRETERA BI-2405"
+      ],
+      "areas": [
+        "Asterrika",
+        "Erribera",
+        "Magdalena",
+        "Merelludi"
+      ],
+      "neighborhoods": [],
+      "streetCount": 19
+    },
+    {
+      "id": "48019",
+      "name": "Berriz",
+      "sourceName": "Berriz",
+      "records": 757,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48220",
+        "48240",
+        "48249"
+      ],
+      "streets": [
+        "GRUPO ABELETXE",
+        "BARRIADA OKANGO",
+        "BARRIADA SALLOBENTE",
+        "BARRIADA SARRIA",
+        "ID EITUA",
+        "BARRIADA ANDIKOA",
+        "BARRIADA EITUA",
+        "CALLE ITURRITZA",
+        "AVENIDA MARGARITA MATURANA",
+        "BARRIADA MURGOITIO",
+        "BARRIADA MATZAGABARRENA",
+        "CALLE LEARRETA - MARKINA"
+      ],
+      "areas": [
+        "Andikoa",
+        "Berriz-Olakueta",
+        "Eitua",
+        "Murgoitio",
+        "Okango",
+        "Sallobente",
+        "Sarria"
+      ],
+      "neighborhoods": [],
+      "streetCount": 38
+    },
+    {
+      "id": "48020",
+      "name": "Bilbao",
+      "sourceName": "Bilbao",
+      "records": 12103,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48001",
+        "48002",
+        "48003",
+        "48004",
+        "48005",
+        "48006",
+        "48007",
+        "48008",
+        "48009",
+        "48010",
+        "48011",
+        "48012",
+        "48013",
+        "48014",
+        "48015",
+        "48150",
+        "48950"
+      ],
+      "streets": [
+        "ESCALINATA MASUSTEGI",
+        "BARRIADA BETOLATZA",
+        "CARRETERA BASURTU - KASTREXANA",
+        "CALLE ITURRIBIDE",
+        "CAMINO PEÑASCAL",
+        "AVENIDA LEHENDAKARI AGUIRRE",
+        "GRUPO CIUDAD JARDÍN",
+        "CALLE ZAMÁCOLA",
+        "GRUPO UNIÓN BEGOÑESA",
+        "AVENIDA JULIÁN GAIARRE",
+        "ALDEA, ALAMEDA URQUIJO",
+        "CALLE ZABALBIDE"
+      ],
+      "areas": [
+        "Bilbao"
+      ],
+      "neighborhoods": [
+        "Abando",
+        "Altamira",
+        "Ametzola",
+        "Arabella",
+        "Arangoiti",
+        "Atxuri",
+        "Basurtu",
+        "Begoña",
+        "Bilbao la Vieja",
+        "Bolueta",
+        "Casco Viejo",
+        "Castaños",
+        "Ciudad Jardín",
+        "Errekaldeberri",
+        "Ibarrekolanda",
+        "Indautxu",
+        "Iralabarri",
+        "Iturralde",
+        "Iturrigorri-Peñascal",
+        "La Peña",
+        "La Ribera",
+        "Larraskitu",
+        "Masustegi-Monte Caramelo",
+        "Matiko",
+        "Miribilla",
+        "Olabeaga",
+        "Otxarkoaga",
+        "San Adrián",
+        "San Francisco",
+        "San Ignacio",
+        "San Pedro de Deustu",
+        "Santutxu",
+        "Solokoetxe",
+        "Txurdinaga",
+        "Uretamendi",
+        "Uribarri",
+        "Zabala",
+        "Zorrotza",
+        "Zurbaran"
+      ],
+      "streetCount": 836
+    },
+    {
+      "id": "48021",
+      "name": "Busturia",
+      "sourceName": "Busturia",
+      "records": 507,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48350",
+        "48370",
+        "48395"
+      ],
+      "streets": [
+        "BARRIADA AXPE",
+        "BARRIADA ALTAMIRA",
+        "BARRIADA SAN CRISTÓBAL",
+        "BARRIADA SAN BARTOLOME",
+        "BARRIADA ABIÑA - ANDONI DEUNA",
+        "CARRETERA BI-3123",
+        "CARRETERA BI-3215"
+      ],
+      "areas": [
+        "Altamira-San Kristobal",
+        "Axpe-San Bartolome"
+      ],
+      "neighborhoods": [],
+      "streetCount": 7
+    },
+    {
+      "id": "48022",
+      "name": "Karrantza Harana/Valle de Carranza",
+      "sourceName": "Karrantza Harana/Valle de Carranza",
+      "records": 1549,
+      "excludedPostalCodes": [
+        "39880"
+      ],
+      "postalCodes": [
+        "48890",
+        "48891",
+        "48895"
+      ],
+      "streets": [
+        "BARRIADA CONCHA",
+        "BARRIADA AMBASAGUAS",
+        "BARRIADA SOSCAÑO",
+        "BARRIADA SAN ESTEBAN",
+        "BARRIADA BIÁÑEZ",
+        "BARRIADA MATIENZO",
+        "BARRIADA EL CALLEJO",
+        "BARRIADA ALDEACUEVA",
+        "BARRIADA SANGRICES",
+        "BARRIADA LANZAS AGUDAS",
+        "BARRIADA RANERO",
+        "BARRIADA LA TEJERA"
+      ],
+      "areas": [
+        "Ahedo",
+        "Aldeacueva",
+        "Ambasaguas",
+        "Bernales",
+        "Biáñez",
+        "Concha",
+        "El Callejo",
+        "El Suceso",
+        "Herboso",
+        "La Calera del Prado",
+        "La Cerca",
+        "Lanzas Agudas",
+        "Manzaneda de Biáñez",
+        "Matienzo",
+        "Molinar",
+        "Pando",
+        "Paúles",
+        "Presa",
+        "Ranero",
+        "Rioseco",
+        "San Cipriano",
+        "San Esteban",
+        "Sangrices",
+        "Santecilla",
+        "Sierra",
+        "Soscaño"
+      ],
+      "neighborhoods": [],
+      "streetCount": 59
+    },
+    {
+      "id": "48023",
+      "name": "Artea",
+      "sourceName": "Artea",
+      "records": 368,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48142",
+        "48143",
+        "48499"
+      ],
+      "streets": [
+        "PLAZA HERRIKO PLAZA",
+        "BARRIADA ASTUIBEKOA",
+        "BARRIADA UGARTE",
+        "ID BILDOSOLA",
+        "BARRIADA CALLEJA",
+        "BARRIADA ASTUI",
+        "BARRIADA ESPARTA",
+        "BARRIADA ELEXABEITIA",
+        "BARRIADA BILDOSOLA",
+        "BARRIADA MENDIETA",
+        "BARRIADA BITERI",
+        "BARRIADA LARRAZABAL"
+      ],
+      "areas": [
+        "Bildosola",
+        "Elexabeitia",
+        "Esparta",
+        "Herriko Plaza",
+        "Sarasola",
+        "Ugarte"
+      ],
+      "neighborhoods": [],
+      "streetCount": 35
+    },
+    {
+      "id": "48024",
+      "name": "Zeanuri",
+      "sourceName": "Zeanuri",
+      "records": 871,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48144"
+      ],
+      "streets": [
+        "BARRIADA ALTZUSTA",
+        "BARRIADA IPIÑABURU",
+        "BARRIADA ASTERRIA",
+        "BARRIADA OTZERINMENDI",
+        "BARRIADA URIBE",
+        "BARRIADA UNDURRAGA",
+        "BARRIADA ALTZUAGA",
+        "BARRIADA PLAZEA",
+        "CARRETERA ZEANURI - ARTEA",
+        "BARRIADA LANDAGUTXI",
+        "BARRIADA ELEIZONDO",
+        "BARRIADA ALBAKOA"
+      ],
+      "areas": [
+        "Altzuaga",
+        "Altzusta",
+        "Asterria",
+        "Ibarguen",
+        "Ipiñaburu",
+        "Otzerinmendi",
+        "Plaza",
+        "Undurraga",
+        "Uribe"
+      ],
+      "neighborhoods": [],
+      "streetCount": 25
+    },
+    {
+      "id": "48025",
+      "name": "Zeberio",
+      "sourceName": "Zeberio",
+      "records": 552,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48140",
+        "48490",
+        "48499"
+      ],
+      "streets": [
+        "CALLE SAUTUOLABARRI",
+        "BARRIADA ZUBIALDE",
+        "BARRIADA AREILTZA",
+        "BARRIADA ARKULANDA",
+        "BARRIADA SALDARIAN",
+        "BARRIADA ERMITABARRI",
+        "BARRIADA URIONDO",
+        "BARRIADA EGIA",
+        "BARRIADA SANTA CRUZ",
+        "BARRIADA ARBILDU",
+        "BARRIADA IBARRA",
+        "BARRIADA ARESANDIAGA"
+      ],
+      "areas": [
+        "Ametzola",
+        "Areiltza-Olatzar",
+        "Aresandiaga",
+        "Argiñao",
+        "Arkulanda",
+        "Ermitabarri-Ibarra",
+        "Gezala",
+        "Solatxi",
+        "Uriondo",
+        "Zubialde"
+      ],
+      "neighborhoods": [],
+      "streetCount": 70
+    },
+    {
+      "id": "48026",
+      "name": "Dima",
+      "sourceName": "Dima",
+      "records": 744,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48141",
+        "48144"
+      ],
+      "streets": [
+        "BARRIADA ARTAUN",
+        "BARRIADA AROZTEGIETA",
+        "BARRIADA BARGONDIA",
+        "BARRIADA BIKARREGI",
+        "BARRIADA OLAZABAL",
+        "CALLE TELLERI",
+        "BARRIADA ITURRIOTZ BARRENA",
+        "BARRIADA IBARRA",
+        "BARRIADA ARTABE",
+        "BARRIADA BARGONDIA BEKOA",
+        "BARRIADA OBA - GOIKOA",
+        "BARRIADA UGARANA"
+      ],
+      "areas": [
+        "Aroztegieta",
+        "Bargondia",
+        "Bikarregi",
+        "Indusi",
+        "Intxaurbizkar",
+        "Lamindao",
+        "Oba",
+        "Olazabal",
+        "Ugarana"
+      ],
+      "neighborhoods": [],
+      "streetCount": 71
+    },
+    {
+      "id": "48027",
+      "name": "Durango",
+      "sourceName": "Durango",
+      "records": 1644,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48200"
+      ],
+      "streets": [
+        "ANDADOR MURUETATORRE",
+        "AVENIDA ASKATASUN",
+        "ALDEA, ALAMEDA ANTSO ESTEGIZ",
+        "CALLE BARRENKALEA",
+        "CALLE KURUTZIAGA",
+        "CALLE TABIRABIDE",
+        "HI HEGOALDE",
+        "CALLE ARTEKALEA",
+        "CALLE INTXAURRONDO",
+        "CALLE SANROKEBIDE",
+        "CALLE KALEBARRIA",
+        "ANDADOR SAN IGNAZIO"
+      ],
+      "areas": [
+        "Durango"
+      ],
+      "neighborhoods": [
+        "Aramotz",
+        "Casco Viejo",
+        "Ensanche",
+        "Erretentxu",
+        "Landako",
+        "Magdalena",
+        "San Fausto",
+        "San Ignacio",
+        "San Roque",
+        "Tabira"
+      ],
+      "streetCount": 130
+    },
+    {
+      "id": "48028",
+      "name": "Ea",
+      "sourceName": "Ea",
+      "records": 388,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48287",
+        "48288",
+        "48311"
+      ],
+      "streets": [
+        "BARRIADA ELEXALDE - NATXITUA",
+        "BARRIADA ANGELUTXU",
+        "BARRIADA ELEXALDE - BEDARONA",
+        "BARRIADA MENDIOLA",
+        "BARRIADA OLAGORTA",
+        "BARRIADA URTZAGA",
+        "CALLE KALE NAGUSIA",
+        "CALLE ALTXIKAR",
+        "BARRIADA ALDEBASTER",
+        "CALLE BIDEBARRIA",
+        "CALLE KALEBARRIA",
+        "CALLE ARITZA"
+      ],
+      "areas": [
+        "Bedaroa",
+        "Ea",
+        "Natxitua"
+      ],
+      "neighborhoods": [],
+      "streetCount": 29
+    },
+    {
+      "id": "48029",
+      "name": "Etxebarri",
+      "sourceName": "Etxebarri",
+      "records": 770,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48450",
+        "48960"
+      ],
+      "streets": [
+        "AVENIDA SAN ANTONIO",
+        "CALLE SANTA MARINA",
+        "CALLE EUSKAL HERRIA",
+        "CALLE NAVARRA",
+        "CALLE ANDALUCÍA",
+        "CALLE CASTILLA",
+        "CALLE TOMÁS MEABE",
+        "CALLE LEZAMA - LEGIZAMON",
+        "CALLE ARABA",
+        "CALLE ANTONIO EPALZA",
+        "AVENIDA SAN ESTEBAN",
+        "CALLE ERREKAONDO"
+      ],
+      "areas": [
+        "Doneztebe",
+        "Kukullaga",
+        "Legizamon"
+      ],
+      "neighborhoods": [
+        "Doneztebe",
+        "Kukullaga",
+        "Legizamon",
+        "San Antonio"
+      ],
+      "streetCount": 62
+    },
+    {
+      "id": "48030",
+      "name": "Etxebarria",
+      "sourceName": "Etxebarria",
+      "records": 279,
+      "excludedPostalCodes": [
+        "20830"
+      ],
+      "postalCodes": [
+        "48270",
+        "48276",
+        "48277",
+        "48278"
+      ],
+      "streets": [
+        "BARRIADA GALARTZA",
+        "BARRIADA ALTZAA",
+        "CALLE ERBERA",
+        "BARRIADA AULESTI",
+        "ID GALARTZA",
+        "BARRIADA UNAMUNTZAGA",
+        "BARRIADA LARRUSKAIN - AMALLOA",
+        "CARRETERA BI-2636",
+        "GRUPO ERREKARTE",
+        "GRUPO IBAI - ONDO",
+        "GRUPO IBAUN - ERDI",
+        "GRUPO ALTZIBAR - AUZOA"
+      ],
+      "areas": [
+        "Altzaa",
+        "Aulesti",
+        "Erbera /San Andres",
+        "Galartza",
+        "Unamuntzaga"
+      ],
+      "neighborhoods": [],
+      "streetCount": 19
+    },
+    {
+      "id": "48031",
+      "name": "Elantxobe",
+      "sourceName": "Elantxobe",
+      "records": 141,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48310"
+      ],
+      "streets": [
+        "CALLE KALE NAGUSIA",
+        "CALLE PORTU",
+        "CALLE ANDIMA IBINAGABEITIA",
+        "CALLE BIDEKALEA",
+        "CALLE AITA ARRIANDIAGA",
+        "BARRIADA BERMOKIZ",
+        "BARRIADA OLAETA",
+        "CALLE ATALAIA",
+        "PLAZA ELEIZABARRI",
+        "CALLE MATADERO ZARRA",
+        "BARRIADA LEUNBE",
+        "CARRETERA BI-2238"
+      ],
+      "areas": [
+        "Elantxobe"
+      ],
+      "neighborhoods": [],
+      "streetCount": 14
+    },
+    {
+      "id": "48032",
+      "name": "Elorrio",
+      "sourceName": "Elorrio",
+      "records": 1091,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48230",
+        "48249"
+      ],
+      "streets": [
+        "CALLE ARESTIORTU",
+        "CALLE BERRIO - OTXOA",
+        "CALLE SAN PIO",
+        "BARRIADA SAN AGUSTIN",
+        "BARRIADA LEIZ - MIÑOTA",
+        "CALLE GOIETA",
+        "CALLE NIZETO URKIZU",
+        "BARRIADA BERRIO",
+        "BARRIADA GAZETA",
+        "CALLE ELIZBURU",
+        "BARRIADA ZENITA",
+        "CALLE ERREKAKALE"
+      ],
+      "areas": [
+        "Berrio-Aldape",
+        "Berriozabaleta-Aramiño",
+        "Elorrio",
+        "Gazeta",
+        "Gaztañeta",
+        "Iguria",
+        "Leiz-Miñota",
+        "Lekeriketa",
+        "Mendraka",
+        "San Agustin"
+      ],
+      "neighborhoods": [],
+      "streetCount": 78
+    },
+    {
+      "id": "48033",
+      "name": "Ereño",
+      "sourceName": "Ereño",
+      "records": 140,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48313"
+      ],
+      "streets": [
+        "BARRIADA ELEXALDE - ZEETA",
+        "BARRIADA GABIKA",
+        "BARRIADA BASETXETAS - ATXOSTE",
+        "BARRIADA AKORDA - BOLLAR",
+        "CARRETERA BI-3242",
+        "CARRETERA BI-3218"
+      ],
+      "areas": [
+        "Akorda-Bollar",
+        "Basetxeta-Atxoste",
+        "Elexalde-Zeeta",
+        "Gabika"
+      ],
+      "neighborhoods": [],
+      "streetCount": 6
+    },
+    {
+      "id": "48034",
+      "name": "Ermua",
+      "sourceName": "Ermua",
+      "records": 640,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48260"
+      ],
+      "streets": [
+        "AVENIDA GIPUZKOA",
+        "CALLE ZUBIAURRE",
+        "CALLE SAN PELAYO",
+        "CALLE ZEARKALE",
+        "CALLE MALLAMENDI",
+        "CALLE IZELAIETA",
+        "CALLE ABELETXE",
+        "CALLE GOIENKALE",
+        "CALLE ALDAPA",
+        "CALLE BETIONDO",
+        "CALLE ONGARAI",
+        "AVENIDA BIZKAIA"
+      ],
+      "areas": [
+        "Ermua"
+      ],
+      "neighborhoods": [
+        "Casco",
+        "Grupo Santiago",
+        "Ongaray",
+        "San Antonio",
+        "San Lorenzo",
+        "San Pelayo",
+        "Santa Ana"
+      ],
+      "streetCount": 50
+    },
+    {
+      "id": "48035",
+      "name": "Fruiz",
+      "sourceName": "Fruiz",
+      "records": 219,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48113",
+        "48116"
+      ],
+      "streets": [
+        "BARRIADA ALDAI",
+        "BARRIADA BOTIOLA",
+        "BARRIADA ANDEKO",
+        "BARRIADA MANDALUIZ",
+        "BARRIADA BATIZ",
+        "BARRIADA OLALDE",
+        "BARRIADA PLAKONALDE",
+        "BARRIADA LOTINA",
+        "BARRIADA UGANE",
+        "CARRETERA BI-4118",
+        "CARRETERA BI-2121",
+        "BARRIADA ELEXALDE"
+      ],
+      "areas": [
+        "Aldai",
+        "Andeko",
+        "Batiz",
+        "Botiola",
+        "Lotina",
+        "Mandaluiz",
+        "Olalde",
+        "Plakonalde",
+        "Ugane"
+      ],
+      "neighborhoods": [],
+      "streetCount": 13
+    },
+    {
+      "id": "48036",
+      "name": "Galdakao",
+      "sourceName": "Galdakao",
+      "records": 1826,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48195",
+        "48960"
+      ],
+      "streets": [
+        "BARRIADA TXIMILARRE BEKOA",
+        "BARRIADA BEKEA",
+        "BARRIADA APERRIBAI",
+        "CALLE TXOMIN EGILEOR",
+        "BARRIADA OLABARRIETA",
+        "BARRIADA ZABALEA",
+        "CALLE BIZKAI",
+        "CALLE IBAIZABAL",
+        "CALLE JUAN BAUTISTA URIARTE",
+        "BARRIADA ELEXALDE",
+        "CALLE LAPURDI",
+        "GRUPO TXIMILARRE GOIKOA"
+      ],
+      "areas": [
+        "Agirre-Aperribai",
+        "Bekea",
+        "Elexalde",
+        "Gumuzio",
+        "Kurtzea"
+      ],
+      "neighborhoods": [
+        "Bengoetxe",
+        "Elexalde",
+        "Kurtzea",
+        "Oinkina",
+        "Olaberrieta-Aperribai",
+        "Plazakoetxe",
+        "Tximelarre",
+        "Urreta",
+        "Urtebieta",
+        "Zabalea"
+      ],
+      "streetCount": 110
+    },
+    {
+      "id": "48037",
+      "name": "Galdames",
+      "sourceName": "Galdames",
+      "records": 508,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48190",
+        "48191"
+      ],
+      "streets": [
+        "BARRIADA LLANO",
+        "BARRIADA SAN PEDRO",
+        "BARRIADA LA ACEÑA",
+        "BARRIADA MONTELLANO - LAS CASAS",
+        "BARRIADA SAN ESTEBAN",
+        "BARRIADA ZUBIAGA",
+        "BARRIADA VILLA",
+        "BARRIADA EL BENTORRO",
+        "BARRIADA MONTELLANO - ACABAJO",
+        "BARRIADA VALLEJAS",
+        "BARRIADA EL CERCO",
+        "BARRIADA LAISEKA"
+      ],
+      "areas": [
+        "La Aceña/Atxuriaga",
+        "Montellano",
+        "San Esteban Galdames",
+        "San Pedro Galdames",
+        "Txabarri"
+      ],
+      "neighborhoods": [],
+      "streetCount": 66
+    },
+    {
+      "id": "48038",
+      "name": "Gamiz-Fika",
+      "sourceName": "Gamiz-Fika",
+      "records": 512,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48113",
+        "48116"
+      ],
+      "streets": [
+        "BARRIADA ERGOIEN",
+        "BARRIADA ELEXALDE",
+        "BARRIADA IBARRA",
+        "BARRIADA MENDOTZA",
+        "CARRETERA BI-3102",
+        "CARRETERA BI-2121",
+        "CARRETERA BI-3104",
+        "CARRETERA BI-3726"
+      ],
+      "areas": [
+        "Elexalde",
+        "Ergoien",
+        "Ibarra",
+        "Mendotza"
+      ],
+      "neighborhoods": [],
+      "streetCount": 8
+    },
+    {
+      "id": "48039",
+      "name": "Garai",
+      "sourceName": "Garai",
+      "records": 147,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48200",
+        "48220"
+      ],
+      "streets": [
+        "BARRIADA MOMOITIO",
+        "BARRIADA SAN MIGEL",
+        "BARRIADA GOIERRI",
+        "CARRETERA BI-3341"
+      ],
+      "areas": [
+        "Garai (San Migel)",
+        "Goierri",
+        "Momoitio"
+      ],
+      "neighborhoods": [],
+      "streetCount": 4
+    },
+    {
+      "id": "48040",
+      "name": "Gatika",
+      "sourceName": "Gatika",
+      "records": 580,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48110"
+      ],
+      "streets": [
+        "AT LUBARRIETAONDO",
+        "BARRIADA SERTUTXA",
+        "BARRIADA ZURBAO",
+        "BARRIADA GARAI",
+        "BARRIADA UGARTE",
+        "BARRIADA BUTROE",
+        "BARRIADA GORORDO",
+        "BARRIADA IGARTUA",
+        "BARRIADA LIBAROA",
+        "BARRIADA URRESTI",
+        "CARRETERA BI-3144",
+        "CARRETERA BI-3105"
+      ],
+      "areas": [
+        "Butroe",
+        "Garai",
+        "Gorordo",
+        "Igartua",
+        "Libaroa",
+        "Sertutxa",
+        "Ugarte",
+        "Urresti",
+        "Zurbao"
+      ],
+      "neighborhoods": [],
+      "streetCount": 14
+    },
+    {
+      "id": "48041",
+      "name": "Gautegiz Arteaga",
+      "sourceName": "Gautegiz Arteaga",
+      "records": 458,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48314"
+      ],
+      "streets": [
+        "BARRIADA KANALA",
+        "CALLE ZELAIETA",
+        "BARRIADA ISLA BEKOA",
+        "BARRIADA MENDIALDUA",
+        "CALLE ELEIZALDE",
+        "CALLE GAZTELUBIDE",
+        "BARRIADA ORUETA",
+        "CALLE ITURRIBIDE",
+        "CALLE KALTZAONDO",
+        "BARRIADA BASETXETA",
+        "BARRIADA ERREKALDE",
+        "BARRIADA MURETAGANE"
+      ],
+      "areas": [
+        "Basetxeta",
+        "Errekalde",
+        "Isla",
+        "Kanala",
+        "Zelaieta"
+      ],
+      "neighborhoods": [],
+      "streetCount": 30
+    },
+    {
+      "id": "48042",
+      "name": "Gordexola",
+      "sourceName": "Gordexola",
+      "records": 647,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48192",
+        "48194"
+      ],
+      "streets": [
+        "BARRIADA ZUBIETE",
+        "CALLE LA LLANA DE IBARRA",
+        "BARRIADA SANDAMENDI",
+        "ET LA CALZADA",
+        "CAMINO IBARRA",
+        "URBANIZACION IBARGARAI",
+        "BARRIADA BERDUGAL - IBARDUGAIN",
+        "CALLIZO EL PONTON - URARTE",
+        "BARRIADA LLANO DE ZALDU",
+        "BARRIADA UGARTE",
+        "BARRIADA AZKARAI",
+        "BARRIADA LAS LLANAS DE IRATZAGORRIA"
+      ],
+      "areas": [
+        "Iratzagorria",
+        "Sandamendi",
+        "Zaldu",
+        "Zubiete"
+      ],
+      "neighborhoods": [],
+      "streetCount": 81
+    },
+    {
+      "id": "48043",
+      "name": "Gorliz",
+      "sourceName": "Gorliz",
+      "records": 1230,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48620",
+        "48630"
+      ],
+      "streets": [
+        "CALLE KINPULENA",
+        "CALLE ITSASBIDE",
+        "CALLE TRIBIÑU",
+        "CARRETERA UREZARANTZA BIDEA",
+        "CALLE SAGASTI",
+        "CAMINO GUZURMENDI",
+        "CARRETERA MUNGIABIDEA",
+        "CALLE TALAIA BIDEA",
+        "CARRETERA ARMINTZA BIDEA",
+        "CALLE AXPE",
+        "CALLE ELOISA ARTAZA",
+        "CARRETERA GANDIA BIDEA"
+      ],
+      "areas": [
+        "Agirre-Areantza-Guzurmendi",
+        "Elexalde",
+        "Gandia",
+        "Urezarantza"
+      ],
+      "neighborhoods": [],
+      "streetCount": 111
+    },
+    {
+      "id": "48044",
+      "name": "Getxo",
+      "sourceName": "Getxo",
+      "records": 5084,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48640",
+        "48930",
+        "48940",
+        "48991",
+        "48992",
+        "48993"
+      ],
+      "streets": [
+        "CALLE ERROTALDE",
+        "CALLE PEÑA DE SANTA MARINA",
+        "CALLE MAIDAGAN",
+        "AVENIDA ZUGATZARTE",
+        "AVENIDA LOS CHOPOS",
+        "AVENIDA BASAGOITI",
+        "CARRETERA ZIENTOETXE",
+        "CALLE GABRIEL RAMOS URANGA",
+        "AVENIDA SALSIDU",
+        "AVENIDA ALGORTA",
+        "CALLE JUAN CUADRADO",
+        "CALLE MARTIARTU"
+      ],
+      "areas": [
+        "Algorta",
+        "Andra Mari",
+        "Areeta/Las Arenas"
+      ],
+      "neighborhoods": [
+        "Algorta",
+        "Andra Mari",
+        "Las Arenas",
+        "Neguri"
+      ],
+      "streetCount": 319
+    },
+    {
+      "id": "48045",
+      "name": "Güeñes",
+      "sourceName": "Güeñes",
+      "records": 1061,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48820",
+        "48830",
+        "48840",
+        "48850"
+      ],
+      "streets": [
+        "AVENIDA MENDIONA",
+        "CALLE IORGI",
+        "BARRIADA ELUBARRI",
+        "CALLE ALLENDE ZELAIA",
+        "BARRIADA LASIER",
+        "CALLE GALLARRAGA",
+        "CALLE PADURA",
+        "CALLE ESTARTA",
+        "CALLE ASTOBITZA",
+        "CALLE ERETZA",
+        "CALLE LAMBARRI",
+        "CALLE ZERIBAI"
+      ],
+      "areas": [
+        "Güeñes",
+        "La Quadra",
+        "Sodupe",
+        "Zaramillo"
+      ],
+      "neighborhoods": [],
+      "streetCount": 92
+    },
+    {
+      "id": "48046",
+      "name": "Gernika-Lumo",
+      "sourceName": "Gernika-Lumo",
+      "records": 1289,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48300",
+        "48320"
+      ],
+      "streets": [
+        "CALLE JUAN CALZADA",
+        "CALLE FRAY MARTÍN DE MURUA",
+        "CALLE CARLOS GANGOITI",
+        "ANDADOR AGIRREGANA",
+        "BARRIADA SAN PEDRO",
+        "BARRIADA ARANA",
+        "CALLE LURGORRI",
+        "CALLE GOIKOIBARRA",
+        "CALLE MESTIKABASO",
+        "CALLE DON TELLO",
+        "CALLE PEDRO DE ELEJALDE",
+        "CALLE IPARRAGIRRE"
+      ],
+      "areas": [
+        "Arana",
+        "Errenteria",
+        "Gernika-Lumo",
+        "Lumo",
+        "Zallo"
+      ],
+      "neighborhoods": [
+        "Casas Sindicatos-Hospital",
+        "Casco Histórico",
+        "Errenteria",
+        "Lumo",
+        "Lurgorri-Cementerio",
+        "Polígono Calzada",
+        "San Roque-Don Tello",
+        "Txorroburu",
+        "Zona C/Bizkaia"
+      ],
+      "streetCount": 96
+    },
+    {
+      "id": "48047",
+      "name": "Gizaburuaga",
+      "sourceName": "Gizaburuaga",
+      "records": 70,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48289"
+      ],
+      "streets": [
+        "BARRIADA OKAMIKA",
+        "BARRIADA LARIZ",
+        "BARRIADA EGUEN",
+        "BARRIADA LAXIER",
+        "CALLE LARRAIGANA",
+        "CARRETERA BI-3447"
+      ],
+      "areas": [
+        "Eguen",
+        "Lariz",
+        "Laxier",
+        "Okamika"
+      ],
+      "neighborhoods": [],
+      "streetCount": 6
+    },
+    {
+      "id": "48048",
+      "name": "Ibarrangelu",
+      "sourceName": "Ibarrangelu",
+      "records": 386,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48311"
+      ],
+      "streets": [
+        "BARRIADA ELEXALDE",
+        "BARRIADA IBAETA",
+        "BARRIADA ANTZORA",
+        "BARRIADA IBINAGA",
+        "BARRIADA ARBOLIZ",
+        "BARRIADA AKORDA",
+        "BARRIADA LASTARRI",
+        "BARRIADA GARTEIZ",
+        "BARRIADA DURUKIZ",
+        "BARRIADA GAMETXO",
+        "BARRIADA GENDIKA",
+        "BARRIADA APRAIZ"
+      ],
+      "areas": [
+        "Akorda",
+        "Elexalde"
+      ],
+      "neighborhoods": [],
+      "streetCount": 17
+    },
+    {
+      "id": "48049",
+      "name": "Ispaster",
+      "sourceName": "Ispaster",
+      "records": 308,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48280",
+        "48288"
+      ],
+      "streets": [
+        "BARRIADA ARTIKA",
+        "BARRIADA KORTAZAR",
+        "BARRIADA KURTZIAGA",
+        "BARRIADA LARRINAGA",
+        "BARRIADA BARAINKA",
+        "BARRIADA GALLETE",
+        "BARRIADA MENDAZOA",
+        "BARRIADA GARDATA",
+        "BARRIADA ELEXALDE",
+        "BARRIADA SOLOARAN",
+        "CALLE AGARRETXU",
+        "BARRIADA SOLARTE"
+      ],
+      "areas": [
+        "Barainka",
+        "Gardata-Artika",
+        "Ispaster-Elexalde",
+        "Kurtziaga-Arropain",
+        "Mendazoa",
+        "Solarte-Gallete",
+        "Soloaran"
+      ],
+      "neighborhoods": [],
+      "streetCount": 23
+    },
+    {
+      "id": "48050",
+      "name": "Izurtza",
+      "sourceName": "Izurtza",
+      "records": 139,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48212",
+        "48213"
+      ],
+      "streets": [
+        "BARRIADA ELIZALDE",
+        "BARRIADA ETXANO",
+        "BARRIADA ORTUZAR",
+        "BARRIADA BITAÑO",
+        "BARRIADA LEXARTZA",
+        "CARRETERA BI-623"
+      ],
+      "areas": [
+        "Izurtza"
+      ],
+      "neighborhoods": [],
+      "streetCount": 6
+    },
+    {
+      "id": "48051",
+      "name": "Lanestosa",
+      "sourceName": "Lanestosa",
+      "records": 159,
+      "excludedPostalCodes": [
+        "39805",
+        "39806"
+      ],
+      "postalCodes": [
+        "48895"
+      ],
+      "streets": [
+        "CALLE MANUELA SAINZ DE ROZAS",
+        "CALLE LEHENDAKARI AGIRRE",
+        "CALLE GUTIERREZ MARTINEZ",
+        "CALLE REAL",
+        "CALLE CORREO",
+        "CALLE ARENA",
+        "BARRIADA POLVORÍN",
+        "CALLE FUENTE",
+        "BARRIADA VENTILLA",
+        "CALLE MIRABUENO",
+        "CALLE NEGRETE",
+        "CARRETERA N-629"
+      ],
+      "areas": [
+        "Lanestosa"
+      ],
+      "neighborhoods": [],
+      "streetCount": 24
+    },
+    {
+      "id": "48052",
+      "name": "Larrabetzu",
+      "sourceName": "Larrabetzu",
+      "records": 490,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48195",
+        "48196"
+      ],
+      "streets": [
+        "CALLE ANDRA MARI",
+        "BARRIADA SARRIKOLA",
+        "BARRIADA BASARA",
+        "BARRIADA GAZTELU",
+        "BARRIADA BERREZOAGA",
+        "CALLE JAUREGI APEZPIKUA",
+        "BARRIADA ZUBITALDE",
+        "BARRIADA ASTOREKA",
+        "BARRIADA GOIKOLA",
+        "CARRETERA ASUA - ERLETXETA",
+        "BARRIADA BELARRINAGA",
+        "BARRIADA ERKINKO"
+      ],
+      "areas": [
+        "Goikoelexalde/Elexalde",
+        "Uria"
+      ],
+      "neighborhoods": [],
+      "streetCount": 40
+    },
+    {
+      "id": "48053",
+      "name": "Laukiz",
+      "sourceName": "Laukiz",
+      "records": 418,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48111",
+        "48950"
+      ],
+      "streets": [
+        "GRUPO UNBE - MENDI",
+        "BARRIADA MENDIONDO",
+        "BARRIADA MENTXAKETA",
+        "BARRIADA ELEXALDE",
+        "BARRIADA AURREKOETXEA",
+        "BARRIADA AGIRRE",
+        "CALLE GAZTEDI",
+        "CARRETERA BI-3105",
+        "CARRETERA BI-3112",
+        "CALLE EULEA",
+        "CALLE LAUAXETA",
+        "CARRETERA BI-3709"
+      ],
+      "areas": [
+        "Agirre",
+        "Aurrekoetxea",
+        "Elexalde",
+        "Mendiondo",
+        "Mentxaketa"
+      ],
+      "neighborhoods": [],
+      "streetCount": 13
+    },
+    {
+      "id": "48054",
+      "name": "Leioa",
+      "sourceName": "Leioa",
+      "records": 1703,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48930",
+        "48940",
+        "48950"
+      ],
+      "streets": [
+        "BARRIADA SARRIENA",
+        "BARRIADA ALDEKOENA",
+        "PASEO LANDABARRI",
+        "AVENIDA SABINO ARANA",
+        "CALLE INDEPENDENTZIA",
+        "CALLE LANGILERIA",
+        "BARRIADA TXORIERRI",
+        "AVENIDA IPARRAGIRRE",
+        "CALLE BASAÑESE",
+        "CALLE KANDELAZUBIETA",
+        "CALLE LARRARTE",
+        "CALLE DOCTOR DON LUIS BILBAO LIBANO"
+      ],
+      "areas": [
+        "Artatza",
+        "Elexalde",
+        "Lamiako"
+      ],
+      "neighborhoods": [
+        "Centro-Iparraguirre",
+        "Elexalde",
+        "Ensanche",
+        "Ibaiondo",
+        "Iturribide",
+        "Lamiako",
+        "Los Pinos",
+        "Monte Ikea",
+        "Negurigane",
+        "Sakoneta",
+        "Txorierri",
+        "Udondo"
+      ],
+      "streetCount": 80
+    },
+    {
+      "id": "48055",
+      "name": "Lemoa",
+      "sourceName": "Lemoa",
+      "records": 617,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48330",
+        "48390"
+      ],
+      "streets": [
+        "BARRIADA MENDIETA",
+        "BARRIADA LEMORIETA",
+        "BARRIADA ARRAIBI",
+        "BARRIADA TXIRIBOKETA",
+        "BARRIADA ERREKALDE",
+        "BARRIADA ARRAÑO",
+        "BARRIADA INTZUNTZA",
+        "BARRIADA ELIZONDO",
+        "BARRIADA BOLUNBURU",
+        "CALLE LEHENDAKARI AGIRRE",
+        "BARRIADA ZUBIETA",
+        "BARRIADA ELORRIAGA"
+      ],
+      "areas": [
+        "Lemoa"
+      ],
+      "neighborhoods": [],
+      "streetCount": 36
+    },
+    {
+      "id": "48056",
+      "name": "Lemoiz",
+      "sourceName": "Lemoiz",
+      "records": 403,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48620"
+      ],
+      "streets": [
+        "BARRIADA URIZAR",
+        "BARRIADA ARMINTZA",
+        "BARRIADA ANDRAKA",
+        "CALLE LANDETA",
+        "GRUPO GURE MENDI",
+        "CALLE PORTUGANE",
+        "CALLE PORTUBIDEA",
+        "CALLE ARMINTZEKALDE",
+        "CALLE ATALAIA",
+        "CALLE ERBERA",
+        "CALLE ETXEAAURREKOSOLO",
+        "CARRETERA BI-3152"
+      ],
+      "areas": [
+        "Andraka",
+        "Armintza",
+        "Gure Mendi",
+        "Urizar"
+      ],
+      "neighborhoods": [],
+      "streetCount": 18
+    },
+    {
+      "id": "48057",
+      "name": "Lekeitio",
+      "sourceName": "Lekeitio",
+      "records": 789,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48280",
+        "48288"
+      ],
+      "streets": [
+        "AVENIDA PASKUAL ABAROA",
+        "BARRIADA ARTADI",
+        "CALLE DENDARI",
+        "AVENIDA SANTA KATALINA",
+        "CALLE EZPELETA",
+        "CALLE EUSEBIO MARIA DE AZKUE",
+        "CALLE BEHEKO KALEA",
+        "CALLE BERGARA",
+        "CALLE PIETATE",
+        "AVENIDA SABINO ARANA",
+        "CALLE ARRANEGI",
+        "CALLE ATEA"
+      ],
+      "areas": [
+        "Lekeitio"
+      ],
+      "neighborhoods": [],
+      "streetCount": 77
+    },
+    {
+      "id": "48058",
+      "name": "Mallabia",
+      "sourceName": "Mallabia",
+      "records": 421,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48269"
+      ],
+      "streets": [
+        "CALLE GOITONDO",
+        "BARRIADA GOITA",
+        "BARRIADA GEREA",
+        "BARRIADA AREITIO",
+        "BARRIADA BERANO NAGUSIA",
+        "BARRIADA OSMA",
+        "CALLE MALLAZPI",
+        "BARRIADA ARANDOÑO",
+        "BARRIADA ZENGOTITA",
+        "BARRIADA BERANO TXIKIA",
+        "BARRIADA MALLALDEA",
+        "AVENIDA URTIAGA"
+      ],
+      "areas": [
+        "Arandoño",
+        "Areitio",
+        "Berano Nagusia",
+        "Berano Txikia",
+        "Gerea",
+        "Goita",
+        "Mallabia",
+        "Osma"
+      ],
+      "neighborhoods": [],
+      "streetCount": 30
+    },
+    {
+      "id": "48059",
+      "name": "Mañaria",
+      "sourceName": "Mañaria",
+      "records": 170,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48212"
+      ],
+      "streets": [
+        "BARRIADA ALDEGOIENA",
+        "CALLE EBARISTO BUSTINZA KIRIKIÑO",
+        "CALLE ANDRA MARI",
+        "BARRIADA ARRUETA",
+        "BARRIADA ALDEBARRENA",
+        "BARRIADA ALDEBARAIETA",
+        "PLAZA HERRIKO PLAZA",
+        "CARRETERA BI-623"
+      ],
+      "areas": [
+        "Mañaria"
+      ],
+      "neighborhoods": [],
+      "streetCount": 8
+    },
+    {
+      "id": "48060",
+      "name": "Markina-Xemein",
+      "sourceName": "Markina-Xemein",
+      "records": 793,
+      "excludedPostalCodes": [
+        "20830",
+        "20850"
+      ],
+      "postalCodes": [
+        "48270",
+        "48276",
+        "48277",
+        "48278",
+        "48380"
+      ],
+      "streets": [
+        "BARRIADA BARINAGA",
+        "BARRIADA LARRUSKAIN - AMALLOA",
+        "BARRIADA UBILLA - URBERUAGA",
+        "BARRIADA ILUNTZAR",
+        "BARRIADA ITURRETA",
+        "CALLE IDERRAGA",
+        "BARRIADA ATXONDOA",
+        "BARRIADA MEABE",
+        "AVENIDA ERDOTZA",
+        "CALLE ARTIBAI",
+        "CALLE ABESUA",
+        "AVENIDA ARRETXINAGA"
+      ],
+      "areas": [
+        "Barinaga",
+        "Iluntzar",
+        "Iturreta",
+        "Larruskain-Amalloa",
+        "Markina-Xemein",
+        "Meabe",
+        "Ubilla-Urberuaga"
+      ],
+      "neighborhoods": [],
+      "streetCount": 45
+    },
+    {
+      "id": "48061",
+      "name": "Maruri-Jatabe",
+      "sourceName": "Maruri-Jatabe",
+      "records": 381,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48112",
+        "48120"
+      ],
+      "streets": [
+        "BARRIADA ERDIGUNE",
+        "ANDADOR ERRIBERA",
+        "ANDADOR GOIETA",
+        "BARRIADA SAKALDE",
+        "BARRIADA IBARRA",
+        "BARRIADA LARRETA",
+        "BARRIADA SAGARDUI",
+        "ANDADOR BILLABASO",
+        "AT JULE",
+        "BARRIADA IANDURI",
+        "BARRIADA ELORTEGI",
+        "BARRIADA KURTZEGANA"
+      ],
+      "areas": [
+        "Erbera",
+        "Ergoien"
+      ],
+      "neighborhoods": [],
+      "streetCount": 15
+    },
+    {
+      "id": "48062",
+      "name": "Mendata",
+      "sourceName": "Mendata",
+      "records": 235,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48381",
+        "48382",
+        "48391"
+      ],
+      "streets": [
+        "BARRIADA ELEXALDE",
+        "BARRIADA ALBIZ",
+        "BARRIADA OLABE",
+        "BARRIADA MARMIZ",
+        "CARRETERA BI-3222",
+        "CARRETERA BI-3224",
+        "BARRIADA AIURIA",
+        "CARRETERA BI-3231",
+        "CARRETERA BI-2224"
+      ],
+      "areas": [
+        "Albiz",
+        "Elexalde",
+        "Marmiz",
+        "Olabe"
+      ],
+      "neighborhoods": [],
+      "streetCount": 9
+    },
+    {
+      "id": "48063",
+      "name": "Mendexa",
+      "sourceName": "Mendexa",
+      "records": 178,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48289"
+      ],
+      "streets": [
+        "BARRIADA LIKOA",
+        "BARRIADA ZELAIA",
+        "BARRIADA ITURRETA",
+        "BARRIADA LEAGI",
+        "CARRETERA BI-3438",
+        "CARRETERA BI-4449"
+      ],
+      "areas": [
+        "Iturreta",
+        "Leagi",
+        "Likoa",
+        "Zelaia"
+      ],
+      "neighborhoods": [],
+      "streetCount": 6
+    },
+    {
+      "id": "48064",
+      "name": "Meñaka",
+      "sourceName": "Meñaka",
+      "records": 262,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48120"
+      ],
+      "streets": [
+        "BARRIADA MEÑAKABARRENA",
+        "BARRIADA MESTERIKA",
+        "BARRIADA EMERANDO",
+        "BARRIADA AMETZA",
+        "CARRETERA BI-631",
+        "CARRETERA BI-4105",
+        "CAMINO ELIZALDE",
+        "CARRETERA BI-3174"
+      ],
+      "areas": [
+        "Ametzaga",
+        "Emerando",
+        "Meñakabarrena",
+        "Mesterika"
+      ],
+      "neighborhoods": [],
+      "streetCount": 8
+    },
+    {
+      "id": "48065",
+      "name": "Ugao-Miraballes",
+      "sourceName": "Ugao-Miraballes",
+      "records": 310,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48003",
+        "48480",
+        "48490",
+        "48498",
+        "48499"
+      ],
+      "streets": [
+        "CALLE UDIARRAGA",
+        "CALLE TORRE DE UGAO",
+        "CALLE ARANA Y LUPARDO",
+        "BARRIADA ITURRIGORRIALDE",
+        "CALLE SAN BARTOLOME",
+        "ANDADOR USILA",
+        "GRUPO SAN LORENZO",
+        "GRUPO VÍCTOR CHAVARRI Y SALAZAR",
+        "BARRIADA MARKIO",
+        "PASEO EL JARO",
+        "CALLE BARRENA",
+        "CALLE GOIKIRI"
+      ],
+      "areas": [
+        "Markio",
+        "Ugao-Miraballes"
+      ],
+      "neighborhoods": [],
+      "streetCount": 41
+    },
+    {
+      "id": "48066",
+      "name": "Morga",
+      "sourceName": "Morga",
+      "records": 248,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48115",
+        "48116"
+      ],
+      "streets": [
+        "BARRIADA GANBE",
+        "CAMINO FORUEN BIDEA",
+        "BARRIADA OÑARTE",
+        "BARRIADA ESKERIKA",
+        "BARRIADA MEAKA",
+        "BARRIADA MORGAKOENE",
+        "BARRIADA MEAKAUR",
+        "BARRIADA FLORES",
+        "BARRIADA IGERTU",
+        "CALLE ATHLETIC",
+        "BARRIADA OLA",
+        "CALLE ELEIZ - ONDO"
+      ],
+      "areas": [
+        "Andra Mari",
+        "Eskerika",
+        "Ganbe",
+        "Meaka",
+        "Meakaur",
+        "Morgaondo",
+        "Oñarte"
+      ],
+      "neighborhoods": [],
+      "streetCount": 24
+    },
+    {
+      "id": "48067",
+      "name": "Muxika",
+      "sourceName": "Muxika",
+      "records": 842,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48340",
+        "48382",
+        "48391",
+        "48392"
+      ],
+      "streets": [
+        "BARRIADA KURTZERO",
+        "CALLE KURTZERO - ALAIBEGIRA",
+        "BARRIADA GOROZIKA",
+        "BARRIADA SAN ROMAN",
+        "BARRIADA MAUME",
+        "BARRIADA UGARTE",
+        "BARRIADA ASTELARRA",
+        "BARRIADA ARIATZA",
+        "BARRIADA ZABALE",
+        "BARRIADA ORDORIKA",
+        "BARRIADA AIURIA",
+        "BARRIADA ZILONIZ"
+      ],
+      "areas": [
+        "Gorozika",
+        "Ibarruri",
+        "San Roman",
+        "Ugarte",
+        "Usparitxa"
+      ],
+      "neighborhoods": [],
+      "streetCount": 40
+    },
+    {
+      "id": "48068",
+      "name": "Mundaka",
+      "sourceName": "Mundaka",
+      "records": 383,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48360"
+      ],
+      "streets": [
+        "CALLE GOIKO KALEA",
+        "CALLE FLORENTINO LARRINAGA",
+        "CALLE RAIMUNDO ABAROA",
+        "BARRIADA ERREKA",
+        "CALLE BASAMORTU",
+        "CALLE JUAN BAUTISTA LONGA",
+        "CALLE LORATEGI",
+        "BARRIADA AGIRRE",
+        "BARRIADA ARKETA",
+        "BARRIADA ARROSAK",
+        "BARRIADA BERASTEGI",
+        "BARRIADA ONDARTZA"
+      ],
+      "areas": [
+        "Arketa-Aranburu",
+        "Mundaka",
+        "Portuondo-Basaran"
+      ],
+      "neighborhoods": [],
+      "streetCount": 67
+    },
+    {
+      "id": "48069",
+      "name": "Mungia",
+      "sourceName": "Mungia",
+      "records": 3189,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48100",
+        "48110",
+        "48113",
+        "48120",
+        "48170"
+      ],
+      "streets": [
+        "CALLE AMETZABIDE",
+        "CALLE URBIDE",
+        "CAMINO LAUKARIZ",
+        "CALLE ARITZ BIDEA",
+        "CALLE BERMEO BIDEA",
+        "CAMINO LARRABIZKER",
+        "CAMINO DERIO",
+        "CALLE GAMIZ BIDEA",
+        "CAMINO ITURRIBALTZAGA",
+        "CALLE LAUAXETA OLERKARI",
+        "CAMINO PLENTZIA",
+        "CALLE KARMELO ETXEGARAI"
+      ],
+      "areas": [
+        "Atela",
+        "Atxuri",
+        "Basozabal",
+        "Berreagamendi",
+        "Billela",
+        "Elgezabal",
+        "Emerando",
+        "Iturribaltzaga",
+        "Larrauri",
+        "Llona",
+        "Markaida",
+        "Maurola",
+        "Mungia",
+        "Trobika",
+        "Zabalondo"
+      ],
+      "neighborhoods": [
+        "Basozabal",
+        "Billela-Atxuri",
+        "Casco Urbano"
+      ],
+      "streetCount": 197
+    },
+    {
+      "id": "48070",
+      "name": "Aulesti",
+      "sourceName": "Aulesti",
+      "records": 278,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48380"
+      ],
+      "streets": [
+        "CALLE AULESTIA",
+        "BARRIADA IBARROLA",
+        "BARRIADA MALATS",
+        "CALLE ELEIZKALE",
+        "BARRIADA NAREA",
+        "BARRIADA SAN ANTON",
+        "BARRIADA SOLAGUREN",
+        "BARRIADA URRIOLA",
+        "BARRIADA GOIERRI",
+        "BARRIADA ZUBERO",
+        "BARRIADA GARAUR",
+        "CALLE ALEGI"
+      ],
+      "areas": [
+        "Aulesti",
+        "Goierri",
+        "Ibarrola",
+        "Malats",
+        "Narea",
+        "San Anton",
+        "Urriola",
+        "Zubero"
+      ],
+      "neighborhoods": [],
+      "streetCount": 17
+    },
+    {
+      "id": "48071",
+      "name": "Muskiz",
+      "sourceName": "Muskiz",
+      "records": 1263,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48550"
+      ],
+      "streets": [
+        "CALLE LAS ACACIAS",
+        "GRUPO LAURETA",
+        "BARRIADA COVARÓN",
+        "BARRIADA SAN JULIÁN",
+        "CALLE ERROTA ZAHAR",
+        "BARRIADA SANTELICES",
+        "BARRIADA EL CRUCERO",
+        "BARRIADA POBEÑA",
+        "AVENIDA ANTONIO TRUEBA",
+        "CAMINO ANTIGUO",
+        "GRUPO SOBALBADUN",
+        "BARRIADA SAN JUAN"
+      ],
+      "areas": [
+        "Cobarón",
+        "La Rigada",
+        "Pobeña",
+        "San Juan de Muskiz",
+        "San Julián de Muskiz",
+        "Santelices"
+      ],
+      "neighborhoods": [],
+      "streetCount": 75
+    },
+    {
+      "id": "48072",
+      "name": "Otxandio",
+      "sourceName": "Otxandio",
+      "records": 473,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48210"
+      ],
+      "streets": [
+        "CALLE URIGOIENA",
+        "CALLE ARTEKALE",
+        "CALLE URIBARRENA",
+        "CALLE OSPITAL",
+        "BARRIADA OLETA",
+        "CALLE BASOGAI",
+        "BARRIADA ANDAPARALUZETA",
+        "CAMINO ZELAIETA",
+        "BARRIADA MEKOLETA",
+        "CALLE SAGASTI",
+        "PLAZA NAGUSIA",
+        "CALLE CARNECERÍA"
+      ],
+      "areas": [
+        "Andaparaluzeta",
+        "Mekoleta",
+        "Otxandio"
+      ],
+      "neighborhoods": [],
+      "streetCount": 43
+    },
+    {
+      "id": "48073",
+      "name": "Ondarroa",
+      "sourceName": "Ondarroa",
+      "records": 610,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48700"
+      ],
+      "streets": [
+        "CALLE KAMIÑAZPI",
+        "CALLE KALEANDI",
+        "CALLE SAN IGNAZIO",
+        "CALLE ARTABIDE",
+        "CALLE IPARKALE",
+        "CALLE EGIDAZU KAIA",
+        "CALLE ERRIBERA",
+        "CALLE TXOMIN AGIRRE",
+        "BARRIADA ERRENTERIA",
+        "BARRIADA GOIMENDIA",
+        "CALLE KAMIÑALDE",
+        "CALLE SABIN ARANA"
+      ],
+      "areas": [
+        "Ondarroa"
+      ],
+      "neighborhoods": [],
+      "streetCount": 37
+    },
+    {
+      "id": "48074",
+      "name": "Urduña/Orduña",
+      "sourceName": "Urduña/Orduña",
+      "records": 887,
+      "excludedPostalCodes": [
+        "01468"
+      ],
+      "postalCodes": [
+        "48460"
+      ],
+      "streets": [
+        "PASEO LA ANTIGUA",
+        "CALLE KALE BARRIA",
+        "CARRETERA ZEDELIKA",
+        "CALLE KANTARRANAS",
+        "CALLE FRANKOS",
+        "CALLE KALE ZAHARRA",
+        "URBANIZACION MUGARRI",
+        "CALLE DONIBANE",
+        "CALLE ORRUÑO",
+        "PASEO PRADO",
+        "CALLE ARTEKALE",
+        "CALLE BURGOS"
+      ],
+      "areas": [
+        "Belandia",
+        "Lendoñobeiti/Lendoño de Abajo",
+        "Lendoño Goikoa/Lendoño de Arriba",
+        "Mendeika",
+        "Urduña/Orduña"
+      ],
+      "neighborhoods": [],
+      "streetCount": 89
+    },
+    {
+      "id": "48075",
+      "name": "Orozko",
+      "sourceName": "Orozko",
+      "records": 913,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48410",
+        "48419"
+      ],
+      "streets": [
+        "BARRIADA BERAZA",
+        "CALLE BURRUZKALE",
+        "BARRIADA URIGOITI",
+        "BARRIADA BENGOETXEA",
+        "BARRIADA IBARRA",
+        "CALLE GORBEIA",
+        "BARRIADA ZALOA",
+        "CALLE SANTA MARÍA",
+        "CARRETERA AP-68",
+        "BARRIADA GALLARTU",
+        "BARRIADA TORREZAR",
+        "BARRIADA GARAI"
+      ],
+      "areas": [
+        "Albizuelexaga",
+        "Arbaitza",
+        "Bengoetxea",
+        "Gallartu",
+        "Ibarra",
+        "Murueta",
+        "Urigoiti",
+        "Zubiaur"
+      ],
+      "neighborhoods": [],
+      "streetCount": 123
+    },
+    {
+      "id": "48076",
+      "name": "Sukarrieta",
+      "sourceName": "Sukarrieta",
+      "records": 128,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48350",
+        "48360",
+        "48395"
+      ],
+      "streets": [
+        "TRAVESIA ARANA GOIRITAR SABIN",
+        "BARRIADA ABAROA",
+        "BARRIADA MUNITIZ",
+        "CAMINO ELEIZ",
+        "CAMINO PORTUERREKA",
+        "CAMINO PORTUONDO",
+        "CAMINO TOÑA",
+        "CALLE PORTURAS",
+        "CAMINO ZEHAR",
+        "PLAZA ANDER DEUNA",
+        "CAMINO ANDER DEUNA",
+        "CALLE ARROSPE"
+      ],
+      "areas": [
+        "Kanala",
+        "Sukarrieta"
+      ],
+      "neighborhoods": [],
+      "streetCount": 17
+    },
+    {
+      "id": "48077",
+      "name": "Plentzia",
+      "sourceName": "Plentzia",
+      "records": 789,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48620",
+        "48630",
+        "48650"
+      ],
+      "streets": [
+        "BARRIADA ISUSKITZA",
+        "AVENIDA AREATZA",
+        "BARRIADA SARATXAGA",
+        "CALLE ARTEKALE",
+        "CALLE BARRENKALE",
+        "CALLE ERRIBERA",
+        "BARRIADA GANDIA",
+        "CALLE GOIENKALE",
+        "CALLE IBAIAGA",
+        "CAMINO ANDRA MARI",
+        "PLAZA ELEIZ",
+        "CARRETERA MUNGIA"
+      ],
+      "areas": [
+        "Isuskitza",
+        "Plentzia",
+        "Saratxaga",
+        "Txipio"
+      ],
+      "neighborhoods": [],
+      "streetCount": 50
+    },
+    {
+      "id": "48078",
+      "name": "Portugalete",
+      "sourceName": "Portugalete",
+      "records": 2127,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48920",
+        "48980"
+      ],
+      "streets": [
+        "CALLE GENERAL CASTAÑOS",
+        "GRUPO EL PROGRESO",
+        "GRUPO VILLANUEVA",
+        "CALLE ABATXOLO",
+        "CALLE GRUMETE DIEGO",
+        "CALLE CORREOS",
+        "CALLE MARÍA DIAZ DE HARO",
+        "CALLE ARTURO CAMPIÓN",
+        "CALLE GIPUZKOA",
+        "AVENIDA ABARO",
+        "CALLE MAESTRO ZUBELDIA",
+        "CALLE MADRE TERESA DE CALCUTA"
+      ],
+      "areas": [
+        "Portugalete"
+      ],
+      "neighborhoods": [
+        "Abaro",
+        "Azeta",
+        "Buena Vista",
+        "Campazar",
+        "Casco Viejo",
+        "Mugakoa",
+        "Peñota",
+        "Repelega",
+        "San Roque",
+        "Vista Alegre",
+        "Zona Nueva"
+      ],
+      "streetCount": 169
+    },
+    {
+      "id": "48079",
+      "name": "Errigoiti",
+      "sourceName": "Errigoiti",
+      "records": 257,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48115",
+        "48309"
+      ],
+      "streets": [
+        "BARRIADA OLABARRI",
+        "BARRIADA URIA",
+        "BARRIADA ELEXALDE",
+        "BARRIADA METXIKA",
+        "BARRIADA ERREKALDE",
+        "BARRIADA SALLOBENTE",
+        "BARRIADA MADALEN",
+        "BARRIADA BIZKARGANA",
+        "BARRIADA BIZKAIGANA",
+        "BARRIADA BARAIA",
+        "BARRIADA ATXIKA",
+        "BARRIADA ORKONDOAGA"
+      ],
+      "areas": [
+        "Atxika-Errekalde",
+        "Elexalde-Olabarri",
+        "Errigoiti",
+        "Metxika"
+      ],
+      "neighborhoods": [],
+      "streetCount": 25
+    },
+    {
+      "id": "48080",
+      "name": "Valle de Trápaga-Trapagaran",
+      "sourceName": "Valle de Trápaga-Trapagaran",
+      "records": 1782,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48510",
+        "48520",
+        "48903",
+        "48910"
+      ],
+      "streets": [
+        "ID AURRERA",
+        "ID IBARZAHARRA",
+        "BARRIADA LARREINETA",
+        "GRUPO SAN ANDRÉS",
+        "GRUPO MENDIPE",
+        "AVENIDA PRIMERO DE MAYO",
+        "ESCALINATA LA ROZADA",
+        "ID UGARTEALDE",
+        "CALLE FUNIKULAR",
+        "ESCALINATA SAN ANDRÉS",
+        "CALLE GIPUZKOA",
+        "ID APARCABISA"
+      ],
+      "areas": [
+        "Durañona",
+        "Elguero",
+        "Galindo-Salcedillo",
+        "La Arboleda/Zugaztieta",
+        "Larreineta",
+        "Parkotxa-Barrionuevo",
+        "Trapaga-Kauso",
+        "Ugarte",
+        "Valle de Trápaga/Trapagaran"
+      ],
+      "neighborhoods": [
+        "Arkotxa",
+        "La Arboleda",
+        "La Escontrilla",
+        "Salcedillo-Trapaga",
+        "San Andrés"
+      ],
+      "streetCount": 119
+    },
+    {
+      "id": "48081",
+      "name": "Lezama",
+      "sourceName": "Lezama",
+      "records": 553,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48195",
+        "48196",
+        "48960"
+      ],
+      "streets": [
+        "BARRIADA GARAIOLTZA",
+        "BARRIADA ARETXALDE",
+        "BARRIADA GOITIOLTZA",
+        "CARRETERA BI-30",
+        "CARRETERA BI-3738",
+        "CARRETERA BI-3726",
+        "CARRETERA EL VIVERO"
+      ],
+      "areas": [
+        "Aretxalde",
+        "Garaioltza",
+        "Goitioltza"
+      ],
+      "neighborhoods": [],
+      "streetCount": 7
+    },
+    {
+      "id": "48082",
+      "name": "Santurtzi",
+      "sourceName": "Santurtzi",
+      "records": 2034,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48500",
+        "48920",
+        "48980"
+      ],
+      "streets": [
+        "AVENIDA IPARRAGIRRE",
+        "CALLE LAUAXETA",
+        "EDIFICIO LA MAGDALENA",
+        "CALLE LAS VIÑAS",
+        "CALLE MAMARIGA",
+        "CALLE BULLÓN",
+        "AVENIDA ANTONIO ALZAGA",
+        "CALLE DOCTOR FLEMING",
+        "CALLE ITSASALDE",
+        "BARRIADA CUETO",
+        "CALLE SANTA EULALIA",
+        "CALLE CUESTA DEL HOSPITAL ALTO"
+      ],
+      "areas": [
+        "Balparda",
+        "El Villar",
+        "Santurtzi"
+      ],
+      "neighborhoods": [
+        "Balparda",
+        "Buena Vista",
+        "Cabieces",
+        "Coscojales",
+        "Cuesta Hospital",
+        "El Bullon",
+        "El Campon",
+        "El Cotillo",
+        "El Parque",
+        "Fontuso",
+        "Kai-Alde",
+        "La Chicharra",
+        "Las Vinas",
+        "Lauaxeta",
+        "Mamariga",
+        "Mirabueno",
+        "Nafarroa",
+        "Peñota",
+        "Portalada",
+        "Ranzari",
+        "San Juan",
+        "Torquillas"
+      ],
+      "streetCount": 120
+    },
+    {
+      "id": "48083",
+      "name": "Ortuella",
+      "sourceName": "Ortuella",
+      "records": 1124,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48191",
+        "48500",
+        "48520",
+        "48530"
+      ],
+      "streets": [
+        "BARRIADA URIOSTE",
+        "AVENIDA BILBAO",
+        "CALLE LA LLANA",
+        "BARRIADA NOCEDAL",
+        "AVENIDA LA ESTACIÓN",
+        "GRUPO AIEGA",
+        "GRUPO MENDIALDE",
+        "BARRIADA RALERA",
+        "BARRIADA SAUGAL",
+        "BARRIADA BAÑALES",
+        "AVENIDA MINERO",
+        "BARRIADA GOLIFAR"
+      ],
+      "areas": [
+        "Cadegal",
+        "La Orconera",
+        "Nocedal",
+        "Ortuella",
+        "Triano",
+        "Urioste"
+      ],
+      "neighborhoods": [],
+      "streetCount": 33
+    },
+    {
+      "id": "48084",
+      "name": "Sestao",
+      "sourceName": "Sestao",
+      "records": 1299,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48910"
+      ],
+      "streets": [
+        "GRUPO NUESTRA SEÑORA DEL CARMEN",
+        "CALLE CHAVARRI",
+        "CALLE GRAN VÍA DE JOSE ANTONIO AGIRRE Y LEKUBE",
+        "CALLE LOS BAÑOS",
+        "GRUPO LA AURORA",
+        "GRUPO LA UNIÓN",
+        "GRUPO LA PROTECTORA",
+        "CALLE BLAS DE OTERO",
+        "GRUPO LA HUMANITARIA",
+        "CALLE LA IBERIA",
+        "CALLE ALAMEDA LAS LLANAS",
+        "CALLE MIGUEL SERVET"
+      ],
+      "areas": [
+        "Sestao"
+      ],
+      "neighborhoods": [
+        "Albiz",
+        "Azeta",
+        "El Carmen",
+        "El Casco",
+        "Kueto",
+        "La Iberia",
+        "La Unión",
+        "Markonzaga",
+        "Rebonza-Urbinaga",
+        "Vista Alegre"
+      ],
+      "streetCount": 115
+    },
+    {
+      "id": "48085",
+      "name": "Sopela",
+      "sourceName": "Sopela",
+      "records": 2097,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48600"
+      ],
+      "streets": [
+        "CAMINO PALATUETA",
+        "CALLE ZABALBIDE",
+        "CALLE URKISUONDO",
+        "ESCALINATA GOIKO ESTARTA",
+        "CALLE GATZARRINE",
+        "CALLE LOIOLA ANDER DEUNA",
+        "CALLE SABINO ARANA",
+        "CALLE KUKULLU",
+        "CALLE GOIKOETXE",
+        "CALLE PLAZARTE",
+        "AVENIDA ARRIATERA",
+        "CALLE IBERGOIKO"
+      ],
+      "areas": [
+        "Moreaga",
+        "Ugeraga"
+      ],
+      "neighborhoods": [
+        "Moreaga",
+        "Ugeraga"
+      ],
+      "streetCount": 93
+    },
+    {
+      "id": "48086",
+      "name": "Sopuerta",
+      "sourceName": "Sopuerta",
+      "records": 909,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48190",
+        "48191",
+        "48869",
+        "48870"
+      ],
+      "streets": [
+        "BARRIADA MERCADILLO",
+        "BARRIADA LA BALUGA",
+        "BARRIADA BEZI",
+        "BARRIADA EL CARRAL",
+        "BARRIADA LAS BARRIETAS",
+        "BARRIADA AVELLANEDA",
+        "BARRIADA LAS MUÑECAS",
+        "BARRIADA LA SOTA",
+        "BARRIADA EL CASTAÑO",
+        "BARRIADA SAN ANTONIO",
+        "BARRIADA EL ALISAL",
+        "BARRIADA LAS RIBAS"
+      ],
+      "areas": [
+        "Alen",
+        "Arenao",
+        "Avellaneda",
+        "Bezi",
+        "El Alisal",
+        "El Castaño",
+        "Jarralta",
+        "La Baluga",
+        "Labarrieta/Olabarrieta",
+        "Las Muñecas",
+        "Las Ribas",
+        "Mercadillo",
+        "San Martín de Carral"
+      ],
+      "neighborhoods": [],
+      "streetCount": 48
+    },
+    {
+      "id": "48087",
+      "name": "Trucios-Turtzioz",
+      "sourceName": "Trucios-Turtzioz",
+      "records": 339,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48880"
+      ],
+      "streets": [
+        "AVENIDA LEHENDAKARI AGIRRE",
+        "BARRIADA PANDO",
+        "BARRIADA CUETO",
+        "URBANIZACION BENIGNO GARAY",
+        "BARRIADA ROMAÑA",
+        "BARRIADA LOREDO",
+        "CALLE ESTEBAN TERREROS Y PANDO",
+        "BARRIADA AGUANAZ",
+        "BARRIADA BASINAGRE",
+        "BARRIADA GORDÓN",
+        "BARRIADA SANTIAGO",
+        "BARRIADA LA CALERA"
+      ],
+      "areas": [
+        "Cueto",
+        "Gordón",
+        "La Iglesia",
+        "Pando"
+      ],
+      "neighborhoods": [],
+      "streetCount": 16
+    },
+    {
+      "id": "48088",
+      "name": "Ubide",
+      "sourceName": "Ubide",
+      "records": 114,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48145"
+      ],
+      "streets": [
+        "BARRIADA SAN JUAN",
+        "BARRIADA MADALEN",
+        "CARRETERA N-240"
+      ],
+      "areas": [
+        "Magdalena",
+        "San Juan"
+      ],
+      "neighborhoods": [],
+      "streetCount": 3
+    },
+    {
+      "id": "48089",
+      "name": "Urduliz",
+      "sourceName": "Urduliz",
+      "records": 686,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48111",
+        "48610"
+      ],
+      "streets": [
+        "BARRIADA MENDIONDO",
+        "CALLE KRUTZEKADA",
+        "CALLE AITA GOTZON",
+        "CALLE ANTSONEKOA",
+        "CALLE ELORTZA",
+        "BARRIADA DOBARAN",
+        "BARRIADA ZALBIDEA",
+        "CALLE ELEXALDE",
+        "CALLE TORRE",
+        "CALLE GOIETA",
+        "CALLE KAREABI",
+        "BARRIADA ELORTZA"
+      ],
+      "areas": [
+        "Dobaran",
+        "Elortza",
+        "Landa",
+        "Mendiondo",
+        "Zalbidea"
+      ],
+      "neighborhoods": [],
+      "streetCount": 52
+    },
+    {
+      "id": "48090",
+      "name": "Balmaseda",
+      "sourceName": "Balmaseda",
+      "records": 733,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48800"
+      ],
+      "streets": [
+        "AVENIDA ENCARTACIONES",
+        "CALLE CORRERÍA",
+        "AVENIDA LA CALZADA",
+        "CALLE CUESTA",
+        "PASEO LA MAGDALENA",
+        "BARRIADA ARBIZ Y BARRIOS",
+        "CALLE VIRGEN DE GRACIA",
+        "CALLE PIO BERMEJILLO",
+        "CALLE PANDOZALES",
+        "CALLE EL PEÑUECO",
+        "CALLE LA PIEDRA",
+        "CALLE MARTIN MENDIA"
+      ],
+      "areas": [
+        "Balmaseda",
+        "Pandozales",
+        "Peñueco"
+      ],
+      "neighborhoods": [],
+      "streetCount": 43
+    },
+    {
+      "id": "48091",
+      "name": "Atxondo",
+      "sourceName": "Atxondo",
+      "records": 347,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48291"
+      ],
+      "streets": [
+        "BARRIADA SAN JUAN",
+        "ID ARTIA",
+        "CALLE ANBOTO",
+        "CALLE BARRENCALLE",
+        "BARRIADA SAN PEDRO",
+        "BARRIADA OLAZABAL",
+        "CALLE ARTECALLE",
+        "BARRIADA ARRANTURRIAGA",
+        "CALLE JOSE ANTONIO AGUIRRE LEKUBE",
+        "BARRIADA GOYERRIA",
+        "CALLE BENTABARRI",
+        "CALLE JAUREGUI"
+      ],
+      "areas": [
+        "Apatamonasterio",
+        "Arrazola",
+        "Marzana",
+        "Olazabal",
+        "San Juan",
+        "Santiago"
+      ],
+      "neighborhoods": [],
+      "streetCount": 30
+    },
+    {
+      "id": "48092",
+      "name": "Bedia",
+      "sourceName": "Bedia",
+      "records": 337,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48390"
+      ],
+      "streets": [
+        "BARRIADA MURTATZA",
+        "BARRIADA EROSO - UGARTE",
+        "BARRIADA BIDEKOETXEA",
+        "CALLE JAUREGIZURIA",
+        "ID MUGARTATZA",
+        "BARRIADA IBARRA",
+        "CALLE SABINO ARANA",
+        "BARRIADA ELEXALDE",
+        "BARRIADA ASTEITZA",
+        "BARRIADA BARROETA",
+        "BARRIADA UTXARAIN",
+        "CALLE KALTZADAGANA"
+      ],
+      "areas": [
+        "Asteitza",
+        "Barroeta",
+        "Bidekoetxea",
+        "Elexalde",
+        "Ereño",
+        "Eroso-Ugarte",
+        "Ibarra",
+        "Jauregi",
+        "Murtatza"
+      ],
+      "neighborhoods": [],
+      "streetCount": 20
+    },
+    {
+      "id": "48093",
+      "name": "Areatza",
+      "sourceName": "Areatza",
+      "records": 281,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48143",
+        "48144"
+      ],
+      "streets": [
+        "CALLE ASKATASUN",
+        "CALLE ITURRIMAUR PASEALEKUA",
+        "CALLE ERRUKIÑE",
+        "CALLE GOIKOKALEA",
+        "CALLE BEKOKALEA",
+        "CALLE JAVIER URIA",
+        "CALLE OSPITALOSTE",
+        "BARRIADA ASTERRIA",
+        "BARRIADA ITURRIMORRO",
+        "CALLE BARTOLOME DEUNAREN KALEA",
+        "CALLE ZUBIZARRA",
+        "BARRIADA UPARAN"
+      ],
+      "areas": [
+        "Areatza",
+        "Launtzain",
+        "Uparan"
+      ],
+      "neighborhoods": [],
+      "streetCount": 35
+    },
+    {
+      "id": "48094",
+      "name": "Igorre",
+      "sourceName": "Igorre",
+      "records": 677,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48140",
+        "48141"
+      ],
+      "streets": [
+        "BARRIADA URKIZU",
+        "CALLE ELEXALDE",
+        "BARRIADA SANTA LUTZIA",
+        "BARRIADA SAN JUAN",
+        "BARRIADA BASAUNTZ",
+        "PLAZA SABINO ARANA",
+        "BARRIADA MIKELE DEUNA",
+        "CALLE IGORREKO INDUSTRIALDEA",
+        "CALLE UDEA",
+        "BARRIADA OLABARRI",
+        "CALLE GARBE",
+        "AVENIDA LEHENDAKARI AGIRRE"
+      ],
+      "areas": [
+        "Basauntz",
+        "Elexalde",
+        "Olabarri",
+        "Sabino Arana",
+        "San Juan",
+        "Santa Lutzia",
+        "Urkizu"
+      ],
+      "neighborhoods": [],
+      "streetCount": 25
+    },
+    {
+      "id": "48095",
+      "name": "Zaldibar",
+      "sourceName": "Zaldibar",
+      "records": 368,
+      "excludedPostalCodes": [
+        "20600"
+      ],
+      "postalCodes": [
+        "48250",
+        "48260"
+      ],
+      "streets": [
+        "BARRIADA GOIERRI",
+        "BARRIADA GAZAGA",
+        "CALLE ZALDUARAN",
+        "CALLE MIREN MAORTUA",
+        "AVENIDA BILBO",
+        "AVENIDA SAN ANDRES",
+        "BARRIADA EITZAGA",
+        "BARRIADA OLAERREAGA",
+        "AVENIDA EUSKAL HERRIA",
+        "CALLE ARANTZAMENDI",
+        "CARRETERA AP-8",
+        "BARRIADA SALLABENTE"
+      ],
+      "areas": [
+        "Eitzaga",
+        "Gazaga",
+        "Goierri",
+        "Zaldibar"
+      ],
+      "neighborhoods": [],
+      "streetCount": 44
+    },
+    {
+      "id": "48096",
+      "name": "Zalla",
+      "sourceName": "Zalla",
+      "records": 1203,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48850",
+        "48860",
+        "48869",
+        "48870"
+      ],
+      "streets": [
+        "BARRIADA MENDI ALDE",
+        "BARRIADA GALLARDI",
+        "BARRIADA SAN PEDRO",
+        "AVENIDA LANZAGORTA",
+        "AVENIDA LEHENDAKARI AGIRRE",
+        "BARRIADA ARTEBIZKARRA",
+        "AVENIDA LOS TRABAJADORES",
+        "AVENIDA LABRADOR",
+        "BARRIADA LANDARONDO",
+        "BARRIADA LA INMACULADA",
+        "BARRIADA ARECHAGA",
+        "BARRIADA OCHARAN DE ABAJO"
+      ],
+      "areas": [
+        "Aranguren",
+        "Herrera",
+        "Mimetiz",
+        "Otxaran",
+        "Sollano-Llantada"
+      ],
+      "neighborhoods": [],
+      "streetCount": 130
+    },
+    {
+      "id": "48097",
+      "name": "Zaratamo",
+      "sourceName": "Zaratamo",
+      "records": 416,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48480"
+      ],
+      "streets": [
+        "BARRIADA ARKOTXA",
+        "BARRIADA ELEJALDE",
+        "BARRIADA GURUTZALDE",
+        "BARRIADA MOIORDIN",
+        "BARRIADA IRAGORRI",
+        "BARRIADA BARRONDO",
+        "GRUPO SANTA BARBARA",
+        "BARRIADA GOIKIRI",
+        "BARRIADA BURBUSTU",
+        "BARRIADA GUTIOLO",
+        "BARRIADA MADARIAGA",
+        "BARRIADA MENDIETA"
+      ],
+      "areas": [
+        "Arkotxa",
+        "Burbustu-Altamira",
+        "Gutiolo",
+        "Moiordin-Barrondo",
+        "Zaratamo"
+      ],
+      "neighborhoods": [],
+      "streetCount": 23
+    },
+    {
+      "id": "48901",
+      "name": "Derio",
+      "sourceName": "Derio",
+      "records": 844,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48160",
+        "48170",
+        "48180"
+      ],
+      "streets": [
+        "CALLE GOIRI",
+        "GRUPO URBASA GUNEA",
+        "PASEO LARRABARRI",
+        "BARRIADA ALDEKONA",
+        "CALLE GASTAÑATXU",
+        "AVENIDA MUNGIALDE",
+        "BARRIADA ARTEAGA",
+        "AVENIDA GERNIKAKO ARBOLA",
+        "CALLE GANBE",
+        "CALLE LAINOMENDI",
+        "CALLE ERROTAZARRE",
+        "BARRIADA SAN CRISTÓBAL"
+      ],
+      "areas": [
+        "Aldekona (San Isidro)",
+        "Aranoltza (San Antolin)",
+        "Arteaga Derio",
+        "Elexalde Derio",
+        "San Esteban Derio",
+        "Ugaldeguren (Santimami)"
+      ],
+      "neighborhoods": [],
+      "streetCount": 91
+    },
+    {
+      "id": "48902",
+      "name": "Erandio",
+      "sourceName": "Erandio",
+      "records": 1922,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48150",
+        "48180",
+        "48950"
+      ],
+      "streets": [
+        "BARRIADA ELEXALDE",
+        "CALLE MESO",
+        "CARRETERA ALTZAGA - ERANDIOGOIKOA",
+        "BARRIADA ERANDIOGOIKOKO SAN JOSE",
+        "CARRETERA AVANZADA",
+        "CALLE TARTANGA",
+        "AVENIDA AXPEKO ERRIBERA",
+        "CARRETERA BILBO - PLENTZIA",
+        "AVENIDA ZIRGARIAK",
+        "CARRETERA MAGDALENA",
+        "CALLE OBIETA",
+        "CAMINO LARRAURI - MENDOTZA"
+      ],
+      "areas": [
+        "Altzaga",
+        "Arriaga",
+        "Astrabudua",
+        "Asua-Lauroeta",
+        "Erandiogoikoa",
+        "Goierri",
+        "Lutxana-Enekuri"
+      ],
+      "neighborhoods": [
+        "Arriaga",
+        "Astrabudua",
+        "Asua",
+        "Bekoetxe",
+        "Casco Viejo",
+        "Ensanche",
+        "Erandiogoikoa",
+        "Los Chimbos",
+        "Lutxana-Enekuri",
+        "Ribera",
+        "Santi Mami"
+      ],
+      "streetCount": 156
+    },
+    {
+      "id": "48903",
+      "name": "Loiu",
+      "sourceName": "Loiu",
+      "records": 694,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48180",
+        "48950"
+      ],
+      "streets": [
+        "CALLE LANDATXUETA",
+        "CALLE LARRAURI",
+        "CAMINO KUKULU",
+        "AVENIDA LAUROETA",
+        "AVENIDA TXORIERRI",
+        "CALLE LASTETXE",
+        "AVENIDA ZABALOETXE",
+        "CALLE LARRONDO",
+        "AVENIDA LARRAKOETXE - DERIO",
+        "CAMINO KUKULUMENDI",
+        "CAMINO KANTERABIDEA",
+        "CAMINO URTXU - GARBE"
+      ],
+      "areas": [
+        "Elotxelerri",
+        "Lauroeta",
+        "Zabaloetxe",
+        "Zangroiz"
+      ],
+      "neighborhoods": [],
+      "streetCount": 74
+    },
+    {
+      "id": "48904",
+      "name": "Sondika",
+      "sourceName": "Sondika",
+      "records": 932,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48015",
+        "48150",
+        "48180"
+      ],
+      "streets": [
+        "CAMINO ARESTI",
+        "GRUPO JULIO ARTECHE",
+        "CALLE IBAIONDO",
+        "AVENIDA JOSE ANTONIO AGIRRE LEHENDAKARI",
+        "AVENIDA TXORI ERRI",
+        "CALLE ERREMENTERIA",
+        "CAMINO IZARTZA",
+        "CALLE GESURAGA",
+        "CALLE CESTERO",
+        "CAMINO SANGRONIZ",
+        "CAMINO GOIETXA",
+        "CALLE GOIRI"
+      ],
+      "areas": [
+        "Basozabal",
+        "Izartza",
+        "Landa",
+        "Zangroiz"
+      ],
+      "neighborhoods": [],
+      "streetCount": 66
+    },
+    {
+      "id": "48905",
+      "name": "Zamudio",
+      "sourceName": "Zamudio",
+      "records": 658,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48160",
+        "48170"
+      ],
+      "streets": [
+        "ANDADOR ARTEAGA",
+        "ID TORRELARRAGOITI",
+        "ANDADOR ARANOLTZA",
+        "ID UGALDEGUREN III",
+        "BARRIADA GELDO",
+        "BARRIADA SANTI MAMI",
+        "ID PARQUE TECNOLÓGICO",
+        "ANDADOR GALBARRIARTU",
+        "ID PINOA",
+        "ID UGALDEGUREN II",
+        "ANDADOR LEKUNBIZ",
+        "ANDADOR DAÑO"
+      ],
+      "areas": [
+        "Aranoltza (San Antolin)",
+        "Arteaga (San Martin)",
+        "Geldo",
+        "Ugaldeguren (Santimami)"
+      ],
+      "neighborhoods": [],
+      "streetCount": 50
+    },
+    {
+      "id": "48906",
+      "name": "Forua",
+      "sourceName": "Forua",
+      "records": 313,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48309",
+        "48393"
+      ],
+      "streets": [
+        "BARRIADA ELEXALDE",
+        "BARRIADA ATXONDOA",
+        "BARRIADA ARMOTXERRIA",
+        "BARRIADA GAITOKA",
+        "BARRIADA BALDATIKA",
+        "BARRIADA URBERUAGA",
+        "BARRIADA IBARRA",
+        "CALLE CARLOS GANGOITI",
+        "PLAZA ATXETA",
+        "CALLE TORRE - BARRI",
+        "CAMINO ASKATASUN",
+        "CARRETERA BI-3215"
+      ],
+      "areas": [
+        "Armotxerria",
+        "Atxondoa",
+        "Baldatika",
+        "Elexalde Forua",
+        "Gaitoka",
+        "Landaberde",
+        "Urberuaga"
+      ],
+      "neighborhoods": [],
+      "streetCount": 13
+    },
+    {
+      "id": "48907",
+      "name": "Kortezubi",
+      "sourceName": "Kortezubi",
+      "records": 231,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48315",
+        "48383"
+      ],
+      "streets": [
+        "BARRIADA ENDERIKA",
+        "BARRIADA TERLEGIZ",
+        "BARRIADA BARRUTIA",
+        "BARRIADA IDOKILIZ",
+        "BARRIADA BASONDO",
+        "BARRIADA SANTA ANA",
+        "BARRIADA OMA",
+        "BARRIADA ELORRIAGA",
+        "CARRETERA BI-3242",
+        "CARRETERA BI-2238",
+        "CARRETERA BI-4244"
+      ],
+      "areas": [
+        "Basondo",
+        "Elorriaga-Santa Ana",
+        "Kortezubi",
+        "Oma"
+      ],
+      "neighborhoods": [],
+      "streetCount": 11
+    },
+    {
+      "id": "48908",
+      "name": "Murueta",
+      "sourceName": "Murueta",
+      "records": 162,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48350",
+        "48394"
+      ],
+      "streets": [
+        "BARRIADA LARRABE",
+        "BARRIADA GOIERRIA",
+        "BARRIADA KANPANTXUA",
+        "BARRIADA SAN CRISTÓBAL",
+        "CARRETERA BI-3215"
+      ],
+      "areas": [
+        "Murueta"
+      ],
+      "neighborhoods": [],
+      "streetCount": 5
+    },
+    {
+      "id": "48909",
+      "name": "Nabarniz",
+      "sourceName": "Nabarniz",
+      "records": 154,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48312"
+      ],
+      "streets": [
+        "BARRIADA ELEXALDE",
+        "BARRIADA MERIKA",
+        "BARRIADA URIBARRI - ZABALETA",
+        "BARRIADA IKAZURIETA",
+        "BARRIADA LEKERIKA",
+        "BARRIADA INTXAURRAGA",
+        "CARRETERA BI-3242"
+      ],
+      "areas": [
+        "Elexalde",
+        "Ikazurieta",
+        "Intxaurraga",
+        "Lekerika",
+        "Merika",
+        "Uribarri-Zabaleta"
+      ],
+      "neighborhoods": [],
+      "streetCount": 7
+    },
+    {
+      "id": "48910",
+      "name": "Iurreta",
+      "sourceName": "Iurreta",
+      "records": 506,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48215"
+      ],
+      "streets": [
+        "BARRIADA FAUSTE",
+        "BARRIADA ARRIANDI",
+        "CALLE OROZKETA",
+        "BARRIADA SAN MARKO",
+        "CALLE ITURBURU",
+        "CALLE BIXENTE KAPANAGA",
+        "CALLE MASPE",
+        "BARRIADA GOIURIA",
+        "CALLE ZUBIAURRE",
+        "PUERTO, PORTILLO ARRIANDI",
+        "BARRIADA IURRETA",
+        "BARRIADA SANTA MAÑA"
+      ],
+      "areas": [
+        "Aita San Migel",
+        "Amatza",
+        "Arandia",
+        "Arriandi",
+        "Artatza",
+        "Bakixa",
+        "Fauste",
+        "Garaizar",
+        "Gaztañatza",
+        "Goiuria",
+        "Iturburu",
+        "Iurreta",
+        "Mallabiena",
+        "Mañariku",
+        "Oromiño",
+        "Orozketa",
+        "San Andres",
+        "San Marko",
+        "Santa Apolonia",
+        "Santa Maña"
+      ],
+      "neighborhoods": [],
+      "streetCount": 47
+    },
+    {
+      "id": "48911",
+      "name": "Ajangiz",
+      "sourceName": "Ajangiz",
+      "records": 186,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48320"
+      ],
+      "streets": [
+        "BARRIADA KANPANTXU",
+        "BARRIADA MENDIETA",
+        "CALLE MALOSTE",
+        "CARRETERA BI-3224",
+        "CALLE ARRATZU",
+        "CARRETERA BI-635"
+      ],
+      "areas": [
+        "Kanpantxu",
+        "Mendieta"
+      ],
+      "neighborhoods": [],
+      "streetCount": 6
+    },
+    {
+      "id": "48912",
+      "name": "Alonsotegi",
+      "sourceName": "Alonsotegi",
+      "records": 379,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48810"
+      ],
+      "streets": [
+        "CALLE KOSKOJALES",
+        "CALLE LOIBEBERRI",
+        "CALLE LASAO",
+        "BARRIADA AZORDOIAGA",
+        "BARRIADA SASIA",
+        "CAMINO PERTXETA",
+        "BARRIADA BAZTEITA",
+        "BARRIADA LA BARRANCA",
+        "CALLE CAMINO DE ERROTA",
+        "BARRIADA ZAMUNDI",
+        "CALLE ARBUIO",
+        "CALLE LOIBE"
+      ],
+      "areas": [
+        "Alonsotegi",
+        "Arbuio",
+        "Irauregi"
+      ],
+      "neighborhoods": [],
+      "streetCount": 40
+    },
+    {
+      "id": "48913",
+      "name": "Zierbena",
+      "sourceName": "Zierbena",
+      "records": 569,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48508",
+        "48550",
+        "48980"
+      ],
+      "streets": [
+        "BARRIADA LA CUESTA",
+        "BARRIADA EL PUERTO",
+        "URBANIZACION MOREO",
+        "BARRIADA SAN MAMÉS",
+        "BARRIADA VALLE",
+        "BARRIADA KARDEO",
+        "CALLE VIRGEN DEL PUERTO",
+        "BARRIADA LA ARENA",
+        "CALLE REFRADIGAS",
+        "CALLE PUNTA SOLLANA",
+        "BARRIADA SAN ROMÁN",
+        "BARRIADA SAN ROQUE"
+      ],
+      "areas": [
+        "El Puerto",
+        "Kardeo",
+        "La Arena",
+        "La Cuesta",
+        "San Mamés",
+        "Valle"
+      ],
+      "neighborhoods": [],
+      "streetCount": 23
+    },
+    {
+      "id": "48914",
+      "name": "Arratzu",
+      "sourceName": "Arratzu",
+      "records": 216,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48382",
+        "48383"
+      ],
+      "streets": [
+        "BARRIADA LOIOLA",
+        "BARRIADA ZABALA - BELENDIZ",
+        "BARRIADA UARKA",
+        "BARRIADA BARRUTIA",
+        "BARRIADA ELEXALDE",
+        "BARRIADA GOROZIKA",
+        "BARRIADA ZUBIATE",
+        "BARRIADA BARROETA",
+        "CARRETERA BI-2224",
+        "BARRIADA MONTE",
+        "CARRETERA BI-3242"
+      ],
+      "areas": [
+        "Barroeta",
+        "Barrutia",
+        "Elexalde",
+        "Gorozika",
+        "Loiola",
+        "Uarka",
+        "Zabala-Belendiz",
+        "Zubiate"
+      ],
+      "neighborhoods": [],
+      "streetCount": 11
+    },
+    {
+      "id": "48915",
+      "name": "Ziortza-Bolibar",
+      "sourceName": "Ziortza-Bolibar",
+      "records": 183,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48269",
+        "48278"
+      ],
+      "streets": [
+        "BARRIADA ZEINKA - ZEARREGI",
+        "BARRIADA ARTA",
+        "BARRIADA IRUZUBIETA",
+        "BARRIADA GOIERRIA ZIORTZA",
+        "BARRIADA BOLIBAR",
+        "CALLE BEKO KALEA",
+        "CALLE DOMINGO UGARTETXEA",
+        "CALLE BERESIPE",
+        "PLAZA SIMON BOLIBAR",
+        "CALLE BONI AGARRE",
+        "CARRETERA BI-2224",
+        "CALLE UREZANDI"
+      ],
+      "areas": [
+        "Arta",
+        "Bolibar",
+        "Goierria Ziortza",
+        "Iruzubieta",
+        "Zeinka-Zearregi"
+      ],
+      "neighborhoods": [],
+      "streetCount": 14
+    },
+    {
+      "id": "48916",
+      "name": "Usansolo",
+      "sourceName": "Usansolo",
+      "records": 1,
+      "excludedPostalCodes": [],
+      "postalCodes": [
+        "48960"
+      ],
+      "streets": [
+        "CARRETERA N-240"
+      ],
+      "areas": [
+        ""
+      ],
+      "neighborhoods": [],
+      "streetCount": 1
+    }
+  ]
+}

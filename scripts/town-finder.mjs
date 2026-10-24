@@ -1,0 +1,16 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import {canonicalPath} from './canonical-urls.mjs';
+const root='dist';
+const pages=JSON.parse(fs.readFileSync(root+'/local-pages-manifest.json','utf8'));
+assert.equal(pages.length,3797);
+const data=pages.map(p=>({name:p.name,province:p.province,url:canonicalPath(p.path)}));
+assert.equal(new Set(data.map(p=>p.url)).size,data.length);
+fs.writeFileSync(root+'/assets/town-finder-index.json',JSON.stringify(data));
+fs.copyFileSync('src/town-finder.js',root+'/assets/town-finder.js');
+const file=root+'/index.html';let html=fs.readFileSync(file,'utf8');
+const marker='<div class="province-grid">';assert.equal(html.split(marker).length,2);
+const block='<form class="town-finder" data-town-finder role="search" aria-label="Buscar localidad en toda la web"><label for="global-town-search">Busca tu pueblo o ciudad</label><div class="town-finder-controls"><input id="global-town-search" type="search" placeholder="Ej.: Bilbao, Zalla o Lerma" autocomplete="off" aria-describedby="global-town-status" aria-controls="global-town-results"><button class="btn" type="submit">Buscar</button></div><p id="global-town-status" role="status" aria-live="polite">Busca entre las 3.797 localidades de la web. Elige el resultado para entrar directamente.</p><ul id="global-town-results" hidden></ul><noscript><p>Selecciona una provincia en el listado inferior para consultar sus municipios.</p></noscript></form>';
+html=html.replace(marker,block+marker).replace('</head>','<script src="/assets/town-finder.js?v=20261024" defer></script></head>');
+html=html.replace('</head>','<style>.town-finder{padding:22px;border:1px solid var(--line);border-radius:12px;background:#fff;margin:24px 0}.town-finder label{display:block;font-weight:700;margin-bottom:10px}.town-finder-controls{display:flex;gap:10px}.town-finder input{flex:1;min-width:0;min-height:48px;border:1px solid #a9aaad;border-radius:8px;padding:12px;font:inherit;font-size:16px}.town-finder ul{padding:0;margin:16px 0 0;list-style:none}.town-finder li+li{border-top:1px solid var(--line)}.town-finder li a{display:flex;justify-content:space-between;gap:12px;padding:13px 4px;min-height:48px;overflow-wrap:anywhere}.town-finder li small{color:var(--muted)}@media(max-width:480px){.town-finder{padding:16px}.town-finder-controls{flex-direction:column}.town-finder li a{flex-direction:column;gap:2px}}</style></head>');
+fs.writeFileSync(file,html);console.log('BUSCADOR PORTADA OK: 3797 destinos únicos, acceso desde la sección de localidades.');
