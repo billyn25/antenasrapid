@@ -22,3 +22,18 @@
 .featured-province[data-madrid-service-links]>p{margin:0 0 12px;font-size:13px;line-height:1.5}
 .featured-province[data-madrid-service-links] .madrid-service-link{display:inline-flex;align-items:center;line-height:inherit}
 .featured-province[data-madrid-service-links] .featured-more-links .madrid-service-link{display:inline;text-decoration:underline!important}
+
+/* Referencias residenciales de Madrid agrupadas por zona, sin listas industriales. */
+.madrid-local-geography{margin-top:24px}
+.madrid-zone-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;align-items:start;margin:16px 0}
+.madrid-zone{min-width:0;border:1px solid var(--line);border-radius:10px;background:#fff;overflow:hidden}
+.madrid-zone>summary{padding:13px 15px;min-height:48px;cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:14px}
+.madrid-zone>summary::-webkit-details-marker{display:none}
+.madrid-zone>summary::after{content:'+';flex:none;color:var(--brand);font-size:20px;font-weight:500}
+.madrid-zone[open]>summary::after{content:'−'}
+.madrid-zone>p{margin:0;padding:0 15px 15px;overflow-wrap:anywhere;line-height:1.7}
+.madrid-more-zones>summary,.madrid-geography-sources>summary{padding:10px 0;cursor:pointer}
+.madrid-more-zones{margin:12px 0}.madrid-geography-sources{margin-top:16px}
+.madrid-geography-sources>p{margin:8px 0}
+.madrid-zone>summary:focus-visible,.madrid-more-zones>summary:focus-visible,.madrid-geography-sources>summary:focus-visible{outline:2px solid var(--brand);outline-offset:-3px}
+@media(max-width:640px){.madrid-zone-list{grid-template-columns:minmax(0,1fr);gap:8px}.madrid-local-geography{margin-top:20px}}
