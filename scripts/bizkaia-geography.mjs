@@ -25,7 +25,11 @@ export function localVisibleCopy(html){
  // Preserve attributes, URLs, structured data and styles; only edit visible text nodes.
  return html.replace(/(<script\b[\s\S]*?<\/script>|<style\b[\s\S]*?<\/style>|<[^>]+>)|([^<]+)/gi,(all,tag,text)=>{
   if(tag){
-   if(/^<meta\b/i.test(tag)&&/(?:name|property)="(?:description|og:description|og:title|twitter:title|twitter:description)"/i.test(tag))return tag.replace(/, Bizkaia/g,'').replace(/ en Bizkaia/g,'');
+   if(/^<meta\b/i.test(tag)&&/(?:name|property)="(?:description|og:description|og:title|twitter:title|twitter:description)"/i.test(tag)){
+    const cleaned=tag.replace(/, Bizkaia/g,'').replace(/ en Bizkaia/g,'');
+    if(/(?:name|property)="(?:description|og:description|twitter:description)"/i.test(cleaned))return cleaned.replace(/content="([^"]*)"/,(_,value)=>`content="${value.length<115?value+' Consulta tu instalación.':value}"`);
+    return cleaned;
+   }
    return tag;
   }
   return text.replace(/, Bizkaia/g,'').replace(/Bizkaia · /g,'').replace(/en Bizkaia/g,'en la provincia').replace(/de Bizkaia/g,'de la provincia').replace(/Bizkaia/g,'Localidades');
