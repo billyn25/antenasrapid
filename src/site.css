@@ -396,3 +396,21 @@ body{background:linear-gradient(#fff 0 72%,#fbfaf8 100%)}
 .tv-reception-question>p{margin:0;padding:0 20px 21px;color:var(--muted);font-size:14px;line-height:1.75}
 @media(max-width:900px){.tv-reception-layout{grid-template-columns:minmax(0,1fr);gap:22px;padding-top:28px}.tv-reception-copy h2{max-width:650px}.tv-reception-copy>p{max-width:680px}.tv-reception-copy .tv-reception-sources{margin-bottom:0}}
 @media(max-width:540px){.tv-reception{padding-bottom:12px}.tv-reception-copy h2{font-size:29px}.tv-reception-question>summary{font-size:15px;gap:12px;padding:17px 16px}.tv-reception-question>p{padding:0 16px 18px;font-size:14px}.whatsapp-reception{padding:13px 12px}.whatsapp-reception legend{font-size:12px;padding:0 4px}}
+
+/* Shared reading scale for home, provinces, municipalities and districts. */
+:root{--text-body:15px;--text-card-title:20px;--text-section-title:30px;--text-summary:16px}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body main .section h2,body main .related-towns h2{font-size:var(--text-section-title);line-height:1.25;letter-spacing:-.5px}
+body main .section h3{font-size:var(--text-card-title);line-height:1.35;letter-spacing:0}
+body main .section p:not(.eyebrow):not(.municipal-source):not(.distance-note):not(.whatsapp-note):not(.whatsapp-status):not(.whatsapp-reception-note):not(.tv-reception-sources),body main .section li{font-size:var(--text-body);line-height:1.7}
+body main .section details>summary{font-size:var(--text-summary);line-height:1.5;font-weight:700;letter-spacing:0;overflow-wrap:break-word}
+body main .local-depth-card{padding:16px}
+body main .local-depth-card>summary{min-height:44px;display:flex;align-items:flex-start;gap:10px;list-style:none}
+body main .local-depth-card>summary::-webkit-details-marker{display:none}
+body main .local-depth-card>summary::before{content:'+';flex:0 0 18px;color:var(--brand);font-size:20px;font-weight:500;line-height:1.2}
+body main .local-depth-card[open]>summary::before{content:'−'}
+@media(max-width:720px){
+ :root{--text-card-title:18px;--text-section-title:25px}
+ body main .local-depth-grid{gap:10px;margin:20px 0}
+ body main .local-depth-card{padding:14px 16px}
+}
