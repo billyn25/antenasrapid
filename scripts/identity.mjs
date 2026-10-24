@@ -5,6 +5,7 @@ export const SERVICE_STATEMENT = 'Técnico en instalación, reparación y manten
 
 export function locationLabel(page) {
   if (page.type !== 'town') return page.name;
+  if (page.path === '/Antenas-Bizkaia/bilbao.html') return page.name;
   const parent = pages.find(p => p.type === 'province' && p.path === page.parent);
   return parent ? `${page.name}, ${parent.name}` : page.name;
 }
