@@ -1,0 +1,2672 @@
+{
+  "checkedOn": "2026-10-24",
+  "areaSource": "https://www.ine.es/dyngs/INEbase/operacion.htm?c=Estadistica_C&cid=1254736177010&idp=1254735572981&menu=resultados",
+  "areaReference": "01/01/2025",
+  "streetSource": "https://api-features.idee.es/collections/address/items",
+  "streetSampling": "Hasta 300 direcciones municipales consultadas; selección de hasta ocho vías, no callejero exhaustivo.",
+  "municipalities": [
+    {
+      "id": "28001",
+      "name": "La Acebeda",
+      "areas": [
+        "La Acebeda"
+      ],
+      "streets": [
+        "Calle Plaza",
+        "Plaza Nicasio Gonzalez Moreno",
+        "Plaza San Miguel",
+        "Calle Puerto",
+        "Calle Plazuela",
+        "Calle Poligono 4",
+        "Calle Encerradero",
+        "Diseminados Cm Cementerio"
+      ],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28002",
+      "name": "Ajalvir",
+      "areas": [
+        "Ajalvir"
+      ],
+      "streets": [
+        "Plaza Sector 2",
+        "Plaza Sector 3",
+        "Calle Real",
+        "Plaza Sector 5",
+        "Plaza Sector 4",
+        "Calle Mayor",
+        "Avenida Francisco De Goya",
+        "Calle Picasso"
+      ],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28003",
+      "name": "Alameda del Valle",
+      "areas": [
+        "Alameda Del Valle"
+      ],
+      "streets": [
+        "Plaza Santa Marina",
+        "Plaza Vp.Sector Cerca Fragua",
+        "Urbanizacion Cerco De La Fragua",
+        "Calle Rio",
+        "Calle Grande",
+        "Calle Iglesia",
+        "Calle Romero",
+        "Calle Campillo"
+      ],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28004",
+      "name": "El Álamo",
+      "areas": [
+        "El Álamo",
+        "Camino De Batres"
+      ],
+      "streets": [
+        "Plaza Sur 7 - La Granja",
+        "Plaza Sau-3 Industrial",
+        "Calle Santiago Apostol",
+        "Calle San Juan De Dios",
+        "Carretera Griñon",
+        "Calle Pensamientos",
+        "Calle Pirineos",
+        "Calle Santiago Blazquez"
+      ],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28005",
+      "name": "Alcalá de Henares",
+      "areas": [
+        "Alcalá De Henares",
+        "Ecce Homo Y Cuesta De Zulema",
+        "Soto De La Ciudad Y Gerafin",
+        "El Encín Y La Canaleja",
+        "Espinillos"
+      ],
+      "streets": [
+        "Calle Emilia Pardo Bazán",
+        "Calle Euclides",
+        "Vía Complutense",
+        "Ronda Fiscal",
+        "Plaza Sector 113 Los Salobrales",
+        "Plaza Alvarez",
+        "Plaza Santos Niños",
+        "Plaza Ue"
+      ],
+      "neighborhoods": [
+        "Centro histórico",
+        "San Isidro",
+        "La Garena",
+        "Ensanche",
+        "Espartales Norte",
+        "Espartales Sur",
+        "El Val",
+        "Reyes Católicos",
+        "Nueva Alcalá",
+        "Campo del Ángel",
+        "Chorrillo",
+        "Ciudad del Aire"
+      ],
+      "sources": [
+        "https://participacionciudadana.ayto-alcaladehenares.es/los-consejos-de-barrio/",
+        "https://www.ayto-alcaladehenares.es/el-ayuntamiento-de-alcala-habilita-un-punto-de-recogida-de-material-de-ayuda-para-los-afectados-por-la-dana-en-el-centro-cultural-galatea/"
+      ]
+    },
+    {
+      "id": "28006",
+      "name": "Alcobendas",
+      "areas": [
+        "Alcobendas"
+      ],
+      "streets": [
+        "Calle Constitucion",
+        "Plaza Maestro Tarrega",
+        "Plaza Moraleja",
+        "Plaza Sauce",
+        "Plaza Sus-A5 Buenavista",
+        "Paseo Alcobendas",
+        "Calle Camino Ancho",
+        "Paseo Mquesa Vda Aldama"
+      ],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28007",
+      "name": "Alcorcón",
+      "areas": [
+        "Alcorcón",
+        "Fuente Cisneros",
+        "Campodón",
+        "Ventorro Del Cano",
+        "Montepríncipe",
+        "Carretera De San Martín",
+        "Venta La Rubia"
+      ],
+      "streets": [
+        "Plaza Retamar De La Huerta",
+        "Plaza Pp Ensanche Sur",
+        "Plaza S-8:El Lucero",
+        "Plaza Diseminados",
+        "Plaza Sector Pp7",
+        "Plaza Presillas Las",
+        "Calle Mayor",
+        "Plaza En-10:Nudo De San Jose"
+      ],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28008",
+      "name": "Aldea del Fresno",
+      "areas": [
+        "Aldea Del Fresno",
+        "El Rincón",
+        "Dehesa De Hernán Vicente",
+        "La Dehesilla",
+        "Navayuncosa",
+        "Los Corrales"
+      ],
+      "streets": [
+        "Calle Mayor",
+        "Plaza San Pedro",
+        "Plaza Constitucion",
+        "Calle Real",
+        "Plaza Calva",
+        "Plaza Poligono Rustica-1",
+        "Diseminados Diseminado",
+        "Calle San Rafael"
+      ],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28009",
+      "name": "Algete",
+      "areas": [
+        "Algete",
+        "Santo Domingo",
+        "Prado Norte",
+        "Moratones",
+        "Dehesa Nueva",
+        "Soto Mozanaque",
+        "El Nogal"
+      ],
+      "streets": [
+        "Plaza 11",
+        "Plaza 9",
+        "Plaza 10",
+        "Plaza 7",
+        "Calle Ronda De La Constitucion",
+        "Calle Mayor",
+        "Avenida Guadalix",
+        "Calle Monfrague"
+      ],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28010",
+      "name": "Alpedrete",
+      "areas": [
+        "Alpedrete",
+        "Los Negrales-Los Llanos",
+        "Valdencina"
+      ],
+      "streets": [
+        "Plaza Del Guadarrama",
+        "Plaza Poligono 27",
+        "Calle Real",
+        "Plaza Navacerrada",
+        "Plaza Poligono 35",
+        "Calle Santiago Rodriguez Conde",
+        "Calle Santa Emilia",
+        "Calle San Rafael"
+      ],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28011",
+      "name": "Ambite",
+      "areas": [
+        "Ambite",
+        "Sierra De Tajuña",
+        "La Vega",
+        "Valdealcalá"
+      ],
+      "streets": [
+        "Plaza Mayor",
+        "Calle Mayor",
+        "Callejon Mayor",
+        "Calle Jesus Mauro De Madariaga",
+        "Calle Olivo",
+        "Lugar Arroyo Del Villar",
+        "Camino Arca",
+        "Calle Ciruelo"
+      ],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28012",
+      "name": "Anchuelo",
+      "areas": [
+        "Anchuelo"
+      ],
+      "streets": [
+        "Calle Mayor",
+        "Plaza Mayor",
+        "Plaza Constitucion",
+        "Avenida Plaza",
+        "Costanilla Plaza",
+        "Plaza Santa Maria Magdalena",
+        "Avenida Plaza De La",
+        "Plaza Medio Celemin"
+      ],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28013",
+      "name": "Aranjuez",
+      "areas": [
+        "Aranjuez",
+        "La Montaña",
+        "Real Cortijo De San Isidro",
+        "Las Infantas",
+        "Sotomayor",
+        "Algodor",
+        "La Flamenca",
+        "Villamejor",
+        "Castillejo"
+      ],
+      "streets": [
+        "Plaza Unesco",
+        "Avenida Plaza De Toros",
+        "Plaza Jardines Historico Artist",
+        "Plaza Vpv.040.Disemin-Fracc.",
+        "Calle Reales Guardias Españolas",
+        "Calle Reales Guardias Walonas",
+        "Calle Teatro Del",
+        "Calle Antonio Guardiola Saez"
+      ],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28014",
+      "name": "Arganda del Rey",
+      "areas": [
+        "Arganda",
+        "Los Villares",
+        "Puente De Arganda"
+      ],
+      "streets": [
+        "Plaza Vp.Norte Poligonos",
+        "Plaza Industrial Coto Cisneros",
+        "Calle Real",
+        "Plaza Ingeniero Enrique Calleja",
+        "Plaza Constitucion De La",
+        "Plaza Gato",
+        "Plaza Marina",
+        "Camino Valdecabañas"
+      ],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28015",
+      "name": "Arroyomolinos",
+      "areas": [
+        "Castañeras",
+        "Arroyomolinos",
+        "Monte De San Martín",
+        "Valdefuentes"
+      ],
+      "streets": [
+        "Plaza Sau-7 La Rinconada Ii",
+        "Calle Madrid",
+        "Calle Sau-4B Valdearenal Sur",
+        "Calle Sau-3 Ciudad Jardin",
+        "Calle Sau-6 Zarzalejo",
+        "Calle Sau-4A Valdearenal Norte",
+        "Calle Sau-2 El Rellano",
+        "Calle Sau-5 Molino Perdido"
+      ],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28016",
+      "name": "El Atazar",
+      "areas": [
+        "El Atazar"
+      ],
+      "streets": [
+        "Calle Mayor",
+        "Plaza Constitucion",
+        "Calle Valmayor",
+        "Calle Constitucion",
+        "Plaza Ayuntamiento",
+        "Plaza Ayuntamiento Del",
+        "Avenida Presa Del Atazar",
+        "Calle Fraguas"
+      ],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28017",
+      "name": "Batres",
+      "areas": [
+        "Monte De Batres",
+        "Batres",
+        "Los Olivos"
+      ],
+      "streets": [
+        "Plaza Ue-7",
+        "Calle Aguila Real",
+        "Calle Garcilaso De La Vega",
+        "Calle Carcavas",
+        "Calle Diseminado",
+        "Camino Arranque",
+        "Diseminados Diseminado",
+        "Avenida Valle Del"
+      ],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28018",
+      "name": "Becerril de la Sierra",
+      "areas": [
+        "Becerril De La Sierra",
+        "Montellano",
+        "El Berrocal",
+        "Vista Real",
+        "Los Cebales"
+      ],
+      "streets": [
+        "Calle Madrid",
+        "Calle Real",
+        "Plaza Vpv. 8A Diseminados",
+        "Carretera Escorial",
+        "Carretera Torrelaguna",
+        "Paseo San Sebastian",
+        "Avenida Jose Antonio",
+        "Paseo Ermita"
+      ],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28019",
+      "name": "Belmonte de Tajo",
+      "areas": [
+        "Belmonte De Tajo"
+      ],
+      "streets": [
+        "Calle Juan Carlos I Rey De España",
+        "Calle Marques De España",
+        "Plaza Constitucion",
+        "Lugar Sau-Ind",
+        "Calle Diseminado",
+        "Carretera Valdelaguna",
+        "Calle Barrio Alto",
+        "Avenida Felipe Serrano"
+      ],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28021",
+      "name": "El Berrueco",
+      "areas": [
+        "El Berrueco",
+        "Pradera Del Amor",
+        "Peñáguila"
+      ],
+      "streets": [
+        "Calle Real",
+        "Avenida España",
+        "Carretera Cervera Buitrago",
+        "Calle Lanchar De Losa Morilla",
+        "Calle Jaras Las",
+        "Camino Canteras",
+        "Camino Cementerio",
+        "Carretera Lozoyuela"
+      ],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28020",
+      "name": "Berzosa del Lozoya",
+      "areas": [
+        "Berzosa Del Lozoya",
+        "Los Llanillos"
+      ],
+      "streets": [
+        "Calle Real",
+        "Plaza Campillo",
+        "Plaza Casona",
+        "Plaza Constitucion",
+        "Calle Manzano",
+        "Calle Villar",
+        "Calle Reguera",
+        "Calle Campillo"
+      ],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28022",
+      "name": "Boadilla del Monte",
+      "areas": [
+        "Boadilla Del Monte",
+        "Urbanizaciones Noroeste",
+        "Urbanizaciones Este",
+        "Prado Del Espino-San Babiles"
+      ],
+      "streets": [
+        "Plaza Vp Sector Sur3",
+        "Plaza Vp Sector Sur4",
+        "Plaza Vp Sureste Casco",
+        "Plaza Ah-25 Prado Del Espino",
+        "Plaza Ah-30 Cortijo Norte",
+        "Plaza Vp Valdecabañas",
+        "Plaza Vp Viñas Viejas",
+        "Avenida España"
+      ],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28023",
+      "name": "El Boalo",
+      "areas": [
+        "Cerceda",
+        "El Boalo",
+        "Mataelpino",
+        "Peña De Las Gallinas",
+        "San Muriel",
+        "El Berrocal I",
+        "Los Pozuelos",
+        "El Alcorejo",
+        "Los Chaparrales",
+        "El Berrocal Ii"
+      ],
+      "streets": [
+        "Plaza Sector 8 C",
+        "Plaza Sector 4 B",
+        "Plaza Sector 13 C",
+        "Plaza Sector 10 M",
+        "Plaza Sector 1 C",
+        "Plaza Ue 3C",
+        "Plaza Sector 5 B",
+        "Calle Real"
+      ],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28024",
+      "name": "Braojos",
+      "areas": [
+        "Braojos"
+      ],
+      "streets": [
+        "Plaza Sol",
+        "Plaza Sol Del",
+        "Calle Pozo",
+        "Calle Carmen",
+        "Calle Cantarranas",
+        "Calle Eras",
+        "Calle Viento",
+        "Calleja, Callejon Tercio Nuevo"
+      ],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28025",
+      "name": "Brea de Tajo",
+      "areas": [
+        "Brea De Tajo",
+        "La Alameda Y El Quejigal"
+      ],
+      "streets": [
+        "Calle Mayor",
+        "Calle Constitucion",
+        "Plaza Solana",
+        "Plaza Castillo",
+        "Plaza Iglesia De La",
+        "Plaza San Esteban",
+        "Plaza Santo Domingo",
+        "Plaza Solana De"
+      ],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28026",
+      "name": "Brunete",
+      "areas": [
+        "Brunete",
+        "El Valle De Los Rosales",
+        "La Dehesa",
+        "La Barranca"
+      ],
+      "streets": [
+        "Plaza Sr-5 Ensanche Sur",
+        "Plaza Vpv.015.Diseminados-Fracc",
+        "Calle Real De San Sebastian",
+        "Plaza Altozano",
+        "Calle Pl Sr-1 Primera Corona",
+        "Camino Dehesa",
+        "Diseminados Pj Alto Olivas",
+        "Carretera Boadilla Brunete"
+      ],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28027",
+      "name": "Buitrago del Lozoya",
+      "areas": [
+        "Buitrago Del Lozoya"
+      ],
+      "streets": [
+        "Calle Real",
+        "Plaza Progreso",
+        "Plaza Castillo",
+        "Plaza Hornos De Los",
+        "Plaza San Juan",
+        "Plaza Belen Viviente",
+        "Plaza Cruz",
+        "Plaza Huerta De Las Flores"
+      ],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28028",
+      "name": "Bustarviejo",
+      "areas": [
+        "Bustarviejo",
+        "El Pedregal",
+        "La Pesquera - El Pornoso",
+        "La Encinilla",
+        "El Manantial",
+        "El Hoyuelo",
+        "Cabeza Rasa"
+      ],
+      "streets": [
+        "Calle Real",
+        "Calle Mayor",
+        "Calle Madrid",
+        "Diseminados Diseminado",
+        "Calle Navazales Los",
+        "Calle Majadillas",
+        "Calle Peña Culebras",
+        "Carretera Valdemanco De"
+      ],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28029",
+      "name": "Cabanillas de la Sierra",
+      "areas": [
+        "Cabanillas De La Sierra",
+        "Los Lagunazos"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28030",
+      "name": "La Cabrera",
+      "areas": [
+        "La Cabrera",
+        "La Cabrerita Y El Roble",
+        "La Rabusera",
+        "La Asperilla"
+      ],
+      "streets": [
+        "Plaza Losa",
+        "Plaza Mediodia",
+        "Plaza Plaza",
+        "Avenida Cabrera De La",
+        "Calle Roblehorno",
+        "Diseminados Roble El",
+        "Calle Asperon",
+        "Calle Encerrada La"
+      ],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28031",
+      "name": "Cadalso de los Vidrios",
+      "areas": [
+        "Cadalso De Los Vidrios",
+        "Entrepinos",
+        "Los Barrancos Y El Palancar",
+        "Las Mariscalas",
+        "Valhondo Y Los Velascos",
+        "Pinar Del Concejo",
+        "La Castellana Y El Pilar",
+        "Valle De La Dehesa",
+        "Lancharrasa",
+        "El Usero",
+        "El Boqueron"
+      ],
+      "streets": [
+        "Avenida Constitucion",
+        "Plaza Fuente De Los Alamos",
+        "Diseminados Diseminados",
+        "Urbanizacion Mirador Cadalso",
+        "Calle Iglesia",
+        "Camino Piquillo",
+        "Ronda Madrid De",
+        "Calle Menorca"
+      ],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28032",
+      "name": "Camarma de Esteruelas",
+      "areas": [
+        "Camarma De Esteruelas",
+        "El Practicante",
+        "Alcamar"
+      ],
+      "streets": [
+        "Plaza Doctor Marañon",
+        "Plaza Paseo",
+        "Plaza Diseminados",
+        "Plaza Sector 2",
+        "Plaza Carniceria",
+        "Calle Mayor",
+        "Plaza Constitucion",
+        "Plaza Nuevo Camarma"
+      ],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28033",
+      "name": "Campo Real",
+      "areas": [
+        "Campo Real",
+        "Montehermoso"
+      ],
+      "streets": [
+        "Calle Sector 6",
+        "Calle Ua-10",
+        "Lugar Valdemembrillo",
+        "Calle Sector 5",
+        "Carretera Velilla",
+        "Avenida Guadalajara",
+        "Calle Felix Campo Bravo",
+        "Carretera Madrid"
+      ],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28034",
+      "name": "Canencia",
+      "areas": [
+        "Canencia"
+      ],
+      "streets": [
+        "Calle Real",
+        "Plaza Constitucion",
+        "Calle Reajillos",
+        "Calle Pablo Gasco",
+        "Calle Ermita Del Santo Cristo",
+        "Calle Diseminado",
+        "Calle Fuente La",
+        "Calle Santo Domingo"
+      ],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28035",
+      "name": "Carabaña",
+      "areas": [
+        "Carabaña"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28036",
+      "name": "Casarrubuelos",
+      "areas": [
+        "Casarrubuelos"
+      ],
+      "streets": [
+        "Plaza Constitucion",
+        "Calle Mayor",
+        "Plaza Concejo",
+        "Calle Maese Nicolas",
+        "Calle Dulcinea",
+        "Calle Maritornes",
+        "Calle Juan Palomeque",
+        "Calle Pero Perez"
+      ],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28037",
+      "name": "Cenicientos",
+      "areas": [
+        "Cenicientos",
+        "Los Almendros",
+        "El Juncal"
+      ],
+      "streets": [
+        "Plaza Independencia",
+        "Calle Plaza De Los Caños",
+        "Plaza Constitucion",
+        "Plaza Huertecillo Del",
+        "Plaza Vp 012 U7-8-9-10-11-12",
+        "Plaza Vp 016 Diseminados",
+        "Diseminados Diseminados",
+        "Carretera Escalona"
+      ],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28038",
+      "name": "Cercedilla",
+      "areas": [
+        "Cercedilla",
+        "Las Dehesas",
+        "Puerto De Navacerrada",
+        "Camorritos",
+        "El Baillo Y Las Hojarascas"
+      ],
+      "streets": [
+        "Camino Mata Robledal",
+        "Avenida Sierra Del Guadarrama",
+        "Camino Abajo",
+        "Avenida Manuel Gonzalez Amezua",
+        "Calle Emilio Serrano",
+        "Diseminados Embalse Navalmedio",
+        "Camino Majavilan",
+        "Diseminados Cr Las Dehesas"
+      ],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28039",
+      "name": "Cervera de Buitrago",
+      "areas": [
+        "Cervera De Buitrago",
+        "Cercas De La Encina"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28051",
+      "name": "Chapinería",
+      "areas": [
+        "Chapinería",
+        "Valquigoso"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28052",
+      "name": "Chinchón",
+      "areas": [
+        "Chinchón",
+        "Nuevo Chinchón",
+        "La Vega",
+        "Las Cubillas",
+        "Los Cohonares",
+        "Valgrande",
+        "Jara Baja",
+        "Camino Del Montero",
+        "Valromeroso",
+        "Jara Alta"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28040",
+      "name": "Ciempozuelos",
+      "areas": [
+        "Ciempozuelos",
+        "Buzanca"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28041",
+      "name": "Cobeña",
+      "areas": [
+        "Cobeña",
+        "Campo Nuevo"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28046",
+      "name": "Collado Mediano",
+      "areas": [
+        "Collado Mediano",
+        "Serranía De La Paloma",
+        "Reajo Del Roble",
+        "Los Barrizales"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28047",
+      "name": "Collado Villalba",
+      "areas": [
+        "La Estación",
+        "Collado Villalba",
+        "Dominio De Fontenebro",
+        "Cerca De Cascarrilla"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28043",
+      "name": "Colmenar de Oreja",
+      "areas": [
+        "Colmenar De Oreja",
+        "Balcón De Tajo-Urtajo",
+        "Valle De San Juan-Los Vallejos",
+        "San Miguel",
+        "Casa Concha",
+        "Casa Del Reloj",
+        "Castellanos"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28042",
+      "name": "Colmenar del Arroyo",
+      "areas": [
+        "Colmenar Del Arroyo",
+        "Valle Del Sol"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28045",
+      "name": "Colmenar Viejo",
+      "areas": [
+        "Colmenar Viejo",
+        "Las Pueblas",
+        "San Pedro",
+        "Famet",
+        "Los Chortales",
+        "Navarrosillos-Polígono Sur"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28044",
+      "name": "Colmenarejo",
+      "areas": [
+        "Colmenarejo"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28048",
+      "name": "Corpa",
+      "areas": [
+        "Corpa"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28049",
+      "name": "Coslada",
+      "areas": [
+        "Coslada"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28050",
+      "name": "Cubas de la Sagra",
+      "areas": [
+        "Cubas",
+        "El Soto",
+        "El Pinar",
+        "Camino De Batres",
+        "La Nube",
+        "Los Salmueros",
+        "Las Arroyadas"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28053",
+      "name": "Daganzo de Arriba",
+      "areas": [
+        "Daganzo De Arriba"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28054",
+      "name": "El Escorial",
+      "areas": [
+        "El Escorial",
+        "Navalquejigo",
+        "Pinosol",
+        "El Alcor",
+        "Peralejo",
+        "La Granjilla"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28055",
+      "name": "Estremera",
+      "areas": [
+        "Estremera",
+        "La Vega",
+        "El Campetón"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28056",
+      "name": "Fresnedillas de la Oliva",
+      "areas": [
+        "Fresnedillas De La Oliva"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28057",
+      "name": "Fresno de Torote",
+      "areas": [
+        "Serracines",
+        "Jardín De Serracines",
+        "Fresno De Torote"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28058",
+      "name": "Fuenlabrada",
+      "areas": [
+        "Fuenlabrada",
+        "Loranca"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28059",
+      "name": "Fuente el Saz de Jarama",
+      "areas": [
+        "Fuente El Saz De Jarama",
+        "El Salgar",
+        "Adoberas",
+        "Las Suertes Y Dehesa Vieja",
+        "El Chaparral Y El Soto"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28060",
+      "name": "Fuentidueña de Tajo",
+      "areas": [
+        "Fuentidueña De Tajo",
+        "Alarilla",
+        "Las Vegas",
+        "Los Visos Y Las Dehesas"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28061",
+      "name": "Galapagar",
+      "areas": [
+        "Galapagar",
+        "La Navata",
+        "Parquelagos",
+        "El Guijo",
+        "España",
+        "Fuente La Teja",
+        "Encinar-San Alberto-Vista Nevada",
+        "El Pocillo",
+        "Las Cuestas",
+        "Roncesvalles",
+        "Bellavista",
+        "Los Ranchos",
+        "Las Columnas",
+        "El Chaparral"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28062",
+      "name": "Garganta de los Montes",
+      "areas": [
+        "Garganta De Los Montes",
+        "El Cuadrón",
+        "El Verdugal",
+        "La Pajarilla",
+        "Cañizuela",
+        "Las Eras Del Soto"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28063",
+      "name": "Gargantilla del Lozoya y Pinilla de Buitrago",
+      "areas": [
+        "Gargantilla Del Lozoya",
+        "Pinilla De Buitrago",
+        "La Tejera",
+        "El Tomillar",
+        "La Estación"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28064",
+      "name": "Gascones",
+      "areas": [
+        "Gascones",
+        "Venta De Mea Y Calcetas",
+        "Redondo De Arriba",
+        "Redondo De Abajo"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28065",
+      "name": "Getafe",
+      "areas": [
+        "Getafe",
+        "El Bercial",
+        "Perales Del Río",
+        "Los Llanos",
+        "Cerro De Los Ángeles",
+        "La Aldehuela Y La Torrecilla",
+        "La Atalayuela"
+      ],
+      "streets": [
+        "Calle Ramón y Cajal",
+        "Avenida de las Ciudades",
+        "Avenida de las Arcas del Agua",
+        "Plaza de las Provincias"
+      ],
+      "neighborhoods": [
+        "Buenavista",
+        "Centro",
+        "El Bercial",
+        "Getafe Norte",
+        "Juan de la Cierva",
+        "La Alhóndiga",
+        "Las Margaritas",
+        "Los Molinos",
+        "Perales del Río",
+        "San Isidro",
+        "Sector III"
+      ],
+      "sources": [
+        "https://participa.getafe.es/mapas-barrios-participacion",
+        "https://participa.getafe.es/about_neighborhood_commissions"
+      ]
+    },
+    {
+      "id": "28066",
+      "name": "Griñón",
+      "areas": [
+        "Griñón"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28067",
+      "name": "Guadalix de la Sierra",
+      "areas": [
+        "Guadalix De La Sierra"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28068",
+      "name": "Guadarrama",
+      "areas": [
+        "Guadarrama",
+        "Las Cabezuelas",
+        "Matarrubia",
+        "Los Negrales",
+        "Tablada",
+        "La Mata",
+        "La Jarosa"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28069",
+      "name": "La Hiruela",
+      "areas": [
+        "La Hiruela"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28070",
+      "name": "Horcajo de la Sierra-Aoslos",
+      "areas": [
+        "Horcajo De La Sierra",
+        "Aoslos"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28071",
+      "name": "Horcajuelo de la Sierra",
+      "areas": [
+        "Horcajuelo De La Sierra"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28072",
+      "name": "Hoyo de Manzanares",
+      "areas": [
+        "Hoyo De Manzanares",
+        "Berzosa",
+        "Parque De Las Colinas",
+        "Navallera",
+        "Berzalejo",
+        "Navalvillar - El Canchal"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28073",
+      "name": "Humanes de Madrid",
+      "areas": [
+        "Humanes De Madrid",
+        "Avenida De Griñon"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28074",
+      "name": "Leganés",
+      "areas": [
+        "Leganés",
+        "Fortuna",
+        "Butarque"
+      ],
+      "streets": [
+        "Calle Rey Pastor",
+        "Calle Torres Quevedo",
+        "Avenida de América Latina"
+      ],
+      "neighborhoods": [
+        "Zarzaquemada",
+        "El Carrascal",
+        "San Nicasio",
+        "La Fortuna"
+      ],
+      "sources": [
+        "https://www.leganes.org/documents/20122/965265/0_66644_1.pdf/1db7069a-55a5-8617-83ef-e62976f9483e?t=1677242722869"
+      ]
+    },
+    {
+      "id": "28075",
+      "name": "Loeches",
+      "areas": [
+        "Loeches",
+        "Prado Concejil",
+        "Valdemera",
+        "Cantos Azules",
+        "Valducar Y Valdegatos",
+        "La Fontadela",
+        "El Monte"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28076",
+      "name": "Lozoya",
+      "areas": [
+        "Lozoya",
+        "La Granja"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28901",
+      "name": "Lozoyuela-Navas-Sieteiglesias",
+      "areas": [
+        "Lozoyuela",
+        "Sieteiglesias",
+        "Navas De Buitrago",
+        "Mazacorta",
+        "Los Peñotes",
+        "Fuente Blanquilla"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28078",
+      "name": "Madarcos",
+      "areas": [
+        "Madarcos"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28079",
+      "name": "Madrid",
+      "areas": [
+        "Madrid"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28080",
+      "name": "Majadahonda",
+      "areas": [
+        "Majadahonda",
+        "La Cumbre",
+        "La Grajera",
+        "Monte Del Pilar",
+        "El Mayorazgo"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28082",
+      "name": "Manzanares el Real",
+      "areas": [
+        "Manzanares El Real",
+        "El Berrocal",
+        "Presa De Santillana"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28083",
+      "name": "Meco",
+      "areas": [
+        "Meco"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28084",
+      "name": "Mejorada del Campo",
+      "areas": [
+        "Mejorada Del Campo",
+        "Valdecelada",
+        "Urbanización Las Acacias",
+        "La Vega",
+        "La Raya De Velilla"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28085",
+      "name": "Miraflores de la Sierra",
+      "areas": [
+        "Miraflores De La Sierra",
+        "Hormigales Y Casa Blanca",
+        "Los Endrinales",
+        "San Blas - Los Colladillos",
+        "Raserillos Y El Carrascal",
+        "Las Huelgas"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28086",
+      "name": "El Molar",
+      "areas": [
+        "El Molar",
+        "Los Llanos Y Remolinos",
+        "La Cabaña"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28087",
+      "name": "Los Molinos",
+      "areas": [
+        "Los Molinos"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28088",
+      "name": "Montejo de la Sierra",
+      "areas": [
+        "Montejo De La Sierra"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28089",
+      "name": "Moraleja de Enmedio",
+      "areas": [
+        "Moraleja De Enmedio",
+        "Las Colinas"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28090",
+      "name": "Moralzarzal",
+      "areas": [
+        "Moralzarzal",
+        "El Berrocal (El)-Retamar",
+        "Fuente Del Piojo",
+        "Las Praderas"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28091",
+      "name": "Morata de Tajuña",
+      "areas": [
+        "Morata De Tajuña",
+        "El Valle",
+        "El Alto"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28092",
+      "name": "Móstoles",
+      "areas": [
+        "Móstoles",
+        "Parque Coimbra",
+        "Parque Guadarrama",
+        "Las Nieves",
+        "Pinares Llanos",
+        "Los Combos"
+      ],
+      "streets": [
+        "Calle San Antonio",
+        "Avenida Alcalde de Móstoles",
+        "Calle Libertad",
+        "Calle Pintor Velázquez",
+        "Calle Cedros",
+        "Plaza del Sol"
+      ],
+      "neighborhoods": [
+        "Centro",
+        "Norte-Universidad",
+        "Sur-Este",
+        "Oeste",
+        "Coimbra-Guadarrama",
+        "Sur"
+      ],
+      "sources": [
+        "https://www.mostoles.es/fr/localizaciones/juntas-distrito"
+      ],
+      "zoneLabel": "Distritos y zonas conocidas"
+    },
+    {
+      "id": "28093",
+      "name": "Navacerrada",
+      "areas": [
+        "Navacerrada",
+        "Los Almorchones"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28094",
+      "name": "Navalafuente",
+      "areas": [
+        "Navalafuente",
+        "Los Llanos",
+        "Las Viñas",
+        "Sococar",
+        "El Corralillo",
+        "Las Arreturas"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28095",
+      "name": "Navalagamella",
+      "areas": [
+        "Navalagamella",
+        "Cerro Alarcón",
+        "Los Barrancos"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28096",
+      "name": "Navalcarnero",
+      "areas": [
+        "Navalcarnero",
+        "Calypo Ii",
+        "Carril Toledano",
+        "Carretera De Villamanta",
+        "Mancigordo",
+        "Fuente Pila"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28097",
+      "name": "Navarredonda y San Mamés",
+      "areas": [
+        "San Mamés",
+        "Navarredonda",
+        "El Patuelo",
+        "Prado Gamonal"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28099",
+      "name": "Navas del Rey",
+      "areas": [
+        "Navas Del Rey",
+        "El Morro",
+        "San Juan",
+        "La Rocha",
+        "Santa Ana"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28100",
+      "name": "Nuevo Baztán",
+      "areas": [
+        "Eurovillas-Las Villas",
+        "Monte Acevedo",
+        "Nuevo Baztán",
+        "El Mirador De Baztán"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28101",
+      "name": "Olmeda de las Fuentes",
+      "areas": [
+        "Olmeda De Las Fuentes"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28102",
+      "name": "Orusco de Tajuña",
+      "areas": [
+        "Orusco",
+        "La Besana",
+        "La Vega",
+        "Camino De Valdeolmeña",
+        "El Val",
+        "El Carrizal"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28104",
+      "name": "Paracuellos de Jarama",
+      "areas": [
+        "Paracuellos De Jarama",
+        "La Granja / El Cruce",
+        "Los Berrocales Del Jarama",
+        "Belvis De Jarama",
+        "I.N.T.A.",
+        "El Avalón"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28106",
+      "name": "Parla",
+      "areas": [
+        "Parla",
+        "Humanejos Y El Prado"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28107",
+      "name": "Patones",
+      "areas": [
+        "Patones De Abajo",
+        "Patones De Arriba"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28108",
+      "name": "Pedrezuela",
+      "areas": [
+        "Pedrezuela",
+        "Montenebro",
+        "Atalaya Real",
+        "La Mina",
+        "Los Pajares"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28109",
+      "name": "Pelayos de la Presa",
+      "areas": [
+        "Pelayos De La Presa"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28110",
+      "name": "Perales de Tajuña",
+      "areas": [
+        "Perales De Tajuña",
+        "Urbanización Valdeperales",
+        "Prado De Arriba Callejones",
+        "La Veguilla",
+        "Camino De Las Peñuelas",
+        "La Vega"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28111",
+      "name": "Pezuela de las Torres",
+      "areas": [
+        "Pezuela De Las Torres",
+        "Los Caminos"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28112",
+      "name": "Pinilla del Valle",
+      "areas": [
+        "Pinilla Del Valle"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28113",
+      "name": "Pinto",
+      "areas": [
+        "Pinto",
+        "Las Arenas"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28114",
+      "name": "Piñuécar-Gandullas",
+      "areas": [
+        "Piñuécar",
+        "Gandullas"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28115",
+      "name": "Pozuelo de Alarcón",
+      "areas": [
+        "Pozuelo De Alarcón",
+        "Húmera-Somosaguas",
+        "Monteclaro-La Cabaña",
+        "Arroyo Meaques",
+        "Los Ángeles",
+        "Retamares"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28116",
+      "name": "Pozuelo del Rey",
+      "areas": [
+        "Pozuelo Del Rey"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28117",
+      "name": "Prádena del Rincón",
+      "areas": [
+        "Prádena Del Rincón"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28118",
+      "name": "Puebla de la Sierra",
+      "areas": [
+        "Puebla De La Sierra"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28902",
+      "name": "Puentes Viejas",
+      "areas": [
+        "Manjirón",
+        "Cinco Villas",
+        "Serrada De La Fuente",
+        "Paredes De Buitrago"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28119",
+      "name": "Quijorna",
+      "areas": [
+        "Quijorna",
+        "Los Morales"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28120",
+      "name": "Rascafría",
+      "areas": [
+        "Rascafría",
+        "Oteruelo Del Valle",
+        "Los Grifos"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28121",
+      "name": "Redueña",
+      "areas": [
+        "Redueña"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28122",
+      "name": "Ribatejada",
+      "areas": [
+        "Ribatejada",
+        "Paraje Del Arzobispo",
+        "El Juncal"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28123",
+      "name": "Rivas-Vaciamadrid",
+      "areas": [
+        "La Partija-Santa Mónica",
+        "Rivas-Vaciamadrid",
+        "Cañada Real De La Galiana",
+        "Rivas De Jarama",
+        "El Piul",
+        "Casa Eulogio",
+        "El Negralejo"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28124",
+      "name": "Robledillo de la Jara",
+      "areas": [
+        "Robledillo De La Jara"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28125",
+      "name": "Robledo de Chavela",
+      "areas": [
+        "Robledo De Chavela"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28126",
+      "name": "Robregordo",
+      "areas": [
+        "Robregordo"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28127",
+      "name": "Las Rozas de Madrid",
+      "areas": [
+        "Las Rozas De Madrid",
+        "Las Matas-Pinar-Monte Rozas",
+        "La Chopera",
+        "La Dehesa",
+        "Las Ceudas",
+        "La Puentecilla Y Los Majuelos",
+        "La Cervera",
+        "Los Carriles",
+        "El Garzo"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28128",
+      "name": "Rozas de Puerto Real",
+      "areas": [
+        "Rozas De Puerto Real",
+        "Entrepinos",
+        "Venta Del Cojo",
+        "Inmaculada Y San Damaso",
+        "El Hoyo"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28129",
+      "name": "San Agustín del Guadalix",
+      "areas": [
+        "San Agustín Del Guadalix",
+        "Valdelagua",
+        "Valdeoliva",
+        "Peñas Rubias"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28130",
+      "name": "San Fernando de Henares",
+      "areas": [
+        "San Fernando De Henares",
+        "Prado Del Rincón",
+        "Las Castellanas",
+        "Polígono De San Fernando De Henares",
+        "Castillo De Aldovea",
+        "Las Fuentecillas",
+        "La Huerta Grande"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28131",
+      "name": "San Lorenzo de El Escorial",
+      "areas": [
+        "San Lorenzo De El Escorial",
+        "La Solana",
+        "Cuelgamuros",
+        "El Campillo",
+        "Puerta Verde",
+        "Fuente Nueva",
+        "La Jurisdicción",
+        "La Herrería"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28132",
+      "name": "San Martín de la Vega",
+      "areas": [
+        "San Martín De La Vega",
+        "Vallequillas",
+        "La Marañosa",
+        "El Pingarrón",
+        "Gózquez De Abajo",
+        "La Boyeriza",
+        "Pajares",
+        "Gózquez De Arriba"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28133",
+      "name": "San Martín de Valdeiglesias",
+      "areas": [
+        "San Martín De Valdeiglesias",
+        "Costa De Madrid",
+        "Javacruz",
+        "San Ramón"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28134",
+      "name": "San Sebastián de los Reyes",
+      "areas": [
+        "San Sebastián De Los Reyes",
+        "Club De Campo",
+        "Ciudalcampo",
+        "Fuente Del Fresno",
+        "La Granjilla",
+        "Race",
+        "Valdelamasa"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28135",
+      "name": "Santa María de la Alameda",
+      "areas": [
+        "La Estación",
+        "Robledondo",
+        "El Pimpollar",
+        "Santa María De La Alameda",
+        "Navalespino",
+        "La Paradilla",
+        "La Hoya",
+        "Umbría De Los Gallegos",
+        "Las Herreras",
+        "Molino Nuevo"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28136",
+      "name": "Santorcaz",
+      "areas": [
+        "Santorcaz",
+        "Estación Transmisora Marina"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28137",
+      "name": "Los Santos de la Humosa",
+      "areas": [
+        "Los Santos De La Humosa"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28138",
+      "name": "La Serna del Monte",
+      "areas": [
+        "La Serna Del Monte"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28140",
+      "name": "Serranillos del Valle",
+      "areas": [
+        "Serranillos Del Valle"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28141",
+      "name": "Sevilla la Nueva",
+      "areas": [
+        "Sevilla La Nueva",
+        "Los Manantiales",
+        "Los Cortijos",
+        "Valdelagua"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28143",
+      "name": "Somosierra",
+      "areas": [
+        "Somosierra"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28144",
+      "name": "Soto del Real",
+      "areas": [
+        "Soto Del Real",
+        "Los Rancajales",
+        "Dehesa Boyal",
+        "Cierro De San Bartolomé"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28145",
+      "name": "Talamanca de Jarama",
+      "areas": [
+        "Talamanca De Jarama",
+        "San Bartolomé",
+        "Las Dunas",
+        "Carracalderas",
+        "La Moraleja"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28146",
+      "name": "Tielmes",
+      "areas": [
+        "Tielmes",
+        "La Vega"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28147",
+      "name": "Titulcia",
+      "areas": [
+        "Titulcia",
+        "Carretera De Chinchón",
+        "El Vedadillo"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28148",
+      "name": "Torrejón de Ardoz",
+      "areas": [
+        "Torrejón De Ardoz",
+        "El Castillo",
+        "Base Aérea",
+        "Casablanca",
+        "Los Villares Y Correal"
+      ],
+      "streets": [
+        "Avenida de la Constitución",
+        "Plaza Mayor",
+        "Avenida de las Fronteras",
+        "Paseo de la Democracia"
+      ],
+      "neighborhoods": [
+        "Soto Henares",
+        "Parque Cataluña",
+        "Torrenieve",
+        "Rosario",
+        "Cañada",
+        "Mancha Amarilla",
+        "Fresnos",
+        "Zarzuela",
+        "Juncal",
+        "Centro"
+      ],
+      "sources": [
+        "https://www.ayto-torrejon.es/index.php/noticia/nota-de-prensa/colocados-200-bancos-y-300-papeleras-en-varias-zonas-de-la-ciudad",
+        "https://www.ayto-torrejon.es/index.php/concejalias/obras/anillo-ciclista"
+      ]
+    },
+    {
+      "id": "28149",
+      "name": "Torrejón de la Calzada",
+      "areas": [
+        "Torrejón De La Calzada",
+        "Vaciasilos"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28150",
+      "name": "Torrejón de Velasco",
+      "areas": [
+        "Torrejón De Velasco"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28151",
+      "name": "Torrelaguna",
+      "areas": [
+        "Torrelaguna",
+        "Los Tomillares"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28152",
+      "name": "Torrelodones",
+      "areas": [
+        "Torrelodones",
+        "La Estación",
+        "Los Peñascales",
+        "Los Prados",
+        "Los Robles",
+        "Los Bomberos",
+        "La Berzosilla",
+        "El Gasco"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28153",
+      "name": "Torremocha de Jarama",
+      "areas": [
+        "Torremocha De Jarama",
+        "El Retiro De Torremocha",
+        "Los Tomillares",
+        "La Cerrada",
+        "La Fábrica",
+        "Casa De Oficios"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28154",
+      "name": "Torres de la Alameda",
+      "areas": [
+        "Torres De La Alameda",
+        "Mariblanca",
+        "San Isidro",
+        "Valdelayegua",
+        "San Juan Del Viso",
+        "Carretera De Loeches"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28903",
+      "name": "Tres Cantos",
+      "areas": [
+        "Tres Cantos"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28155",
+      "name": "Valdaracete",
+      "areas": [
+        "Valdaracete",
+        "Fuensauco"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28156",
+      "name": "Valdeavero",
+      "areas": [
+        "Valdeavero",
+        "La Cardosa"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28157",
+      "name": "Valdelaguna",
+      "areas": [
+        "Valdelaguna"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28158",
+      "name": "Valdemanco",
+      "areas": [
+        "Valdemanco",
+        "Cerro Matallera",
+        "La Hoya"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28159",
+      "name": "Valdemaqueda",
+      "areas": [
+        "Valdemaqueda",
+        "El Río"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28160",
+      "name": "Valdemorillo",
+      "areas": [
+        "Valdemorillo",
+        "Cerro Alarcón",
+        "Navarredonda",
+        "Dehesa",
+        "Pino Alto",
+        "El Paraíso",
+        "La Pizarrera",
+        "Montemorillo",
+        "Los Barrancos"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28161",
+      "name": "Valdemoro",
+      "areas": [
+        "Valdemoro"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28162",
+      "name": "Valdeolmos-Alalpardo",
+      "areas": [
+        "Alalpardo",
+        "Valdeolmos",
+        "Miraval"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28163",
+      "name": "Valdepiélagos",
+      "areas": [
+        "Valdepiélagos",
+        "Coto De San Benito"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28164",
+      "name": "Valdetorres de Jarama",
+      "areas": [
+        "Valdetorres De Jarama",
+        "Silillos",
+        "El Mirador",
+        "La Cueva",
+        "La Escarabajosa",
+        "Soto Y La Vega"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28165",
+      "name": "Valdilecha",
+      "areas": [
+        "Valdilecha"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28166",
+      "name": "Valverde de Alcalá",
+      "areas": [
+        "Valverde De Alcalá"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28167",
+      "name": "Velilla de San Antonio",
+      "areas": [
+        "Velilla De San Antonio"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28168",
+      "name": "El Vellón",
+      "areas": [
+        "El Vellón",
+        "El Espartal",
+        "El Campillo",
+        "Las Quintas",
+        "Ermita De San Blas",
+        "El Calvero",
+        "Dehesa Boyal"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28169",
+      "name": "Venturada",
+      "areas": [
+        "Cotos De Monterrey",
+        "Venturada",
+        "Los Rosales"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28171",
+      "name": "Villa del Prado",
+      "areas": [
+        "Villa Del Prado",
+        "Encinar Del Alberche",
+        "Las Hoyas",
+        "Poveda Y Los Albanales",
+        "Dehesa Alamar Y Los Parrales"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28170",
+      "name": "Villaconejos",
+      "areas": [
+        "Villaconejos",
+        "La Dehesa Y Valsalido"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28172",
+      "name": "Villalbilla",
+      "areas": [
+        "El Viso",
+        "Zulema-Peñas Albas",
+        "Villalbilla",
+        "Los Hueros",
+        "El Mirador",
+        "Valdeláguila-El Robledal",
+        "El Gurugú",
+        "Dehesa De Los Hueros"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28173",
+      "name": "Villamanrique de Tajo",
+      "areas": [
+        "Villamanrique De Tajo",
+        "Castillo De Tajo",
+        "Vega De Los Bodegones",
+        "Hoya De Simancas"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28174",
+      "name": "Villamanta",
+      "areas": [
+        "Villamanta",
+        "La Malpuesta",
+        "Los Olivos",
+        "Jirfa"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28175",
+      "name": "Villamantilla",
+      "areas": [
+        "Villamantilla",
+        "Cerromesino Y Galapaguera",
+        "Las Mercadas",
+        "La Aguilara"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28176",
+      "name": "Villanueva de la Cañada",
+      "areas": [
+        "Villanueva De La Cañada",
+        "Villafranca Del Castillo",
+        "El Palancar"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28178",
+      "name": "Villanueva de Perales",
+      "areas": [
+        "Villanueva De Perales",
+        "La Encrucijada",
+        "Valdetablas",
+        "Monte De Perales",
+        "La Milla"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28177",
+      "name": "Villanueva del Pardillo",
+      "areas": [
+        "Villanueva Del Pardillo",
+        "Las Vegas - Santa Maria"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28179",
+      "name": "Villar del Olmo",
+      "areas": [
+        "Eurovillas",
+        "Villar Del Olmo"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28180",
+      "name": "Villarejo de Salvanés",
+      "areas": [
+        "Villarejo De Salvanés",
+        "Las Huertas De Villarejo",
+        "La Varga",
+        "Buena Mesón"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28181",
+      "name": "Villaviciosa de Odón",
+      "areas": [
+        "Villaviciosa De Odón",
+        "El Bosque",
+        "Dehesa Del Sotillo",
+        "Río Guadarrama Y Casa De Roque",
+        "Arco Iris",
+        "Sacedón"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28182",
+      "name": "Villavieja del Lozoya",
+      "areas": [
+        "Villavieja Del Lozoya",
+        "Los Llanos",
+        "Las Cabezas",
+        "El Tercio De La Laguna",
+        "La Cañada",
+        "La Solanilla"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    },
+    {
+      "id": "28183",
+      "name": "Zarzalejo",
+      "areas": [
+        "La Estación Y Pajares",
+        "Zarzalejo",
+        "Peña Rosal",
+        "La Casera",
+        "La Gargantilla",
+        "Los Morales"
+      ],
+      "streets": [],
+      "neighborhoods": [],
+      "sources": []
+    }
+  ]
+}

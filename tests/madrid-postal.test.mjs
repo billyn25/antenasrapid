@@ -11,7 +11,7 @@ test('un código postal puede pertenecer a varios municipios sin perder relacion
 test('Madrid capital y provincia no se confunden y la lista no genera rutas por CP',()=>{
  const data=load(),row=data.municipalities.find(r=>r.id==='28079');
  const html=postalBlock({name:'Madrid'},row,data);
- assert.match(html,/<h2>Códigos postales de Madrid<\/h2>/);
+ assert.match(html,/<h2>Calles, zonas y códigos postales de Madrid<\/h2>/);
  assert.ok(row.postalCodes.length>12);assert.match(html,/<details/);
  for(const code of row.postalCodes)assert.ok(html.includes(`>${code}</span>`));
  assert.ok(!/href="\/[0-9]{5}/.test(html));
