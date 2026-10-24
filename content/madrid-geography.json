@@ -3,7 +3,7 @@
   "areaSource": "https://www.ine.es/dyngs/INEbase/operacion.htm?c=Estadistica_C&cid=1254736177010&idp=1254735572981&menu=resultados",
   "areaReference": "01/01/2025",
   "streetSource": "https://api-features.idee.es/collections/address/items",
-  "streetSampling": "Hasta 300 direcciones municipales consultadas; selección de hasta ocho vías, no callejero exhaustivo.",
+  "streetSampling": "Selección de hasta ocho vías de cada municipio del callejero regional oficial; prioriza nombres centrales y vías con mayor longitud. Las zonas se extraen de tipos barrio, colonia, urbanización y poblado; no equivalen necesariamente a distritos administrativos.",
   "municipalities": [
     {
       "id": "28001",
@@ -12,17 +12,19 @@
         "La Acebeda"
       ],
       "streets": [
-        "Calle Plaza",
-        "Plaza Nicasio Gonzalez Moreno",
-        "Plaza San Miguel",
-        "Calle Puerto",
-        "Calle Plazuela",
-        "Calle Poligono 4",
-        "Calle Encerradero",
-        "Diseminados Cm Cementerio"
+        "Calle del Puerto",
+        "Calle de la Plazuela",
+        "Calle del Encerradero",
+        "Calle del Cementerio",
+        "Calle la Plaza",
+        "Plaza Nicasio González Moreno",
+        "Calle Francisca Espinosa",
+        "Calle los Chorrillos"
       ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 28
     },
     {
       "id": "28002",
@@ -31,17 +33,21 @@
         "Ajalvir"
       ],
       "streets": [
-        "Plaza Sector 2",
-        "Plaza Sector 3",
         "Calle Real",
-        "Plaza Sector 5",
-        "Plaza Sector 4",
+        "Calle Madrid",
         "Calle Mayor",
-        "Avenida Francisco De Goya",
-        "Calle Picasso"
+        "Calle Iglesia",
+        "Calle Calvario",
+        "Calle Romería",
+        "Avenida Juan Carlos I",
+        "Calle Marineras"
       ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Urbanización La Ermita"
+      ],
+      "regionalStreetCount": 130
     },
     {
       "id": "28003",
@@ -50,17 +56,21 @@
         "Alameda Del Valle"
       ],
       "streets": [
-        "Plaza Santa Marina",
-        "Plaza Vp.Sector Cerca Fragua",
-        "Urbanizacion Cerco De La Fragua",
-        "Calle Rio",
+        "Calle de la Iglesia",
+        "Calle del Río",
+        "Calle del Sotillo",
         "Calle Grande",
-        "Calle Iglesia",
-        "Calle Romero",
-        "Calle Campillo"
+        "Calle del Romero",
+        "Calle de la Fragua",
+        "Calle de las Huertas",
+        "Calle de la Taberna"
       ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Urbanización Cerco de la Fragua"
+      ],
+      "regionalStreetCount": 45
     },
     {
       "id": "28004",
@@ -70,17 +80,21 @@
         "Camino De Batres"
       ],
       "streets": [
-        "Plaza Sur 7 - La Granja",
-        "Plaza Sau-3 Industrial",
-        "Calle Santiago Apostol",
-        "Calle San Juan De Dios",
-        "Carretera Griñon",
-        "Calle Pensamientos",
-        "Calle Pirineos",
-        "Calle Santiago Blazquez"
+        "Avenida de Madrid",
+        "Plaza de la Constitución",
+        "Paseo del Avilés",
+        "Avenida de Toledo",
+        "Calle de los Mártires",
+        "Avenida de la Vereda del Manzanares",
+        "Calle Infanta Cristina",
+        "Paseo del Olivar"
       ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Colonia de los Pocillos"
+      ],
+      "regionalStreetCount": 233
     },
     {
       "id": "28005",
@@ -119,7 +133,17 @@
       "sources": [
         "https://participacionciudadana.ayto-alcaladehenares.es/los-consejos-de-barrio/",
         "https://www.ayto-alcaladehenares.es/el-ayuntamiento-de-alcala-habilita-un-punto-de-recogida-de-material-de-ayuda-para-los-afectados-por-la-dana-en-el-centro-cultural-galatea/"
-      ]
+      ],
+      "localZones": [
+        "Urbanización Barrio Ledesma",
+        "Urbanización Campus Universitario",
+        "Urbanización Ciudad Residencial Universitaria",
+        "Urbanización Colonia Obras Públicas",
+        "Urbanización Parque los Nogales",
+        "Urbanización Santos Niños",
+        "Urbanización el Pilar"
+      ],
+      "regionalStreetCount": 1174
     },
     {
       "id": "28006",
@@ -128,17 +152,19 @@
         "Alcobendas"
       ],
       "streets": [
-        "Calle Constitucion",
-        "Plaza Maestro Tarrega",
-        "Plaza Moraleja",
-        "Plaza Sauce",
-        "Plaza Sus-A5 Buenavista",
-        "Paseo Alcobendas",
-        "Calle Camino Ancho",
-        "Paseo Mquesa Vda Aldama"
+        "Avenida de España",
+        "Calle de la Constitución",
+        "Avenida de Madrid",
+        "Plaza Mayor",
+        "Calle de la Iglesia",
+        "Avenida de Valdelaparra",
+        "Paseo del Conde de los Gaitanes",
+        "Calle del Camino Ancho"
       ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 428
     },
     {
       "id": "28007",
@@ -153,17 +179,19 @@
         "Venta La Rubia"
       ],
       "streets": [
-        "Plaza Retamar De La Huerta",
-        "Plaza Pp Ensanche Sur",
-        "Plaza S-8:El Lucero",
-        "Plaza Diseminados",
-        "Plaza Sector Pp7",
-        "Plaza Presillas Las",
         "Calle Mayor",
-        "Plaza En-10:Nudo De San Jose"
+        "Plaza Mayor",
+        "Calle la Iglesia",
+        "Calle de Madrid",
+        "Plaza España",
+        "Ronda de las Naciones Unidas",
+        "Avenida de Móstoles",
+        "Avenida de San Martín de Valdeiglesias"
       ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 555
     },
     {
       "id": "28008",
@@ -178,16 +206,20 @@
       ],
       "streets": [
         "Calle Mayor",
-        "Plaza San Pedro",
-        "Plaza Constitucion",
+        "Plaza Constitución",
         "Calle Real",
-        "Plaza Calva",
-        "Plaza Poligono Rustica-1",
-        "Diseminados Diseminado",
-        "Calle San Rafael"
+        "Calle de Madrid",
+        "Avenida Cañada Segoviana",
+        "Calle Principal",
+        "Calle San Rafael",
+        "Calle Ferrocarril"
       ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Urbanización Carreta Quebrada"
+      ],
+      "regionalStreetCount": 147
     },
     {
       "id": "28009",
@@ -202,17 +234,19 @@
         "El Nogal"
       ],
       "streets": [
-        "Plaza 11",
-        "Plaza 9",
-        "Plaza 10",
-        "Plaza 7",
-        "Calle Ronda De La Constitucion",
         "Calle Mayor",
-        "Avenida Guadalix",
-        "Calle Monfrague"
+        "Avenida de Madrid",
+        "Plaza de la Constitución",
+        "Avenida del Guadalix",
+        "Avenida del Monte",
+        "Calle del Parque",
+        "Avenida Víctimas del Terrorismo",
+        "Calle de Cuatro Picos"
       ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 240
     },
     {
       "id": "28010",
@@ -223,17 +257,19 @@
         "Valdencina"
       ],
       "streets": [
-        "Plaza Del Guadarrama",
-        "Plaza Poligono 27",
+        "Plaza de la Constitución",
         "Calle Real",
-        "Plaza Navacerrada",
-        "Plaza Poligono 35",
-        "Calle Santiago Rodriguez Conde",
-        "Calle Santa Emilia",
-        "Calle San Rafael"
+        "Avenida de los Catedráticos",
+        "Avenida los Llanos",
+        "Avenida de la Reina Victoria",
+        "Calle de la Chopera",
+        "Avenida de las Rocas",
+        "Avenida de Valdencina"
       ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 304
     },
     {
       "id": "28011",
@@ -246,16 +282,18 @@
       ],
       "streets": [
         "Plaza Mayor",
+        "Avenida de Madrid",
         "Calle Mayor",
-        "Callejon Mayor",
-        "Calle Jesus Mauro De Madariaga",
-        "Calle Olivo",
-        "Lugar Arroyo Del Villar",
-        "Camino Arca",
-        "Calle Ciruelo"
+        "Avenida de la Cañada",
+        "Calle del Olmo",
+        "Calle del Alcornoque",
+        "Calle del Cerezo",
+        "Paseo de los Pinos"
       ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 103
     },
     {
       "id": "28012",
@@ -264,17 +302,19 @@
         "Anchuelo"
       ],
       "streets": [
-        "Calle Mayor",
         "Plaza Mayor",
-        "Plaza Constitucion",
-        "Avenida Plaza",
-        "Costanilla Plaza",
-        "Plaza Santa Maria Magdalena",
-        "Avenida Plaza De La",
-        "Plaza Medio Celemin"
+        "Plaza de la Constitución",
+        "Calle Mayor",
+        "Calle Iglesia",
+        "Calle de Virgen de la Oliva",
+        "Avenida de las Arreñas",
+        "Calle del Coso",
+        "Avenida Río Henares"
       ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 74
     },
     {
       "id": "28013",
@@ -291,17 +331,22 @@
         "Castillejo"
       ],
       "streets": [
-        "Plaza Unesco",
-        "Avenida Plaza De Toros",
-        "Plaza Jardines Historico Artist",
-        "Plaza Vpv.040.Disemin-Fracc.",
-        "Calle Reales Guardias Españolas",
-        "Calle Reales Guardias Walonas",
-        "Calle Teatro Del",
-        "Calle Antonio Guardiola Saez"
+        "Calle de Madrid",
+        "Calle Real",
+        "Plaza de la Constitución",
+        "Calle de la Princesa",
+        "Paseo de Deleite",
+        "Calle Confesores",
+        "Calle de las Aves a Sotomayor",
+        "Calle del Capitán Angosto Gómez Castrillón"
       ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Colonia de Aviación",
+        "Colonia de la Penicilina"
+      ],
+      "regionalStreetCount": 572
     },
     {
       "id": "28014",
@@ -312,17 +357,26 @@
         "Puente De Arganda"
       ],
       "streets": [
-        "Plaza Vp.Norte Poligonos",
-        "Plaza Industrial Coto Cisneros",
+        "Avenida de Madrid",
         "Calle Real",
-        "Plaza Ingeniero Enrique Calleja",
-        "Plaza Constitucion De La",
-        "Plaza Gato",
-        "Plaza Marina",
-        "Camino Valdecabañas"
+        "Plaza de la Constitución",
+        "Plaza de España",
+        "Avenida de Valdearganda",
+        "Avenida de Valencia",
+        "Ronda del Sur",
+        "Avenida del Instituto"
       ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Colonia Ventorro Solera",
+        "Colonia de los Almendros",
+        "Urbanización Gran Hábitat",
+        "Urbanización el Romeral",
+        "Urbanización los Cascabeles",
+        "Urbanización los Los Pajarillos"
+      ],
+      "regionalStreetCount": 706
     },
     {
       "id": "28015",
@@ -334,17 +388,19 @@
         "Valdefuentes"
       ],
       "streets": [
-        "Plaza Sau-7 La Rinconada Ii",
         "Calle Madrid",
-        "Calle Sau-4B Valdearenal Sur",
-        "Calle Sau-3 Ciudad Jardin",
-        "Calle Sau-6 Zarzalejo",
-        "Calle Sau-4A Valdearenal Norte",
-        "Calle Sau-2 El Rellano",
-        "Calle Sau-5 Molino Perdido"
+        "Plaza Mayor",
+        "Calle de la Iglesia",
+        "Plaza de España",
+        "Paseo de la Ribera de San Pedro",
+        "Avenida de la Unión Europea",
+        "Avenida del Atlántico",
+        "Calle Puerto de Navacerrada"
       ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 282
     },
     {
       "id": "28016",
@@ -353,17 +409,19 @@
         "El Atazar"
       ],
       "streets": [
+        "Calle de la Iglesia",
         "Calle Mayor",
-        "Plaza Constitucion",
-        "Calle Valmayor",
-        "Calle Constitucion",
-        "Plaza Ayuntamiento",
-        "Plaza Ayuntamiento Del",
-        "Avenida Presa Del Atazar",
+        "Plaza de la Constitución",
+        "Plaza del Ayuntamiento",
+        "Calle de las Eras",
+        "Avenida Presa del Atazar",
+        "Calle Cuesta",
         "Calle Fraguas"
       ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 37
     },
     {
       "id": "28017",
@@ -374,17 +432,19 @@
         "Los Olivos"
       ],
       "streets": [
-        "Plaza Ue-7",
-        "Calle Aguila Real",
-        "Calle Garcilaso De La Vega",
-        "Calle Carcavas",
-        "Calle Diseminado",
-        "Camino Arranque",
-        "Diseminados Diseminado",
-        "Avenida Valle Del"
+        "Plaza de la Constitución",
+        "Calle de la Iglesia",
+        "Avenida del Valle",
+        "Calle del Gavilán",
+        "Calle del Águila Real",
+        "Avenida del Monte de Batres",
+        "Calle del Molino",
+        "Calle del Halcón"
       ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 83
     },
     {
       "id": "28018",
@@ -397,17 +457,19 @@
         "Los Cebales"
       ],
       "streets": [
-        "Calle Madrid",
-        "Calle Real",
-        "Plaza Vpv. 8A Diseminados",
-        "Carretera Escorial",
-        "Carretera Torrelaguna",
-        "Paseo San Sebastian",
-        "Avenida Jose Antonio",
-        "Paseo Ermita"
+        "Calle del Real",
+        "Calle de Madrid",
+        "Calle del Mayor",
+        "Plaza de la Constitución",
+        "Calle de la Iglesia",
+        "Avenida de Madrid",
+        "Calle de Cebales",
+        "Avenida de José Antonio"
       ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 283
     },
     {
       "id": "28019",
@@ -416,17 +478,19 @@
         "Belmonte De Tajo"
       ],
       "streets": [
-        "Calle Juan Carlos I Rey De España",
-        "Calle Marques De España",
-        "Plaza Constitucion",
-        "Lugar Sau-Ind",
-        "Calle Diseminado",
-        "Carretera Valdelaguna",
-        "Calle Barrio Alto",
-        "Avenida Felipe Serrano"
+        "Plaza de la Constitución",
+        "Calle Carrera Honda",
+        "Avenida de Felipe Serrano",
+        "Calle Cuatro Caminos",
+        "Calle Félix Rodríguez de la Fuente",
+        "Avenida Conde de Belmonte",
+        "Calle Camino Cristo",
+        "Calle Cuesta de la Fuente"
       ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 118
     },
     {
       "id": "28021",
@@ -438,16 +502,18 @@
       ],
       "streets": [
         "Calle Real",
-        "Avenida España",
-        "Carretera Cervera Buitrago",
-        "Calle Lanchar De Losa Morilla",
-        "Calle Jaras Las",
-        "Camino Canteras",
-        "Camino Cementerio",
-        "Carretera Lozoyuela"
+        "Avenida de España",
+        "Calle de la Iglesia",
+        "Calle Lanchar de Losa Morilla",
+        "Calle Cortada",
+        "Calle las Jaras",
+        "Calle de las Eras",
+        "Calle los Enebros"
       ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 70
     },
     {
       "id": "28020",
@@ -458,16 +524,18 @@
       ],
       "streets": [
         "Calle Real",
-        "Plaza Campillo",
-        "Plaza Casona",
-        "Plaza Constitucion",
-        "Calle Manzano",
-        "Calle Villar",
+        "Plaza de la Constitución",
+        "Calle de los Hundidos",
         "Calle Reguera",
+        "Calle de la Viña",
+        "Calle Herrén de la Hontana",
+        "Calle Villar",
         "Calle Campillo"
       ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 64
     },
     {
       "id": "28022",
@@ -479,17 +547,19 @@
         "Prado Del Espino-San Babiles"
       ],
       "streets": [
-        "Plaza Vp Sector Sur3",
-        "Plaza Vp Sector Sur4",
-        "Plaza Vp Sureste Casco",
-        "Plaza Ah-25 Prado Del Espino",
-        "Plaza Ah-30 Cortijo Norte",
-        "Plaza Vp Valdecabañas",
-        "Plaza Vp Viñas Viejas",
-        "Avenida España"
+        "Avenida de España",
+        "Paseo de Madrid",
+        "Avenida de la Condesa de Chinchón",
+        "Calle Río Tajo",
+        "Calle Playa del Saler",
+        "Calle de San Vicente de la Barquera",
+        "Avenida de Cantabria",
+        "Avenida de Montepríncipe"
       ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 474
     },
     {
       "id": "28023",
@@ -507,17 +577,19 @@
         "El Berrocal Ii"
       ],
       "streets": [
-        "Plaza Sector 8 C",
-        "Plaza Sector 4 B",
-        "Plaza Sector 13 C",
-        "Plaza Sector 10 M",
-        "Plaza Sector 1 C",
-        "Plaza Ue 3C",
-        "Plaza Sector 5 B",
-        "Calle Real"
+        "Paseo de Madrid",
+        "Calle Real",
+        "Calle de la Iglesia",
+        "Plaza de la Constitución",
+        "Plaza de España",
+        "Plaza Mayor",
+        "Calle Manzanares El Real",
+        "Ronda de la Maliciosa"
       ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 353
     },
     {
       "id": "28024",
@@ -526,17 +598,19 @@
         "Braojos"
       ],
       "streets": [
-        "Plaza Sol",
-        "Plaza Sol Del",
-        "Calle Pozo",
-        "Calle Carmen",
-        "Calle Cantarranas",
-        "Calle Eras",
-        "Calle Viento",
-        "Calleja, Callejon Tercio Nuevo"
+        "Calle de Cantarranas",
+        "Calle del Pozo",
+        "Calle de las Eras",
+        "Calle del Carmen",
+        "Calle del Viento",
+        "Plaza del Sol",
+        "Calle Tinao",
+        "Calle del Buen Suceso"
       ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 42
     },
     {
       "id": "28025",
@@ -547,16 +621,20 @@
       ],
       "streets": [
         "Calle Mayor",
-        "Calle Constitucion",
-        "Plaza Solana",
-        "Plaza Castillo",
-        "Plaza Iglesia De La",
-        "Plaza San Esteban",
-        "Plaza Santo Domingo",
-        "Plaza Solana De"
+        "Calle de la Iglesia",
+        "Plaza de la Iglesia",
+        "Calle de las Amapolas",
+        "Calle del Azor",
+        "Calle del Águila",
+        "Calle de los Olivillos",
+        "Calle de San Isidro"
       ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Urbanización Las Vegas del Tajo"
+      ],
+      "regionalStreetCount": 117
     },
     {
       "id": "28026",
@@ -568,17 +646,21 @@
         "La Barranca"
       ],
       "streets": [
-        "Plaza Sr-5 Ensanche Sur",
-        "Plaza Vpv.015.Diseminados-Fracc",
-        "Calle Real De San Sebastian",
-        "Plaza Altozano",
-        "Calle Pl Sr-1 Primera Corona",
-        "Camino Dehesa",
-        "Diseminados Pj Alto Olivas",
-        "Carretera Boadilla Brunete"
+        "Calle Madrid",
+        "Calle de la Iglesia",
+        "Plaza Mayor",
+        "Plaza de la Iglesia",
+        "Avenida Villanueva de la Cañada",
+        "Calle de las Eras",
+        "Calle Real de San Sebastián",
+        "Calle Escorial"
       ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Urbanización la Pellejera"
+      ],
+      "regionalStreetCount": 193
     },
     {
       "id": "28027",
@@ -587,17 +669,19 @@
         "Buitrago Del Lozoya"
       ],
       "streets": [
+        "Avenida de Madrid",
         "Calle Real",
-        "Plaza Progreso",
-        "Plaza Castillo",
-        "Plaza Hornos De Los",
-        "Plaza San Juan",
-        "Plaza Belen Viviente",
-        "Plaza Cruz",
-        "Plaza Huerta De Las Flores"
+        "Plaza de la Constitución",
+        "Calle de la Constitución",
+        "Plaza de la Presa de Riosequillo",
+        "Calle de San Lázaro",
+        "Paseo del Río Lozoya",
+        "Calle Miramontes"
       ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 117
     },
     {
       "id": "28028",
@@ -615,14 +699,23 @@
         "Calle Real",
         "Calle Mayor",
         "Calle Madrid",
-        "Diseminados Diseminado",
-        "Calle Navazales Los",
-        "Calle Majadillas",
-        "Calle Peña Culebras",
-        "Carretera Valdemanco De"
+        "Plaza de la Constitución",
+        "Avenida Navalengua",
+        "Calle Peña Rubia",
+        "Calle el Pedregal",
+        "Calle Canencia"
       ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Urbanización Prado Mayor",
+        "Urbanización Robledal",
+        "Urbanización de Matarredonda",
+        "Urbanización de Peña Nogal",
+        "Urbanización de Veneros",
+        "Urbanización del Cerrillo de la Horca"
+      ],
+      "regionalStreetCount": 140
     },
     {
       "id": "28029",
@@ -631,9 +724,22 @@
         "Cabanillas De La Sierra",
         "Los Lagunazos"
       ],
-      "streets": [],
+      "streets": [
+        "Calle Real",
+        "Calle Madrid",
+        "Plaza de la Iglesia",
+        "Calle de la Iglesia",
+        "Plaza del Ayuntamiento",
+        "Avenida de los Arrieros",
+        "Calle del Tomillar",
+        "Calle del Madroño"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Urbanización de los Lagunazos"
+      ],
+      "regionalStreetCount": 70
     },
     {
       "id": "28030",
@@ -645,17 +751,19 @@
         "La Asperilla"
       ],
       "streets": [
-        "Plaza Losa",
-        "Plaza Mediodia",
-        "Plaza Plaza",
-        "Avenida Cabrera De La",
-        "Calle Roblehorno",
-        "Diseminados Roble El",
-        "Calle Asperon",
-        "Calle Encerrada La"
+        "Calle de la Iglesia",
+        "Avenida de la Cabrera",
+        "Calle de la Encerrada",
+        "Calle del Hornillo",
+        "Calle de las Azucenas",
+        "Calle de los Poyales",
+        "Calle San Isidro",
+        "Calle de los Chopos"
       ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 162
     },
     {
       "id": "28031",
@@ -674,17 +782,19 @@
         "El Boqueron"
       ],
       "streets": [
-        "Avenida Constitucion",
-        "Plaza Fuente De Los Alamos",
-        "Diseminados Diseminados",
-        "Urbanizacion Mirador Cadalso",
-        "Calle Iglesia",
-        "Camino Piquillo",
-        "Ronda Madrid De",
-        "Calle Menorca"
+        "Avenida de la Constitución",
+        "Avenida de Madrid",
+        "Ronda de Madrid",
+        "Calle Real",
+        "Calle de la Iglesia",
+        "Calle Mallorca",
+        "Calle Fuente La Peluquera",
+        "Avenida Prado Higuera"
       ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 182
     },
     {
       "id": "28032",
@@ -695,17 +805,19 @@
         "Alcamar"
       ],
       "streets": [
-        "Plaza Doctor Marañon",
-        "Plaza Paseo",
-        "Plaza Diseminados",
-        "Plaza Sector 2",
-        "Plaza Carniceria",
         "Calle Mayor",
-        "Plaza Constitucion",
-        "Plaza Nuevo Camarma"
+        "Calle de la Iglesia",
+        "Plaza de la Constitución",
+        "Calle del Jilguero",
+        "Calle del Zorzal",
+        "Avenida de la Complutense",
+        "Calle del Triguero",
+        "Calle de Nuestra Señora del Pilar"
       ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 178
     },
     {
       "id": "28033",
@@ -715,17 +827,19 @@
         "Montehermoso"
       ],
       "streets": [
-        "Calle Sector 6",
-        "Calle Ua-10",
-        "Lugar Valdemembrillo",
-        "Calle Sector 5",
-        "Carretera Velilla",
-        "Avenida Guadalajara",
-        "Calle Felix Campo Bravo",
-        "Carretera Madrid"
+        "Plaza Mayor",
+        "Calle Real",
+        "Paseo Pozuelo",
+        "Avenida de la Circunvalación",
+        "Avenida Arganda",
+        "Avenida del Pinar",
+        "Calle Aluminio",
+        "Calle Vilches"
       ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 211
     },
     {
       "id": "28034",
@@ -735,16 +849,18 @@
       ],
       "streets": [
         "Calle Real",
-        "Plaza Constitucion",
-        "Calle Reajillos",
-        "Calle Pablo Gasco",
-        "Calle Ermita Del Santo Cristo",
-        "Calle Diseminado",
-        "Calle Fuente La",
-        "Calle Santo Domingo"
+        "Plaza de la Constitución",
+        "Calle de los Reajillos",
+        "Calle de Pablo Gasco",
+        "Calle de la Ermita del Santo Cristo",
+        "Calle del Matadero",
+        "Calle de Santo Domingo",
+        "Calle Callejillas"
       ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 44
     },
     {
       "id": "28035",
@@ -752,9 +868,22 @@
       "areas": [
         "Carabaña"
       ],
-      "streets": [],
+      "streets": [
+        "Calle del Real",
+        "Calle Madrid",
+        "Plaza de España",
+        "Calle de la Constitución",
+        "Avenida de Tielmes",
+        "Calle de la Sierra",
+        "Calle de San Juan",
+        "Calle Alcalá Baja"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Urbanización Santa Lucía"
+      ],
+      "regionalStreetCount": 166
     },
     {
       "id": "28036",
@@ -763,17 +892,19 @@
         "Casarrubuelos"
       ],
       "streets": [
-        "Plaza Constitucion",
         "Calle Mayor",
-        "Plaza Concejo",
-        "Calle Maese Nicolas",
-        "Calle Dulcinea",
-        "Calle Maritornes",
-        "Calle Juan Palomeque",
-        "Calle Pero Perez"
+        "Calle Madrid",
+        "Plaza de la Constitución",
+        "Calle de la Iglesia",
+        "Calle Camino del Carranque",
+        "Calle de la Inmaculada",
+        "Avenida Europa",
+        "Calle Río Miño"
       ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 114
     },
     {
       "id": "28037",
@@ -784,17 +915,21 @@
         "El Juncal"
       ],
       "streets": [
-        "Plaza Independencia",
-        "Calle Plaza De Los Caños",
-        "Plaza Constitucion",
-        "Plaza Huertecillo Del",
-        "Plaza Vp 012 U7-8-9-10-11-12",
-        "Plaza Vp 016 Diseminados",
-        "Diseminados Diseminados",
-        "Carretera Escalona"
+        "Calle Real",
+        "Avenida de Madrid",
+        "Plaza de España",
+        "Calle de la Iglesia",
+        "Plaza de la Constitución",
+        "Plaza de la Iglesia",
+        "Calle Madrid",
+        "Calle de la Ronda del Sur"
       ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Urbanización los Almendros"
+      ],
+      "regionalStreetCount": 168
     },
     {
       "id": "28038",
@@ -807,17 +942,23 @@
         "El Baillo Y Las Hojarascas"
       ],
       "streets": [
-        "Camino Mata Robledal",
-        "Avenida Sierra Del Guadarrama",
-        "Camino Abajo",
-        "Avenida Manuel Gonzalez Amezua",
-        "Calle Emilio Serrano",
-        "Diseminados Embalse Navalmedio",
-        "Camino Majavilan",
-        "Diseminados Cr Las Dehesas"
+        "Calle Mayor",
+        "Calle de la Iglesia",
+        "Plaza Mayor",
+        "Ronda de la Iglesia",
+        "Avenida de la Sierra del Guadarrama",
+        "Calle de San Andrés",
+        "Calle Matalascabras",
+        "Calle de Emilio Serrano"
       ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Colonia Navalcaballo",
+        "Colonia San Antonio",
+        "Urbanización Valle de la Fuenfría"
+      ],
+      "regionalStreetCount": 292
     },
     {
       "id": "28039",
@@ -826,9 +967,22 @@
         "Cervera De Buitrago",
         "Cercas De La Encina"
       ],
-      "streets": [],
+      "streets": [
+        "Calle de la Iglesia",
+        "Calle del Nogal",
+        "Calle Barrio Nuevo",
+        "Calle del Pozo",
+        "Calle Torrecilla",
+        "Calle de las Pozas",
+        "Calle Prolongación Calle Iglesia",
+        "Calle Eras"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Barrio de Zagalascasas"
+      ],
+      "regionalStreetCount": 33
     },
     {
       "id": "28051",
@@ -837,9 +991,20 @@
         "Chapinería",
         "Valquigoso"
       ],
-      "streets": [],
+      "streets": [
+        "Calle de Madrid",
+        "Plaza de la Constitución",
+        "Calle de la Iglesia",
+        "Calle Enebro",
+        "Calle Ángel",
+        "Calle de Prudencio Melo",
+        "Calle Camino de Chaves",
+        "Avenida de los Cañales"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 137
     },
     {
       "id": "28052",
@@ -856,9 +1021,24 @@
         "Valromeroso",
         "Jara Alta"
       ],
-      "streets": [],
+      "streets": [
+        "Plaza Mayor",
+        "Calle de la Iglesia",
+        "Avenida de la Virreina",
+        "Calle Carretera de Madrid",
+        "Calle de Doña Francisca y Don Francisco Fausto",
+        "Calle Ronda del Mediodía",
+        "Calle de Doña Beatriz de Bobadilla",
+        "Calle de Don Luis Jerónimo"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Barrio del Pilar",
+        "Urbanización Valgrande",
+        "Urbanización de las Cubillas"
+      ],
+      "regionalStreetCount": 207
     },
     {
       "id": "28040",
@@ -867,9 +1047,27 @@
         "Ciempozuelos",
         "Buzanca"
       ],
-      "streets": [],
+      "streets": [
+        "Avenida de Madrid",
+        "Calle España",
+        "Plaza Mayor",
+        "Calle Mayor",
+        "Plaza de la Constitución",
+        "Avenida de las Sequoyas",
+        "Avenida Parques Nacionales",
+        "Calle de las Moreras"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Barrio de Belén",
+        "Barrio de la Estación",
+        "Urbanización Parque Olimpia",
+        "Urbanización Parque Olimpia (2 Fase)",
+        "Urbanización Parque Olimpia (3 Fase)",
+        "Urbanización Soto del Rey"
+      ],
+      "regionalStreetCount": 292
     },
     {
       "id": "28041",
@@ -878,9 +1076,20 @@
         "Cobeña",
         "Campo Nuevo"
       ],
-      "streets": [],
+      "streets": [
+        "Avenida de la Constitución",
+        "Calle Mayor",
+        "Calle Madrid",
+        "Calle Vereda de los Sastres",
+        "Calle del Olivo",
+        "Calle Viñuelas",
+        "Calle Ajalvir",
+        "Calle Camino de la Dehesa"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 127
     },
     {
       "id": "28046",
@@ -891,9 +1100,25 @@
         "Reajo Del Roble",
         "Los Barrizales"
       ],
-      "streets": [],
+      "streets": [
+        "Calle Real",
+        "Avenida de Madrid",
+        "Plaza Mayor",
+        "Paseo de los Rosales",
+        "Avenida de Buenos Aires",
+        "Avenida del Pinar",
+        "Calle de la Jara",
+        "Calle de la Dehesa"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Urbanización Fuente del Vaso",
+        "Urbanización Sotogrande",
+        "Urbanización Virgen de Begoña",
+        "Urbanización los Pajares"
+      ],
+      "regionalStreetCount": 224
     },
     {
       "id": "28047",
@@ -904,9 +1129,58 @@
         "Dominio De Fontenebro",
         "Cerca De Cascarrilla"
       ],
-      "streets": [],
+      "streets": [
+        "Calle Real",
+        "Calle Madrid",
+        "Plaza de la Constitución",
+        "Plaza de España",
+        "Plaza la Iglesia",
+        "Avenida Juan Carlos I",
+        "Calle Paseo del Río Guadarrama",
+        "Calle Arroyo del Osea"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Urbanización Alhambra",
+        "Urbanización Bellavista",
+        "Urbanización Buenavista",
+        "Urbanización Carymer",
+        "Urbanización Casablanca",
+        "Urbanización Collado Real",
+        "Urbanización Guanay",
+        "Urbanización Jardines de Villalba",
+        "Urbanización Lucerna",
+        "Urbanización Montealto",
+        "Urbanización Montenebros I",
+        "Urbanización Montenebros II",
+        "Urbanización Parquesierra",
+        "Urbanización Peñanevada I",
+        "Urbanización Peñanevada II",
+        "Urbanización Prado Boyal",
+        "Urbanización Prado de los Enebros",
+        "Urbanización Prados de la Poveda",
+        "Urbanización Prados del Oeste",
+        "Urbanización Princialba",
+        "Urbanización Pryconsa",
+        "Urbanización Semisierra",
+        "Urbanización Valle Verde",
+        "Urbanización Villalba 20",
+        "Urbanización del Herrén de la Villa",
+        "Urbanización el Soto",
+        "Urbanización la Balconada",
+        "Urbanización la Cerca",
+        "Urbanización la Chopera",
+        "Urbanización la Dehesa Boyal",
+        "Urbanización la Pérgola",
+        "Urbanización las Cañadas",
+        "Urbanización las Fuentes",
+        "Urbanización los Arcos",
+        "Urbanización los Enebros",
+        "Urbanización los Fresnos de Villalba",
+        "Urbanización los Valles"
+      ],
+      "regionalStreetCount": 444
     },
     {
       "id": "28043",
@@ -920,9 +1194,24 @@
         "Casa Del Reloj",
         "Castellanos"
       ],
-      "streets": [],
+      "streets": [
+        "Avenida de España",
+        "Calle Madrid",
+        "Calle España",
+        "Calle Real",
+        "Plaza Mayor",
+        "Avenida de las Naciones",
+        "Calle Jarama",
+        "Avenida Río Tajo"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Barrio de San Miguel",
+        "Urbanización Balcón de Tajo  Oeste",
+        "Urbanización U.A. Afuera Tinajeros II"
+      ],
+      "regionalStreetCount": 420
     },
     {
       "id": "28042",
@@ -931,9 +1220,22 @@
         "Colmenar Del Arroyo",
         "Valle Del Sol"
       ],
-      "streets": [],
+      "streets": [
+        "Avenida de Madrid",
+        "Avenida de España",
+        "Calle Real",
+        "Avenida de la Constitución",
+        "Plaza de España",
+        "Calle Encina",
+        "Avenida de Valdemorillo",
+        "Calle Prado Alto"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Urbanización Valle del Sol"
+      ],
+      "regionalStreetCount": 135
     },
     {
       "id": "28045",
@@ -946,9 +1248,22 @@
         "Los Chortales",
         "Navarrosillos-Polígono Sur"
       ],
-      "streets": [],
+      "streets": [
+        "Calle del Real",
+        "Calle de Madrid",
+        "Calle de la Iglesia",
+        "Plaza de la Constitución",
+        "Paseo de la Ermita de Santa Ana",
+        "Avenida de la Libertad",
+        "Calle del Oro",
+        "Calle del Naranjo de Bulnes"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Urbanización Punta Galea"
+      ],
+      "regionalStreetCount": 723
     },
     {
       "id": "28044",
@@ -956,9 +1271,20 @@
       "areas": [
         "Colmenarejo"
       ],
-      "streets": [],
+      "streets": [
+        "Calle Madrid",
+        "Plaza de la Constitución",
+        "Calle de la Cañada de las Merinas",
+        "Calle del Arroyo del Membrillo",
+        "Calle del Tajo",
+        "Calle de la Campana",
+        "Avenida de Gregorio Peces-Barba Martínez",
+        "Calle Viñas Viejas"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 212
     },
     {
       "id": "28048",
@@ -966,9 +1292,20 @@
       "areas": [
         "Corpa"
       ],
-      "streets": [],
+      "streets": [
+        "Calle Mayor",
+        "Plaza de la Constitución",
+        "Plaza de España",
+        "Calle Madrid",
+        "Calle la Olivilla",
+        "Calle Alcalá",
+        "Calle del Agua",
+        "Calle las Cruces"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 43
     },
     {
       "id": "28049",
@@ -976,9 +1313,22 @@
       "areas": [
         "Coslada"
       ],
-      "streets": [],
+      "streets": [
+        "Avenida de la Constitución",
+        "Avenida de España",
+        "Avenida de Madrid",
+        "Plaza Mayor",
+        "Calle de la Iglesia",
+        "Plaza de Madrid",
+        "Plaza de la Constitución",
+        "Avenida de José Hierro"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Colonia de los Rosales"
+      ],
+      "regionalStreetCount": 345
     },
     {
       "id": "28050",
@@ -992,9 +1342,22 @@
         "Los Salmueros",
         "Las Arroyadas"
       ],
-      "streets": [],
+      "streets": [
+        "Calle Real",
+        "Plaza Constitución",
+        "Calle Madrid",
+        "Calle los Almendros",
+        "Calle Viñagrande",
+        "Calle Villanueva de Córdoba",
+        "Calle del Tejar",
+        "Calle Juan de Austria"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Urbanización Torrejoncillo de los Higos"
+      ],
+      "regionalStreetCount": 151
     },
     {
       "id": "28053",
@@ -1002,9 +1365,20 @@
       "areas": [
         "Daganzo De Arriba"
       ],
-      "streets": [],
+      "streets": [
+        "Calle de la Constitución",
+        "Calle Mayor",
+        "Calle Madrid",
+        "Calle los Frailes",
+        "Avenida Circunvalación",
+        "Calle Oriente",
+        "Calle de Pedro Duque",
+        "Calle Valdidueñas"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 134
     },
     {
       "id": "28054",
@@ -1017,9 +1391,20 @@
         "Peralejo",
         "La Granjilla"
       ],
-      "streets": [],
+      "streets": [
+        "Calle Mayor",
+        "Avenida de la Constitución",
+        "Calle de Madrid",
+        "Plaza de España",
+        "Calle de la Iglesia",
+        "Plaza de la Constitución",
+        "Calle Principal",
+        "Avenida de Felipe II"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 352
     },
     {
       "id": "28055",
@@ -1029,9 +1414,22 @@
         "La Vega",
         "El Campetón"
       ],
-      "streets": [],
+      "streets": [
+        "Avenida de la Constitución",
+        "Avenida de España",
+        "Calle de la Iglesia",
+        "Calle Camino de los Horcales",
+        "Avenida del Manzanares (Urbanización Peña Rubia)",
+        "Calle del Río",
+        "Calle de Enmedio de las Eras",
+        "Calle del Valle del Rosario"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Urbanización de la Vega de la Aceña"
+      ],
+      "regionalStreetCount": 206
     },
     {
       "id": "28056",
@@ -1039,9 +1437,20 @@
       "areas": [
         "Fresnedillas De La Oliva"
       ],
-      "streets": [],
+      "streets": [
+        "Calle del Real",
+        "Plaza de la Constitución",
+        "Plaza de la Iglesia",
+        "Calle de la Iglesia",
+        "Calle Cordel del Puente San Juan",
+        "Calle de las Hoyuelas",
+        "Calle del Arroyo",
+        "Calle de San Bartolomé"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 126
     },
     {
       "id": "28057",
@@ -1051,9 +1460,20 @@
         "Jardín De Serracines",
         "Fresno De Torote"
       ],
-      "streets": [],
+      "streets": [
+        "Plaza de España",
+        "Plaza de la Constitución",
+        "Calle Mayor",
+        "Calle Valle del Río",
+        "Calle Principal",
+        "Calle del Zorro",
+        "Calle del Lobo",
+        "Calle Nogal"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 92
     },
     {
       "id": "28058",
@@ -1062,9 +1482,23 @@
         "Fuenlabrada",
         "Loranca"
       ],
-      "streets": [],
+      "streets": [
+        "Calle de la Constitución",
+        "Avenida España",
+        "Calle de Madrid",
+        "Plaza Constitución",
+        "Plaza España",
+        "Calle de la Iglesia",
+        "Avenida Pablo Iglesias",
+        "Avenida de la Industria"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Urbanización Nuevo Versalles",
+        "Urbanización Parque Miraflores"
+      ],
+      "regionalStreetCount": 684
     },
     {
       "id": "28059",
@@ -1076,9 +1510,20 @@
         "Las Suertes Y Dehesa Vieja",
         "El Chaparral Y El Soto"
       ],
-      "streets": [],
+      "streets": [
+        "Calle Madrid",
+        "Calle Mayor",
+        "Calle Constitución",
+        "Calle Iglesia",
+        "Calle Torrelaguna",
+        "Calle Algete",
+        "Calle Cristóbal Colón",
+        "Avenida Julián Sánchez"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 139
     },
     {
       "id": "28060",
@@ -1089,9 +1534,31 @@
         "Las Vegas",
         "Los Visos Y Las Dehesas"
       ],
-      "streets": [],
+      "streets": [
+        "Calle Mayor",
+        "Plaza de la Constitución",
+        "Plaza de la Iglesia",
+        "Avenida de Elena Soriano",
+        "Calle Seis (Alarilla)",
+        "Calle de la Comunidad de Madrid",
+        "Calle Ocho (Alarilla)",
+        "Calle de Villamanrique de Tajo"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Barrio Perchel",
+        "Barrio Zurriera",
+        "Barrio de la Cruz",
+        "Barrio de la Iglesia",
+        "Barrio del Castillo",
+        "Barrio del Sepulcro",
+        "Colonia de San Andrés Apóstol",
+        "Colonia de Tierno Galván N 1",
+        "Colonia de Tierno Galván N 2",
+        "Urbanización Cerrillos"
+      ],
+      "regionalStreetCount": 139
     },
     {
       "id": "28061",
@@ -1112,9 +1579,29 @@
         "Las Columnas",
         "El Chaparral"
       ],
-      "streets": [],
+      "streets": [
+        "Calle Mayor",
+        "Calle Madrid",
+        "Plaza de la Iglesia",
+        "Plaza de España",
+        "Calle Colada Charco de la Hoya",
+        "Calle Monte Peregrinos",
+        "Calle Enredaderas",
+        "Avenida Sicilia"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Urbanización Galapark",
+        "Urbanización Molino de la Navata",
+        "Urbanización Nido del Águila",
+        "Urbanización Parquelagos",
+        "Urbanización Reno",
+        "Urbanización Santiago",
+        "Urbanización el Bailadero",
+        "Urbanización el Prado"
+      ],
+      "regionalStreetCount": 726
     },
     {
       "id": "28062",
@@ -1127,9 +1614,24 @@
         "Cañizuela",
         "Las Eras Del Soto"
       ],
-      "streets": [],
+      "streets": [
+        "Calle Mayor",
+        "Calle Francisco de Piquer y Rudilla",
+        "Calle Finca Carro Molino",
+        "Calle Maricubas",
+        "Calle Quince de Mayo",
+        "Calle San Isidro",
+        "Calle de Timoteo Díaz",
+        "Calle de Manuel Fernández del Pozo"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Urbanización el Verdugal",
+        "Urbanización la Pajarilla",
+        "Urbanización las Eras del Soto"
+      ],
+      "regionalStreetCount": 118
     },
     {
       "id": "28063",
@@ -1141,9 +1643,20 @@
         "El Tomillar",
         "La Estación"
       ],
-      "streets": [],
+      "streets": [
+        "Calle de la Iglesia",
+        "Plaza de la Constitución",
+        "Plaza de la Iglesia",
+        "Avenida de la Estación",
+        "Calle del Pino",
+        "Calle Circular",
+        "Calle de la Acacia",
+        "Calle Buitrago (Pinilla)"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 90
     },
     {
       "id": "28064",
@@ -1154,9 +1667,22 @@
         "Redondo De Arriba",
         "Redondo De Abajo"
       ],
-      "streets": [],
+      "streets": [
+        "Calle Real",
+        "Plaza de la Constitución",
+        "Plaza Mayor",
+        "Plaza de la Iglesia",
+        "Avenida los Socorrales",
+        "Calle de Carlos Ruiz",
+        "Calle de las Cantarranas",
+        "Calle los Melgares"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Urbanización Prado Cerrado"
+      ],
+      "regionalStreetCount": 36
     },
     {
       "id": "28065",
@@ -1174,7 +1700,11 @@
         "Calle Ramón y Cajal",
         "Avenida de las Ciudades",
         "Avenida de las Arcas del Agua",
-        "Plaza de las Provincias"
+        "Plaza de las Provincias",
+        "Calle Madrid",
+        "Avenida de España",
+        "Plaza de la Iglesia",
+        "Plaza de España"
       ],
       "neighborhoods": [
         "Buenavista",
@@ -1192,7 +1722,12 @@
       "sources": [
         "https://participa.getafe.es/mapas-barrios-participacion",
         "https://participa.getafe.es/about_neighborhood_commissions"
-      ]
+      ],
+      "localZones": [
+        "Colonia de Nuestra Señora de Loreto",
+        "Colonia de la Inmaculada"
+      ],
+      "regionalStreetCount": 1220
     },
     {
       "id": "28066",
@@ -1200,9 +1735,25 @@
       "areas": [
         "Griñón"
       ],
-      "streets": [],
+      "streets": [
+        "Calle Mayor",
+        "Calle de la Iglesia",
+        "Plaza Mayor",
+        "Avenida de Humanes",
+        "Paseo del Carraperal",
+        "Avenida de los Andaluces",
+        "Calle Olivar del Patrón",
+        "Avenida de Portugal"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Urbanización Cañada Real",
+        "Urbanización Nuevo Griñón",
+        "Urbanización la Ermita",
+        "Urbanización las Flores"
+      ],
+      "regionalStreetCount": 287
     },
     {
       "id": "28067",
@@ -1210,9 +1761,24 @@
       "areas": [
         "Guadalix De La Sierra"
       ],
-      "streets": [],
+      "streets": [
+        "Calle Mayor",
+        "Calle de la Iglesia",
+        "Avenida Alejandro Rubio",
+        "Calle Aldebarán",
+        "Calle Capella",
+        "Calle la Caleriza",
+        "Calle Camino del Río",
+        "Avenida Virgen del Espinar"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Urbanización Guadalcampo",
+        "Urbanización Miralpántano",
+        "Urbanización Peña del Agua"
+      ],
+      "regionalStreetCount": 176
     },
     {
       "id": "28068",
@@ -1226,9 +1792,20 @@
         "La Mata",
         "La Jarosa"
       ],
-      "streets": [],
+      "streets": [
+        "Calle Madrid",
+        "Calle de la Iglesia",
+        "Plaza de España",
+        "Plaza Mayor",
+        "Calle Carretera de Los Molinos",
+        "Calle de los Carretera de Los Molinos (M-622)",
+        "Calle Carretera de Alpedrete",
+        "Calle Camino de Pradovera"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 366
     },
     {
       "id": "28069",
@@ -1236,9 +1813,20 @@
       "areas": [
         "La Hiruela"
       ],
-      "streets": [],
+      "streets": [
+        "Calle de la Iglesia",
+        "Calle de Enmedio",
+        "Calle Pilón",
+        "Calle del Corcho",
+        "Calle de la Dehesa",
+        "Calle Reserva de la Biosfera",
+        "Calle Herrería",
+        "Calle del Cardoso"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 20
     },
     {
       "id": "28070",
@@ -1247,9 +1835,20 @@
         "Horcajo De La Sierra",
         "Aoslos"
       ],
-      "streets": [],
+      "streets": [
+        "Calle del Real",
+        "Calle Mayor",
+        "Calle de la Carretera",
+        "Calle Prados de la Matilla",
+        "Calle Extrarradio (Aoslos)",
+        "Calle de la Plazuela",
+        "Calle de los Madarcos",
+        "Calle Castillejos"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 55
     },
     {
       "id": "28071",
@@ -1257,9 +1856,20 @@
       "areas": [
         "Horcajuelo De La Sierra"
       ],
-      "streets": [],
+      "streets": [
+        "Calle Ayuntamiento",
+        "Calle Ermita",
+        "Calle Carretera",
+        "Calle Blanco",
+        "Calle Fuente",
+        "Calle Pozas",
+        "Calle Comunidad de Madrid",
+        "Calle Arenal"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 46
     },
     {
       "id": "28072",
@@ -1272,9 +1882,24 @@
         "Berzalejo",
         "Navalvillar - El Canchal"
       ],
-      "streets": [],
+      "streets": [
+        "Avenida de Madrid",
+        "Calle Madrid",
+        "Plaza de la Iglesia",
+        "Plaza Mayor",
+        "Plaza de la Constitución",
+        "Paseo Mayor",
+        "Avenida de Asturias",
+        "Calle del Río Sella"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Urbanización Navagrande",
+        "Urbanización Parque de las Colinas",
+        "Urbanización las Breñas"
+      ],
+      "regionalStreetCount": 192
     },
     {
       "id": "28073",
@@ -1283,9 +1908,20 @@
         "Humanes De Madrid",
         "Avenida De Griñon"
       ],
-      "streets": [],
+      "streets": [
+        "Calle Madrid",
+        "Avenida de España",
+        "Plaza de la Constitución",
+        "Avenida de la Industria",
+        "Calle Cañada Toledana",
+        "Avenida Griñón",
+        "Calle de los Metales",
+        "Avenida de Fuenlabrada"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 272
     },
     {
       "id": "28074",
@@ -1298,7 +1934,12 @@
       "streets": [
         "Calle Rey Pastor",
         "Calle Torres Quevedo",
-        "Avenida de América Latina"
+        "Avenida de América Latina",
+        "Calle Madrid",
+        "Plaza Mayor",
+        "Plaza España",
+        "Calle Constitución",
+        "Plaza Constitución"
       ],
       "neighborhoods": [
         "Zarzaquemada",
@@ -1308,7 +1949,11 @@
       ],
       "sources": [
         "https://www.leganes.org/documents/20122/965265/0_66644_1.pdf/1db7069a-55a5-8617-83ef-e62976f9483e?t=1677242722869"
-      ]
+      ],
+      "localZones": [
+        "Barrio Hormigueras"
+      ],
+      "regionalStreetCount": 836
     },
     {
       "id": "28075",
@@ -1322,9 +1967,22 @@
         "La Fontadela",
         "El Monte"
       ],
-      "streets": [],
+      "streets": [
+        "Avenida de la Constitución",
+        "Calle Madrid",
+        "Calle Mayor",
+        "Calle Camino de Campo Real",
+        "Avenida del Monte",
+        "Avenida de la Encina",
+        "Avenida del Fresno",
+        "Calle Cañada del Pozo"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Poblado Eléctrica Fenosa"
+      ],
+      "regionalStreetCount": 191
     },
     {
       "id": "28076",
@@ -1333,9 +1991,20 @@
         "Lozoya",
         "La Granja"
       ],
-      "streets": [],
+      "streets": [
+        "Plaza Mayor",
+        "Plaza de la Iglesia",
+        "Calle de las Cuestas",
+        "Calle Tercera",
+        "Avenida de Lozoya",
+        "Calle Segunda",
+        "Calle Once",
+        "Calle Norte"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 74
     },
     {
       "id": "28901",
@@ -1348,9 +2017,24 @@
         "Los Peñotes",
         "Fuente Blanquilla"
       ],
-      "streets": [],
+      "streets": [
+        "Avenida de Madrid",
+        "Calle del Real",
+        "Calle Prados Quemados",
+        "Calle Antonio Flores Martín",
+        "Calle de Mazacorta",
+        "Calle de la Peña el Palomar (Lozoyuela)",
+        "Calle Prado Espinar",
+        "Calle Fresnedilla"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Urbanización Fuente Blanquilla",
+        "Urbanización de los Navarros",
+        "Urbanización de los Peñotes"
+      ],
+      "regionalStreetCount": 137
     },
     {
       "id": "28078",
@@ -1358,9 +2042,20 @@
       "areas": [
         "Madarcos"
       ],
-      "streets": [],
+      "streets": [
+        "Plaza del Iglesia",
+        "Calle de la Iglesia",
+        "Calle de las Eras",
+        "Calle del Pozo",
+        "Calle de las Erillas",
+        "Calle Horcajo",
+        "Calle del Calvario",
+        "Calle de San Mateo"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 26
     },
     {
       "id": "28079",
@@ -1368,9 +2063,32 @@
       "areas": [
         "Madrid"
       ],
-      "streets": [],
+      "streets": [
+        "Calle Mayor",
+        "Calle del Real",
+        "Plaza de España",
+        "Plaza Mayor",
+        "Avenida Real",
+        "Calle de la Iglesia",
+        "Plaza de la Iglesia",
+        "Plaza de la Constitución"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Barrio de la Estación",
+        "Colonia Militar El Goloso",
+        "Colonia Militar de Cuatro Vientos",
+        "Colonia Militar de Vicálvaro",
+        "Colonia de Erillas",
+        "Colonia de Occidente",
+        "Colonia de Santa María",
+        "Colonia de Torres Garrido",
+        "Colonia de Valderribas",
+        "Poblado de Altamira",
+        "Poblado el Salobral"
+      ],
+      "regionalStreetCount": 9243
     },
     {
       "id": "28080",
@@ -1382,9 +2100,20 @@
         "Monte Del Pilar",
         "El Mayorazgo"
       ],
-      "streets": [],
+      "streets": [
+        "Avenida España",
+        "Calle Iglesia",
+        "Plaza Mayor",
+        "Plaza Constitución",
+        "Calle Madrid",
+        "Calle del Mayor",
+        "Plaza Iglesia",
+        "Avenida Oliva"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 515
     },
     {
       "id": "28082",
@@ -1394,9 +2123,20 @@
         "El Berrocal",
         "Presa De Santillana"
       ],
-      "streets": [],
+      "streets": [
+        "Calle Real",
+        "Avenida de Madrid",
+        "Calle de la Iglesia",
+        "Avenida de la Pedriza",
+        "Calle Camino de Peña Sacra",
+        "Avenida de Maderuelo",
+        "Calle de la Cañada",
+        "Calle de la Cañada de los Toros"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 267
     },
     {
       "id": "28083",
@@ -1404,9 +2144,20 @@
       "areas": [
         "Meco"
       ],
-      "streets": [],
+      "streets": [
+        "Avenida Madrid",
+        "Calle Mayor",
+        "Calle España",
+        "Plaza de España",
+        "Plaza de la Constitución",
+        "Calle Zeus",
+        "Avenida Unión Europea",
+        "Calle Poseidón"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 271
     },
     {
       "id": "28084",
@@ -1418,9 +2169,20 @@
         "La Vega",
         "La Raya De Velilla"
       ],
-      "streets": [],
+      "streets": [
+        "Avenida de la Constitución",
+        "Calle Mayor",
+        "Calle de Madrid",
+        "Calle de la Iglesia",
+        "Plaza de España",
+        "Calle de las Adelfas (no oficial)",
+        "Avenida de Juan Gris",
+        "Calle de las Amapolas (no oficial)"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 265
     },
     {
       "id": "28085",
@@ -1433,9 +2195,22 @@
         "Raserillos Y El Carrascal",
         "Las Huelgas"
       ],
-      "streets": [],
+      "streets": [
+        "Avenida de Madrid",
+        "Avenida de la Constitución",
+        "Calle Real",
+        "Calle Mayor",
+        "Plaza de España",
+        "Avenida de los Naranjos",
+        "Calle de la Estación",
+        "Avenida Solycampo"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Urbanización Peñalá"
+      ],
+      "regionalStreetCount": 337
     },
     {
       "id": "28086",
@@ -1445,9 +2220,23 @@
         "Los Llanos Y Remolinos",
         "La Cabaña"
       ],
-      "streets": [],
+      "streets": [
+        "Avenida de Madrid",
+        "Avenida de España",
+        "Avenida de la Constitución",
+        "Calle Real",
+        "Plaza Mayor",
+        "Calle de la Rosaleda",
+        "Paseo del Camino de Francia",
+        "Calle de la Fuente del Toro"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Colonia del Parque Obras Públicas",
+        "Urbanización los Jardinillos"
+      ],
+      "regionalStreetCount": 234
     },
     {
       "id": "28087",
@@ -1455,9 +2244,20 @@
       "areas": [
         "Los Molinos"
       ],
-      "streets": [],
+      "streets": [
+        "Avenida de la Constitución",
+        "Calle del Real",
+        "Plaza de España",
+        "Avenida de la Concordia",
+        "Avenida Cañada Real",
+        "Calle Matadero",
+        "Calle Molineras",
+        "Paseo Antonio Fernández Sola"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 235
     },
     {
       "id": "28088",
@@ -1465,9 +2265,20 @@
       "areas": [
         "Montejo De La Sierra"
       ],
-      "streets": [],
+      "streets": [
+        "Avenida de Madrid",
+        "Calle Real",
+        "Plaza Mayor",
+        "Calle de la Iglesia",
+        "Calle Madrid",
+        "Avenida el Soto",
+        "Calle Valdebenito",
+        "Calle de las Vaquerizas"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 67
     },
     {
       "id": "28089",
@@ -1476,9 +2287,23 @@
         "Moraleja De Enmedio",
         "Las Colinas"
       ],
-      "streets": [],
+      "streets": [
+        "Calle Madrid",
+        "Calle Real",
+        "Calle Mayor",
+        "Plaza España",
+        "Plaza de la Constitución",
+        "Calle la Iglesia",
+        "Plaza Madrid",
+        "Avenida Fuenlabrada"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Urbanización las Colinas",
+        "Urbanización las Yucas"
+      ],
+      "regionalStreetCount": 155
     },
     {
       "id": "28090",
@@ -1489,9 +2314,20 @@
         "Fuente Del Piojo",
         "Las Praderas"
       ],
-      "streets": [],
+      "streets": [
+        "Calle de España",
+        "Calle de la Iglesia",
+        "Plaza de la Constitución",
+        "Calle Madrid",
+        "Calle Vía del Berrocal",
+        "Calle de la Capellanía",
+        "Calle Arroyo Grande",
+        "Calle Antón"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 293
     },
     {
       "id": "28091",
@@ -1501,9 +2337,20 @@
         "El Valle",
         "El Alto"
       ],
-      "streets": [],
+      "streets": [
+        "Avenida de la Constitución",
+        "Calle de la Iglesia",
+        "Calle Real",
+        "Plaza de la Iglesia",
+        "Plaza Mayor",
+        "Calle de Domingo Rodelgo",
+        "Calle de Don Juan Carlos I",
+        "Calle de la Carrera del Mediodía"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 220
     },
     {
       "id": "28092",
@@ -1522,7 +2369,9 @@
         "Calle Libertad",
         "Calle Pintor Velázquez",
         "Calle Cedros",
-        "Plaza del Sol"
+        "Plaza del Sol",
+        "Avenida de la Constitución",
+        "Avenida de Madrid"
       ],
       "neighborhoods": [
         "Centro",
@@ -1535,7 +2384,9 @@
       "sources": [
         "https://www.mostoles.es/fr/localizaciones/juntas-distrito"
       ],
-      "zoneLabel": "Distritos y zonas conocidas"
+      "zoneLabel": "Distritos y zonas conocidas",
+      "localZones": [],
+      "regionalStreetCount": 529
     },
     {
       "id": "28093",
@@ -1544,9 +2395,23 @@
         "Navacerrada",
         "Los Almorchones"
       ],
-      "streets": [],
+      "streets": [
+        "Avenida de Madrid",
+        "Calle de la Iglesia",
+        "Avenida del Rosal",
+        "Calle del Doctor J González Villasante",
+        "Paseo de los Abetos",
+        "Calle Manzanares",
+        "Calle de la Magdalena",
+        "Calle de los Robles"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Urbanización Prado Molero",
+        "Urbanización las Brisas"
+      ],
+      "regionalStreetCount": 112
     },
     {
       "id": "28094",
@@ -1559,9 +2424,20 @@
         "El Corralillo",
         "Las Arreturas"
       ],
-      "streets": [],
+      "streets": [
+        "Calle Real",
+        "Calle Iglesia",
+        "Calle Arreturas",
+        "Calle Pasajo",
+        "Calle Tomillar",
+        "Calle Eras de Arriba",
+        "Calle Sauce",
+        "Calle Cantueso"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 87
     },
     {
       "id": "28095",
@@ -1571,9 +2447,20 @@
         "Cerro Alarcón",
         "Los Barrancos"
       ],
-      "streets": [],
+      "streets": [
+        "Avenida de la Constitución",
+        "Calle Real",
+        "Plaza de España",
+        "Calle la Iglesia",
+        "Avenida Roncesvalles",
+        "Calle Camino de Navahonda",
+        "Avenida Cerro Alarcón",
+        "Calle San Sebastián"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 135
     },
     {
       "id": "28096",
@@ -1586,9 +2473,22 @@
         "Mancigordo",
         "Fuente Pila"
       ],
-      "streets": [],
+      "streets": [
+        "Calle de la Constitución",
+        "Calle Madrid",
+        "Calle del Real",
+        "Calle de la Iglesia",
+        "Avenida del Arroyo Juncal",
+        "Avenida de la Casa Roque",
+        "Calle Dehesa de Mari-Martín",
+        "Paseo del Alparrache"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Urbanización Fuente Pila"
+      ],
+      "regionalStreetCount": 368
     },
     {
       "id": "28097",
@@ -1599,9 +2499,24 @@
         "El Patuelo",
         "Prado Gamonal"
       ],
-      "streets": [],
+      "streets": [
+        "Calle Real",
+        "Plaza de la Iglesia",
+        "Calle de la Fuente (San Mamés)",
+        "Calle Camino de la Nava",
+        "Calle del Barrio",
+        "Calle de la Solana",
+        "Calle Miralrío",
+        "Calle de las Casonas"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Urbanización Solanilla",
+        "Urbanización a Patuelo",
+        "Urbanización a Prado Gamonal"
+      ],
+      "regionalStreetCount": 65
     },
     {
       "id": "28099",
@@ -1613,9 +2528,22 @@
         "La Rocha",
         "Santa Ana"
       ],
-      "streets": [],
+      "streets": [
+        "Avenida de Madrid",
+        "Calle del Real",
+        "Avenida de la Constitución",
+        "Calle Mayor",
+        "Plaza de España",
+        "Calle Camino de Cuesta Vieja",
+        "Calle Camino de la Cuesta",
+        "Calle Camino del Bajoncillo"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Urbanización el Club"
+      ],
+      "regionalStreetCount": 209
     },
     {
       "id": "28100",
@@ -1626,9 +2554,22 @@
         "Nuevo Baztán",
         "El Mirador De Baztán"
       ],
-      "streets": [],
+      "streets": [
+        "Paseo de Madrid",
+        "Plaza de la Iglesia",
+        "Calle Ronda Hispano-Americana",
+        "Calle Ronda de Manchester",
+        "Avenida Glasgow",
+        "Avenida Jerez",
+        "Calle de la Comunidad Europea",
+        "Avenida la Haya"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Urbanización Mirador"
+      ],
+      "regionalStreetCount": 129
     },
     {
       "id": "28101",
@@ -1636,9 +2577,20 @@
       "areas": [
         "Olmeda De Las Fuentes"
       ],
-      "streets": [],
+      "streets": [
+        "Calle Mayor",
+        "Calle Real",
+        "Calle de la Iglesia",
+        "Calle Sol",
+        "Avenida de Valmores",
+        "Calle del Moral",
+        "Calle del Pintor Álvaro Delgado",
+        "Calle de los Huertos"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 54
     },
     {
       "id": "28102",
@@ -1651,9 +2603,20 @@
         "El Val",
         "El Carrizal"
       ],
-      "streets": [],
+      "streets": [
+        "Calle Mayor",
+        "Plaza de la Constitución",
+        "Calle Valle",
+        "Calle Gran Vía",
+        "Calle Fuente Juncal",
+        "Calle de la Peña del Tesoro",
+        "Calle Ronda",
+        "Calle Comunidad de Madrid"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 101
     },
     {
       "id": "28104",
@@ -1666,9 +2629,22 @@
         "I.N.T.A.",
         "El Avalón"
       ],
-      "streets": [],
+      "streets": [
+        "Calle Real",
+        "Calle Mayor",
+        "Plaza de la Constitución",
+        "Calle Madrid",
+        "Avenida de Juan Pablo II",
+        "Avenida de Circunvalación",
+        "Avenida del Puente de los Viveros",
+        "Avenida de la Mesa del Monte"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Urbanización Residencial Jarama"
+      ],
+      "regionalStreetCount": 336
     },
     {
       "id": "28106",
@@ -1677,9 +2653,22 @@
         "Parla",
         "Humanejos Y El Prado"
       ],
-      "streets": [],
+      "streets": [
+        "Calle Real",
+        "Plaza Constitución",
+        "Calle Iglesia",
+        "Plaza de la Iglesia",
+        "Calle Jaime I El Conquistador",
+        "Avenida de las Estrellas",
+        "Calle Toledo",
+        "Avenida de los Planetas"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Urbanización de la Fuentebella"
+      ],
+      "regionalStreetCount": 436
     },
     {
       "id": "28107",
@@ -1688,9 +2677,20 @@
         "Patones De Abajo",
         "Patones De Arriba"
       ],
-      "streets": [],
+      "streets": [
+        "Avenida de Madrid",
+        "Calle del Real",
+        "Plaza de la Constitución",
+        "Calle del Ayuntamiento",
+        "Avenida de Juan Prieto",
+        "Calle de los Diezmos",
+        "Calle Arzobispo Baltasar Moscoso",
+        "Calle Bravo Murillo"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 56
     },
     {
       "id": "28108",
@@ -1702,9 +2702,20 @@
         "La Mina",
         "Los Pajares"
       ],
-      "streets": [],
+      "streets": [
+        "Avenida de España",
+        "Avenida de Madrid",
+        "Calle Mayor",
+        "Plaza de la Constitución",
+        "Calle Mallorca",
+        "Calle Coruña",
+        "Calle Olivo",
+        "Calle Sauce"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 173
     },
     {
       "id": "28109",
@@ -1712,9 +2723,20 @@
       "areas": [
         "Pelayos De La Presa"
       ],
-      "streets": [],
+      "streets": [
+        "Calle de la Iglesia",
+        "Plaza del Ayuntamiento",
+        "Plaza de España",
+        "Avenida de Marcial Llorente",
+        "Avenida del Mirador",
+        "Avenida de San José",
+        "Calle San Pelayo",
+        "Calle de la Vía del Ferrocarril"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 181
     },
     {
       "id": "28110",
@@ -1727,9 +2749,26 @@
         "Camino De Las Peñuelas",
         "La Vega"
       ],
-      "streets": [],
+      "streets": [
+        "Plaza de la Constitución",
+        "Calle Mayor Alta",
+        "Calle Mayor Baja",
+        "Calle de las Cuevas Altas",
+        "Paseo de las Acacias",
+        "Calle del Calvario",
+        "Calle Barrio Nuevo",
+        "Avenida de la Paz"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Colonia de la Rana Alta",
+        "Colonia de la Rana Baja",
+        "Colonia de la Rana Media",
+        "Urbanización Valdeperales",
+        "Urbanización de Valdeperales de Arriba"
+      ],
+      "regionalStreetCount": 90
     },
     {
       "id": "28111",
@@ -1738,9 +2777,23 @@
         "Pezuela De Las Torres",
         "Los Caminos"
       ],
-      "streets": [],
+      "streets": [
+        "Calle Mayor",
+        "Plaza de la Constitución",
+        "Calle de la Encina",
+        "Calle Barrio Olmeda",
+        "Calle de los Pinos",
+        "Calle de Sergio Caballero",
+        "Calle de los Olmos",
+        "Calle del Cerezo"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Urbanización Santa Ana",
+        "Urbanización los Caminos"
+      ],
+      "regionalStreetCount": 84
     },
     {
       "id": "28112",
@@ -1748,9 +2801,20 @@
       "areas": [
         "Pinilla Del Valle"
       ],
-      "streets": [],
+      "streets": [
+        "Calle del Real",
+        "Plaza de la Constitución",
+        "Calle de la Iglesia",
+        "Calle de la Dehesa",
+        "Avenida de los Nogales",
+        "Avenida del Río",
+        "Calle de Canal Isabel II",
+        "Calle de la Presa"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 41
     },
     {
       "id": "28113",
@@ -1759,9 +2823,22 @@
         "Pinto",
         "Las Arenas"
       ],
-      "streets": [],
+      "streets": [
+        "Avenida de España",
+        "Calle del Real",
+        "Plaza de la Constitución",
+        "Calle de la Iglesia",
+        "Paseo de las Artes",
+        "Calle de Alcotanes",
+        "Calle de las Palomas",
+        "Calle Avutardas"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Urbanización a Residencial los Cisnes"
+      ],
+      "regionalStreetCount": 433
     },
     {
       "id": "28114",
@@ -1770,9 +2847,20 @@
         "Piñuécar",
         "Gandullas"
       ],
-      "streets": [],
+      "streets": [
+        "Calle Real",
+        "Plaza Mayor",
+        "Calle de la Iglesia",
+        "Calle Mayor",
+        "Calle Carretera",
+        "Calle de la Carretera Montejo-Buitrago",
+        "Calle de la Nava",
+        "Calle Postigos"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 83
     },
     {
       "id": "28115",
@@ -1785,9 +2873,25 @@
         "Los Ángeles",
         "Retamares"
       ],
-      "streets": [],
+      "streets": [
+        "Avenida España",
+        "Avenida Iglesia",
+        "Calle Iglesia",
+        "Plaza España",
+        "Plaza de la Constitución",
+        "Calle Madrid",
+        "Plaza Mayor",
+        "Paseo de los Lagos"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Colonia Noria de la Paz",
+        "Colonia Santa Teresa",
+        "Urbanización 109 Villas",
+        "Urbanización las Encinas"
+      ],
+      "regionalStreetCount": 835
     },
     {
       "id": "28116",
@@ -1795,9 +2899,20 @@
       "areas": [
         "Pozuelo Del Rey"
       ],
-      "streets": [],
+      "streets": [
+        "Calle del Real",
+        "Plaza de la Constitución",
+        "Calle La Flor de la Mancha",
+        "Calle el Roble",
+        "Calle el Olmo",
+        "Calle de la Ronda de la Ermita",
+        "Calle de la Hermandad",
+        "Calle de la Fuente"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 81
     },
     {
       "id": "28117",
@@ -1805,9 +2920,20 @@
       "areas": [
         "Prádena Del Rincón"
       ],
-      "streets": [],
+      "streets": [
+        "Calle Real",
+        "Calle de la Iglesia",
+        "Plaza de la Constitución",
+        "Calle de Carretera Prádena-Montejo de la Sierra",
+        "Calle de Carretera Prádena-Gandullas",
+        "Calle del Carbón",
+        "Calle Pizarro",
+        "Calle Prados Egidos"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 38
     },
     {
       "id": "28118",
@@ -1815,9 +2941,20 @@
       "areas": [
         "Puebla De La Sierra"
       ],
-      "streets": [],
+      "streets": [
+        "Calle Mayor",
+        "Calle de la Iglesia",
+        "Plaza de la Iglesia",
+        "Calle de la Fuente de Abajo",
+        "Calle de los Lomos",
+        "Calle Pradillo Cimero",
+        "Calle Pradillo Bajero",
+        "Calle de la Cruz"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 37
     },
     {
       "id": "28902",
@@ -1828,9 +2965,20 @@
         "Serrada De La Fuente",
         "Paredes De Buitrago"
       ],
-      "streets": [],
+      "streets": [
+        "Calle Real",
+        "Plaza de la Iglesia",
+        "Plaza de la Constitución",
+        "Calle de la Constitución",
+        "Avenida del Villar",
+        "Calle Peña la Legua",
+        "Calle la Cerradilla",
+        "Calle Egidillo"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 141
     },
     {
       "id": "28119",
@@ -1839,9 +2987,20 @@
         "Quijorna",
         "Los Morales"
       ],
-      "streets": [],
+      "streets": [
+        "Calle Real",
+        "Avenida de España",
+        "Plaza de la Iglesia",
+        "Calle del Ayuntamiento",
+        "Calle Camino de la Charneca",
+        "Avenida de la Dehesa",
+        "Calle Camino del Olivar",
+        "Avenida del Llano"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 154
     },
     {
       "id": "28120",
@@ -1851,9 +3010,25 @@
         "Oteruelo Del Valle",
         "Los Grifos"
       ],
-      "streets": [],
+      "streets": [
+        "Calle Real",
+        "Plaza de España",
+        "Calle de la Iglesia",
+        "Calle de la Rivera del Artiñuelo",
+        "Avenida de José Salgado",
+        "Avenida del Paular",
+        "Avenida del Valle",
+        "Avenida de Cascajales"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Urbanización Prado de la Torre",
+        "Urbanización de los Grifos",
+        "Urbanización del Valle del Paular",
+        "Urbanización los Navazos"
+      ],
+      "regionalStreetCount": 119
     },
     {
       "id": "28121",
@@ -1861,9 +3036,20 @@
       "areas": [
         "Redueña"
       ],
-      "streets": [],
+      "streets": [
+        "Calle Mayor",
+        "Calle de la Iglesia",
+        "Calle de las Carretas",
+        "Calle de las Eras",
+        "Calle de las Tres Casas",
+        "Calle de la Palma",
+        "Calle José Echegaray",
+        "Calle del Olivo"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 35
     },
     {
       "id": "28122",
@@ -1873,9 +3059,23 @@
         "Paraje Del Arzobispo",
         "El Juncal"
       ],
-      "streets": [],
+      "streets": [
+        "Calle Madrid",
+        "Plaza de la Constitución",
+        "Calle de la Iglesia",
+        "Calle de la Cañada Real Galiana",
+        "Calle Camino de Torrejón",
+        "Paseo del Pinar",
+        "Calle Carrretera de Ajalvir",
+        "Avenida Principal"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Urbanización El Juncal",
+        "Urbanización El Juncal (Los Barrancos)"
+      ],
+      "regionalStreetCount": 86
     },
     {
       "id": "28123",
@@ -1889,9 +3089,20 @@
         "Casa Eulogio",
         "El Negralejo"
       ],
-      "streets": [],
+      "streets": [
+        "Calle de España",
+        "Plaza de Madrid",
+        "Plaza de la Constitución",
+        "Calle del Ayuntamiento",
+        "Avenida de los Almendros",
+        "Paseo de las Provincias",
+        "Avenida de Pablo Iglesias",
+        "Calle de la Cañada Real Galiana"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 550
     },
     {
       "id": "28124",
@@ -1899,9 +3110,23 @@
       "areas": [
         "Robledillo De La Jara"
       ],
-      "streets": [],
+      "streets": [
+        "Calle de las Domingo Ramírez",
+        "Calle de la Fuente",
+        "Calle del Frontón",
+        "Calle de Jesús del Valle",
+        "Calle del Nogal",
+        "Calle de las Peñas",
+        "Calle del Balcón",
+        "Calle del Cementerio"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Colonia Hoyo Valdeviñas",
+        "Colonia el Collado"
+      ],
+      "regionalStreetCount": 48
     },
     {
       "id": "28125",
@@ -1909,9 +3134,22 @@
       "areas": [
         "Robledo De Chavela"
       ],
-      "streets": [],
+      "streets": [
+        "Plaza de España",
+        "Avenida de la Constitución",
+        "Calle de la Iglesia",
+        "Plaza de la Iglesia",
+        "Paseo San Antonio de Padua",
+        "Avenida Central",
+        "Calle Almenara",
+        "Calle Zurich"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Urbanización Residencial Chavela"
+      ],
+      "regionalStreetCount": 318
     },
     {
       "id": "28126",
@@ -1919,9 +3157,20 @@
       "areas": [
         "Robregordo"
       ],
-      "streets": [],
+      "streets": [
+        "Calle del Real",
+        "Calle de la Iglesia",
+        "Plaza de la Constitución",
+        "Calle Balagares",
+        "Calle del Corral",
+        "Calle de las Eras",
+        "Calle del Hospital",
+        "Calle de los Bolos"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 31
     },
     {
       "id": "28127",
@@ -1937,9 +3186,22 @@
         "Los Carriles",
         "El Garzo"
       ],
-      "streets": [],
+      "streets": [
+        "Avenida España",
+        "Calle Real",
+        "Avenida Iglesia",
+        "Calle Madrid",
+        "Plaza España",
+        "Plaza Mayor",
+        "Plaza Madrid",
+        "Plaza Iglesia"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Barrio Suiza"
+      ],
+      "regionalStreetCount": 910
     },
     {
       "id": "28128",
@@ -1951,9 +3213,20 @@
         "Inmaculada Y San Damaso",
         "El Hoyo"
       ],
-      "streets": [],
+      "streets": [
+        "Avenida Madrid",
+        "Avenida de la Constitución",
+        "Plaza de España",
+        "Calle de la Iglesia",
+        "Calle Jaén",
+        "Calle Barcelona",
+        "Calle Gerona",
+        "Calle de Antonio Machado"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 85
     },
     {
       "id": "28129",
@@ -1964,9 +3237,20 @@
         "Valdeoliva",
         "Peñas Rubias"
       ],
-      "streets": [],
+      "streets": [
+        "Avenida de Madrid",
+        "Plaza de la Constitución",
+        "Calle de los Olmos",
+        "Avenida Alcalde Lorenzo Ginés Brandín",
+        "Calle de los Enebros",
+        "Calle Camino de Valdeoliva",
+        "Calle de los Abedules",
+        "Calle Camino de Guadalix"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 156
     },
     {
       "id": "28130",
@@ -1980,9 +3264,20 @@
         "Las Fuentecillas",
         "La Huerta Grande"
       ],
-      "streets": [],
+      "streets": [
+        "Plaza de España",
+        "Avenida de Madrid",
+        "Avenida de la Constitución",
+        "Calle de la Sierra de Guadarrama",
+        "Avenida de Castilla",
+        "Paseo de los Plátanos",
+        "Avenida de la Astronomía",
+        "Calle del Mar Adriático"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 282
     },
     {
       "id": "28131",
@@ -1997,9 +3292,22 @@
         "La Jurisdicción",
         "La Herrería"
       ],
-      "streets": [],
+      "streets": [
+        "Plaza de la Constitución",
+        "Calle las Pozas",
+        "Paseo del Monasterio Antiguo",
+        "Calle Lepanto",
+        "Paseo Carlos III",
+        "Calle Residencia",
+        "Calle Juan de Toledo",
+        "Calle Calleja Larga"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Urbanización el Tomillar"
+      ],
+      "regionalStreetCount": 304
     },
     {
       "id": "28132",
@@ -2014,9 +3322,22 @@
         "Pajares",
         "Gózquez De Arriba"
       ],
-      "streets": [],
+      "streets": [
+        "Plaza de la Constitución",
+        "Calle de la Iglesia",
+        "Avenida de los Abogados de Atocha",
+        "Calle Marañosa",
+        "Avenida del Doctor Manuel Jarabo",
+        "Calle del Plomo",
+        "Calle del Oro",
+        "Calle de la Cañada"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Poblado la Marañosa"
+      ],
+      "regionalStreetCount": 303
     },
     {
       "id": "28133",
@@ -2027,9 +3348,22 @@
         "Javacruz",
         "San Ramón"
       ],
-      "streets": [],
+      "streets": [
+        "Avenida Madrid",
+        "Avenida Constitución",
+        "Plaza Real",
+        "Avenida del Galeón",
+        "Calle Colón",
+        "Avenida de la Virgen de la Nueva",
+        "Avenida de Monterrey",
+        "Avenida Hispanidad"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Urbanización El Palomar"
+      ],
+      "regionalStreetCount": 357
     },
     {
       "id": "28134",
@@ -2043,9 +3377,22 @@
         "Race",
         "Valdelamasa"
       ],
-      "streets": [],
+      "streets": [
+        "Calle del Real",
+        "Avenida de España",
+        "Avenida de Madrid",
+        "Calle Mayor",
+        "Plaza de la Iglesia",
+        "Plaza de la Constitución",
+        "Calle de la Iglesia",
+        "Paseo Europa"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Colonia de las Puertas Verdes"
+      ],
+      "regionalStreetCount": 571
     },
     {
       "id": "28135",
@@ -2062,9 +3409,24 @@
         "Las Herreras",
         "Molino Nuevo"
       ],
-      "streets": [],
+      "streets": [
+        "Calle Iglesia",
+        "Calle el Real",
+        "Plaza Constitución",
+        "Avenida Rey Don Juan Carlos I",
+        "Calle Navilla",
+        "Avenida Veguillas",
+        "Calle Zarzas",
+        "Avenida Santa María"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Colonia del Molino Nuevo",
+        "Urbanización Molino Nuevo",
+        "Urbanización de Umbría los Gallegos"
+      ],
+      "regionalStreetCount": 308
     },
     {
       "id": "28136",
@@ -2073,9 +3435,20 @@
         "Santorcaz",
         "Estación Transmisora Marina"
       ],
-      "streets": [],
+      "streets": [
+        "Plaza de la Constitución",
+        "Calle Cantarranas",
+        "Calle de Pioz",
+        "Calle del Palomar",
+        "Calle de Carmen González",
+        "Calle de las Callejuelas",
+        "Calle de las Perdices",
+        "Calle de Antonio González"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 100
     },
     {
       "id": "28137",
@@ -2083,9 +3456,20 @@
       "areas": [
         "Los Santos De La Humosa"
       ],
-      "streets": [],
+      "streets": [
+        "Avenida de Madrid",
+        "Calle Mayor",
+        "Plaza de la Constitución",
+        "Calle de la Iglesia",
+        "Plaza Mayor",
+        "Calle de la Fuente del Lobo",
+        "Calle del Molino de Viento",
+        "Paseo de la Visera"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 137
     },
     {
       "id": "28138",
@@ -2093,9 +3477,20 @@
       "areas": [
         "La Serna Del Monte"
       ],
-      "streets": [],
+      "streets": [
+        "Plaza de la Iglesia",
+        "Calle de los Peligros",
+        "Calle de Carlos Ruiz",
+        "Avenida Braojos",
+        "Calle Cárcava",
+        "Calle de las Huertas",
+        "Calle Prado Egido",
+        "Calle Prolongación de Carlos Ruiz"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 37
     },
     {
       "id": "28140",
@@ -2103,9 +3498,22 @@
       "areas": [
         "Serranillos Del Valle"
       ],
-      "streets": [],
+      "streets": [
+        "Calle Madrid",
+        "Calle Mayor",
+        "Plaza de España",
+        "Calle de la Iglesia",
+        "Paseo de la Pradera",
+        "Calle de los Almendros",
+        "Calle de los Magnolios",
+        "Calle Aragón"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Urbanización la Pradera"
+      ],
+      "regionalStreetCount": 116
     },
     {
       "id": "28141",
@@ -2116,9 +3524,20 @@
         "Los Cortijos",
         "Valdelagua"
       ],
-      "streets": [],
+      "streets": [
+        "Avenida de Madrid",
+        "Calle de la Constitución",
+        "Calle Mayor",
+        "Plaza de España",
+        "Calle Sevillanos",
+        "Avenida del Guadarrama",
+        "Calle Carril Antiguo",
+        "Avenida Dos de Mayo"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 147
     },
     {
       "id": "28143",
@@ -2126,9 +3545,20 @@
       "areas": [
         "Somosierra"
       ],
-      "streets": [],
+      "streets": [
+        "Calle Real",
+        "Calle de la Iglesia",
+        "Plaza de la Constitución",
+        "Calle de la Fuente",
+        "Calle Rabanal",
+        "Calle de la Cañada Real",
+        "Calle del Camino-Reguera",
+        "Calle de las Eras"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 24
     },
     {
       "id": "28144",
@@ -2139,9 +3569,23 @@
         "Dehesa Boyal",
         "Cierro De San Bartolomé"
       ],
-      "streets": [],
+      "streets": [
+        "Avenida de Madrid",
+        "Avenida de España",
+        "Calle Real",
+        "Calle de la Iglesia",
+        "Avenida de Chozas de la Sierra",
+        "Avenida Víctimas del Terrorismo",
+        "Avenida de Puente Real",
+        "Calle de la Peña Grande"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Colonia de San Pedro",
+        "Urbanización Camino de la Sierra"
+      ],
+      "regionalStreetCount": 326
     },
     {
       "id": "28145",
@@ -2153,9 +3597,20 @@
         "Carracalderas",
         "La Moraleja"
       ],
-      "streets": [],
+      "streets": [
+        "Avenida de Madrid",
+        "Calle Mayor",
+        "Plaza de la Constitución",
+        "Avenida de Alcalá",
+        "Calle de la Soledad",
+        "Calle Primera",
+        "Calle de la Vía Augusta",
+        "Calle San Martín"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 134
     },
     {
       "id": "28146",
@@ -2164,9 +3619,20 @@
         "Tielmes",
         "La Vega"
       ],
-      "streets": [],
+      "streets": [
+        "Calle Real",
+        "Plaza de la Iglesia",
+        "Plaza de la Constitución",
+        "Plaza de España",
+        "Calle Carretera de Villarejo",
+        "Calle Carretera de Ambite",
+        "Calle Carretera de Valdilecha",
+        "Calle Carretera de Perales"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 165
     },
     {
       "id": "28147",
@@ -2176,9 +3642,20 @@
         "Carretera De Chinchón",
         "El Vedadillo"
       ],
-      "streets": [],
+      "streets": [
+        "Plaza Mayor",
+        "Calle Galiana",
+        "Calle Grande",
+        "Calle de la Soledad",
+        "Calle de la Era",
+        "Avenida del Soto",
+        "Avenida del Jarama",
+        "Calle de los Chalets"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 78
     },
     {
       "id": "28148",
@@ -2194,7 +3671,11 @@
         "Avenida de la Constitución",
         "Plaza Mayor",
         "Avenida de las Fronteras",
-        "Paseo de la Democracia"
+        "Paseo de la Democracia",
+        "Avenida Constitución",
+        "Avenida Madrid",
+        "Calle Madrid",
+        "Plaza España"
       ],
       "neighborhoods": [
         "Soto Henares",
@@ -2211,7 +3692,11 @@
       "sources": [
         "https://www.ayto-torrejon.es/index.php/noticia/nota-de-prensa/colocados-200-bancos-y-300-papeleras-en-varias-zonas-de-la-ciudad",
         "https://www.ayto-torrejon.es/index.php/concejalias/obras/anillo-ciclista"
-      ]
+      ],
+      "localZones": [
+        "Colonia Ciudad Jardín del Rosario"
+      ],
+      "regionalStreetCount": 515
     },
     {
       "id": "28149",
@@ -2220,9 +3705,22 @@
         "Torrejón De La Calzada",
         "Vaciasilos"
       ],
-      "streets": [],
+      "streets": [
+        "Calle Real",
+        "Calle Iglesia",
+        "Plaza de España",
+        "Ronda de Castilla Oeste",
+        "Avenida de los Reyes Visigodos",
+        "Calle Benito Pérez Galdós",
+        "Avenida Principal",
+        "Ronda de Castilla Este"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Barrio San Antón"
+      ],
+      "regionalStreetCount": 137
     },
     {
       "id": "28150",
@@ -2230,9 +3728,22 @@
       "areas": [
         "Torrejón De Velasco"
       ],
-      "streets": [],
+      "streets": [
+        "Avenida de la Constitución",
+        "Calle de Madrid",
+        "Plaza de España",
+        "Avenida Tomás y Valiente",
+        "Avenida Gregorio Ordóñez",
+        "Calle Ronda de Zaragoza",
+        "Calle Camposanto",
+        "Avenida de la Frontera"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Urbanización Alameda de Torrejón"
+      ],
+      "regionalStreetCount": 156
     },
     {
       "id": "28151",
@@ -2241,9 +3752,20 @@
         "Torrelaguna",
         "Los Tomillares"
       ],
-      "streets": [],
+      "streets": [
+        "Avenida de Madrid",
+        "Calle Mayor",
+        "Plaza Mayor",
+        "Calle de la Constitución",
+        "Avenida de los Tomillares",
+        "Calle Malacuera",
+        "Calle del Canal de Isabel II",
+        "Calle Altajara"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 209
     },
     {
       "id": "28152",
@@ -2258,9 +3780,20 @@
         "La Berzosilla",
         "El Gasco"
       ],
-      "streets": [],
+      "streets": [
+        "Calle Real",
+        "Plaza de la Constitución",
+        "Plaza de la Iglesia",
+        "Avenida de la Comunidad de Madrid",
+        "Avenida del Pardo",
+        "Avenida Conde de las Almenas",
+        "Avenida de Torrelodones",
+        "Avenida de los Peñascales"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 372
     },
     {
       "id": "28153",
@@ -2273,9 +3806,22 @@
         "La Fábrica",
         "Casa De Oficios"
       ],
-      "streets": [],
+      "streets": [
+        "Calle Madrid",
+        "Plaza Mayor",
+        "Calle Arroyo San Román",
+        "Calle Jaral",
+        "Avenida de la Hispanidad",
+        "Avenida de Argentina",
+        "Calle del Canal de Isabel II",
+        "Calle Enebro"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Urbanización el Jaral del Pajarito"
+      ],
+      "regionalStreetCount": 91
     },
     {
       "id": "28154",
@@ -2288,9 +3834,20 @@
         "San Juan Del Viso",
         "Carretera De Loeches"
       ],
-      "streets": [],
+      "streets": [
+        "Calle Real",
+        "Calle Madrid",
+        "Calle Mayor",
+        "Calle Camino del Monte Alto",
+        "Calle Camino de los Ángeles",
+        "Paseo de los Pozos",
+        "Calle Berlín",
+        "Calle Ámsterdam"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 200
     },
     {
       "id": "28903",
@@ -2298,9 +3855,20 @@
       "areas": [
         "Tres Cantos"
       ],
-      "streets": [],
+      "streets": [
+        "Avenida de Madrid",
+        "Avenida de España",
+        "Calle de la Iglesia",
+        "Plaza de la Constitución",
+        "Plaza del Ayuntamiento",
+        "Plaza de España",
+        "Avenida de los Montes",
+        "Avenida de los Artesanos"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 385
     },
     {
       "id": "28155",
@@ -2309,9 +3877,22 @@
         "Valdaracete",
         "Fuensauco"
       ],
-      "streets": [],
+      "streets": [
+        "Calle Mayor",
+        "Calle de la Iglesia",
+        "Plaza de la Constitución",
+        "Calle de la Ermita",
+        "Calle de la Amargura",
+        "Calle Soldellano",
+        "Calle de la Fuente",
+        "Calle Enmedio"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Urbanización La Campanera"
+      ],
+      "regionalStreetCount": 68
     },
     {
       "id": "28156",
@@ -2320,9 +3901,22 @@
         "Valdeavero",
         "La Cardosa"
       ],
-      "streets": [],
+      "streets": [
+        "Calle Iglesia",
+        "Plaza de la Constitución",
+        "Calle Mayor",
+        "Plaza de España",
+        "Calle Olivo",
+        "Avenida la Cardosa",
+        "Calle Granado",
+        "Calle Nogal"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Urbanización la Cardosa"
+      ],
+      "regionalStreetCount": 96
     },
     {
       "id": "28157",
@@ -2330,9 +3924,20 @@
       "areas": [
         "Valdelaguna"
       ],
-      "streets": [],
+      "streets": [
+        "Calle Real",
+        "Avenida de España",
+        "Calle de la Iglesia",
+        "Calle Carretera de Perales",
+        "Calle Carretera de Morata",
+        "Calle Carretera de Colmenar",
+        "Calle Camino del Bosque",
+        "Calle de la Mesa"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 86
     },
     {
       "id": "28158",
@@ -2342,9 +3947,22 @@
         "Cerro Matallera",
         "La Hoya"
       ],
-      "streets": [],
+      "streets": [
+        "Calle Real",
+        "Calle de la Iglesia",
+        "Calle Mayor",
+        "Avenida del Desvío",
+        "Calle de la Peña del Viso",
+        "Calle Chorreras",
+        "Calle Callejuela",
+        "Ronda de Matallera"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Urbanización Inmaculada Concepción"
+      ],
+      "regionalStreetCount": 78
     },
     {
       "id": "28159",
@@ -2353,9 +3971,22 @@
         "Valdemaqueda",
         "El Río"
       ],
-      "streets": [],
+      "streets": [
+        "Avenida Constitución",
+        "Avenida de la Iglesia",
+        "Plaza España",
+        "Calle Umbría",
+        "Avenida Puente Romano",
+        "Calle San Ramón",
+        "Calle San Sebastián",
+        "Calle Alta de San Sebastián"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Colonia del Río"
+      ],
+      "regionalStreetCount": 102
     },
     {
       "id": "28160",
@@ -2371,9 +4002,22 @@
         "Montemorillo",
         "Los Barrancos"
       ],
-      "streets": [],
+      "streets": [
+        "Avenida de Madrid",
+        "Calle Real",
+        "Plaza Constitución",
+        "Plaza de la Iglesia",
+        "Calle Iglesia",
+        "Calle Mercurio",
+        "Calle Infanta Beatriz",
+        "Avenida Monteros de Castilla"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Barrio Santa Lucía"
+      ],
+      "regionalStreetCount": 494
     },
     {
       "id": "28161",
@@ -2381,9 +4025,20 @@
       "areas": [
         "Valdemoro"
       ],
-      "streets": [],
+      "streets": [
+        "Avenida de España",
+        "Avenida de Madrid",
+        "Calle Real",
+        "Plaza de la Constitución",
+        "Avenida de Andalucía",
+        "Paseo Juncarejo",
+        "Calle Agustina de Aragón",
+        "Avenida del Mar Mediterráneo"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 488
     },
     {
       "id": "28162",
@@ -2393,9 +4048,20 @@
         "Valdeolmos",
         "Miraval"
       ],
-      "streets": [],
+      "streets": [
+        "Calle Constitución",
+        "Calle Mayor",
+        "Avenida de la Paz",
+        "Calle de Alcalá (Alalpardo)",
+        "Calle Aldebarán",
+        "Calle Orión",
+        "Calle Picones",
+        "Calle Vereda de Viana"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 120
     },
     {
       "id": "28163",
@@ -2404,9 +4070,22 @@
         "Valdepiélagos",
         "Coto De San Benito"
       ],
-      "streets": [],
+      "streets": [
+        "Calle Mayor",
+        "Plaza Mayor",
+        "Calle de la Iglesia",
+        "Calle la Ecoaldea",
+        "Calle de los Mesones",
+        "Calle Sargalillo",
+        "Calle de San Isidro",
+        "Avenida de la Comunidad de Madrid"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Urbanización del Frontal"
+      ],
+      "regionalStreetCount": 48
     },
     {
       "id": "28164",
@@ -2419,9 +4098,23 @@
         "La Escarabajosa",
         "Soto Y La Vega"
       ],
-      "streets": [],
+      "streets": [
+        "Calle Madrid",
+        "Avenida de España",
+        "Calle de la Iglesia",
+        "Calle Mayor",
+        "Plaza de la Constitución",
+        "Calle Torrelaguna",
+        "Avenida Lope de Vega",
+        "Avenida Calderón de la Barca"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Urbanización el Mirador",
+        "Urbanización la Escarabajosa"
+      ],
+      "regionalStreetCount": 156
     },
     {
       "id": "28165",
@@ -2429,9 +4122,20 @@
       "areas": [
         "Valdilecha"
       ],
-      "streets": [],
+      "streets": [
+        "Calle Mayor",
+        "Calle Constitución",
+        "Plaza del Ayuntamiento",
+        "Calle de las Cuevas",
+        "Calle Alcalá",
+        "Calle de la Ronda",
+        "Paseo de las Choperas",
+        "Calle del Agua"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 111
     },
     {
       "id": "28166",
@@ -2439,9 +4143,20 @@
       "areas": [
         "Valverde De Alcalá"
       ],
-      "streets": [],
+      "streets": [
+        "Paseo de la Constitución",
+        "Calle de la Iglesia",
+        "Plaza Mayor",
+        "Calle Mayor",
+        "Calle el Castro",
+        "Calle Anchuelo",
+        "Calle Alcalá",
+        "Calle de Nuestra Señora de los Ángeles"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 54
     },
     {
       "id": "28167",
@@ -2449,9 +4164,20 @@
       "areas": [
         "Velilla De San Antonio"
       ],
-      "streets": [],
+      "streets": [
+        "Calle Mayor",
+        "Plaza de la Constitución",
+        "Calle de la Iglesia",
+        "Calle Madrid",
+        "Calle de Federico García Lorca",
+        "Calle Pintores",
+        "Avenida de la Ilustración",
+        "Calle del Doctor Enrique Alcorta"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 171
     },
     {
       "id": "28168",
@@ -2465,9 +4191,20 @@
         "El Calvero",
         "Dehesa Boyal"
       ],
-      "streets": [],
+      "streets": [
+        "Plaza Mayor",
+        "Avenida del Calvario",
+        "Calle del Cosillo",
+        "Calle de las Viñas",
+        "Calle de la Magdalena",
+        "Calle de la Picota",
+        "Calle de la Fuente",
+        "Calle de los Huertos"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 123
     },
     {
       "id": "28169",
@@ -2477,9 +4214,20 @@
         "Venturada",
         "Los Rosales"
       ],
-      "streets": [],
+      "streets": [
+        "Avenida de Madrid",
+        "Plaza del Ayuntamiento",
+        "Avenida Somosierra",
+        "Avenida de Monterrey",
+        "Calle del Puerto de Despeñaperros",
+        "Avenida de los Pirineos",
+        "Calle Cerro de la Paja",
+        "Calle Puerto de Canencia"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 139
     },
     {
       "id": "28171",
@@ -2491,9 +4239,20 @@
         "Poveda Y Los Albanales",
         "Dehesa Alamar Y Los Parrales"
       ],
-      "streets": [],
+      "streets": [
+        "Avenida de España",
+        "Avenida de la Constitución",
+        "Calle Madrid",
+        "Plaza Mayor",
+        "Calle de la Iglesia",
+        "Calle la Torre",
+        "Calle de las Provincias",
+        "Avenida Valdeolivas"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 296
     },
     {
       "id": "28170",
@@ -2502,9 +4261,20 @@
         "Villaconejos",
         "La Dehesa Y Valsalido"
       ],
-      "streets": [],
+      "streets": [
+        "Avenida de Madrid",
+        "Calle Constitución",
+        "Plaza Mayor",
+        "Calle de la Iglesia",
+        "Calle del Pintor Oliva",
+        "Calle del Sur",
+        "Calle Barrio Alto",
+        "Calle de los Huertos"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 114
     },
     {
       "id": "28172",
@@ -2519,9 +4289,20 @@
         "El Gurugú",
         "Dehesa De Los Hueros"
       ],
-      "streets": [],
+      "streets": [
+        "Calle Mayor",
+        "Avenida Madrid",
+        "Avenida España",
+        "Plaza Mayor",
+        "Plaza la Iglesia",
+        "Calle la Iglesia",
+        "Calle Santolina",
+        "Avenida del Robledal"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 365
     },
     {
       "id": "28173",
@@ -2532,9 +4313,20 @@
         "Vega De Los Bodegones",
         "Hoya De Simancas"
       ],
-      "streets": [],
+      "streets": [
+        "Calle Madrid",
+        "Calle de la Iglesia",
+        "Calle Mayor",
+        "Plaza de la Constitución",
+        "Plaza de la Iglesia",
+        "Calle Camino Toledano",
+        "Paseo del Parque",
+        "Calle del Castillo de Tajo I"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 92
     },
     {
       "id": "28174",
@@ -2545,9 +4337,30 @@
         "Los Olivos",
         "Jirfa"
       ],
-      "streets": [],
+      "streets": [
+        "Calle Real",
+        "Plaza de la Constitución",
+        "Avenida de la Libertad",
+        "Calle Cadalso de los Vidrios",
+        "Calle del Arroyo Grande",
+        "Paseo de la Estación",
+        "Calle Cervantes",
+        "Calle Lope de Vega"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Colonia Guindalera",
+        "Colonia Zuvasa 1fase",
+        "Colonia Zuvasa 2fase",
+        "Colonia de la Estación",
+        "Colonia de las Eras",
+        "Colonia los Llanos",
+        "Urbanización Jirfa",
+        "Urbanización la Malpuesta",
+        "Urbanización los Olivos"
+      ],
+      "regionalStreetCount": 118
     },
     {
       "id": "28175",
@@ -2558,9 +4371,20 @@
         "Las Mercadas",
         "La Aguilara"
       ],
-      "streets": [],
+      "streets": [
+        "Plaza de España",
+        "Plaza de la Iglesia",
+        "Calle Sierra de las Nieves",
+        "Calle del Olivar",
+        "Paseo San Antonio",
+        "Calle Doctor Zúmel",
+        "Calle de los Cedros",
+        "Calle Sierra de Guadarrama"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 97
     },
     {
       "id": "28176",
@@ -2570,9 +4394,26 @@
         "Villafranca Del Castillo",
         "El Palancar"
       ],
-      "streets": [],
+      "streets": [
+        "Avenida de España",
+        "Calle Real",
+        "Avenida de Madrid",
+        "Plaza de España",
+        "Plaza Constitución",
+        "Avenida Dehesa",
+        "Calle de las Paneras",
+        "Calle Castillo de Ponferrada"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Urbanización Los Arces",
+        "Urbanización Silos de la Ermita",
+        "Urbanización Villagolf",
+        "Urbanización el Noray",
+        "Urbanización las Encinas"
+      ],
+      "regionalStreetCount": 290
     },
     {
       "id": "28178",
@@ -2584,9 +4425,20 @@
         "Monte De Perales",
         "La Milla"
       ],
-      "streets": [],
+      "streets": [
+        "Calle Madrid",
+        "Calle Real",
+        "Plaza de la Constitución",
+        "Calle de la Iglesia",
+        "Calle San Antonio",
+        "Paseo de Enrique Tierno Galván",
+        "Calle Carretas",
+        "Avenida Julio Álvarez Álvarez"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 88
     },
     {
       "id": "28177",
@@ -2595,9 +4447,20 @@
         "Villanueva Del Pardillo",
         "Las Vegas - Santa Maria"
       ],
-      "streets": [],
+      "streets": [
+        "Avenida de Madrid",
+        "Calle Real",
+        "Plaza de la Constitución",
+        "Plaza Mayor",
+        "Avenida Juan Carlos I",
+        "Avenida San Pablo",
+        "Calle Aguamarina",
+        "Calle Camilo José Cela"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 235
     },
     {
       "id": "28179",
@@ -2606,9 +4469,23 @@
         "Eurovillas",
         "Villar Del Olmo"
       ],
-      "streets": [],
+      "streets": [
+        "Paseo Madrid",
+        "Calle Real",
+        "Calle Madrid",
+        "Calle Mayor",
+        "Plaza Mayor",
+        "Avenida Roma",
+        "Calle Número 10",
+        "Avenida Ulster"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Colonia Paquita",
+        "Colonia Trinidad"
+      ],
+      "regionalStreetCount": 77
     },
     {
       "id": "28180",
@@ -2619,9 +4496,24 @@
         "La Varga",
         "Buena Mesón"
       ],
-      "streets": [],
+      "streets": [
+        "Calle Mayor",
+        "Calle Constitución",
+        "Calle de la Iglesia",
+        "Plaza de España",
+        "Calle Madrid",
+        "Calle Cañuelo",
+        "Calle del Río Guadalquivir",
+        "Calle del Río Tajo"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Urbanización Jardín Villarejo",
+        "Urbanización Varga",
+        "Urbanización de Pablo Iglesias"
+      ],
+      "regionalStreetCount": 236
     },
     {
       "id": "28181",
@@ -2634,9 +4526,20 @@
         "Arco Iris",
         "Sacedón"
       ],
-      "streets": [],
+      "streets": [
+        "Avenida Madrid",
+        "Avenida España",
+        "Calle Mayor",
+        "Plaza Constitución",
+        "Calle Iglesia",
+        "Calle Cueva de la Mora",
+        "Avenida Príncipe de Asturias",
+        "Calle Guadiana"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 472
     },
     {
       "id": "28182",
@@ -2649,9 +4552,22 @@
         "La Cañada",
         "La Solanilla"
       ],
-      "streets": [],
+      "streets": [
+        "Calle del Real",
+        "Plaza Mayor",
+        "Calle de la Iglesia",
+        "Plaza de la Iglesia",
+        "Avenida de San Martín (Las Cabezas)",
+        "Calle de los Gallegos (Los Llanos)",
+        "Calle la Jara (Las Cabezas)",
+        "Calle de las Nieves (Los Llanos)"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [
+        "Urbanización Tercio de la Laguna"
+      ],
+      "regionalStreetCount": 64
     },
     {
       "id": "28183",
@@ -2664,9 +4580,23 @@
         "La Gargantilla",
         "Los Morales"
       ],
-      "streets": [],
+      "streets": [
+        "Calle Madrid",
+        "Calle de España",
+        "Plaza de la Constitución",
+        "Calle de la Iglesia",
+        "Avenida de la Estación",
+        "Avenida de la Cruz Verde",
+        "Calle del Ferrocarril",
+        "Calle Quemadillo"
+      ],
       "neighborhoods": [],
-      "sources": []
+      "sources": [],
+      "localZones": [],
+      "regionalStreetCount": 149
     }
-  ]
+  ],
+  "regionalStreetSource": "https://idem.comunidad.madrid/catalogocartografia/srv/resources/datasets/spacm_callescm",
+  "regionalDownload": "https://idem.comunidad.madrid/recursos_cat_geo/Catalogo/recursos/Direcciones/Callejero_CM.zip",
+  "regionalRecords": 48841
 }
