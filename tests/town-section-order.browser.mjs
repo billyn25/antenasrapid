@@ -19,7 +19,7 @@ try{
    const page=await browser.newPage({viewport:{width,height:900}});
    const r=await page.goto(base+town.path,{waitUntil:'networkidle'});assert.equal(r.status(),200);
    const privacy=page.getByRole('button',{name:'Entendido',exact:true});if(await privacy.isVisible())await privacy.click();
-   assert.equal(await page.locator('main[data-town-order="20261023"]').count(),1);
+   assert.equal(await page.locator('main[data-town-order="20261024-grouped"]').count(),1);
    assert.equal(await page.locator('#servicios .service-card').count(),9);
    assert.equal(await page.locator('#servicios .service-card p').count(),9);
    assert.equal(await page.locator('[data-whatsapp-form]').count(),1);
@@ -28,8 +28,11 @@ try{
     const errors=[];
     if(document.documentElement.scrollWidth>innerWidth+2)errors.push('horizontal overflow');
     const ids=[...document.querySelectorAll('[id]')].map(n=>n.id);if(new Set(ids).size!==ids.length)errors.push('duplicate IDs');
+    if(document.getElementById('servicio-local'))errors.push('redundant catalogue');
+    if(!document.querySelector('#contacto #contexto-municipal'))errors.push('preparation outside contact');
+    if(!document.querySelector('#pueblos-cercanos #zonas'))errors.push('province navigation outside final block');
     const items=[...document.querySelector('main').children];
-    const selectors=['#servicios','#problemas-tdt','#porteros-videoporteros','#cobertura-movil','#soluciones-tecnicas','#servicio-local','.local-service-depth','.madrid-seo-depth','.madrid-service-links','#experiencia','#galeria','#contexto-municipal','#codigos-postales','#distritos-madrid','#preguntas','#contacto','#zonas','#pueblos-cercanos'];
+    const selectors=['#servicios','#problemas-tdt','#porteros-videoporteros','#cobertura-movil','#soluciones-tecnicas','#experiencia','#galeria','#codigos-postales','#distritos-madrid','#preguntas','#contacto','#pueblos-cercanos'];
     let last=-1;
     for(const selector of selectors){const n=document.querySelector('main '+selector);if(!n)continue;const at=items.indexOf(n);if(at<=last)errors.push('wrong order '+selector);last=at;}
     for(const a of document.querySelectorAll('main a[href^="#"]'))if(a.hash&&!document.getElementById(decodeURIComponent(a.hash.slice(1))))errors.push('missing anchor '+a.hash);

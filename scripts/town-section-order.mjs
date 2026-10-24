@@ -1,11 +1,10 @@
-import {bilbaoHeading} from './bilbao-local.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import assert from 'node:assert/strict';
 import {pathToFileURL} from 'node:url';
 import {assertNearbyFooter} from './nearby-footer.mjs';
 
-const RELEASE='20261023';
+const RELEASE='20261024-grouped';
 const responsiveStyle='<style id="town-order-responsive">[data-town-order] #distritos-madrid .province-card{min-width:0;overflow-wrap:anywhere}</style>';
 const fitDistricts=html=>html.includes('id="distritos-madrid"')&&!html.includes('id="town-order-responsive"')?html.replace('</head>',responsiveStyle+'</head>'):html;
 const escape=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -52,29 +51,48 @@ function nodeRank(node,label){
 const heading=(node,text)=>node.replace(/(<h2\b[^>]*>)[\s\S]*?(<\/h2>)/,(_,a,b)=>a+text+b);
 const signature=(html,re)=>[...html.matchAll(re)].map(m=>m[0]).sort();
 
+const GROUP_STYLE='<style id="town-groups-style">.town-contact-group{padding-top:36px}.town-contact-group>h2{font-size:30px;line-height:1.25}.town-contact-group>.town-contact-form{padding-bottom:20px}.town-contact-group>.town-contact-form{padding-top:20px}.town-visit-preparation{padding:24px 0 0}.town-contact-group .town-visit-preparation>.wrap{width:100%}.town-preparation-details{width:min(1200px,calc(100% - 48px));margin:0 auto 12px}.town-preparation-details>summary{cursor:pointer;padding:14px 0;min-height:44px;font-weight:700;font-size:16px}.town-visit-preparation h3{font-size:20px;line-height:1.35}.town-extra-diagnostics{margin-top:28px;padding-top:24px;border-top:1px solid var(--line)}.town-extra-diagnostics>h3{margin-top:0}.town-extra-diagnostics .local-depth-grid{margin-bottom:16px}.town-contact-group .municipal-layout{gap:20px}.town-contact-group .municipal-facts dd{font-size:22px}@media(max-width:720px){.town-contact-group>h2{font-size:25px}.town-visit-preparation h3{font-size:18px}.town-visit-preparation{padding-top:20px}.town-extra-diagnostics{margin-top:22px;padding-top:20px}}</style>';
+function subordinate(node,classes){
+ return node.replace(/^<section\b[^>]*>/,opening=>opening.replace('<section','<div').replace(/class="[^"]*"/,`class="${classes}"`)).replace(/<\/section>$/,'</div>').replace(/<h2(\b[^>]*)>/g,'<h3$1>').replace(/<\/h2>/g,'</h3>');
+}
 export function orderTownSections(html,page){
  if(html.includes(`data-town-order="${RELEASE}"`))return fitDistricts(html);
  const main=html.match(/<main\b[^>]*>([\s\S]*?)<\/main>/);assert.ok(main,page.path+': falta main');
  const nodes=children(main[1]);const names=new Set();
- const ordered=nodes.map((original,index)=>{
-  let node=original;const classes=classOf(node),id=idOf(node);let rank;
-  rank=nodeRank(node,page.path);
-  if(id){assert.ok(!names.has(id),page.path+': bloque duplicado '+id);names.add(id);}
+ for(const node of nodes){const id=idOf(node);if(id){assert(!names.has(id),page.path+': bloque duplicado '+id);names.add(id);}}
+ for(const id of ['servicios','problemas-tdt','porteros-videoporteros','cobertura-movil','experiencia','contexto-municipal','servicio-local','preguntas','contacto','zonas','pueblos-cercanos'])assert(names.has(id),page.path+': falta '+id);
+ // The generic catalogue repeats the nine main service cards. Bilbao's former
+ // neighbourhood block is superseded by its sourced geographic coverage block.
+ const discarded=nodes.filter(n=>['servicio-local','zonas'].includes(idOf(n)));
+ const extras=nodes.filter(n=>classOf(n).includes('local-service-depth')||classOf(n).includes('madrid-service-links'));
+ const preparation=nodes.filter(n=>idOf(n)==='contexto-municipal'||classOf(n).includes('madrid-seo-depth'));
+ const absorbed=new Set([...discarded,...extras,...preparation]);
+ let ordered=nodes.filter(n=>!absorbed.has(n)).map((original,index)=>{
+  let node=original;const id=idOf(node);
   if(id==='servicios')node=node.replace(/(<span class="eyebrow">)[\s\S]*?(<\/span>)/,(_,a,b)=>a+'Servicios disponibles'+b);
-  if(id==='servicio-local')node=heading(node,node.includes('data-bilbao-coverage=')?bilbaoHeading:'Instalaciones y trabajos que atendemos en '+escape(page.name));
-  if(classes.includes('local-service-depth'))node=heading(node,'Averías que revisamos en '+escape(page.name));
-  if(classes.includes('madrid-seo-depth'))node=heading(node,'Cómo preparar una intervención en '+escape(page.name));
-  return {node,index,rank,original};
+  if(id==='soluciones-tecnicas'){
+   node=heading(node,'Soluciones y diagnóstico de instalaciones en '+escape(page.name));
+   const detail=extras.map(n=>subordinate(heading(n,classOf(n).includes('local-service-depth')?'Identifica la avería antes de pedir asistencia':'Consulta por tipo de servicio'),'town-extra-diagnostics '+classOf(n).filter(c=>!['section','wrap'].includes(c)).join(' '))).join('');
+   node=node.replace(/<\/section>$/,detail+'</section>');
+  }
+  if(id==='contacto'){
+   const form=node.replace(/<h2(\b[^>]*)>/g,'<h3$1>').replace(/<\/h2>/g,'</h3>').replace(/^<section\b[^>]*>/,opening=>opening.replace('<section','<div').replace(/\s+id="contacto"/,'').replace(/class="([^"]*)"/,'class="$1 town-contact-form"')).replace(/<\/section>$/,'</div>');
+   const prep=preparation.map(n=>subordinate(n,'town-visit-preparation '+classOf(n).filter(c=>!['section','soft','wrap'].includes(c)).join(' '))).join('');
+   node=`<section class="section town-contact-group" id="contacto"><h2 class="wrap">Preparar tu consulta en ${escape(page.name)}</h2><details class="town-preparation-details"><summary>Qué datos conviene preparar antes de la visita</summary>${prep}</details>${form}</section>`;
+  }
+  if(id==='pueblos-cercanos')node=node.replace(/(<section\b[^>]*>)/,'$1<span id="zonas" aria-hidden="true"></span>');
+  return {node,index,rank:nodeRank(node,page.path)};
  }).sort((a,b)=>a.rank-b.rank||a.index-b.index);
- for(const id of ['servicios','problemas-tdt','porteros-videoporteros','cobertura-movil','experiencia','contexto-municipal','servicio-local','preguntas','contacto','zonas','pueblos-cercanos'])assert.ok(names.has(id),page.path+': falta '+id);
- let after=html.replace(main[0],()=>opening(main[0]).slice(0,-1)+` data-town-order="${RELEASE}">`+ordered.map(x=>x.node).join('\n')+'</main>');
- after=fitDistricts(after);
- // Fail the build if anything except approved labels, whitespace and node order changes.
- for(const re of [/<header\b[\s\S]*?<\/header>/g,/<footer\b[\s\S]*?<\/footer>/g,/<h1\b[^>]*>[\s\S]*?<\/h1>/g,/<p\b[^>]*>[\s\S]*?<\/p>/g,/<summary\b[^>]*>[\s\S]*?<\/summary>/g,/<a\b[^>]*>/g,/<img\b[^>]*>/g,/<meta\b[^>]*>/g,/<title>[\s\S]*?<\/title>/g,/<link\b[^>]*>/g,/<form\b[\s\S]*?<\/form>/g,/<script\b[\s\S]*?<\/script>/g,/<style\b[\s\S]*?<\/style>/g,/\bid="[^"]+"/g])assert.deepEqual(signature(after.replace(responsiveStyle,''),re),signature(html.replace(responsiveStyle,''),re),page.path+': contenido protegido modificado');
- const heroes=items=>items.filter(n=>classOf(n).includes('hero'));
- assert.deepEqual(heroes(children(after.match(/<main\b[^>]*>([\s\S]*?)<\/main>/)[1])),heroes(nodes),page.path+': hero cambiado');
- assertTownOrder(after,page);
- return after;
+ assert(ordered.some(n=>idOf(n.node)==='soluciones-tecnicas'),page.path+': falta diagnóstico');
+ const mainOpen=opening(main[0]).replace(/\sdata-town-order="[^"]*"/,'').slice(0,-1);
+ let after=html.replace(main[0],()=>mainOpen+` data-town-order="${RELEASE}">`+ordered.map(x=>x.node).join('\n')+'</main>');
+ after=fitDistricts(after).replace('</head>',GROUP_STYLE+'</head>');
+ // All useful diagnostics, forms, images, metadata and supporting paragraphs
+ // survive. Only the explicitly superseded catalogue and provincial CTA go.
+ let baseline=html;for(const node of discarded)baseline=baseline.replace(node,'');
+ baseline+='<span id="zonas" aria-hidden="true"></span><summary>Qué datos conviene preparar antes de la visita</summary>';
+ for(const re of [/<header\b[\s\S]*?<\/header>/g,/<footer\b[\s\S]*?<\/footer>/g,/<h1\b[^>]*>[\s\S]*?<\/h1>/g,/<p\b[^>]*>[\s\S]*?<\/p>/g,/<summary\b[^>]*>[\s\S]*?<\/summary>/g,/<a\b[^>]*>/g,/<img\b[^>]*>/g,/<meta\b[^>]*>/g,/<title>[\s\S]*?<\/title>/g,/<link\b[^>]*>/g,/<form\b[\s\S]*?<\/form>/g,/<script\b[\s\S]*?<\/script>/g,/\bid="[^"]+"/g])assert.deepEqual(signature(after.replace(responsiveStyle,'').replace(GROUP_STYLE,''),re),signature(baseline.replace(responsiveStyle,''),re),page.path+': contenido protegido modificado');
+ assertTownOrder(after,page);return after;
 }
 export function assertTownOrder(html,page){
  assert.ok(html.includes(`data-town-order="${RELEASE}"`),page.path+': falta versión de orden');
@@ -84,13 +102,19 @@ export function assertTownOrder(html,page){
   if(/^<style\b/.test(node))continue;
   const rank=nodeRank(node,page.path);assert.ok(rank>=last,page.path+': bloque fuera de orden '+opening(node));last=rank;
  }
+ assert.equal((html.match(/id="contacto"/g)||[]).length,1,page.path);
+ assert(!html.includes('id="servicio-local"'),page.path+': catálogo redundante');
+ assert.equal((html.match(/id="contexto-municipal"/g)||[]).length,1,page.path);
+ const contact=main[1].indexOf('id="contacto"');
+ assert(main[1].indexOf('id="contexto-municipal"')>contact,page.path+': preparación junto al formulario');
+ assert(main[1].indexOf('id="zonas"')>main[1].indexOf('id="pueblos-cercanos"'),page.path+': navegación reunida');
  assertNearbyFooter(html,page.path);
 }
 
 export function applyTownOrder(root='dist',auditOnly=false){
  const towns=JSON.parse(fs.readFileSync(path.join(root,'local-pages-manifest.json'),'utf8'));
  for(const page of towns){const file=path.join(root,page.path.slice(1)),before=fs.readFileSync(file,'utf8');if(auditOnly)assertTownOrder(before,page);else fs.writeFileSync(file,orderTownSections(before,page));}
- console.log(`ORDEN MUNICIPAL OK: ${towns.length} pueblos; servicios, TDT, accesos, conectividad, diagnóstico, marcas, preparación, preguntas, contacto y cercanos. Contenido protegido conservado.`);
+ console.log(`ORDEN MUNICIPAL OK: ${towns.length} pueblos; servicios, TDT, accesos, diagnóstico unificado, marcas, cobertura local, preguntas, preparación y formulario, navegación final.`);
  return towns.length;
 }
 if(process.argv[1]&&import.meta.url===pathToFileURL(path.resolve(process.argv[1])).href)applyTownOrder(process.env.PRODUCTION_ROOT||'dist',process.argv.includes('--audit'));
