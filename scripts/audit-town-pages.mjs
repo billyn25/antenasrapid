@@ -93,10 +93,18 @@ for (const page of localPages) {
   assert.ok(html.includes(`href="${new URL(page.path, site.domain).href}"`), `${page.path}: canonical propio`);
   assert.ok(html.includes(`Antenista en ${page.name}`), `${page.path}: intención antenista + pueblo`);
   assert.ok(html.includes(`<span class="eyebrow">Servicio en ${esc(page.name)}</span>`), `${page.path}: servicio + pueblo sin teléfono repetido`);
+  if(page.path === '/Antenas-Bizkaia/bilbao.html') {
+    assert.ok(html.includes('data-bilbao-coverage="20261024"'), 'Bilbao: cobertura local ausente');
+    const coverage=html.match(/<section[^>]*data-bilbao-coverage=[\s\S]*?<\/section>/)?.[0] || '';
+    assert.equal((coverage.match(/<article>/g)||[]).length,8,'Bilbao: ocho distritos');
+    assert.ok(coverage.includes('Antenistas en los barrios de Bilbao'),'Bilbao: título local');
+    assert.ok(coverage.includes('href="#contacto"'),'Bilbao: consulta accesible');
+  } else {
   assert.ok(html.includes(`Reparación de antenas en ${page.name}`), `${page.path}: reparación + pueblo`);
   assert.ok(html.includes(`Porteros automáticos y videoporteros en ${page.name}`), `${page.path}: porteros + pueblo`);
   assert.ok(html.includes(`Cobertura móvil 4G/5G en vivienda individual en ${page.name}`), `${page.path}: cobertura móvil + pueblo`);
   assert.ok(html.includes('data-local-variant='), `${page.path}: variante local`);
+  }
   assert.ok(html.includes(site.phone), `${page.path}: teléfono`);
   const main = html.match(/<main\b[^>]*>([\s\S]*?)<\/main>/i)?.[1];
   assert.ok(main, `${page.path}: falta contenido principal`);

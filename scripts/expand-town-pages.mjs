@@ -1,3 +1,4 @@
+import {bilbaoLocalBlock} from './bilbao-local.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import { pages, site, renderPage, routeFile, esc } from './build.mjs';
@@ -108,6 +109,7 @@ const serviceTextVariants = {
 };
 
 function localSeoBlock(page) {
+  if(page.name === 'Bilbao' && page.parent === '/Antenas-Bizkaia/') return bilbaoLocalBlock();
   const h = stableHash(`${page.path}|bloques`);
   const pick = (key, offset) => serviceTextVariants[key][Math.floor(h / offset) % serviceTextVariants[key].length](page.name);
   const faq = [

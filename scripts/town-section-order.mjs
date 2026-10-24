@@ -1,3 +1,4 @@
+import {bilbaoHeading} from './bilbao-local.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import assert from 'node:assert/strict';
@@ -60,7 +61,7 @@ export function orderTownSections(html,page){
   rank=nodeRank(node,page.path);
   if(id){assert.ok(!names.has(id),page.path+': bloque duplicado '+id);names.add(id);}
   if(id==='servicios')node=node.replace(/(<span class="eyebrow">)[\s\S]*?(<\/span>)/,(_,a,b)=>a+'Servicios disponibles'+b);
-  if(id==='servicio-local')node=heading(node,'Instalaciones y trabajos que atendemos en '+escape(page.name));
+  if(id==='servicio-local')node=heading(node,node.includes('data-bilbao-coverage=')?bilbaoHeading:'Instalaciones y trabajos que atendemos en '+escape(page.name));
   if(classes.includes('local-service-depth'))node=heading(node,'Averías que revisamos en '+escape(page.name));
   if(classes.includes('madrid-seo-depth'))node=heading(node,'Cómo preparar una intervención en '+escape(page.name));
   return {node,index,rank,original};
