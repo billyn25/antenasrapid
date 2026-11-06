@@ -43,7 +43,7 @@ try:
                     if width in (390, 1440):
                         page.screenshot(path=str(QA / f'{stem}-hero-{engine.name}-{width}.png'))
                     assert page.locator('#galeria').count() == 1
-                    assert page.locator('#galeria .gallery-grid img').count() == 12
+                    assert page.locator('#galeria .gallery-grid img').count() == len(json.loads(Path('content/trabajos-reales.json').read_text())['photos'])
                     for image in page.locator('#galeria img').all():
                         image.scroll_into_view_if_needed()
                         page.wait_for_function('(i) => i.complete && i.naturalWidth > 0', arg=image.element_handle())

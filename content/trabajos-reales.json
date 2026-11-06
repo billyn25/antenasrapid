@@ -1,0 +1,278 @@
+{
+  "confirmedByOwner": "2026-11-06",
+  "scope": "Pueblos del norte y Burgos",
+  "confirmedTowns": [
+    "Deba",
+    "Lekeitio",
+    "Zierbena",
+    "Zamudio",
+    "Santillana del Mar",
+    "Suances",
+    "Llanes",
+    "Getxo",
+    "Barakaldo"
+  ],
+  "photos": [
+    {
+      "file": "trabajo-01.webp",
+      "thumbnail": "trabajo-01-mini.webp",
+      "alt": "Antena TDT sobre torre metálica",
+      "width": 810,
+      "height": 1440,
+      "original": "PHOTO-2026-10-20-12-58-41 2.jpg",
+      "sha256": "d16b5d4334bc2cd51b834c004f03ba2018e704f168500d00541bc1df9dd9ee70"
+    },
+    {
+      "file": "trabajo-02.webp",
+      "thumbnail": "trabajo-02-mini.webp",
+      "alt": "Cabecera de amplificación y distribución de señal",
+      "width": 810,
+      "height": 1440,
+      "original": "PHOTO-2026-10-20-12-58-49 2.jpg",
+      "sha256": "b4067d18143a6e902f670d297e68e4cebbd4761b7ffe63bbdaaee2e4d69f011b"
+    },
+    {
+      "file": "trabajo-03.webp",
+      "thumbnail": "trabajo-03-mini.webp",
+      "alt": "Placa de portero automático en un portal",
+      "width": 810,
+      "height": 1440,
+      "original": "PHOTO-2026-10-30-20-55-02.jpg",
+      "sha256": "1ad1e0e745c85c5ea314e48dc57d42bab040a387fc50fc1bf32163493d109775"
+    },
+    {
+      "file": "trabajo-04.webp",
+      "thumbnail": "trabajo-04-mini.webp",
+      "alt": "Antena TDT en cubierta",
+      "width": 811,
+      "height": 1440,
+      "original": "PHOTO-2026-11-05-21-31-44 12.jpg",
+      "sha256": "03c820a5efba5c8eefe35dfe0d9420a62b0f5875bfa17b2cae2a6bc7e4a14518"
+    },
+    {
+      "file": "trabajo-05.webp",
+      "thumbnail": "trabajo-05-mini.webp",
+      "alt": "Montaje de antena junto a una escalera",
+      "width": 811,
+      "height": 1440,
+      "original": "PHOTO-2026-11-05-21-32-28.jpg",
+      "sha256": "1f7bfc3893dc87cf133885aa4464c8e769d84d7550101f199b3f7c724282e2d5"
+    },
+    {
+      "file": "trabajo-06.webp",
+      "thumbnail": "trabajo-06-mini.webp",
+      "alt": "Placa exterior de videoportero",
+      "width": 810,
+      "height": 1440,
+      "original": "PHOTO-2026-11-05-21-34-26 2.jpg",
+      "sha256": "741ef837a7a94799b9cd96d3ed7743fa95ebe06dbe39be99e88941f9760220d3"
+    },
+    {
+      "file": "trabajo-07.webp",
+      "thumbnail": "trabajo-07-mini.webp",
+      "alt": "Mástil con antenas de televisión",
+      "width": 811,
+      "height": 1440,
+      "original": "PHOTO-2026-11-05-21-34-26 3.jpg",
+      "sha256": "86eabde45be1e1de8cfcae436eb29e458c35ea6e13f0883d9674f301ef6f85d8"
+    },
+    {
+      "file": "trabajo-08.webp",
+      "thumbnail": "trabajo-08-mini.webp",
+      "alt": "Antena de televisión sobre tejado",
+      "width": 811,
+      "height": 1440,
+      "original": "PHOTO-2026-11-05-21-34-27 2.jpg",
+      "sha256": "4e352e94e9d8f0c7e3ab69e4403a52ed013e3120631ac05e9f5af99d857bdaf2"
+    },
+    {
+      "file": "trabajo-09.webp",
+      "thumbnail": "trabajo-09-mini.webp",
+      "alt": "Mástil de antena junto a una cubierta",
+      "width": 811,
+      "height": 1440,
+      "original": "PHOTO-2026-11-05-21-34-27.jpg",
+      "sha256": "6526abc4bf527efbc8bed57e91d850b1db90ed473693d29c4ba56e7cb3953ce8"
+    },
+    {
+      "file": "trabajo-10.webp",
+      "thumbnail": "trabajo-10-mini.webp",
+      "alt": "Antena TDT junto a una vivienda",
+      "width": 811,
+      "height": 1440,
+      "original": "PHOTO-2026-11-05-21-34-29 2.jpg",
+      "sha256": "acbc325840206475121ce777c89b9a2c5d96a973e736b13129d75bc7df22de91"
+    },
+    {
+      "file": "trabajo-11.webp",
+      "thumbnail": "trabajo-11-mini.webp",
+      "alt": "Antenas de televisión y parabólica en cubierta",
+      "width": 1080,
+      "height": 1440,
+      "original": "PHOTO-2026-11-05-21-34-29 3.jpg",
+      "sha256": "28328c36c7726ff9b38425428c279c25091c690263527ce35bea9ce8204c63c7"
+    },
+    {
+      "file": "trabajo-12.webp",
+      "thumbnail": "trabajo-12-mini.webp",
+      "alt": "Antenas TDT en mástil",
+      "width": 811,
+      "height": 1440,
+      "original": "PHOTO-2026-11-05-21-34-29 4.jpg",
+      "sha256": "d4f59a656205c622eed297663d7321f01ad57e6b8b7231c73f9f28f8221cc219"
+    },
+    {
+      "file": "trabajo-13.webp",
+      "thumbnail": "trabajo-13-mini.webp",
+      "alt": "Antena de televisión junto a una chimenea",
+      "width": 811,
+      "height": 1440,
+      "original": "PHOTO-2026-11-05-21-34-29 5.jpg",
+      "sha256": "23a1e262214415e93dbf2608b5bafbaa6103c8b1d09a61940b1a2a5941f8200d"
+    },
+    {
+      "file": "trabajo-14.webp",
+      "thumbnail": "trabajo-14-mini.webp",
+      "alt": "Antena TDT sobre tejado de teja",
+      "width": 810,
+      "height": 1440,
+      "original": "PHOTO-2026-11-05-21-34-29 6.jpg",
+      "sha256": "f9616709b10d0873bee012f662d64fd43225d47f6a07a27c24770c61943eefff"
+    },
+    {
+      "file": "trabajo-15.webp",
+      "thumbnail": "trabajo-15-mini.webp",
+      "alt": "Antenas de televisión y parabólica en tejado",
+      "width": 1080,
+      "height": 1440,
+      "original": "PHOTO-2026-11-05-21-34-29.jpg",
+      "sha256": "87025033c3eb9019f98f726043a2445bb802ac1d4b542b33550311757d171f5b"
+    },
+    {
+      "file": "trabajo-16.webp",
+      "thumbnail": "trabajo-16-mini.webp",
+      "alt": "Equipo de amplificación y conexiones de antena",
+      "width": 1440,
+      "height": 810,
+      "original": "PHOTO-2026-11-05-21-34-30 2.jpg",
+      "sha256": "9f45e70ad7c22de683a459fad05f06293459ea4069dd8ad45d7d23a0fd114b3d"
+    },
+    {
+      "file": "trabajo-17.webp",
+      "thumbnail": "trabajo-17-mini.webp",
+      "alt": "Cableado de distribución de señal",
+      "width": 810,
+      "height": 1440,
+      "original": "PHOTO-2026-11-05-21-34-30.jpg",
+      "sha256": "47ab5e09e70adada6fd2624f0b656742959b6d1ce01d55beb6b0394403cc3553"
+    },
+    {
+      "file": "trabajo-18.webp",
+      "thumbnail": "trabajo-18-mini.webp",
+      "alt": "Antena TDT en una vivienda rural",
+      "width": 810,
+      "height": 1440,
+      "original": "PHOTO-2026-11-05-21-38-49 2.jpg",
+      "sha256": "37c55c8d1ca0b653cd407978bf7544f40cdfa579e16dc266268160da87717a7d"
+    },
+    {
+      "file": "trabajo-19.webp",
+      "thumbnail": "trabajo-19-mini.webp",
+      "alt": "Antena de televisión sobre una cubierta",
+      "width": 810,
+      "height": 1440,
+      "original": "PHOTO-2026-11-05-21-38-49.jpg",
+      "sha256": "3443a8aeb4a19ad35c2229b3e371f40b21614cc394f1300f6dd36dd7fa2670d9"
+    },
+    {
+      "file": "trabajo-20.webp",
+      "thumbnail": "trabajo-20-mini.webp",
+      "alt": "Placa de videoportero en la entrada",
+      "width": 810,
+      "height": 1440,
+      "original": "PHOTO-2026-11-05-21-38-50.jpg",
+      "sha256": "3de0ba9a2fb4144969e2d40ca14f3c489439e904d6cbfdecca5cb59f7a4ad2f0"
+    },
+    {
+      "file": "trabajo-21.webp",
+      "thumbnail": "trabajo-21-mini.webp",
+      "alt": "Antena TDT en tejado",
+      "width": 810,
+      "height": 1440,
+      "original": "PHOTO-2026-11-05-21-38-51 2.jpg",
+      "sha256": "3110b9b6ef2bd4104f67d490fa119217ccefb9ad82dbec7dc38c1b4b593b01fa"
+    },
+    {
+      "file": "trabajo-22.webp",
+      "thumbnail": "trabajo-22-mini.webp",
+      "alt": "Antena de televisión sobre tejas",
+      "width": 810,
+      "height": 1440,
+      "original": "PHOTO-2026-11-05-21-38-51 3.jpg",
+      "sha256": "d7ed6541dc4a7e602766c1244842bedad477e643b2d67a0a9a6e95c38047fd01"
+    },
+    {
+      "file": "trabajo-23.webp",
+      "thumbnail": "trabajo-23-mini.webp",
+      "alt": "Mástil y antena junto a una chimenea",
+      "width": 810,
+      "height": 1440,
+      "original": "PHOTO-2026-11-05-21-38-51 4.jpg",
+      "sha256": "02075197287b26b9040d6b57efa85472266b1ff56d4f945e197be5917b099eb8"
+    },
+    {
+      "file": "trabajo-24.webp",
+      "thumbnail": "trabajo-24-mini.webp",
+      "alt": "Amplificador y cableado de señal",
+      "width": 810,
+      "height": 1440,
+      "original": "PHOTO-2026-11-05-21-38-51 5.jpg",
+      "sha256": "c9253f0c536243e11a53eb35b573dc1e57ad701627054d3275c386b5f0ff9d79"
+    },
+    {
+      "file": "trabajo-25.webp",
+      "thumbnail": "trabajo-25-mini.webp",
+      "alt": "Antena TDT junto a una escalera",
+      "width": 810,
+      "height": 1440,
+      "original": "PHOTO-2026-11-05-21-38-51.jpg",
+      "sha256": "c990502c986dc036ab5ade98010b7500a4eb332bc435e6e6ad216169d1001c47"
+    },
+    {
+      "file": "trabajo-26.webp",
+      "thumbnail": "trabajo-26-mini.webp",
+      "alt": "Antena TDT y parabólica en una vivienda",
+      "width": 810,
+      "height": 1440,
+      "original": "PHOTO-2026-11-05-21-38-52 2.jpg",
+      "sha256": "e3d8b5f1fdeb84159feea0b3c5df32697e99736e529beec7d319c855f67b5166"
+    },
+    {
+      "file": "trabajo-27.webp",
+      "thumbnail": "trabajo-27-mini.webp",
+      "alt": "Antenas TDT y parabólica junto a la cubierta",
+      "width": 810,
+      "height": 1440,
+      "original": "PHOTO-2026-11-05-21-38-52 3.jpg",
+      "sha256": "8758bb8b516fba076a729d84ae50255e6045d73c05774e675276f6c63a663201"
+    },
+    {
+      "file": "trabajo-28.webp",
+      "thumbnail": "trabajo-28-mini.webp",
+      "alt": "Antena TDT en un entorno rural",
+      "width": 810,
+      "height": 1440,
+      "original": "PHOTO-2026-11-05-21-38-52 4.jpg",
+      "sha256": "e8f497b5c5b9329a09e2b3a409517ab09f4ac42580425e362c621b7954cdb4b7"
+    },
+    {
+      "file": "trabajo-29.webp",
+      "thumbnail": "trabajo-29-mini.webp",
+      "alt": "Antena de televisión sobre tejado",
+      "width": 810,
+      "height": 1440,
+      "original": "PHOTO-2026-11-05-21-38-52.jpg",
+      "sha256": "29d545583bbd7248bce6eb5f171ea7a9ce9500cb14996943bd83c5cd96152cab"
+    }
+  ]
+}

@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {pathToFileURL} from 'node:url';
 import assert from 'node:assert/strict';
+import {work} from './real-work-gallery.mjs';
 
 // Only Madrid receives the homepage photograph and existing gallery.
 // Reuse the same asset URLs, markup, styles and lightbox: no new downloads.
@@ -36,7 +37,7 @@ export function applyMadridVisuals(html, route, gallery) {
 export function homepageGallery(home) {
   const patterns = {
     style: /<style id="rapid-gallery-style">[\s\S]*?<\/style>/,
-    markup: /<section class="gallery-section" id="galeria">[\s\S]*?<\/section><dialog class="gallery-lightbox"[\s\S]*?<\/dialog>/,
+    markup: /<section class="gallery-section" id="galeria"[^>]*>[\s\S]*?<\/section>\s*<dialog class="gallery-lightbox"[\s\S]*?<\/dialog>/,
     script: /<script id="rapid-gallery-script">[\s\S]*?<\/script>/
   };
   const gallery = Object.fromEntries(Object.entries(patterns).map(([key, pattern]) => {
@@ -44,7 +45,7 @@ export function homepageGallery(home) {
     assert.ok(match, `Falta ${key} de la galería de portada`);
     return [key, match[0]];
   }));
-  assert.equal((gallery.markup.match(/class="gallery-open"/g) || []).length, 12, 'La galería de portada debe conservar sus 12 fotos');
+  assert.equal((gallery.markup.match(/class="gallery-open"/g) || []).length, work.photos.length, 'La galería debe conservar las fotografías originales');
   return gallery;
 }
 
@@ -62,6 +63,6 @@ function main() {
     const html = fs.readFileSync(file, 'utf8');
     fs.writeFileSync(file, applyMadridVisuals(html, route, gallery));
   }
-  console.log(`MADRID VISUAL OK: ${routes.length} páginas con la foto y las 12 imágenes de portada; otras provincias intactas.`);
+  console.log(`MADRID VISUAL OK: ${routes.length} páginas con la foto y las fotografías originales de portada; otras provincias intactas.`);
 }
 if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href) main();
