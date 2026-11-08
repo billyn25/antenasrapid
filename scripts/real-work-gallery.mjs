@@ -30,7 +30,15 @@ export function renderWorkGallery({home=false,photos=work.photos,route='/',town=
     : `${town ? `Hemos realizado trabajos en ${esc(town)}. ` : ''}Esta selección muestra trabajos de Antenas Rapid en distintos pueblos del norte y Burgos.`;
   const shown=home?photos.slice(0,8):photos;
   const rest=home?photos.slice(8):[];
-  const schema={'@context':'https://schema.org','@type':'ImageGallery','@id':domain+route+'#galeria',name:'Trabajos reales de Antenas Rapid',description:'Fotografías propias de instalaciones en pueblos del norte y Burgos',image:photos.map(p=>({'@type':'ImageObject',contentUrl:domain+asset(p.file),thumbnailUrl:domain+asset(p.thumbnail),caption:p.alt,creditText:'Antenas Rapid'}))};
+  // List the photos without declaring unverified authorship or licensing terms.
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'ImageGallery',
+    '@id': domain + route + '#galeria',
+    name: 'Trabajos reales de Antenas Rapid',
+    description: 'Fotografías propias de instalaciones en pueblos del norte y Burgos',
+    image: photos.map(photo => domain + asset(photo.file))
+  };
   return `<section class="gallery-section" id="galeria" data-real-work="20261106"><div class="wrap"><div class="gallery-head"><div><span class="eyebrow">Instalaciones de Antenas Rapid</span><h2>Trabajos reales</h2></div><p>${intro}</p></div><div class="gallery-grid">${shown.map(photoCard).join('')}</div>${rest.length?`<details class="gallery-more"><summary>Ver las ${photos.length} fotografías de trabajos</summary><div class="gallery-grid">${rest.map(photoCard).join('')}</div></details>`:''}${townLinks}</div></section>${galleryDialog}<script type="application/ld+json" id="real-work-schema">${JSON.stringify(schema).replace(/</g,'\\u003c')}</script>`;
 }
 
