@@ -274,5 +274,19 @@
       "original": "PHOTO-2026-11-05-21-38-52.jpg",
       "sha256": "29d545583bbd7248bce6eb5f171ea7a9ce9500cb14996943bd83c5cd96152cab"
     }
+  ],
+  "localPhotos": [
+    {
+      "file": "antenas-tdt-parabolica-miravalles.webp",
+      "thumbnail": "antenas-tdt-parabolica-miravalles-mini.webp",
+      "alt": "Dos antenas TDT y una parabólica en un tejado de Ugao-Miraballes (Miravalles)",
+      "width": 865,
+      "height": 1536,
+      "original": "E27CF758-1322-4B09-9477-BB257AE52FEE.jpeg",
+      "sha256": "5219c2adac2d330c50d6dfe1ac2fdff60938682615548fbd2d1d8b911746a728",
+      "town": "Ugao-Miraballes",
+      "townPath": "/Antenas-Bizkaia/ugao-miraballes.html",
+      "provincePath": "/Antenas-Bizkaia/"
+    }
   ]
 }
