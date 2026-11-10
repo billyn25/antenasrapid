@@ -277,6 +277,19 @@
   ],
   "localPhotos": [
     {
+      "file": "reparacion-golmar-nexa-zestoa-kalea-donostia.webp",
+      "thumbnail": "reparacion-golmar-nexa-zestoa-kalea-donostia-mini.webp",
+      "alt": "Placa Golmar Nexa en reparación en Zestoa Kalea, Donostia",
+      "caption": "Reparación de una placa Golmar Nexa en Zestoa Kalea, Donostia/San Sebastián. La fotografía muestra la placa desmontada y los pulsadores de llamada.",
+      "width": 810,
+      "height": 1440,
+      "original": "7C079DAD-6F20-4981-82DA-6FDE3FB3E443.jpeg",
+      "sha256": "4fbe830e74972c14236f9fe6ce762beded6ec3cb0ad1a53b533274c3ecda6715",
+      "town": "Donostia/San Sebastián",
+      "townPath": "/Antenas-Guipuzcoa/donostia-san-sebastian.html",
+      "provincePath": "/Antenas-Guipuzcoa/"
+    },
+    {
       "file": "golmar-colmenar-de-oreja-antes.webp",
       "thumbnail": "golmar-colmenar-de-oreja-antes-mini.webp",
       "alt": "Placa Golmar anterior en Colmenar de Oreja",
