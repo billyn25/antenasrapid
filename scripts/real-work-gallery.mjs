@@ -66,12 +66,15 @@ export function applyLocalWork(root='dist') {
   const additionalNames=['Bilbao','Portugalete','Santurtzi','Durango','Mungia','Gernika-Lumo','Donostia/San Sebastián','Irun','Eibar','Zarautz','Errenteria','Hondarribia','Santander','Torrelavega','Castro-Urdiales','Laredo','Santoña','Noja','Gijón','Oviedo','Avilés','Ribadesella','Villaviciosa','Cangas de Onís','Burgos','Miranda de Ebro','Aranda de Duero','Medina de Pomar','Lerma','Briviesca'];
   const additional=manifest.filter(p=>provinceRoutes.some(route=>p.path.startsWith(route))&&additionalNames.some(n=>normalized(n)===normalized(p.name))&&!linkedTowns.some(t=>t.path===p.path));
   if(additional.length!==30)throw new Error(`No se han identificado las 30 localidades adicionales: ${additional.length}`);
+  const localProvinceRoutes = [...new Set(localPhotos.map(photo => photo.provincePath))]
+    .filter(route => !provinceRoutes.includes(route));
   const targets = [
     ...provinceRoutes.map(route => ({path: route + 'index.html', route})),
     ...towns.map(page => ({path: page.path.slice(1), route: page.path, town: page.name})),
     ...additional.map(page => ({path: page.path.slice(1), route: page.path, sample: true})),
     ...localTowns.filter(page => !towns.some(town => town.path === page.path))
-      .map(page => ({path: page.path.slice(1), route: page.path, town: page.name}))
+      .map(page => ({path: page.path.slice(1), route: page.path, town: page.name})),
+    ...localProvinceRoutes.map(route => ({path: route + 'index.html', route, localOnly: true}))
   ];
   for(const [i,target] of targets.entries()) {
     const file=path.join(root,target.path.replace(/^\//,''));let html=fs.readFileSync(file,'utf8');
@@ -81,7 +84,7 @@ export function applyLocalWork(root='dist') {
     }
     const townPhotos = localPhotos.filter(photo => photo.townPath === target.route);
     const provincePhotos = localPhotos.filter(photo => photo.provincePath === target.route);
-    const count = target.sample ? 2 : 4;
+    const count = target.localOnly ? 0 : target.sample ? 2 : 4;
     const generalPhotos = Array.from({length: count}, (_, j) => work.photos[(i * 3 + j) % work.photos.length]);
     const photos = townPhotos.length ? townPhotos : [...provincePhotos, ...generalPhotos];
     // Use the same supported section IDs as the final town ordering pass.
@@ -91,6 +94,6 @@ export function applyLocalWork(root='dist') {
     html=html.replace(marker,gallery+marker).replace('</head>',galleryStyle+'</head>').replace('</body>',galleryScript+'</body>');
     fs.writeFileSync(file,html);
   }
-  console.log(`TRABAJOS REALES OK: ${work.photos.length + localPhotos.length} fotografías propias; portada, ${provinceRoutes.length} provincias y ${linkedTowns.length + additional.length} municipios.`);
+  console.log(`TRABAJOS REALES OK: ${work.photos.length + localPhotos.length} fotografías propias; portada, ${provinceRoutes.length + localProvinceRoutes.length} provincias y ${linkedTowns.length + additional.length} municipios.`);
 }
 if(process.argv[1]&&import.meta.url===pathToFileURL(path.resolve(process.argv[1])).href)applyLocalWork();

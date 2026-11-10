@@ -277,6 +277,18 @@
   ],
   "localPhotos": [
     {
+      "file": "antenas-tdt-parabolica-aguilar-de-campoo.webp",
+      "thumbnail": "antenas-tdt-parabolica-aguilar-de-campoo-mini.webp",
+      "alt": "Antenas TDT y una parabólica en un tejado de Aguilar de Campoo",
+      "width": 865,
+      "height": 1536,
+      "original": "713F3FF1-2776-4C9F-8EDA-C48FB4F55CD0.jpeg",
+      "sha256": "f60be17e341b6e75edf1e4a97088125ca2b79e9709f491a795f45418464421fc",
+      "town": "Aguilar de Campoo",
+      "townPath": "/Antenas-Palencia/aguilar-de-campoo.html",
+      "provincePath": "/Antenas-Palencia/"
+    },
+    {
       "file": "antenas-tdt-parabolica-miravalles.webp",
       "thumbnail": "antenas-tdt-parabolica-miravalles-mini.webp",
       "alt": "Dos antenas TDT y una parabólica en un tejado de Ugao-Miraballes (Miravalles)",
