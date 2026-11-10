@@ -277,6 +277,45 @@
   ],
   "localPhotos": [
     {
+      "file": "videoportero-comelit-alcobendas.webp",
+      "thumbnail": "videoportero-comelit-alcobendas-mini.webp",
+      "alt": "Monitor Comelit con auricular en Alcobendas",
+      "caption": "Trabajo de videoportero en Alcobendas, Madrid. La foto muestra un monitor interior Comelit con auricular.",
+      "width": 1080,
+      "height": 1440,
+      "original": "A4E962B1-7291-46CD-A58E-622E48402C1C.jpeg",
+      "sha256": "9ddc033ef1fcf838809cee05ba54201484a9137b9648b8188b68c3ddd9b04dda",
+      "town": "Alcobendas",
+      "townPath": "/Antenas-Madrid/alcobendas.html",
+      "provincePath": "/Antenas-Madrid/"
+    },
+    {
+      "file": "videoportero-fermax-alcobendas.webp",
+      "thumbnail": "videoportero-fermax-alcobendas-mini.webp",
+      "alt": "Monitor Fermax de videoportero con pantalla encendida en Alcobendas",
+      "caption": "Trabajo de videoportero en Alcobendas, Madrid. Se ve el monitor interior Fermax con imagen en pantalla.",
+      "width": 810,
+      "height": 1440,
+      "original": "6DAF038B-94E9-428A-B049-2BB9A56FFA00.jpeg",
+      "sha256": "c990ac51ef211b0c810a0115e93525e1d674c52f23da4d0c9e06e99758b0bcfc",
+      "town": "Alcobendas",
+      "townPath": "/Antenas-Madrid/alcobendas.html",
+      "provincePath": "/Antenas-Madrid/"
+    },
+    {
+      "file": "portero-auta-mf-s2-alcobendas.webp",
+      "thumbnail": "portero-auta-mf-s2-alcobendas-mini.webp",
+      "alt": "Módulo Auta MF-S2 y cableado de una placa de portero en Alcobendas",
+      "caption": "Trabajo de portero automático en Alcobendas, Madrid. La foto muestra el módulo Auta MF-S2 y las conexiones de la placa.",
+      "width": 1080,
+      "height": 1440,
+      "original": "9C3F14B1-1B2B-479A-A55A-55F27F923A51.jpeg",
+      "sha256": "e21595f85cd45ef2138e70c4a016687df15a1b71f737b58bad433621e94b6f6f",
+      "town": "Alcobendas",
+      "townPath": "/Antenas-Madrid/alcobendas.html",
+      "provincePath": "/Antenas-Madrid/"
+    },
+    {
       "file": "reparacion-grupo-fonico-tegui-logrono.webp",
       "thumbnail": "reparacion-grupo-fonico-tegui-logrono-mini.webp",
       "alt": "Placa exterior de portero Tegui en un portal de Logroño",
