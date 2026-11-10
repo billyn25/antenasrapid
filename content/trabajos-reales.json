@@ -277,6 +277,78 @@
   ],
   "localPhotos": [
     {
+      "file": "reparacion-real-burgos-2026.webp",
+      "thumbnail": "reparacion-real-burgos-2026-mini.webp",
+      "alt": "Placa de portero automático Tegui en Burgos",
+      "caption": "Reparación real en la provincia de Burgos. Placa de portero automático Tegui.",
+      "width": 864,
+      "height": 1440,
+      "original": "0991A2C0-CBE2-4F51-A199-8B7ABF8BE805.jpeg",
+      "sha256": "bf03a054279a70c8b7db25955d507c0a103d7b3ccce3ecb3b2ab60223cb490e9",
+      "province": "Burgos",
+      "provincePath": "/Antenas-Burgos/"
+    },
+    {
+      "file": "reparacion-real-salamanca-2026.webp",
+      "thumbnail": "reparacion-real-salamanca-2026-mini.webp",
+      "alt": "Amplificador Triax TMB100S en Salamanca",
+      "caption": "Reparación real en la provincia de Salamanca. Amplificador Triax TMB100S.",
+      "width": 768,
+      "height": 1280,
+      "original": "6B5C705E-8B7D-4256-9423-99712E5A8193.jpeg",
+      "sha256": "8b48a4ef4f8a7fb247edc1f1f12b60b12b4dfa75a458a12ca1db8921887aa194",
+      "province": "Salamanca",
+      "provincePath": "/Antenas-Salamanca/"
+    },
+    {
+      "file": "reparacion-real-guadalajara-2026.webp",
+      "thumbnail": "reparacion-real-guadalajara-2026-mini.webp",
+      "alt": "Módulos BTicino 351200 y 352100 en Guadalajara",
+      "caption": "Reparación real en la provincia de Guadalajara. Módulos BTicino 351200 y 352100.",
+      "width": 810,
+      "height": 1440,
+      "original": "32DA8DC2-9567-43F9-B6F1-656262AB6D79.jpeg",
+      "sha256": "dc51cf0b43c042c73fcd27a5f2a255c77bb3ac62960156bd78f6158801ecd3d8",
+      "province": "Guadalajara",
+      "provincePath": "/Antenas-Guadalajara/"
+    },
+    {
+      "file": "reparacion-real-valladolid-2026.webp",
+      "thumbnail": "reparacion-real-valladolid-2026-mini.webp",
+      "alt": "Placa Fermax con cámara y lector de proximidad en Valladolid",
+      "caption": "Reparación real en la provincia de Valladolid. Placa Fermax con cámara y lector de proximidad.",
+      "width": 665,
+      "height": 1440,
+      "original": "9230616F-98B2-4F78-BAB2-7CBEF4877F4C.png",
+      "sha256": "994e84e54e59577e722c6a1aea5601d3ddf293e0cc1451701c47f953cf943675",
+      "province": "Valladolid",
+      "provincePath": "/Antenas-Valladolid/"
+    },
+    {
+      "file": "reparacion-real-segovia-2026.webp",
+      "thumbnail": "reparacion-real-segovia-2026-mini.webp",
+      "alt": "Placa comunitaria de portero automático en Segovia",
+      "caption": "Reparación real en la provincia de Segovia. Placa comunitaria de portero automático.",
+      "width": 665,
+      "height": 1440,
+      "original": "50730900-501F-4CC4-9B48-F39D9FB5D838.jpeg",
+      "sha256": "c53d5df62cab40eb38864e08a640c430cef2333bf5f98d414359943953ac1fd4",
+      "province": "Segovia",
+      "provincePath": "/Antenas-Segovia/"
+    },
+    {
+      "file": "reparacion-real-toledo-2026.webp",
+      "thumbnail": "reparacion-real-toledo-2026-mini.webp",
+      "alt": "Placa comunitaria de portero automático con toma de medidas en Toledo",
+      "caption": "Reparación real en la provincia de Toledo. Placa comunitaria de portero automático con toma de medidas.",
+      "width": 665,
+      "height": 1440,
+      "original": "A6719433-34B6-4A3B-8AD9-643A780C476B.jpeg",
+      "sha256": "578127cb96f3ad4c5316e49c90c847c1bcca0403076ad724531f53c5269394cc",
+      "province": "Toledo",
+      "provincePath": "/Antenas-Toledo/"
+    },
+    {
       "file": "portero-tegui-salamanca.webp",
       "thumbnail": "portero-tegui-salamanca-mini.webp",
       "alt": "Reparación de portero automático Tegui en Salamanca",
