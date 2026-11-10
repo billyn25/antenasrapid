@@ -277,6 +277,58 @@
   ],
   "localPhotos": [
     {
+      "file": "placa-matricial-fermax-aranjuez-exterior.webp",
+      "thumbnail": "placa-matricial-fermax-aranjuez-exterior-mini.webp",
+      "alt": "Placa exterior Fermax con pantalla y teclado numérico en Aranjuez",
+      "caption": "Reparación de una placa matricial Fermax en Aranjuez, Madrid. La foto muestra la placa exterior con su pantalla y teclado numérico.",
+      "width": 1080,
+      "height": 1440,
+      "original": "737B33C1-250C-4604-BD10-12FE00F785CA.jpeg",
+      "sha256": "e8391efd05cf8c4818eddbc9df99f919e7da816cbd6b64f3cc182036ba4963e9",
+      "town": "Aranjuez",
+      "townPath": "/Antenas-Madrid/aranjuez.html",
+      "provincePath": "/Antenas-Madrid/"
+    },
+    {
+      "file": "modulo-tegui-mostoles.webp",
+      "thumbnail": "modulo-tegui-mostoles-mini.webp",
+      "alt": "Módulos y conexiones de una placa Tegui en Móstoles",
+      "caption": "Trabajo de portero automático en Móstoles, Madrid. La foto muestra el interior de la placa Tegui, con los módulos y sus conexiones.",
+      "width": 1080,
+      "height": 1440,
+      "original": "56FDE32E-5E67-4619-844A-4E41A2310049.jpeg",
+      "sha256": "bb591a09620c171c91248203b36d70798a3d8d62fd88d6a1e12fac6bcd3196f7",
+      "town": "Móstoles",
+      "townPath": "/Antenas-Madrid/mostoles.html",
+      "provincePath": "/Antenas-Madrid/"
+    },
+    {
+      "file": "placa-matricial-fermax-aranjuez-mds.webp",
+      "thumbnail": "placa-matricial-fermax-aranjuez-mds-mini.webp",
+      "alt": "Pantalla y teclado de una placa digital Fermax MDS en Aranjuez",
+      "caption": "Detalle de la pantalla y el teclado de una placa Fermax MDS en Aranjuez, Madrid.",
+      "width": 810,
+      "height": 1440,
+      "original": "3500081E-2CCF-4637-B000-6B0D5356938F.jpeg",
+      "sha256": "b054e1048112ad32fe2856ac91d5eef70f5b56c740919c719f3980d18b092747",
+      "town": "Aranjuez",
+      "townPath": "/Antenas-Madrid/aranjuez.html",
+      "provincePath": "/Antenas-Madrid/"
+    },
+    {
+      "file": "placa-matricial-fermax-aranjuez-portal.webp",
+      "thumbnail": "placa-matricial-fermax-aranjuez-portal-mini.webp",
+      "alt": "Placa Fermax de portal con teclado de llamada en Aranjuez",
+      "caption": "Placa de portal Fermax en Aranjuez, Madrid, con teclado numérico para llamar a las viviendas.",
+      "width": 1080,
+      "height": 1440,
+      "original": "4B23325C-F857-4DFA-9486-5ECD3553563C.jpeg",
+      "sha256": "d6d50aff15bcadb832d275c431790de5ad1ccefb5cf368634bc2c1d303c151da",
+      "town": "Aranjuez",
+      "townPath": "/Antenas-Madrid/aranjuez.html",
+      "provincePath": "/Antenas-Madrid/"
+    },
+    {
       "file": "reparacion-portero-auta-cabezon-de-la-sal.webp",
       "thumbnail": "reparacion-portero-auta-cabezon-de-la-sal-mini.webp",
       "alt": "Placa de portero automático Auta en un portal de Cabezón de la Sal",
