@@ -277,6 +277,32 @@
   ],
   "localPhotos": [
     {
+      "file": "reparacion-portero-auta-cabezon-de-la-sal.webp",
+      "thumbnail": "reparacion-portero-auta-cabezon-de-la-sal-mini.webp",
+      "alt": "Placa de portero automático Auta en un portal de Cabezón de la Sal",
+      "caption": "Reparación de portero automático Auta en una comunidad de vecinos de Cabezón de la Sal. La foto muestra la placa exterior y los pulsadores de llamada.",
+      "width": 773,
+      "height": 1381,
+      "original": "175EDA87-93D3-4B38-93D0-A13E8F8F347F.jpeg",
+      "sha256": "67d551ddd1dbd4520e89e9c14509e372c643df7353c9c407e9a987651b6249bc",
+      "town": "Cabezón de la Sal",
+      "townPath": "/Antenas-Cantabria/cabezon-de-la-sal.html",
+      "provincePath": "/Antenas-Cantabria/"
+    },
+    {
+      "file": "reparacion-videoportero-comelit-cabezon-de-la-sal.webp",
+      "thumbnail": "reparacion-videoportero-comelit-cabezon-de-la-sal-mini.webp",
+      "alt": "Cámara y pulsadores de un videoportero Comelit en Cabezón de la Sal",
+      "caption": "Reparación de videoportero Comelit en una comunidad de vecinos de Cabezón de la Sal. Detalle de la cámara y los pulsadores de la placa exterior.",
+      "width": 657,
+      "height": 706,
+      "original": "BA674467-B147-4EDF-ADEE-EE17B8BB70C6.jpeg",
+      "sha256": "b715df6c6d07ab56430165b35e4f3dbf93802a897751973aa0b3bd364960dff3",
+      "town": "Cabezón de la Sal",
+      "townPath": "/Antenas-Cantabria/cabezon-de-la-sal.html",
+      "provincePath": "/Antenas-Cantabria/"
+    },
+    {
       "file": "modulo-portero-90021-olite.webp",
       "thumbnail": "modulo-portero-90021-olite-mini.webp",
       "alt": "Módulo 90021 y cableado de un portero automático en Olite",
