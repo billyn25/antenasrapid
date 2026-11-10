@@ -33,16 +33,16 @@ export const galleryScript = `<script id="rapid-gallery-script">(()=>{const dial
 
 export function renderWorkGallery({home=false,photos=work.photos,route='/',town='',townLinks='',regional=[],otherPhotos=[]}={}) {
   const intro = home
-    ? 'Fotografías de nuestros trabajos de antenas, parabólicas, amplificación y porteros realizados en nuestra zona de servicio.'
+    ? 'Todas las fotos de esta galería muestran trabajos realizados por Antenas Rapid.'
     : `${town ? `Hemos realizado trabajos en ${esc(town)}. ` : ''}Esta selección muestra trabajos de Antenas Rapid.`;
   const shown=home?photos.slice(0,8):photos;
   const rest=home?photos.slice(8):otherPhotos;
-  const moreLabel=home?'Ver más trabajos con ubicación identificada':'Otros trabajos de Antenas Rapid';
-  const homeExamples = home && otherPhotos.length ? `<details class="gallery-more"><summary>Ver otras fotos de trabajos de Antenas Rapid</summary><div class="gallery-grid">${otherPhotos.map(photoCard).join('')}</div></details>` : '';
+  const moreLabel=home?'Ver más fotos por localidad':'Otros trabajos de Antenas Rapid';
+  const homeExamples = home && otherPhotos.length ? `<details class="gallery-more"><summary>Ver más fotos de nuestros trabajos</summary><div class="gallery-grid">${otherPhotos.map(photoCard).join('')}</div></details>` : '';
   const regionalGrid = regional.length ? `<div class="gallery-grid">${regional.map(photoCard).join('')}</div>` : '';
   const regionalBlock = regionalGrid && (home
-    ? `<details class="gallery-more"><summary>Ver ${regional.length} fotos de trabajos de la zona norte</summary><p>Selección regional de antenas, amplificación y porteros.</p>${regionalGrid}</details>`
-    : `<div class="gallery-more" data-regional-work><h3>Ejemplos de trabajos en la zona norte</h3><p>Selección regional de instalaciones de Antenas Rapid. La galería reúne ejemplos de distintas localidades.</p>${regionalGrid}</div>`);
+    ? `<details class="gallery-more"><summary>Ver trabajos de la zona norte</summary><p>Fotografías de nuestros trabajos de antenas, amplificación y porteros en la zona norte.</p>${regionalGrid}</details>`
+    : `<div class="gallery-more" data-regional-work><h3>Trabajos de Antenas Rapid en la zona norte</h3><p>Fotografías de nuestros trabajos en distintas localidades de la zona norte.</p>${regionalGrid}</div>`);
   // Preserve the gallery's image URLs and use the confirmed credit in its description.
   const schema = {
     '@context': 'https://schema.org',
@@ -102,7 +102,7 @@ export function applyLocalWork(root='dist') {
     });
   const linkedTowns = [...new Map([...towns, ...localTowns].map(page => [page.path, page])).values()];
   const links = `<p class="gallery-towns">Hemos realizado trabajos en ${linkedTowns.map(p => `<a href="${esc(p.path)}">${esc(p.name)}</a>`).join(', ')} y otras localidades de nuestra zona de servicio.</p>`;
-  const exampleLinks = exampleTowns.length ? `<p class="gallery-towns">Selecciones regionales para consultar desde ${exampleTowns.map(page => `<a href="${esc(page.path)}#galeria">${esc(page.name)}</a>`).join(', ')}.</p>` : '';
+  const exampleLinks = exampleTowns.length ? `<p class="gallery-towns">Galerías disponibles en ${exampleTowns.map(page => `<a href="${esc(page.path)}#galeria">${esc(page.name)}</a>`).join(', ')}.</p>` : '';
   const homeFile=path.join(root,'index.html');
   let home=fs.readFileSync(homeFile,'utf8');
   const updatedHome=renderWorkGallery({home:true,photos:localPhotos,otherPhotos:work.photos,townLinks:links+exampleLinks,regional:regionalPhotos});
