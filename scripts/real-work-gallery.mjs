@@ -32,12 +32,13 @@ export const galleryStyle = `<style id="rapid-gallery-style">
 </style>`;
 export const galleryScript = `<script id="rapid-gallery-script">(()=>{const dialog=document.getElementById('gallery-lightbox');if(!dialog)return;const img=dialog.querySelector('img');let opener;document.querySelectorAll('.gallery-open').forEach(btn=>btn.addEventListener('click',()=>{opener=btn;img.src=btn.dataset.src;img.alt=btn.dataset.alt;dialog.showModal();}));dialog.querySelector('button').addEventListener('click',()=>dialog.close());dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close();});dialog.addEventListener('close',()=>{img.removeAttribute('src');if(opener)opener.focus();});})();</script>`;
 
-export function renderWorkGallery({home=false,photos=work.photos,route='/',town='',townLinks='',regional=[]}={}) {
+export function renderWorkGallery({home=false,photos=work.photos,route='/',town='',townLinks='',regional=[],otherPhotos=[]}={}) {
   const intro = home
     ? 'Fotografías de nuestros trabajos de antenas, parabólicas, amplificación y porteros realizados en nuestra zona de servicio.'
     : `${town ? `Hemos realizado trabajos en ${esc(town)}. ` : ''}Esta selección muestra trabajos de Antenas Rapid.`;
   const shown=home?photos.slice(0,8):photos;
-  const rest=home?photos.slice(8):[];
+  const rest=home?photos.slice(8):otherPhotos;
+  const moreLabel=home?`Ver las ${photos.length} fotografías de trabajos`:'Otros trabajos de Antenas Rapid';
   const regionalGrid = regional.length ? `<div class="gallery-grid">${regional.map(photoCard).join('')}</div>` : '';
   const regionalBlock = regionalGrid && (home
     ? `<details class="gallery-more"><summary>Ver ${regional.length} fotos de trabajos de la zona norte</summary><p>Selección regional de antenas, amplificación y porteros.</p>${regionalGrid}</details>`
@@ -49,9 +50,9 @@ export function renderWorkGallery({home=false,photos=work.photos,route='/',town=
     '@id': domain + route + '#galeria',
     name: 'Trabajos reales de Antenas Rapid',
     description: 'Trabajos de antenas, amplificación y porteros. ' + photoCredit,
-    image: [...photos, ...regional].map(photo => domain + asset(photo.file))
+    image: [...photos, ...otherPhotos, ...regional].map(photo => domain + asset(photo.file))
   };
-  return `<section class="gallery-section" id="galeria" data-real-work="20261106"><div class="wrap"><div class="gallery-head"><div><span class="eyebrow">Instalaciones de Antenas Rapid</span><h2>Trabajos reales de Antenas Rapid</h2></div><p>${intro}<br><strong>${photoCredit}</strong></p></div>${shown.length?`<div class="gallery-grid">${shown.map(photoCard).join('')}</div>`:''}${rest.length?`<details class="gallery-more"><summary>Ver las ${photos.length} fotografías de trabajos</summary><div class="gallery-grid">${rest.map(photoCard).join('')}</div></details>`:''}${regionalBlock}${townLinks}</div></section>${galleryDialog}<script type="application/ld+json" id="real-work-schema">${JSON.stringify(schema).replace(/</g,'\\u003c')}</script>`;
+  return `<section class="gallery-section" id="galeria" data-real-work="20261106"><div class="wrap"><div class="gallery-head"><div><span class="eyebrow">Instalaciones de Antenas Rapid</span><h2>Trabajos reales de Antenas Rapid</h2></div><p>${intro}<br><strong>${photoCredit}</strong></p></div>${shown.length?`<div class="gallery-grid">${shown.map(photoCard).join('')}</div>`:''}${rest.length?`<details class="gallery-more"><summary>${moreLabel}</summary><div class="gallery-grid">${rest.map(photoCard).join('')}</div></details>`:''}${regionalBlock}${townLinks}</div></section>${galleryDialog}<script type="application/ld+json" id="real-work-schema">${JSON.stringify(schema).replace(/</g,'\\u003c')}</script>`;
 }
 
 const serviceExamples = {
@@ -147,7 +148,9 @@ export function applyLocalWork(root='dist') {
     const regional = regionalPhotos.filter(photo => target.route.endsWith('/')
       ? photo.examplePath.startsWith(target.route)
       : photo.examplePath === target.route);
-    const gallery=renderWorkGallery({photos,route:target.route,town:target.town,regional}).replace(/<script type="application\/ld\+json" id="real-work-schema">([\s\S]*?)<\/script>/,(_,json)=>{html=html.replace('</head>',`<script type="application/ld+json" id="real-work-schema">${json}</script></head>`);return '';});
+    const featuredCase = target.route === '/Antenas-Madrid/aranjuez.html';
+    const otherPhotos = featuredCase ? photos.slice(townPhotos.length) : [];
+    const gallery=renderWorkGallery({photos:featuredCase ? townPhotos : photos,route:target.route,town:target.town,regional,otherPhotos}).replace(/<script type="application\/ld\+json" id="real-work-schema">([\s\S]*?)<\/script>/,(_,json)=>{html=html.replace('</head>',`<script type="application/ld+json" id="real-work-schema">${json}</script></head>`);return '';});
     const marker=html.match(/<section\b[^>]*id="preguntas"[^>]*>/)?.[0];
     if(!marker)throw new Error(target.path+': falta el punto de inserción');
     html=html.replace(marker,gallery+marker).replace('</head>',galleryStyle+'</head>').replace('</body>',galleryScript+'</body>');
