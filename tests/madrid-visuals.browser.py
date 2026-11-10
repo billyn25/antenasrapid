@@ -20,7 +20,8 @@ threading.Thread(target=server.serve_forever, daemon=True).start()
 base = f'http://127.0.0.1:{server.server_port}'
 manifest = json.loads((ROOT / 'local-pages-manifest.json').read_text())
 longest = max((p for p in manifest if p['path'].startswith('/Antenas-Madrid/')), key=lambda p: len(p['name']))
-routes = [('/Antenas-Madrid/', 'madrid'), ('/Antenas-Madrid/alcala-de-henares.html', 'alcala'), (longest['path'], 'nombre-largo')]
+work = json.loads(Path('content/trabajos-reales.json').read_text())
+routes = [('/Antenas-Madrid/', 'madrid'), ('/Antenas-Madrid/madrid.html', 'madrid-capital'), ('/Antenas-Madrid/alcala-de-henares.html', 'alcala'), (longest['path'], 'nombre-largo')]
 results = []
 try:
     with sync_playwright() as pw:
@@ -43,7 +44,9 @@ try:
                     if width in (390, 1440):
                         page.screenshot(path=str(QA / f'{stem}-hero-{engine.name}-{width}.png'))
                     assert page.locator('#galeria').count() == 1
-                    assert page.locator('#galeria .gallery-grid img').count() == len(json.loads(Path('content/trabajos-reales.json').read_text())['photos'])
+                    local_photos = [photo for photo in work.get('localPhotos', [])
+                                    if route in (photo['townPath'], photo['provincePath'])]
+                    assert page.locator('#galeria .gallery-grid img').count() == len(work['photos']) + len(local_photos)
                     for image in page.locator('#galeria img').all():
                         image.scroll_into_view_if_needed()
                         page.wait_for_function('(i) => i.complete && i.naturalWidth > 0', arg=image.element_handle())

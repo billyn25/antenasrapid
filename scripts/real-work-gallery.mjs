@@ -27,8 +27,8 @@ export const galleryScript = `<script id="rapid-gallery-script">(()=>{const dial
 
 export function renderWorkGallery({home=false,photos=work.photos,route='/',town='',townLinks=''}={}) {
   const intro = home
-    ? 'Fotografías de nuestros trabajos de antenas, parabólicas, amplificación y porteros realizados en pueblos del norte y Burgos.'
-    : `${town ? `Hemos realizado trabajos en ${esc(town)}. ` : ''}Esta selección muestra trabajos de Antenas Rapid en distintos pueblos del norte y Burgos.`;
+    ? 'Fotografías de nuestros trabajos de antenas, parabólicas, amplificación y porteros realizados en nuestra zona de servicio.'
+    : `${town ? `Hemos realizado trabajos en ${esc(town)}. ` : ''}Esta selección muestra trabajos de Antenas Rapid.`;
   const shown=home?photos.slice(0,8):photos;
   const rest=home?photos.slice(8):[];
   // List the photos without declaring unverified authorship or licensing terms.
@@ -37,7 +37,7 @@ export function renderWorkGallery({home=false,photos=work.photos,route='/',town=
     '@type': 'ImageGallery',
     '@id': domain + route + '#galeria',
     name: 'Trabajos reales de Antenas Rapid',
-    description: 'Fotografías propias de instalaciones en pueblos del norte y Burgos',
+    description: 'Fotografías propias de trabajos de antenas, amplificación y porteros',
     image: photos.map(photo => domain + asset(photo.file))
   };
   return `<section class="gallery-section" id="galeria" data-real-work="20261106"><div class="wrap"><div class="gallery-head"><div><span class="eyebrow">Instalaciones de Antenas Rapid</span><h2>Trabajos reales</h2></div><p>${intro}</p></div><div class="gallery-grid">${shown.map(photoCard).join('')}</div>${rest.length?`<details class="gallery-more"><summary>Ver las ${photos.length} fotografías de trabajos</summary><div class="gallery-grid">${rest.map(photoCard).join('')}</div></details>`:''}${townLinks}</div></section>${galleryDialog}<script type="application/ld+json" id="real-work-schema">${JSON.stringify(schema).replace(/</g,'\\u003c')}</script>`;
@@ -54,7 +54,7 @@ export function applyLocalWork(root='dist') {
       return page;
     });
   const linkedTowns = [...new Map([...towns, ...localTowns].map(page => [page.path, page])).values()];
-  const links = `<p class="gallery-towns">Hemos realizado trabajos en ${linkedTowns.map(p => `<a href="${esc(p.path)}">${esc(p.name)}</a>`).join(', ')} y otros pueblos del norte y Burgos.</p>`;
+  const links = `<p class="gallery-towns">Hemos realizado trabajos en ${linkedTowns.map(p => `<a href="${esc(p.path)}">${esc(p.name)}</a>`).join(', ')} y otras localidades de nuestra zona de servicio.</p>`;
   const homeFile=path.join(root,'index.html');
   let home=fs.readFileSync(homeFile,'utf8');
   const updatedHome=renderWorkGallery({home:true,photos:[...localPhotos,...work.photos],townLinks:links});
@@ -86,7 +86,10 @@ export function applyLocalWork(root='dist') {
     const provincePhotos = localPhotos.filter(photo => photo.provincePath === target.route);
     const count = target.localOnly ? 0 : target.sample ? 2 : 4;
     const generalPhotos = Array.from({length: count}, (_, j) => work.photos[(i * 3 + j) % work.photos.length]);
-    const photos = townPhotos.length ? townPhotos : [...provincePhotos, ...generalPhotos];
+    const existingMadridGallery = html.includes('data-madrid-visuals="1"');
+    const photos = existingMadridGallery
+      ? [...townPhotos, ...provincePhotos, ...work.photos]
+      : townPhotos.length ? townPhotos : [...provincePhotos, ...generalPhotos];
     // Use the same supported section IDs as the final town ordering pass.
     const gallery=renderWorkGallery({photos,route:target.route,town:target.town}).replace(/<script type="application\/ld\+json" id="real-work-schema">([\s\S]*?)<\/script>/,(_,json)=>{html=html.replace('</head>',`<script type="application/ld+json" id="real-work-schema">${json}</script></head>`);return '';});
     const marker=html.match(/<section\b[^>]*id="preguntas"[^>]*>/)?.[0];

@@ -277,6 +277,19 @@
   ],
   "localPhotos": [
     {
+      "file": "videoportero-fermax-duox-calle-segovia-madrid.webp",
+      "thumbnail": "videoportero-fermax-duox-calle-segovia-madrid-mini.webp",
+      "alt": "Detalle de la cámara y la placa Fermax del videoportero en la calle Segovia de Madrid",
+      "caption": "Reparación urgente de videoportero Fermax DUOX en la calle Segovia, Madrid. Tras recibir el aviso, nuestro instalador Ángel acudió de inmediato para reparar el videoportero.",
+      "width": 478,
+      "height": 428,
+      "original": "88F7AC99-CF80-4D84-8CAC-C82CB7E9C795.jpeg",
+      "sha256": "ae9204479b0ab21dcfce07491de7f893e995f53ed01f5c5eb7678508f795eaaf",
+      "town": "Madrid",
+      "townPath": "/Antenas-Madrid/madrid.html",
+      "provincePath": "/Antenas-Madrid/"
+    },
+    {
       "file": "revision-antena-calle-mayor-avila.webp",
       "thumbnail": "revision-antena-calle-mayor-avila-mini.webp",
       "alt": "Antena y cableado en cubierta antes de la intervención",
