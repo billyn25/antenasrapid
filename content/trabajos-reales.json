@@ -277,6 +277,32 @@
   ],
   "localPhotos": [
     {
+      "file": "revision-antena-calle-mayor-avila.webp",
+      "thumbnail": "revision-antena-calle-mayor-avila-mini.webp",
+      "alt": "Antena y cableado en cubierta antes de la intervención",
+      "caption": "Revisión de antena en calle Mayor, 40, Ávila. Se revisó la instalación de televisión y se sustituyeron la antena y el cableado.",
+      "width": 960,
+      "height": 960,
+      "original": "221_128793_multimedia_operario_mov_1763034607a1556-antes.jpg",
+      "sha256": "d03dc226cbb6bdc363a27bee9bbede3856bf6d401a604a07ff2f0fddfc6e7b3c",
+      "town": "Ávila",
+      "townPath": "/Antenas-Avila/avila.html",
+      "provincePath": "/Antenas-Avila/"
+    },
+    {
+      "file": "instalacion-previa-calle-mayor-avila.webp",
+      "thumbnail": "instalacion-previa-calle-mayor-avila-mini.webp",
+      "alt": "Vista del mástil y las antenas antes del trabajo",
+      "caption": "Vista de la instalación en la cubierta antes de sustituir la antena y el cableado.",
+      "width": 960,
+      "height": 960,
+      "original": "221_128793_multimedia_operario_mov_1763034618a3319-antes.jpg",
+      "sha256": "8464d02e8cc75715a98221f3933489db0089c75e4bd1ea2633238f98d54250f6",
+      "town": "Ávila",
+      "townPath": "/Antenas-Avila/avila.html",
+      "provincePath": "/Antenas-Avila/"
+    },
+    {
       "file": "antena-mastil-puebla-de-sanabria.webp",
       "thumbnail": "antena-mastil-puebla-de-sanabria-mini.webp",
       "alt": "Antena de televisión sobre la cubierta antes de la reparación en Puebla de Sanabria",
