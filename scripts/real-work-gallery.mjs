@@ -10,6 +10,7 @@ const esc = s => String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&
 const normalized = s => s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
 const provinceRoutes = ['/Antenas-Bizkaia/','/Antenas-Guipuzcoa/','/Antenas-Cantabria/','/Antenas-Asturias/','/Antenas-Burgos/'];
 const asset = name => '/assets/galeria/'+name;
+const photoCredit = 'Fotografías de Roberto Fuentes González.';
 
 export function copyWorkPhotos(root='dist') {
   const dest=path.join(root,'assets','galeria');
@@ -18,7 +19,12 @@ export function copyWorkPhotos(root='dist') {
     fs.copyFileSync(path.join('src','trabajos-reales',name),path.join(dest,name));
   }
 }
-const photoCard = photo => `<figure><button class="gallery-open" type="button" data-src="${asset(photo.file)}" data-alt="${esc(photo.alt)} · Antenas Rapid" aria-label="Ampliar: ${esc(photo.alt)}"><img src="${asset(photo.thumbnail)}" alt="${esc(photo.alt)} · Trabajo real de Antenas Rapid" loading="lazy" decoding="async" width="${photo.width}" height="${photo.height}"></button><figcaption>${esc(photo.caption ?? photo.alt)}</figcaption></figure>`;
+function photoCaption(photo) {
+  const text = photo.caption ?? photo.alt;
+  if (!photo.town || normalized(text).includes(normalized(photo.town))) return text;
+  return `${photo.town} · ${text}`;
+}
+const photoCard = photo => `<figure><button class="gallery-open" type="button" data-src="${asset(photo.file)}" data-alt="${esc(photo.alt)} · Antenas Rapid" aria-label="Ampliar: ${esc(photo.alt)}"><img src="${asset(photo.thumbnail)}" alt="${esc(photo.alt)} · Trabajo real de Antenas Rapid" loading="lazy" decoding="async" width="${photo.width}" height="${photo.height}"></button><figcaption>${esc(photoCaption(photo))}</figcaption></figure>`;
 export const galleryDialog = '<dialog class="gallery-lightbox" id="gallery-lightbox" aria-label="Fotografía de trabajo ampliada"><div class="gallery-lightbox-inner"><button class="gallery-lightbox-close" type="button" aria-label="Cerrar imagen">×</button><img src="" alt=""></div></dialog>';
 export const galleryStyle = `<style id="rapid-gallery-style">
 .gallery-section{padding:48px 0;background:#fff;border-top:1px solid var(--line)}.gallery-head{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:22px}.gallery-head h2{margin:8px 0 0}.gallery-head p{max-width:650px;margin:0;color:var(--muted);font-size:14px;line-height:1.65}.gallery-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}.gallery-grid figure{margin:0;overflow:hidden;border-radius:12px;border:1px solid var(--line);background:#f8f6f3;box-shadow:0 8px 22px rgba(29,31,35,.05)}.gallery-open{display:block;width:100%;aspect-ratio:4/3;padding:0;border:0;background:#eceae6;cursor:zoom-in}.gallery-grid img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .25s ease}.gallery-grid figcaption{padding:12px 14px;color:var(--ink);font-size:13px;line-height:1.5}.gallery-open:hover img{transform:scale(1.025)}.gallery-open:focus-visible{outline:3px solid var(--brand);outline-offset:-4px}.gallery-more{margin-top:18px}.gallery-more summary{cursor:pointer;padding:14px 0;min-height:44px;font-weight:750}.gallery-more[open] summary{margin-bottom:12px}.gallery-towns{line-height:1.8;font-size:14px;margin:20px 0 0}.gallery-towns a{color:var(--brand)}.gallery-lightbox{width:min(94vw,1180px);max-width:none;padding:0;border:0;border-radius:12px;background:#111;box-shadow:0 28px 90px rgba(0,0,0,.55)}.gallery-lightbox::backdrop{background:rgba(8,9,12,.88)}.gallery-lightbox-inner{position:relative;display:grid;place-items:center;min-height:200px}.gallery-lightbox img{display:block;max-width:94vw;max-height:88vh;width:auto;height:auto;object-fit:contain}.gallery-lightbox-close{position:absolute;z-index:2;top:12px;right:12px;width:44px;height:44px;border:0;border-radius:50%;background:rgba(20,20,22,.86);color:#fff;font-size:30px;cursor:pointer}.gallery-lightbox-close:hover{background:var(--brand)}
@@ -36,16 +42,16 @@ export function renderWorkGallery({home=false,photos=work.photos,route='/',town=
   const regionalBlock = regionalGrid && (home
     ? `<details class="gallery-more"><summary>Ver ${regional.length} fotos de trabajos de la zona norte</summary><p>Selección regional de antenas, amplificación y porteros.</p>${regionalGrid}</details>`
     : `<div class="gallery-more" data-regional-work><h3>Ejemplos de trabajos en la zona norte</h3><p>Selección regional de instalaciones de Antenas Rapid. La galería reúne ejemplos de distintas localidades.</p>${regionalGrid}</div>`);
-  // List the photos without declaring unverified authorship or licensing terms.
+  // Preserve the gallery's image URLs and use the confirmed credit in its description.
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'ImageGallery',
     '@id': domain + route + '#galeria',
     name: 'Trabajos reales de Antenas Rapid',
-    description: 'Fotografías propias de trabajos de antenas, amplificación y porteros',
+    description: 'Trabajos de antenas, amplificación y porteros. ' + photoCredit,
     image: [...photos, ...regional].map(photo => domain + asset(photo.file))
   };
-  return `<section class="gallery-section" id="galeria" data-real-work="20261106"><div class="wrap"><div class="gallery-head"><div><span class="eyebrow">Instalaciones de Antenas Rapid</span><h2>Trabajos reales</h2></div><p>${intro}</p></div>${shown.length?`<div class="gallery-grid">${shown.map(photoCard).join('')}</div>`:''}${rest.length?`<details class="gallery-more"><summary>Ver las ${photos.length} fotografías de trabajos</summary><div class="gallery-grid">${rest.map(photoCard).join('')}</div></details>`:''}${regionalBlock}${townLinks}</div></section>${galleryDialog}<script type="application/ld+json" id="real-work-schema">${JSON.stringify(schema).replace(/</g,'\\u003c')}</script>`;
+  return `<section class="gallery-section" id="galeria" data-real-work="20261106"><div class="wrap"><div class="gallery-head"><div><span class="eyebrow">Instalaciones de Antenas Rapid</span><h2>Trabajos reales de Antenas Rapid</h2></div><p>${intro}<br><strong>${photoCredit}</strong></p></div>${shown.length?`<div class="gallery-grid">${shown.map(photoCard).join('')}</div>`:''}${rest.length?`<details class="gallery-more"><summary>Ver las ${photos.length} fotografías de trabajos</summary><div class="gallery-grid">${rest.map(photoCard).join('')}</div></details>`:''}${regionalBlock}${townLinks}</div></section>${galleryDialog}<script type="application/ld+json" id="real-work-schema">${JSON.stringify(schema).replace(/</g,'\\u003c')}</script>`;
 }
 
 const serviceExamples = {
