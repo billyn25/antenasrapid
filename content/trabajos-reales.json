@@ -277,6 +277,32 @@
   ],
   "localPhotos": [
     {
+      "file": "cambio-a-videoportero-llodio-antes.webp",
+      "thumbnail": "cambio-a-videoportero-llodio-antes-mini.webp",
+      "alt": "Antes del cambio: placa de portero automático Tegui en Llodio",
+      "caption": "Antes · El portal de esta comunidad de Llodio tenía un portero automático Tegui con pulsadores de llamada.",
+      "width": 1080,
+      "height": 1440,
+      "original": "D76B9DF9-6FE4-4965-9945-DEEBD4181CBE.jpeg",
+      "sha256": "b25595526a261e0449de62da22e8b15190bf72d599625191b5dd1fec5e638462",
+      "town": "Laudio/Llodio",
+      "townPath": "/Antenas-Alava/laudio-llodio.html",
+      "provincePath": "/Antenas-Alava/"
+    },
+    {
+      "file": "cambio-a-videoportero-llodio-despues.webp",
+      "thumbnail": "cambio-a-videoportero-llodio-despues-mini.webp",
+      "alt": "Después del cambio: placa de videoportero Tegui con cámara en Llodio",
+      "caption": "Después · Nuevo videoportero Tegui con cámara y pulsadores, instalado sobre un panel metálico en el mismo portal de Llodio.",
+      "width": 810,
+      "height": 1440,
+      "original": "1D0B8A34-0D07-4A37-9EDE-585D5169DB5A.jpeg",
+      "sha256": "7038b4767d16dd851f82dbabb9c073e9977068539bd04d2906b105dcf3447794",
+      "town": "Laudio/Llodio",
+      "townPath": "/Antenas-Alava/laudio-llodio.html",
+      "provincePath": "/Antenas-Alava/"
+    },
+    {
       "file": "cambio-a-videoportero-soria.webp",
       "thumbnail": "cambio-a-videoportero-soria-mini.webp",
       "alt": "Toma de medidas junto a una placa exterior Tegui en un portal de Soria",
