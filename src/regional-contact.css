@@ -3,6 +3,7 @@
 .footer .regional-contact{margin:14px 0 0;padding:0;line-height:1.5}
 .footer .regional-contact+.regional-contact{margin-top:18px}
 .footer .regional-contact>strong{display:block;font-size:13px;line-height:1.5;overflow-wrap:break-word}
+.footer .regional-dispatch{display:block;margin-top:3px;font-size:13px}
 .footer .regional-phone{display:block;width:fit-content;max-width:100%;padding:8px 0 6px;font-size:20px;font-weight:800;line-height:1.5;white-space:nowrap;text-decoration:none}
 .footer .regional-whatsapp{display:inline-flex;align-items:center;min-height:44px;font-size:13px;font-weight:600;text-decoration:underline;text-underline-offset:3px}
 .footer .regional-contact a:focus-visible{outline:2px solid currentColor;outline-offset:3px}
