@@ -277,6 +277,19 @@
   ],
   "localPhotos": [
     {
+      "file": "reparacion-grupo-fonico-tegui-375091-elciego.webp",
+      "thumbnail": "reparacion-grupo-fonico-tegui-375091-elciego-mini.webp",
+      "alt": "Placa exterior de portero automático Tegui en Elciego, Álava",
+      "caption": "Reparación urgente del grupo fónico Tegui 375091 de un portero automático en Elciego, Álava. El equipo se desplazó desde Bilbao. La foto muestra la placa exterior con los pulsadores de llamada.",
+      "width": 1080,
+      "height": 1440,
+      "original": "DD3BF621-5902-44D1-A101-2860DCDF67DD.jpeg",
+      "sha256": "09b2127e6451339414d426f9313e8ecaedf73541ca264e054b0bdd9feb1d2600",
+      "town": "Elciego",
+      "townPath": "/Antenas-Alava/elciego.html",
+      "provincePath": "/Antenas-Alava/"
+    },
+    {
       "file": "cambio-a-videoportero-llodio-antes.webp",
       "thumbnail": "cambio-a-videoportero-llodio-antes-mini.webp",
       "alt": "Antes del cambio: placa de portero automático Tegui en Llodio",
