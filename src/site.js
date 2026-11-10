@@ -59,6 +59,9 @@
     const message = contactForm.elements.namedItem('message');
     const receptionFields = contactForm.querySelector('[data-reception-fields]');
     const channels = contactForm.elements.namedItem('channels');
+    const doorphoneFields = contactForm.querySelector('[data-doorphone-fields]');
+    const doorphoneIssue = contactForm.elements.namedItem('doorphoneIssue');
+    const doorphoneScope = contactForm.elements.namedItem('doorphoneScope');
     const timing = contactForm.elements.namedItem('timing');
     const status = contactForm.querySelector('[data-contact-status]');
     if (province && locality && service && message && status) {
@@ -68,6 +71,8 @@
       const provinceNames = optionNames(province);
       const serviceNames = optionNames(service);
       const timingNames = timing ? optionNames(timing) : new Map();
+      const issueNames = doorphoneIssue ? optionNames(doorphoneIssue) : new Map();
+      const scopeNames = doorphoneScope ? optionNames(doorphoneScope) : new Map();
       const receptionServices = new Set(['tdt', 'parabolicas', 'tdt-satelite', 'amplificacion', 'tomas', 'mantenimiento']);
       const updateReceptionFields = () => {
         if (!receptionFields || !channels || !timing) return false;
@@ -76,6 +81,15 @@
         receptionFields.disabled = !active;
         channels.disabled = !active;
         timing.disabled = !active;
+        return active;
+      };
+      const updateDoorphoneFields = () => {
+        if (!doorphoneFields || !doorphoneIssue || !doorphoneScope) return false;
+        const active = service.value === 'porteros' || service.value === 'videoporteros';
+        doorphoneFields.hidden = !active;
+        doorphoneFields.disabled = !active;
+        doorphoneIssue.disabled = !active;
+        doorphoneScope.disabled = !active;
         return active;
       };
       const centralProvinces = new Set(['madrid', 'toledo', 'guadalajara']);
@@ -116,6 +130,7 @@
       locality.addEventListener('input', validateLocality);
       service.addEventListener('change', () => {
         updateReceptionFields();
+        updateDoorphoneFields();
         updateZoneStatus();
       });
 
@@ -131,11 +146,13 @@
           }
           service.value = selected;
           const receptionActive = updateReceptionFields();
+          const doorphoneActive = updateDoorphoneFields();
           updateZoneStatus();
-          const detailField = receptionActive && link.getAttribute('data-contact-reception') === 'true' ? channels : message;
+          const detailField = doorphoneActive ? doorphoneIssue
+            : receptionActive && link.getAttribute('data-contact-reception') === 'true' ? channels : message;
           const nextField = !provinceNames.has(province.value) ? province : !locality.value.trim() ? locality : detailField;
           // El enlace lleva a #contacto; después acercamos el foco al campo pendiente.
-          window.requestAnimationFrame(() => nextField.focus({ preventScroll: true }));
+          window.requestAnimationFrame(() => nextField.focus());
         });
       }
 
@@ -143,6 +160,7 @@
         event.preventDefault();
         validateLocality();
         const receptionActive = updateReceptionFields();
+        const doorphoneActive = updateDoorphoneFields();
         if (!contactForm.reportValidity()) return;
         if (!provinceNames.has(province.value)) {
           setStatus('Elige una provincia de la lista.', true);
@@ -167,6 +185,8 @@
         const details = message.value.trim();
         const affectedChannels = receptionActive ? channels.value.trim() : '';
         const receptionTiming = receptionActive && timing.value ? timingNames.get(timing.value) : '';
+        const issue = doorphoneActive && issueNames.get(doorphoneIssue.value);
+        const scope = doorphoneActive && scopeNames.get(doorphoneScope.value);
         const lines = [
           'Hola, quiero hacer una consulta a Antenas Rapid.',
           `Provincia: ${provinceNames.get(province.value)}`,
@@ -174,6 +194,8 @@
           `Servicio: ${serviceNames.get(service.value)}`,
           ...(affectedChannels ? [`Canales: ${affectedChannels}`] : []),
           ...(receptionTiming ? [`Cuándo ocurre: ${receptionTiming}`] : []),
+          ...(issue ? [`Qué ocurre: ${issue}`] : []),
+          ...(scope ? [`Afecta a: ${scope}`] : []),
           ...(details ? [`Detalles: ${details}`] : [])
         ];
         destination.searchParams.set('text', lines.join('\n'));
@@ -182,6 +204,7 @@
       });
       validateLocality();
       updateReceptionFields();
+      updateDoorphoneFields();
       updateZoneStatus();
       contactForm.hidden = false;
     }

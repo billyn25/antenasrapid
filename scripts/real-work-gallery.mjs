@@ -43,6 +43,35 @@ export function renderWorkGallery({home=false,photos=work.photos,route='/',town=
   return `<section class="gallery-section" id="galeria" data-real-work="20261106"><div class="wrap"><div class="gallery-head"><div><span class="eyebrow">Instalaciones de Antenas Rapid</span><h2>Trabajos reales</h2></div><p>${intro}</p></div><div class="gallery-grid">${shown.map(photoCard).join('')}</div>${rest.length?`<details class="gallery-more"><summary>Ver las ${photos.length} fotografías de trabajos</summary><div class="gallery-grid">${rest.map(photoCard).join('')}</div></details>`:''}${townLinks}</div></section>${galleryDialog}<script type="application/ld+json" id="real-work-schema">${JSON.stringify(schema).replace(/</g,'\\u003c')}</script>`;
 }
 
+const serviceExamples = {
+  tdt: [['antena-mastil-puebla-de-sanabria.webp', 'Cambio de antena y mástil en Puebla de Sanabria']],
+  porteros: [
+    ['reparacion-grupo-fonico-tegui-375091-elciego.webp', 'Grupo fónico Tegui en Elciego'],
+    ['reparacion-grupo-fonico-tegui-logrono.webp', 'Reparación de portero en Logroño']
+  ],
+  videoporteros: [['cambio-a-videoportero-llodio-despues.webp', 'Antes y después en Llodio']],
+  parabolicas: [['lnb-parabolica-leon.webp', 'Trabajo en una parabólica en León']],
+  amplificacion: [['amplificador-puebla-de-sanabria.webp', 'Cambio de amplificador en Puebla de Sanabria']],
+  tomas: [['revision-antena-calle-mayor-avila.webp', 'Cambio de antena y cableado en Ávila']]
+};
+
+function addServiceExamples(home) {
+  for (const [service, examples] of Object.entries(serviceExamples)) {
+    const links = examples.map(([file, label]) => {
+      const photo = localPhotos.find(item => item.file === file);
+      if (!photo?.townPath) throw new Error('Caso de servicio sin galería local: ' + file);
+      return `<li><a href="${esc(photo.townPath)}#galeria">${esc(label)}</a></li>`;
+    }).join('');
+    const card = new RegExp(`(<article class="service-card" id="${service}">[\\s\\S]*?)(</article>)`);
+    if (!card.test(home)) throw new Error('Falta tarjeta de servicio: ' + service);
+    home = home.replace(card, (_, body, close) => {
+      const original = body.replace(/<div class="service-examples">[\s\S]*?<\/div>/, '');
+      return `${original}<div class="service-examples"><strong>Trabajos reales</strong><ul>${links}</ul></div>${close}`;
+    });
+  }
+  return home;
+}
+
 export function applyLocalWork(root='dist') {
   const manifest=JSON.parse(fs.readFileSync(path.join(root,'local-pages-manifest.json'),'utf8'));
   const towns=manifest.filter(p=>work.confirmedTowns.some(n=>normalized(n)===normalized(p.name)));
@@ -63,7 +92,7 @@ export function applyLocalWork(root='dist') {
   const homeSchema=updatedHome.match(schemaPattern)[0];
   home=home.replace(/<section class="gallery-section" id="galeria"[^>]*>[\s\S]*?<\/section>\s*<dialog class="gallery-lightbox"[\s\S]*?<\/dialog>/,updatedHome.replace(homeSchema,''));
   home=home.replace(schemaPattern,homeSchema);
-  fs.writeFileSync(homeFile,home);
+  fs.writeFileSync(homeFile,addServiceExamples(home));
   const additionalNames=['Bilbao','Portugalete','Santurtzi','Durango','Mungia','Gernika-Lumo','Donostia/San Sebastián','Irun','Eibar','Zarautz','Errenteria','Hondarribia','Santander','Torrelavega','Castro-Urdiales','Laredo','Santoña','Noja','Gijón','Oviedo','Avilés','Ribadesella','Villaviciosa','Cangas de Onís','Burgos','Miranda de Ebro','Aranda de Duero','Medina de Pomar','Lerma','Briviesca'];
   const sampleTowns=manifest.filter(p=>provinceRoutes.some(route=>p.path.startsWith(route))&&additionalNames.some(n=>normalized(n)===normalized(p.name)));
   if(sampleTowns.length!==additionalNames.length)throw new Error(`No se han identificado las ${additionalNames.length} localidades adicionales: ${sampleTowns.length}`);

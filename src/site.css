@@ -414,3 +414,7 @@ body main .local-depth-card[open]>summary::before{content:'−'}
  body main .local-depth-grid{gap:10px;margin:20px 0}
  body main .local-depth-card{padding:14px 16px}
 }
+
+.service-examples{margin-top:14px;padding-top:12px;border-top:1px solid var(--line)}
+.service-examples ul{margin:4px 0 0;padding-left:18px}
+.service-examples a{display:inline-block;text-decoration:underline;text-underline-offset:3px}
