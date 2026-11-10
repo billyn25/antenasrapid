@@ -277,6 +277,56 @@
   ],
   "localPhotos": [
     {
+      "file": "lnb-parabolica-leon.webp",
+      "thumbnail": "lnb-parabolica-leon-mini.webp",
+      "alt": "Detalle del LNB de una antena parabólica en León capital",
+      "caption": "Trabajo en una antena parabólica en León capital. La foto muestra el LNB montado en el brazo de la antena.",
+      "width": 1080,
+      "height": 1440,
+      "original": "090389C5-75DB-4542-BDA9-81EB4B6FAE94.jpeg",
+      "sha256": "4dea771cbacce92fa58686f4052d3d249c4d9c667f71362a44b99777d636920d",
+      "provincePath": "/Antenas-Leon/",
+      "town": "León",
+      "townPath": "/Antenas-Leon/leon.html"
+    },
+    {
+      "file": "videoportero-tegui-leon.webp",
+      "thumbnail": "videoportero-tegui-leon-mini.webp",
+      "alt": "Detalle de la cámara de una placa de videoportero Tegui en León capital",
+      "caption": "Trabajo de videoportero Tegui en León capital. Se muestra la cámara de la placa exterior.",
+      "width": 535,
+      "height": 500,
+      "original": "A7FC1927-8F75-405A-A6CE-AFA93089292F.jpeg",
+      "sha256": "9b60e0c0a67e995a46efb5f05b2608940648df9024889c08f99f455da917c72a",
+      "provincePath": "/Antenas-Leon/",
+      "town": "León",
+      "townPath": "/Antenas-Leon/leon.html"
+    },
+    {
+      "file": "grupo-fonico-fermax-palencia.webp",
+      "thumbnail": "grupo-fonico-fermax-palencia-mini.webp",
+      "alt": "Grupo fónico Fermax VDS y sus conexiones en Palencia",
+      "caption": "Trabajo de portero automático en Palencia. La foto muestra el grupo fónico Fermax VDS y sus conexiones.",
+      "width": 1085,
+      "height": 1440,
+      "original": "0ED6AE11-7372-490E-A6DC-0F601508D0C4.jpeg",
+      "sha256": "49c5387501d3dd0c1c9021eb5edc6688265c67fca3becff443c7ea0030107794",
+      "provincePath": "/Antenas-Palencia/",
+      "town": "Palencia",
+      "townPath": "/Antenas-Palencia/palencia.html"
+    },
+    {
+      "file": "placa-fermax-navarra.webp",
+      "thumbnail": "placa-fermax-navarra-mini.webp",
+      "alt": "Placa de portero Fermax con teclado y cableado en Navarra",
+      "caption": "Trabajo de portero Fermax en Navarra. La foto muestra la placa exterior con teclado y sus conexiones.",
+      "width": 1080,
+      "height": 1440,
+      "original": "446EBB4E-F052-4F53-9B61-C004CEE18703.jpeg",
+      "sha256": "5b6210e5858c90e1b2541836ec4498926dc656b155485e3c8feb5a20d322008d",
+      "provincePath": "/Antenas-Navarra/"
+    },
+    {
       "file": "videoportero-fermax-duox-calle-segovia-madrid.webp",
       "thumbnail": "videoportero-fermax-duox-calle-segovia-madrid-mini.webp",
       "alt": "Detalle de la cámara y la placa Fermax del videoportero en la calle Segovia de Madrid",

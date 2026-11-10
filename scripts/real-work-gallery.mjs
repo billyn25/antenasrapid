@@ -47,7 +47,8 @@ export function applyLocalWork(root='dist') {
   const manifest=JSON.parse(fs.readFileSync(path.join(root,'local-pages-manifest.json'),'utf8'));
   const towns=manifest.filter(p=>work.confirmedTowns.some(n=>normalized(n)===normalized(p.name)));
   if(towns.length!==9)throw new Error('No se han identificado los nueve municipios con trabajos confirmados');
-  const localTowns = [...new Map(localPhotos.map(photo => [photo.townPath, photo.town])).entries()]
+  const municipalPhotos = localPhotos.filter(photo => photo.townPath);
+  const localTowns = [...new Map(municipalPhotos.map(photo => [photo.townPath, photo.town])).entries()]
     .map(([townPath, town]) => {
       const page = manifest.find(entry => entry.path === townPath && entry.name === town);
       if (!page) throw new Error('Caso real sin página municipal: ' + townPath);
