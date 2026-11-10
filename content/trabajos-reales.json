@@ -277,6 +277,19 @@
   ],
   "localPhotos": [
     {
+      "file": "reparacion-grupo-fonico-tegui-logrono.webp",
+      "thumbnail": "reparacion-grupo-fonico-tegui-logrono-mini.webp",
+      "alt": "Placa exterior de portero Tegui en un portal de Logroño",
+      "caption": "Reparación del grupo fónico de un portero automático Tegui en Logroño, La Rioja. La foto muestra la placa exterior y los pulsadores de llamada.",
+      "width": 810,
+      "height": 1440,
+      "original": "B1EF004D-6E2C-4BFE-8748-0F6BE181CC98.jpeg",
+      "sha256": "f9d7f09927eea8c6a7277911c7cdb5d403ea1880ed91db18614aa475787d50b9",
+      "town": "Logroño",
+      "townPath": "/Antenas-La-Rioja/logrono.html",
+      "provincePath": "/Antenas-La-Rioja/"
+    },
+    {
       "file": "reparacion-grupo-fonico-tegui-375091-elciego.webp",
       "thumbnail": "reparacion-grupo-fonico-tegui-375091-elciego-mini.webp",
       "alt": "Placa exterior de portero automático Tegui en Elciego, Álava",
