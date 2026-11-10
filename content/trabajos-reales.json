@@ -277,6 +277,32 @@
   ],
   "localPhotos": [
     {
+      "file": "golmar-colmenar-de-oreja-antes.webp",
+      "thumbnail": "golmar-colmenar-de-oreja-antes-mini.webp",
+      "alt": "Placa Golmar anterior en Colmenar de Oreja",
+      "caption": "Antes: placa Golmar de la instalación sustituida en Colmenar de Oreja, Madrid.",
+      "width": 1076,
+      "height": 1440,
+      "original": "F895E800-09E5-4A30-8C7C-343A614F290E.jpeg",
+      "sha256": "e6eaa442a79a21906d0d8747c4c5312abae9d971eb363ef8ece48923aeff7da7",
+      "town": "Colmenar de Oreja",
+      "townPath": "/Antenas-Madrid/colmenar-de-oreja.html",
+      "provincePath": "/Antenas-Madrid/"
+    },
+    {
+      "file": "tegui-colmenar-de-oreja-despues.webp",
+      "thumbnail": "tegui-colmenar-de-oreja-despues-mini.webp",
+      "alt": "Monitor Tegui nuevo en Colmenar de Oreja",
+      "caption": "Después: monitor Tegui nuevo, correspondiente al cambio de Golmar por Tegui realizado en Colmenar de Oreja, Madrid.",
+      "width": 810,
+      "height": 1440,
+      "original": "6134CE7D-2529-48BA-A87F-1994D0ED416F.jpeg",
+      "sha256": "62067484acf350b9f6fc50ffe50de50a1dda2be7f3a1e9b9e8a631bc3d6e3cd6",
+      "town": "Colmenar de Oreja",
+      "townPath": "/Antenas-Madrid/colmenar-de-oreja.html",
+      "provincePath": "/Antenas-Madrid/"
+    },
+    {
       "file": "reparacion-real-burgos-2026.webp",
       "thumbnail": "reparacion-real-burgos-2026-mini.webp",
       "alt": "Placa de portero automático Tegui en Burgos",
