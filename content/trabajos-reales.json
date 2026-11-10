@@ -277,6 +277,19 @@
   ],
   "localPhotos": [
     {
+      "file": "cambio-a-videoportero-soria.webp",
+      "thumbnail": "cambio-a-videoportero-soria-mini.webp",
+      "alt": "Toma de medidas junto a una placa exterior Tegui en un portal de Soria",
+      "caption": "Cambio a videoportero en una comunidad de vecinos de Soria. La foto muestra la toma de medidas junto a la placa exterior del portal.",
+      "width": 810,
+      "height": 1440,
+      "original": "838E005B-841C-465F-BB80-594B4CF50FBE.jpeg",
+      "sha256": "714abe0823221c2bfe12d40f1afb12bc497e27ad05f72cbf8cd37ee4d8cf5568",
+      "town": "Soria",
+      "townPath": "/Antenas-Soria/soria.html",
+      "provincePath": "/Antenas-Soria/"
+    },
+    {
       "file": "instalacion-videoportero-gijon.webp",
       "thumbnail": "instalacion-videoportero-gijon-mini.webp",
       "alt": "Placa de videoportero con cámara y pulsadores instalada en Gijón",
