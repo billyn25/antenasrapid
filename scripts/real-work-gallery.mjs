@@ -4,6 +4,7 @@ import {pathToFileURL} from 'node:url';
 
 export const work = JSON.parse(fs.readFileSync(new URL('../content/trabajos-reales.json', import.meta.url), 'utf8'));
 const localPhotos = work.localPhotos ?? [];
+const regionalPhotos = work.regionalPhotos ?? [];
 const domain = 'https://www.antenasrapid.com';
 const esc = s => String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const normalized = s => s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
@@ -13,7 +14,7 @@ const asset = name => '/assets/galeria/'+name;
 export function copyWorkPhotos(root='dist') {
   const dest=path.join(root,'assets','galeria');
   fs.mkdirSync(dest,{recursive:true});
-  for(const photo of [...work.photos, ...localPhotos]) for(const name of [photo.file,photo.thumbnail]) {
+  for(const photo of [...work.photos, ...localPhotos, ...regionalPhotos]) for(const name of [photo.file,photo.thumbnail]) {
     fs.copyFileSync(path.join('src','trabajos-reales',name),path.join(dest,name));
   }
 }
@@ -25,12 +26,16 @@ export const galleryStyle = `<style id="rapid-gallery-style">
 </style>`;
 export const galleryScript = `<script id="rapid-gallery-script">(()=>{const dialog=document.getElementById('gallery-lightbox');if(!dialog)return;const img=dialog.querySelector('img');let opener;document.querySelectorAll('.gallery-open').forEach(btn=>btn.addEventListener('click',()=>{opener=btn;img.src=btn.dataset.src;img.alt=btn.dataset.alt;dialog.showModal();}));dialog.querySelector('button').addEventListener('click',()=>dialog.close());dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close();});dialog.addEventListener('close',()=>{img.removeAttribute('src');if(opener)opener.focus();});})();</script>`;
 
-export function renderWorkGallery({home=false,photos=work.photos,route='/',town='',townLinks=''}={}) {
+export function renderWorkGallery({home=false,photos=work.photos,route='/',town='',townLinks='',regional=[]}={}) {
   const intro = home
     ? 'Fotografías de nuestros trabajos de antenas, parabólicas, amplificación y porteros realizados en nuestra zona de servicio.'
     : `${town ? `Hemos realizado trabajos en ${esc(town)}. ` : ''}Esta selección muestra trabajos de Antenas Rapid.`;
   const shown=home?photos.slice(0,8):photos;
   const rest=home?photos.slice(8):[];
+  const regionalGrid = regional.length ? `<div class="gallery-grid">${regional.map(photoCard).join('')}</div>` : '';
+  const regionalBlock = regionalGrid && (home
+    ? `<details class="gallery-more"><summary>Ver ${regional.length} fotos de trabajos de la zona norte</summary><p>Selección regional de antenas, amplificación y porteros.</p>${regionalGrid}</details>`
+    : `<div class="gallery-more" data-regional-work><h3>Ejemplos de trabajos en la zona norte</h3><p>Selección regional de instalaciones de Antenas Rapid. La galería reúne ejemplos de distintas localidades.</p>${regionalGrid}</div>`);
   // List the photos without declaring unverified authorship or licensing terms.
   const schema = {
     '@context': 'https://schema.org',
@@ -38,9 +43,9 @@ export function renderWorkGallery({home=false,photos=work.photos,route='/',town=
     '@id': domain + route + '#galeria',
     name: 'Trabajos reales de Antenas Rapid',
     description: 'Fotografías propias de trabajos de antenas, amplificación y porteros',
-    image: photos.map(photo => domain + asset(photo.file))
+    image: [...photos, ...regional].map(photo => domain + asset(photo.file))
   };
-  return `<section class="gallery-section" id="galeria" data-real-work="20261106"><div class="wrap"><div class="gallery-head"><div><span class="eyebrow">Instalaciones de Antenas Rapid</span><h2>Trabajos reales</h2></div><p>${intro}</p></div><div class="gallery-grid">${shown.map(photoCard).join('')}</div>${rest.length?`<details class="gallery-more"><summary>Ver las ${photos.length} fotografías de trabajos</summary><div class="gallery-grid">${rest.map(photoCard).join('')}</div></details>`:''}${townLinks}</div></section>${galleryDialog}<script type="application/ld+json" id="real-work-schema">${JSON.stringify(schema).replace(/</g,'\\u003c')}</script>`;
+  return `<section class="gallery-section" id="galeria" data-real-work="20261106"><div class="wrap"><div class="gallery-head"><div><span class="eyebrow">Instalaciones de Antenas Rapid</span><h2>Trabajos reales</h2></div><p>${intro}</p></div>${shown.length?`<div class="gallery-grid">${shown.map(photoCard).join('')}</div>`:''}${rest.length?`<details class="gallery-more"><summary>Ver las ${photos.length} fotografías de trabajos</summary><div class="gallery-grid">${rest.map(photoCard).join('')}</div></details>`:''}${regionalBlock}${townLinks}</div></section>${galleryDialog}<script type="application/ld+json" id="real-work-schema">${JSON.stringify(schema).replace(/</g,'\\u003c')}</script>`;
 }
 
 const serviceExamples = {
@@ -77,6 +82,11 @@ export function applyLocalWork(root='dist') {
   const towns=manifest.filter(p=>work.confirmedTowns.some(n=>normalized(n)===normalized(p.name)));
   if(towns.length!==9)throw new Error('No se han identificado los nueve municipios con trabajos confirmados');
   const municipalPhotos = localPhotos.filter(photo => photo.townPath);
+  const exampleTowns = [...new Set(regionalPhotos.map(photo => photo.examplePath))].map(route => {
+    const page = manifest.find(entry => entry.path === route);
+    if (!page) throw new Error('Ejemplo regional sin página municipal: ' + route);
+    return page;
+  });
   const localTowns = [...new Map(municipalPhotos.map(photo => [photo.townPath, photo.town])).entries()]
     .map(([townPath, town]) => {
       const page = manifest.find(entry => entry.path === townPath && entry.name === town);
@@ -85,9 +95,10 @@ export function applyLocalWork(root='dist') {
     });
   const linkedTowns = [...new Map([...towns, ...localTowns].map(page => [page.path, page])).values()];
   const links = `<p class="gallery-towns">Hemos realizado trabajos en ${linkedTowns.map(p => `<a href="${esc(p.path)}">${esc(p.name)}</a>`).join(', ')} y otras localidades de nuestra zona de servicio.</p>`;
+  const exampleLinks = exampleTowns.length ? `<p class="gallery-towns">Selecciones regionales para consultar desde ${exampleTowns.map(page => `<a href="${esc(page.path)}#galeria">${esc(page.name)}</a>`).join(', ')}.</p>` : '';
   const homeFile=path.join(root,'index.html');
   let home=fs.readFileSync(homeFile,'utf8');
-  const updatedHome=renderWorkGallery({home:true,photos:[...localPhotos,...work.photos],townLinks:links});
+  const updatedHome=renderWorkGallery({home:true,photos:[...localPhotos,...work.photos],townLinks:links+exampleLinks,regional:regionalPhotos});
   const schemaPattern=/<script type="application\/ld\+json" id="real-work-schema">[\s\S]*?<\/script>/;
   const homeSchema=updatedHome.match(schemaPattern)[0];
   home=home.replace(/<section class="gallery-section" id="galeria"[^>]*>[\s\S]*?<\/section>\s*<dialog class="gallery-lightbox"[\s\S]*?<\/dialog>/,updatedHome.replace(homeSchema,''));
@@ -107,6 +118,11 @@ export function applyLocalWork(root='dist') {
       .map(page => ({path: page.path.slice(1), route: page.path, town: page.name})),
     ...localProvinceRoutes.map(route => ({path: route + 'index.html', route, localOnly: true}))
   ];
+  for (const page of exampleTowns) {
+    if (!targets.some(target => target.route === page.path)) {
+      targets.push({path: page.path.slice(1), route: page.path, localOnly: true});
+    }
+  }
   for(const [i,target] of targets.entries()) {
     const file=path.join(root,target.path.replace(/^\//,''));let html=fs.readFileSync(file,'utf8');
     if(html.includes('id="galeria"')) {
@@ -122,12 +138,15 @@ export function applyLocalWork(root='dist') {
       ? [...townPhotos, ...provincePhotos, ...work.photos]
       : townPhotos.length ? townPhotos : [...provincePhotos, ...generalPhotos];
     // Use the same supported section IDs as the final town ordering pass.
-    const gallery=renderWorkGallery({photos,route:target.route,town:target.town}).replace(/<script type="application\/ld\+json" id="real-work-schema">([\s\S]*?)<\/script>/,(_,json)=>{html=html.replace('</head>',`<script type="application/ld+json" id="real-work-schema">${json}</script></head>`);return '';});
+    const regional = regionalPhotos.filter(photo => target.route.endsWith('/')
+      ? photo.examplePath.startsWith(target.route)
+      : photo.examplePath === target.route);
+    const gallery=renderWorkGallery({photos,route:target.route,town:target.town,regional}).replace(/<script type="application\/ld\+json" id="real-work-schema">([\s\S]*?)<\/script>/,(_,json)=>{html=html.replace('</head>',`<script type="application/ld+json" id="real-work-schema">${json}</script></head>`);return '';});
     const marker=html.match(/<section\b[^>]*id="preguntas"[^>]*>/)?.[0];
     if(!marker)throw new Error(target.path+': falta el punto de inserción');
     html=html.replace(marker,gallery+marker).replace('</head>',galleryStyle+'</head>').replace('</body>',galleryScript+'</body>');
     fs.writeFileSync(file,html);
   }
-  console.log(`TRABAJOS REALES OK: ${work.photos.length + localPhotos.length} fotografías propias; portada, ${provinceRoutes.length + localProvinceRoutes.length} provincias y ${linkedTowns.length + additional.length} municipios.`);
+  console.log(`TRABAJOS REALES OK: ${work.photos.length + localPhotos.length + regionalPhotos.length} fotografías propias; portada, ${provinceRoutes.length + localProvinceRoutes.length} provincias y ${linkedTowns.length + additional.length} municipios.`);
 }
 if(process.argv[1]&&import.meta.url===pathToFileURL(path.resolve(process.argv[1])).href)applyLocalWork();

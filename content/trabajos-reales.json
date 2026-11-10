@@ -597,5 +597,117 @@
       "townPath": "/Antenas-Bizkaia/ugao-miraballes.html",
       "provincePath": "/Antenas-Bizkaia/"
     }
+  ],
+  "regionalPhotos": [
+    {
+      "file": "zona-norte-telefonillo-tegui.webp",
+      "thumbnail": "zona-norte-telefonillo-tegui-mini.webp",
+      "alt": "Telefonillo interior Tegui con pulsador de apertura",
+      "caption": "Telefonillo Tegui con auricular y botón de apertura.",
+      "width": 576,
+      "height": 1280,
+      "original": "FF598A49-3DB1-4D1E-81CD-DC6DDD900D66.png",
+      "sha256": "e0b29a9bd829ed5841d0bc2e34a5fa064b514e7d60ce4b5b167491a8532b6234",
+      "examplePath": "/Antenas-Guipuzcoa/irun.html"
+    },
+    {
+      "file": "zona-norte-placa-tegui-comunidad.webp",
+      "thumbnail": "zona-norte-placa-tegui-comunidad-mini.webp",
+      "alt": "Placa metálica Tegui con pulsadores para varias viviendas",
+      "caption": "Placa de portero Tegui con pulsadores individuales para las viviendas.",
+      "width": 720,
+      "height": 1280,
+      "original": "6FC119BA-2852-4CDF-8900-1551BAB1E2B8.jpeg",
+      "sha256": "fb7a84d005170e8eb31790f917d7da47cd285b3df24fa4b927994b3c2cd6b137",
+      "examplePath": "/Antenas-Guipuzcoa/irun.html"
+    },
+    {
+      "file": "zona-norte-mastil-antena-cubierta.webp",
+      "thumbnail": "zona-norte-mastil-antena-cubierta-mini.webp",
+      "alt": "Mástil con antena de televisión sobre una cubierta de teja",
+      "caption": "Antena de televisión, mástil y cableado en una cubierta de teja.",
+      "width": 720,
+      "height": 1280,
+      "original": "DD43F7EB-D09E-4C3A-B022-A15858BFBAF7.jpeg",
+      "sha256": "a44b6b8ab378a0b71a7a848beafb276f3d5297d1917a10a81e072fda4f7672ad",
+      "examplePath": "/Antenas-Guipuzcoa/deba.html"
+    },
+    {
+      "file": "zona-norte-mastil-antena-vista-lateral.webp",
+      "thumbnail": "zona-norte-mastil-antena-vista-lateral-mini.webp",
+      "alt": "Vista lateral del mismo mástil de antena",
+      "caption": "Vista lateral del mismo mástil y del recorrido de los cables.",
+      "width": 720,
+      "height": 1280,
+      "original": "9E59588D-25C7-4B3E-942C-E883D6889756.jpeg",
+      "sha256": "a298e59f86fef572985e7eb63318f0f7c6c61d9bf613a53b70a4f2e6fff64dc1",
+      "examplePath": "/Antenas-Guipuzcoa/deba.html"
+    },
+    {
+      "file": "zona-norte-antenas-medidor-en-cubierta.webp",
+      "thumbnail": "zona-norte-antenas-medidor-en-cubierta-mini.webp",
+      "alt": "Dos antenas de televisión en el mástil y un medidor sobre el tejado",
+      "caption": "Otra vista de la instalación, con dos antenas en el mástil y el medidor de campo en la cubierta.",
+      "width": 720,
+      "height": 1280,
+      "original": "211AD5EE-0EC4-435A-B359-E16B1F5F5B5B.jpeg",
+      "sha256": "3261301b15b80fdfd5d190a06e160a7a9cd01a45d223df6918574434c319a040",
+      "examplePath": "/Antenas-Guipuzcoa/deba.html"
+    },
+    {
+      "file": "zona-norte-parabolica-fte-lnb.webp",
+      "thumbnail": "zona-norte-parabolica-fte-lnb-mini.webp",
+      "alt": "Parabólica Fte con LNB Fracarro sobre una cubierta",
+      "caption": "Parabólica Fte y LNB Fracarro sobre cubierta de teja.",
+      "width": 960,
+      "height": 1280,
+      "original": "03EC7E80-CE95-4073-9B3A-B25CA0911BE5.jpeg",
+      "sha256": "ef1d106616c85b9e595e7b4f9d6c332e7bd3bfc1982e9e43fb047ab2f99c6e14",
+      "examplePath": "/Antenas-Bizkaia/alonsotegi.html"
+    },
+    {
+      "file": "zona-norte-medicion-satelite-promax.webp",
+      "thumbnail": "zona-norte-medicion-satelite-promax-mini.webp",
+      "alt": "Medidor PROMAX HD Ranger junto al LNB Fracarro",
+      "caption": "Medición de señal de satélite con un medidor de campo PROMAX HD Ranger junto al LNB.",
+      "width": 1080,
+      "height": 810,
+      "original": "F44834F7-E52F-4C4B-BEA0-1582625E7156.jpeg",
+      "sha256": "29a41b45f6a5f1466d00faf0bd37ea26d393cc5d77701088b220715c7725e1aa",
+      "examplePath": "/Antenas-Bizkaia/alonsotegi.html"
+    },
+    {
+      "file": "zona-norte-cabecera-alcad.webp",
+      "thumbnail": "zona-norte-cabecera-alcad-mini.webp",
+      "alt": "Cabecera de televisión con módulos ALCAD y cableado coaxial",
+      "caption": "Cabecera de televisión con módulos ALCAD para amplificación y distribución de señal.",
+      "width": 1080,
+      "height": 810,
+      "original": "F997CDE5-3221-4603-9466-2A29B1A16604.jpeg",
+      "sha256": "524943fad6ab4f14faeb0dce69893014661f9d9226877fbeb829b6d125f2f003",
+      "examplePath": "/Antenas-Bizkaia/mallabia.html"
+    },
+    {
+      "file": "zona-norte-antena-y-parabolica-fachada.webp",
+      "thumbnail": "zona-norte-antena-y-parabolica-fachada-mini.webp",
+      "alt": "Antena terrestre y parabólica montadas en el mismo mástil",
+      "caption": "Antena terrestre y parabólica Fte montadas en el mismo mástil, sujeto a la fachada.",
+      "width": 960,
+      "height": 1280,
+      "original": "CE582DA2-1E32-4FD6-A6A8-0202837B31B9.jpeg",
+      "sha256": "ac18dc7a69cce612b891fef2f54fe45920dbf0403374c4c5c6cab488cf227079",
+      "examplePath": "/Antenas-Bizkaia/mallabia.html"
+    },
+    {
+      "file": "zona-norte-videoportero-comelit.webp",
+      "thumbnail": "zona-norte-videoportero-comelit-mini.webp",
+      "alt": "Placa Comelit con cámara, pantalla y teclado",
+      "caption": "Placa de videoportero Comelit con cámara, pantalla y teclado iluminado.",
+      "width": 960,
+      "height": 1280,
+      "original": "07AF557A-D81C-4BE7-8A21-5E2368FAC46C.jpeg",
+      "sha256": "bb5ca0cfecbb896dc10b232b8e535e617d0f4286ba1b5d9eb328e9f59b57af84",
+      "examplePath": "/Antenas-Bizkaia/mallabia.html"
+    }
   ]
 }
