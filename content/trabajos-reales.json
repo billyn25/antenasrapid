@@ -277,6 +277,32 @@
   ],
   "localPhotos": [
     {
+      "file": "antena-mastil-puebla-de-sanabria.webp",
+      "thumbnail": "antena-mastil-puebla-de-sanabria-mini.webp",
+      "alt": "Antena de televisión sobre la cubierta antes de la reparación en Puebla de Sanabria",
+      "caption": "Reparación de antena en Puebla de Sanabria. Se sustituyeron el mástil, la antena y el amplificador de señal. La foto muestra la instalación exterior antes del trabajo.",
+      "width": 540,
+      "height": 960,
+      "original": "409_135437_multimedia_operario_mov_1770197422a4669-antes.jpg",
+      "sha256": "a6b879911e6851d012273dd165f813ceb9b2a28cf0d11ec1a87d248575108bbc",
+      "town": "Puebla de Sanabria",
+      "townPath": "/Antenas-Zamora/puebla-de-sanabria.html",
+      "provincePath": "/Antenas-Zamora/"
+    },
+    {
+      "file": "amplificador-puebla-de-sanabria.webp",
+      "thumbnail": "amplificador-puebla-de-sanabria-mini.webp",
+      "alt": "Amplificador de señal de televisión en Puebla de Sanabria",
+      "caption": "Amplificador de televisión fotografiado antes de la sustitución en Puebla de Sanabria.",
+      "width": 443,
+      "height": 960,
+      "original": "54_129401_multimedia_operario_mov_1763812953a1221-antes.jpg",
+      "sha256": "508c13aae95af90650f73f672bb7e3f53274105d424793c688f9ea5f82ef90bc",
+      "town": "Puebla de Sanabria",
+      "townPath": "/Antenas-Zamora/puebla-de-sanabria.html",
+      "provincePath": "/Antenas-Zamora/"
+    },
+    {
       "file": "antenas-tdt-parabolica-aguilar-de-campoo.webp",
       "thumbnail": "antenas-tdt-parabolica-aguilar-de-campoo-mini.webp",
       "alt": "Antenas TDT y una parabólica en un tejado de Aguilar de Campoo",
