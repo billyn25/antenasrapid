@@ -65,8 +65,9 @@ export function applyLocalWork(root='dist') {
   home=home.replace(schemaPattern,homeSchema);
   fs.writeFileSync(homeFile,home);
   const additionalNames=['Bilbao','Portugalete','Santurtzi','Durango','Mungia','Gernika-Lumo','Donostia/San Sebastián','Irun','Eibar','Zarautz','Errenteria','Hondarribia','Santander','Torrelavega','Castro-Urdiales','Laredo','Santoña','Noja','Gijón','Oviedo','Avilés','Ribadesella','Villaviciosa','Cangas de Onís','Burgos','Miranda de Ebro','Aranda de Duero','Medina de Pomar','Lerma','Briviesca'];
-  const additional=manifest.filter(p=>provinceRoutes.some(route=>p.path.startsWith(route))&&additionalNames.some(n=>normalized(n)===normalized(p.name))&&!linkedTowns.some(t=>t.path===p.path));
-  if(additional.length!==30)throw new Error(`No se han identificado las 30 localidades adicionales: ${additional.length}`);
+  const sampleTowns=manifest.filter(p=>provinceRoutes.some(route=>p.path.startsWith(route))&&additionalNames.some(n=>normalized(n)===normalized(p.name)));
+  if(sampleTowns.length!==additionalNames.length)throw new Error(`No se han identificado las ${additionalNames.length} localidades adicionales: ${sampleTowns.length}`);
+  const additional=sampleTowns.filter(p=>!linkedTowns.some(t=>t.path===p.path));
   const localProvinceRoutes = [...new Set(localPhotos.map(photo => photo.provincePath))]
     .filter(route => !provinceRoutes.includes(route));
   const targets = [

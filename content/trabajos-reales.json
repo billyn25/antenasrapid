@@ -277,6 +277,32 @@
   ],
   "localPhotos": [
     {
+      "file": "instalacion-videoportero-gijon.webp",
+      "thumbnail": "instalacion-videoportero-gijon-mini.webp",
+      "alt": "Placa de videoportero con cámara y pulsadores instalada en Gijón",
+      "caption": "Instalación de un videoportero nuevo en un portal de Gijón, Asturias. La placa exterior incorpora una cámara y pulsadores de llamada para las viviendas.",
+      "width": 1080,
+      "height": 1435,
+      "original": "E1F7FCD7-B5D5-44F3-A819-288EDDE7EC61.jpeg",
+      "sha256": "787170a6399491aebba90371a3f7acb7def81e3d54da39e0f950a84d264a2eac",
+      "town": "Gijón",
+      "townPath": "/Antenas-Asturias/gijon.html",
+      "provincePath": "/Antenas-Asturias/"
+    },
+    {
+      "file": "instalacion-videoportero-bticino-bilbao.webp",
+      "thumbnail": "instalacion-videoportero-bticino-bilbao-mini.webp",
+      "alt": "Videoportero BTicino montado sobre un panel metálico en Bilbao",
+      "caption": "Instalación de un videoportero BTicino en Bilbao. La placa con cámara está montada sobre el panel metálico del portal.",
+      "width": 810,
+      "height": 1440,
+      "original": "CA99D386-6865-4E96-A794-1407C75DE544.jpeg",
+      "sha256": "817bf2bd2c989f2f4222f94ee5952bc0276316f382f485c8c56492f526e95ffa",
+      "town": "Bilbao",
+      "townPath": "/Antenas-Bizkaia/bilbao.html",
+      "provincePath": "/Antenas-Bizkaia/"
+    },
+    {
       "file": "placa-matricial-fermax-aranjuez-exterior.webp",
       "thumbnail": "placa-matricial-fermax-aranjuez-exterior-mini.webp",
       "alt": "Placa exterior Fermax con pantalla y teclado numérico en Aranjuez",
