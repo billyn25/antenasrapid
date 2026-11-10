@@ -4,6 +4,7 @@ import assert from 'node:assert/strict';
 import {pathToFileURL} from 'node:url';
 import {localDoorphoneCases} from './local-doorphone-cases.mjs';
 import snapshot from '../content/municipal-context.json' with {type:'json'};
+import work from '../content/trabajos-reales.json' with {type:'json'};
 import {canonicalPath,PRODUCTION_DOMAIN} from './canonical-urls.mjs';
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const number=(n,precision=0)=>new Intl.NumberFormat('es-ES',{useGrouping:true,minimumFractionDigits:precision,maximumFractionDigits:precision}).format(n);
@@ -35,11 +36,46 @@ const localReferences = {
  '/Antenas-Bizkaia/alonsotegi.html': 'Plaza Doctor Madinabeitia y calle Arbuio',
  '/Antenas-Bizkaia/mallabia.html': 'Arteiz Kalea y calle Goitondo'
 };
+const coverageExamples = {
+ '/Antenas-Guadalajara/guadalajara.html': {
+  streets: 'calle Mayor y plaza de Santo Domingo',
+  file: 'videoportero-fermax-duox-calle-segovia-madrid.webp',
+  label: 'Reparación de un videoportero Fermax DUOX'
+ },
+ '/Antenas-Salamanca/salamanca.html': {
+  streets: 'Gran Vía y calle Toro',
+  file: 'antena-mastil-puebla-de-sanabria.webp',
+  label: 'Sustitución de mástil, antena y amplificador'
+ },
+ '/Antenas-Segovia/segovia.html': {
+  streets: 'avenida del Acueducto y calle Real',
+  file: 'revision-antena-calle-mayor-avila.webp',
+  label: 'Cambio de antena y cableado'
+ },
+ '/Antenas-Toledo/toledo.html': {
+  streets: 'avenida de Europa y calle Comercio',
+  file: 'placa-matricial-fermax-aranjuez-exterior.webp',
+  label: 'Reparación de una placa de portero Fermax'
+ },
+ '/Antenas-Valladolid/valladolid.html': {
+  streets: 'paseo de Zorrilla y avenida de Zamora',
+  file: 'antenas-tdt-parabolica-aguilar-de-campoo.webp',
+  label: 'Antenas TDT y parabólica en una cubierta'
+ }
+};
+function coverageExampleBlock(example){
+ const photo=work.localPhotos.find(item=>item.file===example.file);
+ assert(photo?.townPath && photo.town, `Ejemplo sin municipio confirmado: ${example.file}`);
+ const href=esc(photo.townPath)+'#galeria';
+ return `<div data-coverage-example><h3>Ejemplo de un trabajo en otra localidad</h3><p><a href="${href}">${esc(example.label)} en ${esc(photo.town)}</a></p><a href="${href}"><img src="/assets/galeria/${esc(photo.thumbnail)}" width="128" height="${Math.round(photo.height*128/photo.width)}" alt="${esc(photo.alt)}" loading="lazy" decoding="async"></a></div>`;
+}
 export function contextBlock(p){
  const hasOtherCapital=p.capital!==p.officialName;
- const references=localReferences[p.path];
+ const example=coverageExamples[p.path];
+ const references=example?.streets??localReferences[p.path];
+ const exampleBlock=example?coverageExampleBlock(example):'';
  const referenceText=references?`<p><strong>Referencias para indicar tu zona.</strong> ${esc(references)}. Al preparar el aviso, indica tu calle y el número del inmueble.</p>`:'';
- return `<section class="section soft municipal-context" id="contexto-municipal" data-municipal-context="ign-2025-v1"><div class="wrap"><span class="eyebrow">Ubicación de la instalación</span><h2>Preparar una revisión en ${esc(p.name)}</h2><div class="municipal-layout"><div><p>${hasOtherCapital?`La referencia cartográfica municipal de la tabla del IGN es ${esc(p.capital)}. Si la instalación está en otro núcleo de ${esc(p.name)}, indica su nombre y la dirección para concretar el aviso.`:`Para revisar una antena o un portero en ${esc(p.name)}, indica la calle y el inmueble. Si se trata de una comunidad, confirma qué viviendas están afectadas y el acceso a los equipos comunes.`}</p>${referenceText}<a href="https://signa.ign.es/signa/?center=${p.longitude},${p.latitude}&amp;level=14&amp;basemap=basemap_3" rel="noopener">Ver ${esc(p.capital)} en el mapa del IGN →</a></div><dl class="municipal-facts"><div><dt>Población de referencia</dt><dd>${number(p.population)}<small>habitantes</small></dd></div><div><dt>Superficie municipal</dt><dd>${number(p.areaKm2,2)}<small>km²</small></dd></div><div><dt>Referencia municipal</dt><dd class="municipal-capital">${esc(p.capital)}</dd></div></dl></div><p class="municipal-source">Fuente: <a href="${snapshot.sourcePage}">IGN · Información Geográfica Destacada</a>, tabla revisada el ${snapshot.revision}. Cifras de esa edición; no son una estimación de población actual. Obra derivada CC BY 4.0 ign.es, 2025.</p></div></section>`;
+ return `<section class="section soft municipal-context" id="contexto-municipal" data-municipal-context="ign-2025-v1"><div class="wrap"><span class="eyebrow">Ubicación de la instalación</span><h2>Preparar una revisión en ${esc(p.name)}</h2><div class="municipal-layout"><div><p>${hasOtherCapital?`La referencia cartográfica municipal de la tabla del IGN es ${esc(p.capital)}. Si la instalación está en otro núcleo de ${esc(p.name)}, indica su nombre y la dirección para concretar el aviso.`:`Para revisar una antena o un portero en ${esc(p.name)}, indica la calle y el inmueble. Si se trata de una comunidad, confirma qué viviendas están afectadas y el acceso a los equipos comunes.`}</p>${referenceText}<a href="https://signa.ign.es/signa/?center=${p.longitude},${p.latitude}&amp;level=14&amp;basemap=basemap_3" rel="noopener">Ver ${esc(p.capital)} en el mapa del IGN →</a>${exampleBlock}</div><dl class="municipal-facts"><div><dt>Población de referencia</dt><dd>${number(p.population)}<small>habitantes</small></dd></div><div><dt>Superficie municipal</dt><dd>${number(p.areaKm2,2)}<small>km²</small></dd></div><div><dt>Referencia municipal</dt><dd class="municipal-capital">${esc(p.capital)}</dd></div></dl></div><p class="municipal-source">Fuente: <a href="${snapshot.sourcePage}">IGN · Información Geográfica Destacada</a>, tabla revisada el ${snapshot.revision}. Cifras de esa edición; no son una estimación de población actual. Obra derivada CC BY 4.0 ign.es, 2025.</p></div></section>`;
 }
 export function nearbyBlock(p,nearby,ring){
  const extra=ring.filter(t=>!nearby.some(n=>n.municipioId===t.municipioId));
@@ -76,6 +112,16 @@ export function applyMunicipalContext(root='dist'){
  for(const p of towns){
   const file=path.join(root,p.path.slice(1));
   fs.writeFileSync(file,enhanceMunicipality(fs.readFileSync(file,'utf8'),p,nearestTowns(p,towns),provinceRing(p,towns)));
+ }
+ for(const [route,example] of Object.entries(coverageExamples)){
+  const town=towns.find(page=>page.path===route);
+  assert(town, `Falta la capital en el directorio: ${route}`);
+  const file=path.join(root,route.slice(1,route.lastIndexOf('/')+1),'index.html');
+  const html=fs.readFileSync(file,'utf8');
+  const directoryHeading=/(<section class="section soft" id="localidades"><div class="wrap" data-locality-search>[\s\S]*?<\/h2>)/;
+  assert(directoryHeading.test(html), `Falta el directorio provincial: ${file}`);
+  const note=`<p data-capital-coverage>Si la instalación está en ${esc(town.name)} capital, consulta <a href="${esc(route)}#contexto-municipal">las calles de referencia (${esc(example.streets)}) y un ejemplo de trabajo</a>.</p>`;
+  if(!html.includes('data-capital-coverage'))fs.writeFileSync(file,html.replace(directoryHeading,(_,heading)=>heading+note));
  }
  fs.appendFileSync(path.join(root,'assets/site.css'),css);
  console.log(`CONTEXTO MUNICIPAL OK: ${towns.length} fichas IGN, seis enlaces por proximidad y recorrido provincial completo.`);
