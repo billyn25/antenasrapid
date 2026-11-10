@@ -277,6 +277,19 @@
   ],
   "localPhotos": [
     {
+      "file": "modulo-portero-90021-olite.webp",
+      "thumbnail": "modulo-portero-90021-olite-mini.webp",
+      "alt": "Módulo 90021 y cableado de un portero automático en Olite",
+      "caption": "Trabajo de portero automático en Olite/Erriberri, Navarra. La foto muestra el módulo 90021 y las conexiones del cableado.",
+      "width": 864,
+      "height": 1221,
+      "original": "5AB40C1D-1194-429D-B129-791F4BAE2B5B.jpeg",
+      "sha256": "51f8916aab3fa73a067e4fafdf6f55712814da91190313357edf7771cef7662b",
+      "town": "Olite/Erriberri",
+      "townPath": "/Antenas-Navarra/olite-erriberri.html",
+      "provincePath": "/Antenas-Navarra/"
+    },
+    {
       "file": "lnb-parabolica-leon.webp",
       "thumbnail": "lnb-parabolica-leon-mini.webp",
       "alt": "Detalle del LNB de una antena parabólica en León capital",
