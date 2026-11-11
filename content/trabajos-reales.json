@@ -277,6 +277,19 @@
   ],
   "localPhotos": [
     {
+      "file": "montaje-starlink-mastil-tordesillas.webp",
+      "thumbnail": "montaje-starlink-mastil-tordesillas-mini.webp",
+      "alt": "Antena Starlink montada sobre un mástil en Tordesillas",
+      "caption": "Montaje de una antena Starlink sobre un mástil en Tordesillas, Valladolid. La foto muestra la antena, el soporte y el cable sujeto al mástil.",
+      "width": 810,
+      "height": 1440,
+      "original": "d178f2f1-5f90-4b60-bb14-439d4f012a27(1).jpg",
+      "sha256": "d71f0b9869e21d4e6dabfb6b3ca5e892ff7acfcdfec305645630070af5aab2de",
+      "town": "Tordesillas",
+      "townPath": "/Antenas-Valladolid/tordesillas.html",
+      "provincePath": "/Antenas-Valladolid/"
+    },
+    {
       "file": "portero-audio-dos-hilos-alcala-de-henares.webp",
       "thumbnail": "portero-audio-dos-hilos-alcala-de-henares-mini.webp",
       "alt": "Placa de portero de audio con pulsadores en Alcalá de Henares",
