@@ -4,6 +4,7 @@ import {normalizeCanonicalHtml} from './canonical-urls.mjs';
 import {applyMadridContact} from './madrid-contact.mjs';
 import {applyMadridDepth} from './madrid-seo-depth.mjs';
 import {applyServiceHub} from './madrid-service-hub.mjs';
+import {applySearchPriorityPages} from './search-priority-pages.mjs';
 
 if (process.env.CONFIRM_PRODUCTION_PREP !== '1') {
   throw new Error('Preparación de producción bloqueada. Usa CONFIRM_PRODUCTION_PREP=1 solo en el cambio final o en la auditoría aislada.');
@@ -36,6 +37,7 @@ function sitemapKey(url) {
 
 applyMadridDepth(root);
 applyServiceHub(root);
+applySearchPriorityPages(root);
 applyMadridContact(root);
 normalizeCanonicalHtml(root);
 const urls = [];
