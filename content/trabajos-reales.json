@@ -277,6 +277,56 @@
   ],
   "localPhotos": [
     {
+      "file": "valoracion-videoportero-getxo.webp",
+      "thumbnail": "valoracion-videoportero-getxo-mini.webp",
+      "alt": "Placa Tegui existente en una comunidad de Getxo",
+      "caption": "Valoración para sustituir el portero automático de una comunidad de vecinos de Getxo por un videoportero. La foto muestra la placa Tegui existente.",
+      "width": 864,
+      "height": 1440,
+      "original": "0991A2C0-CBE2-4F51-A199-8B7ABF8BE805.jpeg",
+      "sha256": "bf03a054279a70c8b7db25955d507c0a103d7b3ccce3ecb3b2ab60223cb490e9",
+      "provincePath": "/Antenas-Bizkaia/",
+      "town": "Getxo",
+      "townPath": "/Antenas-Bizkaia/getxo.html"
+    },
+    {
+      "file": "central-triax-retirada-barakaldo.webp",
+      "thumbnail": "central-triax-retirada-barakaldo-mini.webp",
+      "alt": "Central programable Triax TMB100S retirada en Barakaldo",
+      "caption": "La central programable dejó de dar señal en Vega de la Punta, 1, Barakaldo. Se sustituyó la Triax TMB100S por una Rover Digineo. La foto muestra la central Triax retirada.",
+      "width": 768,
+      "height": 1280,
+      "original": "6B5C705E-8B7D-4256-9423-99712E5A8193.jpeg",
+      "sha256": "8b48a4ef4f8a7fb247edc1f1f12b60b12b4dfa75a458a12ca1db8921887aa194",
+      "provincePath": "/Antenas-Bizkaia/",
+      "town": "Barakaldo",
+      "townPath": "/Antenas-Bizkaia/barakaldo.html"
+    },
+    {
+      "file": "central-rover-digineo-salamanca.webp",
+      "thumbnail": "central-rover-digineo-salamanca-mini.webp",
+      "alt": "Central programable Rover Digineo en Salamanca",
+      "caption": "Sustitución de una central programable que no daba señal en Salamanca. La foto muestra la central Rover Digineo.",
+      "width": 1080,
+      "height": 608,
+      "original": "B6CE6485-46D4-4FE5-80CB-21FD0CAB6C4B.jpeg",
+      "sha256": "6b9d414f9a0c46b75f989090d8a961151148fa5955c9450168041336afc0a81b",
+      "province": "Salamanca",
+      "provincePath": "/Antenas-Salamanca/"
+    },
+    {
+      "file": "portero-golmar-burgos.webp",
+      "thumbnail": "portero-golmar-burgos-mini.webp",
+      "alt": "Placa de portero automático Golmar en Burgos",
+      "caption": "Cambio del grupo fónico de un portero automático Golmar en una comunidad de vecinos en Burgos. La foto muestra la placa exterior y sus pulsadores.",
+      "width": 1080,
+      "height": 1440,
+      "original": "4FDC7BE0-699E-43E2-912D-33895FD1B4BF.jpeg",
+      "sha256": "df4892c341cf858d637a48ffe4ad885c73dde937e3fa8fa9f903839c964a1cb5",
+      "province": "Burgos",
+      "provincePath": "/Antenas-Burgos/"
+    },
+    {
       "file": "placa-dos-hilos-san-fernando-de-henares.webp",
       "thumbnail": "placa-dos-hilos-san-fernando-de-henares-mini.webp",
       "alt": "Placa de portero automático con pulsadores en San Fernando de Henares",
@@ -405,30 +455,6 @@
       "town": "Colmenar de Oreja",
       "townPath": "/Antenas-Madrid/colmenar-de-oreja.html",
       "provincePath": "/Antenas-Madrid/"
-    },
-    {
-      "file": "reparacion-real-burgos-2026.webp",
-      "thumbnail": "reparacion-real-burgos-2026-mini.webp",
-      "alt": "Placa de portero automático Tegui en Burgos",
-      "caption": "Reparación real en la provincia de Burgos. Placa de portero automático Tegui.",
-      "width": 864,
-      "height": 1440,
-      "original": "0991A2C0-CBE2-4F51-A199-8B7ABF8BE805.jpeg",
-      "sha256": "bf03a054279a70c8b7db25955d507c0a103d7b3ccce3ecb3b2ab60223cb490e9",
-      "province": "Burgos",
-      "provincePath": "/Antenas-Burgos/"
-    },
-    {
-      "file": "reparacion-real-salamanca-2026.webp",
-      "thumbnail": "reparacion-real-salamanca-2026-mini.webp",
-      "alt": "Amplificador Triax TMB100S en Salamanca",
-      "caption": "Reparación real en la provincia de Salamanca. Amplificador Triax TMB100S.",
-      "width": 768,
-      "height": 1280,
-      "original": "6B5C705E-8B7D-4256-9423-99712E5A8193.jpeg",
-      "sha256": "8b48a4ef4f8a7fb247edc1f1f12b60b12b4dfa75a458a12ca1db8921887aa194",
-      "province": "Salamanca",
-      "provincePath": "/Antenas-Salamanca/"
     },
     {
       "file": "reparacion-real-guadalajara-2026.webp",
