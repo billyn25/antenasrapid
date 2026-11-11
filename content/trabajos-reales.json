@@ -277,6 +277,32 @@
   ],
   "localPhotos": [
     {
+      "file": "cambio-antenas-uhf-sat-grua-gizaburuaga.webp",
+      "thumbnail": "cambio-antenas-uhf-sat-grua-gizaburuaga-mini.webp",
+      "alt": "Técnico en la cesta de una grúa junto a una antena UHF y una parabólica en Gizaburuaga",
+      "caption": "En Gizaburuaga sustituimos la antena UHF para la TDT y la parabólica de satélite. Usamos una grúa con cesta para acceder a las antenas en lo alto del poste.",
+      "width": 768,
+      "height": 1024,
+      "original": "E64733B8-70E2-47B9-B485-A3BD75D9018C.jpeg",
+      "sha256": "f1a2df9b9b233d32a4a0fb68606289439738d9efe73b7ccb92387ead4451ce28",
+      "town": "Gizaburuaga",
+      "townPath": "/Antenas-Bizkaia/gizaburuaga.html",
+      "provincePath": "/Antenas-Bizkaia/"
+    },
+    {
+      "file": "antenas-tdt-parabolica-astra-lekeitio.webp",
+      "thumbnail": "antenas-tdt-parabolica-astra-lekeitio-mini.webp",
+      "alt": "Dos antenas TDT y una parabólica instaladas en un tejado de Lekeitio, frente al mar",
+      "caption": "Instalación nueva en Lekeitio de dos antenas TDT Televes con dipolo activo y una parabólica para recibir Astra.",
+      "width": 810,
+      "height": 1440,
+      "original": "8DEB8EFA-6BEA-4B7F-8D03-69CE8DFC1179.jpeg",
+      "sha256": "6d0329ad97b33881be76d9537e7a39c4d0c640ae1d302639c3ec1df205a1cff3",
+      "town": "Lekeitio",
+      "townPath": "/Antenas-Bizkaia/lekeitio.html",
+      "provincePath": "/Antenas-Bizkaia/"
+    },
+    {
       "file": "antena-rover-filtro-5g-gordexola.webp",
       "thumbnail": "antena-rover-filtro-5g-gordexola-mini.webp",
       "alt": "Antena Rover de TDT instalada en una cubierta de Gordexola",
