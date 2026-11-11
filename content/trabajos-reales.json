@@ -300,6 +300,20 @@
   ],
   "localPhotos": [
     {
+      "file": "prueba-antena-rover-najera.webp",
+      "thumbnail": "prueba-antena-rover-najera-mini.webp",
+      "title": "Prueba de una antena TDT Rover en Nájera",
+      "alt": "Antena TDT Rover montada en un mástil durante la prueba en Nájera, La Rioja",
+      "caption": "En Nájera, La Rioja, la antena anterior era antigua y la televisión se veía mal. La sustituimos por una Rover nueva y estamos probando la recepción de los canales de TDT.",
+      "width": 1080,
+      "height": 1440,
+      "original": "B7A1C637-EA45-42C7-BEFA-FBAEB4F14769.jpeg",
+      "sha256": "047b3822b784ffeaa7b1b31760a2e0087adeb9a5d77bb8415e76f28be5bc9963",
+      "town": "Nájera",
+      "townPath": "/Antenas-La-Rioja/najera.html",
+      "provincePath": "/Antenas-La-Rioja/"
+    },
+    {
       "file": "cambio-antena-tdt-televes-mungia.webp",
       "thumbnail": "cambio-antena-tdt-televes-mungia-mini.webp",
       "title": "Cambio de antena TDT por pixelación en Mungia",
