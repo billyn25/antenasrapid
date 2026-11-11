@@ -277,6 +277,19 @@
   ],
   "localPhotos": [
     {
+      "file": "placa-dos-hilos-san-fernando-de-henares.webp",
+      "thumbnail": "placa-dos-hilos-san-fernando-de-henares-mini.webp",
+      "alt": "Placa de portero automático con pulsadores en San Fernando de Henares",
+      "caption": "Cambio de placa de portero automático de cinco hilos a un sistema de dos hilos en avenida de Badajoz, 9, San Fernando de Henares, Madrid. La foto muestra la placa con los pulsadores de llamada de las viviendas.",
+      "width": 1080,
+      "height": 1440,
+      "original": "IMG_DF2E2AFD-BB68-4538-8262-4511C48289C9.jpeg",
+      "sha256": "926f89cb023568c1bd3fcab6c83d5f499c5a0b1cbce08608b9860ff0adad2be2",
+      "town": "San Fernando de Henares",
+      "townPath": "/Antenas-Madrid/san-fernando-de-henares.html",
+      "provincePath": "/Antenas-Madrid/"
+    },
+    {
       "file": "videoportero-comunitario-balmaseda.webp",
       "thumbnail": "videoportero-comunitario-balmaseda-mini.webp",
       "alt": "Placa exterior de videoportero con pulsadores en un portal de Balmaseda",

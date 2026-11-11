@@ -148,7 +148,7 @@ export function applyLocalWork(root='dist') {
     const regional = regionalPhotos.filter(photo => target.route.endsWith('/')
       ? photo.examplePath.startsWith(target.route)
       : photo.examplePath === target.route);
-    const featuredCase = ['/Antenas-Madrid/valdilecha.html', '/Antenas-Madrid/loeches.html', '/Antenas-Madrid/alcala-de-henares.html', '/Antenas-Madrid/colmenar-de-oreja.html', '/Antenas-Madrid/aranjuez.html', '/Antenas-Madrid/alcobendas.html'].includes(target.route);
+    const featuredCase = ['/Antenas-Madrid/san-fernando-de-henares.html', '/Antenas-Madrid/valdilecha.html', '/Antenas-Madrid/loeches.html', '/Antenas-Madrid/alcala-de-henares.html', '/Antenas-Madrid/colmenar-de-oreja.html', '/Antenas-Madrid/aranjuez.html', '/Antenas-Madrid/alcobendas.html'].includes(target.route);
     const otherPhotos = featuredCase ? photos.slice(townPhotos.length) : [];
     const gallery=renderWorkGallery({photos:featuredCase ? townPhotos : photos,route:target.route,town:target.town,regional,otherPhotos}).replace(/<script type="application\/ld\+json" id="real-work-schema">([\s\S]*?)<\/script>/,(_,json)=>{html=html.replace('</head>',`<script type="application/ld+json" id="real-work-schema">${json}</script></head>`);return '';});
     const marker=html.match(/<section\b[^>]*id="preguntas"[^>]*>/)?.[0];
