@@ -11,27 +11,35 @@ const normalized = s => s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowe
 const provinceRoutes = ['/Antenas-Bizkaia/','/Antenas-Guipuzcoa/','/Antenas-Cantabria/','/Antenas-Asturias/','/Antenas-Burgos/'];
 const asset = name => '/assets/galeria/'+name;
 const photoCredit = 'Fotografías de Roberto Fuentes González.';
-const nearbyWorkExamples = new Map([
-  ['/Antenas-Bizkaia/amoroto.html', '/Antenas-Bizkaia/gizaburuaga.html'],
-  ['/Antenas-Bizkaia/mendexa.html', '/Antenas-Bizkaia/lekeitio.html'],
-]);
+const nearbyWorkExamples = [
+  {
+    source: '/Antenas-Bizkaia/amoroto.html',
+    photo: 'cambio-antenas-uhf-sat-grua-gizaburuaga.webp',
+    title: 'Cambio de antenas con grúa en Gizaburuaga',
+    summary: 'La antena UHF de la TDT y la parabólica estaban en lo alto de un poste. Accedimos con una grúa con cesta para sustituir ambas.',
+  },
+  {
+    source: '/Antenas-Bizkaia/mendexa.html',
+    photo: 'antenas-tdt-parabolica-astra-lekeitio.webp',
+    title: 'Instalación de TDT y parabólica Astra en Lekeitio',
+    summary: 'Montamos dos antenas TDT Televes con dipolo activo y una parabólica para Astra en un tejado de Lekeitio.',
+  },
+];
 
-function addNearbyWorkLinks(root, manifest, localTowns) {
-  const towns = new Map(manifest.map(page => [page.path, page]));
-  const ownWork = new Map(localTowns.map(page => [page.path, page]));
-  const nearbySection = /<section\b[^>]*id="pueblos-cercanos"[^>]*>[\s\S]*?<\/section>/;
-  for (const [source, destination] of nearbyWorkExamples) {
-    const town = ownWork.get(destination);
-    if (!towns.has(source) || !town) throw new Error('Referencia a trabajo cercano no válida: ' + source);
-    const file = path.join(root, source.slice(1));
+function addNearbyWorkCases(root, manifest, localTowns) {
+  const routes = new Set(manifest.map(page => page.path));
+  const ownWork = new Set(localTowns.map(page => page.path));
+  for (const example of nearbyWorkExamples) {
+    const photo = localPhotos.find(item => item.file === example.photo);
+    if (!routes.has(example.source) || !ownWork.has(photo?.townPath)) {
+      throw new Error('Referencia a trabajo cercano no válida: ' + example.source);
+    }
+    const file = path.join(root, example.source.slice(1));
     const html = fs.readFileSync(file, 'utf8');
-    const section = html.match(nearbySection)?.[0];
-    const marker = '<div class="related-town-links">';
-    if (!section?.includes(marker)) throw new Error('Falta el bloque de cercanos en ' + source);
-    const example = `<p class="nearby-work" data-nearby-work="1"><strong>Trabajo real en un municipio cercano.</strong> <a href="${esc(town.path)}#galeria">Ver la intervención en ${esc(town.name)}</a>.</p>`;
-    const cleanSection = section.replace(/<p class="nearby-work" data-nearby-work="1">[\s\S]*?<\/p>/, '');
-    const updated = cleanSection.replace(marker, () => example + marker);
-    fs.writeFileSync(file, html.replace(section, () => updated));
+    const marker = html.match(/<section\b[^>]*id="preguntas"[^>]*>/)?.[0];
+    if (!marker || html.includes('id="galeria"')) throw new Error('No se puede insertar el caso cercano en ' + example.source);
+    const gallery = `<section class="gallery-section" id="galeria" data-real-work="20261106" data-nearby-work="1"><div class="wrap"><div class="gallery-head"><div><p>Trabajo real en un municipio cercano</p><h2>${esc(example.title)}</h2></div></div><div class="gallery-grid" style="grid-template-columns:minmax(0,500px)"><figure><a href="${esc(photo.townPath)}#galeria" aria-label="Ver el trabajo original en ${esc(photo.town)}"><img src="${asset(photo.thumbnail)}" alt="${esc(photo.alt)}" width="${photo.width}" height="${photo.height}" loading="lazy" decoding="async" style="height:auto;max-height:480px;object-fit:contain"></a><figcaption><p>${esc(example.summary)}</p><a href="${esc(photo.townPath)}#galeria">Ver el trabajo en ${esc(photo.town)}</a></figcaption></figure></div></div></section>`;
+    fs.writeFileSync(file, html.replace(marker, () => gallery + marker).replace('</head>', galleryStyle + '</head>'));
   }
 }
 
@@ -179,7 +187,7 @@ export function applyLocalWork(root='dist') {
     html=html.replace(marker,gallery+marker).replace('</head>',galleryStyle+'</head>').replace('</body>',galleryScript+'</body>');
     fs.writeFileSync(file,html);
   }
-  addNearbyWorkLinks(root, manifest, localTowns);
-  console.log(`TRABAJOS REALES OK: ${work.photos.length + localPhotos.length + regionalPhotos.length} fotografías propias; portada, ${provinceRoutes.length + localProvinceRoutes.length} provincias y ${linkedTowns.length + additional.length} municipios. Referencias a trabajos cercanos: ${nearbyWorkExamples.size}.`);
+  addNearbyWorkCases(root, manifest, localTowns);
+  console.log(`TRABAJOS REALES OK: ${work.photos.length + localPhotos.length + regionalPhotos.length} fotografías propias; portada, ${provinceRoutes.length + localProvinceRoutes.length} provincias y ${linkedTowns.length + additional.length} municipios. Referencias a trabajos cercanos: ${nearbyWorkExamples.length}.`);
 }
 if(process.argv[1]&&import.meta.url===pathToFileURL(path.resolve(process.argv[1])).href)applyLocalWork();
