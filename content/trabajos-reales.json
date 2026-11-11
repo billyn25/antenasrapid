@@ -277,6 +277,19 @@
   ],
   "localPhotos": [
     {
+      "file": "cambio-dos-antenas-tdt-eibar.webp",
+      "thumbnail": "cambio-dos-antenas-tdt-eibar-mini.webp",
+      "alt": "Dos antenas de TDT montadas en un mástil en Eibar",
+      "caption": "Cambio de antenas para mejorar la recepción de la TDT en Eibar, Gipuzkoa. En esta instalación hicieron falta dos antenas para captar todos los canales.",
+      "width": 810,
+      "height": 1440,
+      "original": "BE21502A-E02A-4656-91F1-D5FB380984A3.jpeg",
+      "sha256": "deb0ad0e247774bde532b9b7ff2e0440088018809ff7c0d664d0c856285aad99",
+      "town": "Eibar",
+      "townPath": "/Antenas-Guipuzcoa/eibar.html",
+      "provincePath": "/Antenas-Guipuzcoa/"
+    },
+    {
       "file": "videoportero-francisco-grande-covian-oviedo.webp",
       "thumbnail": "videoportero-francisco-grande-covian-oviedo-mini.webp",
       "alt": "Placa exterior de videoportero con cámara en la calle Francisco Grande Covián, Oviedo",
