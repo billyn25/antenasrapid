@@ -277,6 +277,19 @@
   ],
   "localPhotos": [
     {
+      "file": "portero-audio-dos-hilos-alcala-de-henares.webp",
+      "thumbnail": "portero-audio-dos-hilos-alcala-de-henares-mini.webp",
+      "alt": "Placa de portero de audio con pulsadores en Alcalá de Henares",
+      "caption": "Cambio de portero de audio convencional a un sistema de dos hilos en una comunidad de Alcalá de Henares, Madrid. La foto muestra la placa exterior con los pulsadores de llamada de las viviendas. Técnico: Ángel N. S.",
+      "width": 1068,
+      "height": 1440,
+      "original": "630AA726-B76E-4C01-B325-FF328FE77322.jpeg",
+      "sha256": "f80495796d954af8e1f979e666360dddef5bc4ccb65a5815c1a285f0a004fdf3",
+      "town": "Alcalá de Henares",
+      "townPath": "/Antenas-Madrid/alcala-de-henares.html",
+      "provincePath": "/Antenas-Madrid/"
+    },
+    {
       "file": "reparacion-golmar-nexa-zestoa-kalea-donostia.webp",
       "thumbnail": "reparacion-golmar-nexa-zestoa-kalea-donostia-mini.webp",
       "alt": "Placa Golmar Nexa en reparación en Zestoa Kalea, Donostia",
