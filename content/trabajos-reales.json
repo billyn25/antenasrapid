@@ -300,6 +300,20 @@
   ],
   "localPhotos": [
     {
+      "file": "instalacion-antena-tdt-televes-santona.webp",
+      "thumbnail": "instalacion-antena-tdt-televes-santona-mini.webp",
+      "title": "Instalación de antena TDT Televes en Santoña",
+      "alt": "Antena Televes con dipolo activo instalada en la cubierta de un edificio en Santoña, Cantabria",
+      "caption": "En la calle La Verde, 4, en Santoña, instalamos una antena TDT Televes con dipolo activo. La instalación quedó con buena señal de televisión y sin problemas de interferencias 5G.",
+      "width": 811,
+      "height": 1440,
+      "original": "8484928D-EA7D-44F4-8EDB-F3730D2CF1CE.jpeg",
+      "sha256": "75375672391a97bef987ee75ac02ef6c52eb854f17343ee8b2a01b314a2fb3bf",
+      "town": "Santoña",
+      "townPath": "/Antenas-Cantabria/santona.html",
+      "provincePath": "/Antenas-Cantabria/"
+    },
+    {
       "file": "prueba-antena-rover-najera.webp",
       "thumbnail": "prueba-antena-rover-najera-mini.webp",
       "title": "Prueba de una antena TDT Rover en Nájera",
