@@ -16,7 +16,7 @@ const pages = [
     title: 'Antenista en Oviedo | Reparación TDT y videoporteros',
     description: 'Antenista en Oviedo para averías de TDT, antenas colectivas y parabólicas. Instalación y reparación de porteros y videoporteros. Llama al 641 589 394.',
     section: 'porteros-videoporteros',
-    lead: 'Si el videoportero llama pero no da imagen, dinos si también les ocurre a otros vecinos. Una avería en un solo piso puede requerir revisar su monitor o derivación. Si afecta a varios pisos, conviene comprobar la placa y la instalación común antes de valorar un recambio.',
+    lead: 'Si el videoportero llama pero no da imagen, dinos si también les ocurre a otros vecinos. Una avería en un solo piso puede requerir revisar su monitor o derivación. Si afecta a varios pisos, conviene comprobar la placa y la instalación común antes de valorar un recambio. <a href="#galeria">Ver una instalación en la calle Francisco Grande Covián</a>.',
   },
   {
     path: 'Antenas-Madrid/galapagar.html',

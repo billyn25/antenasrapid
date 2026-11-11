@@ -277,6 +277,19 @@
   ],
   "localPhotos": [
     {
+      "file": "videoportero-francisco-grande-covian-oviedo.webp",
+      "thumbnail": "videoportero-francisco-grande-covian-oviedo-mini.webp",
+      "alt": "Placa exterior de videoportero con cámara en la calle Francisco Grande Covián, Oviedo",
+      "caption": "Instalación de un videoportero en la calle Francisco Grande Covián, Oviedo. La foto muestra la placa exterior con cámara y pulsador de llamada.",
+      "width": 1080,
+      "height": 1440,
+      "original": "3ac5c6d4-af2a-477b-83be-088ce131be1d.jpg",
+      "sha256": "9f14b40c54d69c8983509a26aa37e4c54e9cf859509612d505963b62d761f33f",
+      "town": "Oviedo",
+      "townPath": "/Antenas-Asturias/oviedo.html",
+      "provincePath": "/Antenas-Asturias/"
+    },
+    {
       "file": "valoracion-videoportero-getxo.webp",
       "thumbnail": "valoracion-videoportero-getxo-mini.webp",
       "alt": "Placa Tegui existente en una comunidad de Getxo",
