@@ -69,15 +69,13 @@ export function applyServiceHub(root='dist'){
   assert.ok(html.includes(marker), 'Directorio Madrid: falta ubicación de los casos reales');
   html = html.replace(marker, () => renderMadridRepairs() + marker);
  }
+ const doorphones = /(<section\b[^>]*id="porteros-videoporteros"[^>]*>[\s\S]*?<p class="section-lead">[\s\S]*?<\/p>)([\s\S]*?<\/section>)/;
+ assert.match(html, doorphones, 'Directorio Madrid: falta el bloque de porteros');
+ html = html.replace(doorphones, (block, lead, rest) => {
+  if (block.includes(`#${casesAnchor}`)) return block;
+  return lead + '<p>' + casesLink.replace(rootRoute, '') + '</p>' + rest;
+ });
  fs.writeFileSync(index, html);
-
- const home = path.join(root, 'index.html');
- const homeHtml = fs.readFileSync(home, 'utf8');
- if (!homeHtml.includes(`#${casesAnchor}`)) {
-  const marker = '<div class="gallery-grid">';
-  assert.ok(homeHtml.includes(marker), 'Portada: falta la galería de trabajos');
-  fs.writeFileSync(home, homeHtml.replace(marker, () => '<p class="gallery-towns">' + casesLink + '</p>' + marker));
- }
 
  let linked=0;
  for(const name of fs.readdirSync(dir)){
