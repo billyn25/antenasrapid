@@ -277,6 +277,20 @@
   ],
   "localPhotos": [
     {
+      "file": "cambio-antena-tdt-televes-mungia.webp",
+      "thumbnail": "cambio-antena-tdt-televes-mungia-mini.webp",
+      "title": "Cambio de antena TDT por pixelación en Mungia",
+      "alt": "Antena Televes con dipolo activo montada en un mástil junto a la fachada de una vivienda en Mungia",
+      "caption": "En esta vivienda de Mungia los canales de TDT se pixelaban con la antena antigua. La sustituimos por una Televes con dipolo activo. Tras el cambio, todos los canales volvieron a verse bien, sin pixelaciones.",
+      "width": 810,
+      "height": 1440,
+      "original": "A5550AB7-3FCD-44D7-A67B-2ED6A2578DE0.jpeg",
+      "sha256": "24e94fea33f394176356cc6b43fb911b1fc4e555b1b7220d8594751680ae6384",
+      "town": "Mungia",
+      "townPath": "/Antenas-Bizkaia/mungia.html",
+      "provincePath": "/Antenas-Bizkaia/"
+    },
+    {
       "file": "cambio-antenas-uhf-sat-grua-gizaburuaga.webp",
       "thumbnail": "cambio-antenas-uhf-sat-grua-gizaburuaga-mini.webp",
       "alt": "Técnico en la cesta de una grúa junto a una antena UHF y una parabólica en Gizaburuaga",

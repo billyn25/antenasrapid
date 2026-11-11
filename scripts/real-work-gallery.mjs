@@ -66,6 +66,7 @@ export function renderWorkGallery({home=false,photos=work.photos,route='/',town=
   const intro = home
     ? 'Todas las fotos de esta galería muestran trabajos realizados por Antenas Rapid.'
     : `${town ? `Hemos realizado trabajos en ${esc(town)}. ` : ''}Esta selección muestra trabajos de Antenas Rapid.`;
+  const title = !home && town && photos.length === 1 ? photos[0].title : undefined;
   const shown=home?photos.slice(0,8):photos;
   const rest=home?photos.slice(8):otherPhotos;
   const moreLabel=home?'Ver más fotos por localidad':'Otros trabajos de Antenas Rapid';
@@ -79,11 +80,11 @@ export function renderWorkGallery({home=false,photos=work.photos,route='/',town=
     '@context': 'https://schema.org',
     '@type': 'ImageGallery',
     '@id': domain + route + '#galeria',
-    name: 'Trabajos reales de Antenas Rapid',
+    name: title ?? 'Trabajos reales de Antenas Rapid',
     description: 'Trabajos de antenas, amplificación y porteros. ' + photoCredit,
     image: [...photos, ...otherPhotos, ...regional].map(photo => domain + asset(photo.file))
   };
-  return `<section class="gallery-section" id="galeria" data-real-work="20261106"><div class="wrap"><div class="gallery-head"><div><span class="eyebrow">Instalaciones de Antenas Rapid</span><h2>Trabajos reales de Antenas Rapid</h2></div><p>${intro}<br><strong>${photoCredit}</strong></p></div>${shown.length?`<div class="gallery-grid">${shown.map(photoCard).join('')}</div>`:''}${rest.length?`<details class="gallery-more"><summary>${moreLabel}</summary><div class="gallery-grid">${rest.map(photoCard).join('')}</div></details>`:''}${homeExamples}${regionalBlock}${townLinks}</div></section>${galleryDialog}<script type="application/ld+json" id="real-work-schema">${JSON.stringify(schema).replace(/</g,'\\u003c')}</script>`;
+  return `<section class="gallery-section" id="galeria" data-real-work="20261106"><div class="wrap"><div class="gallery-head"><div><span class="eyebrow">Instalaciones de Antenas Rapid</span><h2>${esc(title ?? 'Trabajos reales de Antenas Rapid')}</h2></div><p>${intro}<br><strong>${photoCredit}</strong></p></div>${shown.length?`<div class="gallery-grid">${shown.map(photoCard).join('')}</div>`:''}${rest.length?`<details class="gallery-more"><summary>${moreLabel}</summary><div class="gallery-grid">${rest.map(photoCard).join('')}</div></details>`:''}${homeExamples}${regionalBlock}${townLinks}</div></section>${galleryDialog}<script type="application/ld+json" id="real-work-schema">${JSON.stringify(schema).replace(/</g,'\\u003c')}</script>`;
 }
 
 const serviceExamples = {
