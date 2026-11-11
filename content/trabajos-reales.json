@@ -277,6 +277,32 @@
   ],
   "localPhotos": [
     {
+      "file": "reparacion-pulsadores-fermax-valdilecha-exterior.webp",
+      "thumbnail": "reparacion-pulsadores-fermax-valdilecha-exterior-mini.webp",
+      "alt": "Placa exterior Fermax con tres pulsadores en Valdilecha",
+      "caption": "Revisión de la placa Fermax y reparación de los pulsadores de llamada del portero automático de una comunidad de vecinos en Valdilecha, Madrid.",
+      "width": 720,
+      "height": 960,
+      "original": "510_157602_multimedia_operario_mov_1794328250a2369-antes.jpg",
+      "sha256": "e4f85894da323de1f2bce27b301e48f81af5b5ec9c76b155457443658b4b92d6",
+      "town": "Valdilecha",
+      "townPath": "/Antenas-Madrid/valdilecha.html",
+      "provincePath": "/Antenas-Madrid/"
+    },
+    {
+      "file": "reparacion-pulsadores-fermax-valdilecha-interior.webp",
+      "thumbnail": "reparacion-pulsadores-fermax-valdilecha-interior-mini.webp",
+      "alt": "Interior de la placa Fermax con el módulo de pulsadores en Valdilecha",
+      "caption": "Detalle de la misma intervención en Valdilecha. En el interior de la placa se ven el amplificador Fermax ref. 2500 y el módulo de pulsadores 4+N ref. 9681.",
+      "width": 720,
+      "height": 960,
+      "original": "510_157602_multimedia_operario_mov_1794328495a347-antes (1).jpg",
+      "sha256": "59f43e97d4c47b80cbedce37c564196f933b1e93201b2e0fa6eb44a0467f23ad",
+      "town": "Valdilecha",
+      "townPath": "/Antenas-Madrid/valdilecha.html",
+      "provincePath": "/Antenas-Madrid/"
+    },
+    {
       "file": "instalacion-videoportero-fermax-duox-loeches.webp",
       "thumbnail": "instalacion-videoportero-fermax-duox-loeches-mini.webp",
       "alt": "Placa exterior Fermax DUOX con cámara y pulsadores en Loeches",
