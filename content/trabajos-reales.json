@@ -277,6 +277,19 @@
   ],
   "localPhotos": [
     {
+      "file": "antena-rover-filtro-5g-gordexola.webp",
+      "thumbnail": "antena-rover-filtro-5g-gordexola-mini.webp",
+      "alt": "Antena Rover de TDT instalada en una cubierta de Gordexola",
+      "caption": "Instalación de una antena Rover con filtro 5G, preamplificador y fuente de alimentación en Gordexola, Bizkaia. Tras la intervención mejoró la calidad de imagen y la TDT se veía sin pixelaciones.",
+      "width": 810,
+      "height": 1440,
+      "original": "D2C6458C-39BC-4E4B-A87B-5FFFFE0472CD.jpeg",
+      "sha256": "3787a6770570d37026b4eb2a6531c09bd8239ef90bd9c4bfe0af6304ea5bee4a",
+      "town": "Gordexola",
+      "townPath": "/Antenas-Bizkaia/gordexola.html",
+      "provincePath": "/Antenas-Bizkaia/"
+    },
+    {
       "file": "cambio-dos-antenas-tdt-eibar.webp",
       "thumbnail": "cambio-dos-antenas-tdt-eibar-mini.webp",
       "alt": "Dos antenas de TDT montadas en un mástil en Eibar",
