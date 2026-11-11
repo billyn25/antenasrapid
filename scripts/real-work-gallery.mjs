@@ -4,6 +4,7 @@ import {pathToFileURL} from 'node:url';
 
 export const work = JSON.parse(fs.readFileSync(new URL('../content/trabajos-reales.json', import.meta.url), 'utf8'));
 const localPhotos = work.localPhotos ?? [];
+const pendingPhotos = work.pendingPhotos ?? [];
 const regionalPhotos = work.regionalPhotos ?? [];
 const domain = 'https://www.antenasrapid.com';
 const esc = s => String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -46,7 +47,7 @@ function addNearbyWorkCases(root, manifest, localTowns) {
 export function copyWorkPhotos(root='dist') {
   const dest=path.join(root,'assets','galeria');
   fs.mkdirSync(dest,{recursive:true});
-  for(const photo of [...work.photos, ...localPhotos, ...regionalPhotos]) for(const name of [photo.file,photo.thumbnail]) {
+  for(const photo of [...work.photos, ...localPhotos, ...regionalPhotos, ...pendingPhotos]) for(const name of [photo.file,photo.thumbnail]) {
     fs.copyFileSync(path.join('src','trabajos-reales',name),path.join(dest,name));
   }
 }
@@ -62,8 +63,8 @@ export const galleryStyle = `<style id="rapid-gallery-style">
 </style>`;
 export const galleryScript = `<script id="rapid-gallery-script">(()=>{const dialog=document.getElementById('gallery-lightbox');if(!dialog)return;const img=dialog.querySelector('img');let opener;document.querySelectorAll('.gallery-open').forEach(btn=>btn.addEventListener('click',()=>{opener=btn;img.src=btn.dataset.src;img.alt=btn.dataset.alt;dialog.showModal();}));dialog.querySelector('button').addEventListener('click',()=>dialog.close());dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close();});dialog.addEventListener('close',()=>{img.removeAttribute('src');if(opener)opener.focus();});})();</script>`;
 
-export function renderWorkGallery({home=false,photos=work.photos,route='/',town='',townLinks='',regional=[],otherPhotos=[]}={}) {
-  const intro = home
+export function renderWorkGallery({home=false,photos=work.photos,route='/',town='',townLinks='',regional=[],otherPhotos=[],pending=false}={}) {
+  const intro = pending ? 'Foto del estado actual. Reparación pendiente.' : home
     ? 'Todas las fotos de esta galería muestran trabajos realizados por Antenas Rapid.'
     : `${town ? `Hemos realizado trabajos en ${esc(town)}. ` : ''}Esta selección muestra trabajos de Antenas Rapid.`;
   const title = !home && town && photos.length === 1 ? photos[0].title : undefined;
@@ -81,10 +82,10 @@ export function renderWorkGallery({home=false,photos=work.photos,route='/',town=
     '@type': 'ImageGallery',
     '@id': domain + route + '#galeria',
     name: title ?? 'Trabajos reales de Antenas Rapid',
-    description: 'Trabajos de antenas, amplificación y porteros. ' + photoCredit,
+    description: (pending ? intro : 'Trabajos de antenas, amplificación y porteros.') + ' ' + photoCredit,
     image: [...photos, ...otherPhotos, ...regional].map(photo => domain + asset(photo.file))
   };
-  return `<section class="gallery-section" id="galeria" data-real-work="20261106"><div class="wrap"><div class="gallery-head"><div><span class="eyebrow">Instalaciones de Antenas Rapid</span><h2>${esc(title ?? 'Trabajos reales de Antenas Rapid')}</h2></div><p>${intro}<br><strong>${photoCredit}</strong></p></div>${shown.length?`<div class="gallery-grid">${shown.map(photoCard).join('')}</div>`:''}${rest.length?`<details class="gallery-more"><summary>${moreLabel}</summary><div class="gallery-grid">${rest.map(photoCard).join('')}</div></details>`:''}${homeExamples}${regionalBlock}${townLinks}</div></section>${galleryDialog}<script type="application/ld+json" id="real-work-schema">${JSON.stringify(schema).replace(/</g,'\\u003c')}</script>`;
+  return `<section class="gallery-section" id="galeria" data-real-work="20261106"><div class="wrap"><div class="gallery-head"><div><span class="eyebrow">${pending ? 'Aviso de reparación' : 'Instalaciones de Antenas Rapid'}</span><h2>${esc(title ?? 'Trabajos reales de Antenas Rapid')}</h2></div><p>${intro}<br><strong>${photoCredit}</strong></p></div>${shown.length?`<div class="gallery-grid">${shown.map(photoCard).join('')}</div>`:''}${rest.length?`<details class="gallery-more"><summary>${moreLabel}</summary><div class="gallery-grid">${rest.map(photoCard).join('')}</div></details>`:''}${homeExamples}${regionalBlock}${townLinks}</div></section>${galleryDialog}<script type="application/ld+json" id="real-work-schema">${JSON.stringify(schema).replace(/</g,'\\u003c')}</script>`;
 }
 
 const serviceExamples = {
@@ -162,6 +163,19 @@ export function applyLocalWork(root='dist') {
       targets.push({path: page.path.slice(1), route: page.path, localOnly: true});
     }
   }
+  for (const photo of pendingPhotos) {
+    const page = manifest.find(entry => entry.path === photo.townPath && entry.name === photo.town);
+    if (!page || targets.some(target => target.route === page.path)) {
+      throw new Error('Aviso de reparación sin ficha disponible: ' + photo.townPath);
+    }
+    const nearbyLinks = photo.nearbyServicePaths.map(route => {
+      const nearby = manifest.find(entry => entry.path === route);
+      if (!nearby) throw new Error('Municipio de cobertura sin página: ' + route);
+      return `<a href="${esc(nearby.path)}">${esc(nearby.name)}</a>`;
+    });
+    const coverage = `<p class="gallery-towns">También atendemos reparaciones de antenas en ${new Intl.ListFormat('es').format(nearbyLinks)}.</p>`;
+    targets.push({path: page.path.slice(1), route: page.path, town: page.name, pendingPhoto: photo, coverage});
+  }
   for(const [i,target] of targets.entries()) {
     const file=path.join(root,target.path.replace(/^\//,''));let html=fs.readFileSync(file,'utf8');
     if(html.includes('id="galeria"')) {
@@ -182,7 +196,7 @@ export function applyLocalWork(root='dist') {
       : photo.examplePath === target.route);
     const featuredCase = ['/Antenas-Madrid/san-fernando-de-henares.html', '/Antenas-Madrid/valdilecha.html', '/Antenas-Madrid/loeches.html', '/Antenas-Madrid/alcala-de-henares.html', '/Antenas-Madrid/colmenar-de-oreja.html', '/Antenas-Madrid/aranjuez.html', '/Antenas-Madrid/alcobendas.html'].includes(target.route);
     const otherPhotos = featuredCase ? photos.slice(townPhotos.length) : [];
-    const gallery=renderWorkGallery({photos:featuredCase ? townPhotos : photos,route:target.route,town:target.town,regional,otherPhotos}).replace(/<script type="application\/ld\+json" id="real-work-schema">([\s\S]*?)<\/script>/,(_,json)=>{html=html.replace('</head>',`<script type="application/ld+json" id="real-work-schema">${json}</script></head>`);return '';});
+    const gallery=renderWorkGallery({photos:target.pendingPhoto ? [target.pendingPhoto] : featuredCase ? townPhotos : photos,route:target.route,town:target.town,regional,otherPhotos,pending: Boolean(target.pendingPhoto),townLinks:target.coverage}).replace(/<script type="application\/ld\+json" id="real-work-schema">([\s\S]*?)<\/script>/,(_,json)=>{html=html.replace('</head>',`<script type="application/ld+json" id="real-work-schema">${json}</script></head>`);return '';});
     const marker=html.match(/<section\b[^>]*id="preguntas"[^>]*>/)?.[0];
     if(!marker)throw new Error(target.path+': falta el punto de inserción');
     html=html.replace(marker,gallery+marker).replace('</head>',galleryStyle+'</head>').replace('</body>',galleryScript+'</body>');

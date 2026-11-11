@@ -275,6 +275,29 @@
       "sha256": "29d545583bbd7248bce6eb5f171ea7a9ce9500cb14996943bd83c5cd96152cab"
     }
   ],
+  "pendingPhotos": [
+    {
+      "file": "aviso-antena-tdt-caida-langreo.webp",
+      "thumbnail": "aviso-antena-tdt-caida-langreo-mini.webp",
+      "title": "Antena TDT caída en Langreo",
+      "alt": "Antena de TDT caída sobre un tejado de Langreo, junto a una parabólica",
+      "caption": "La antena terrestre ha quedado caída sobre el tejado, junto a la parabólica. En la visita revisaremos el anclaje, el mástil y el cable antes de decidir si se puede recolocar la antena o hace falta sustituir alguna pieza. Después comprobaremos la recepción de TDT.",
+      "width": 1080,
+      "height": 1440,
+      "original": "B0FA12E8-10D3-45F3-BD2B-8B6979CE2B05.jpeg",
+      "sha256": "a24b96b6acc2d82c1647a1f425105453c9548d6edfbf4db8bff4be49550a9737",
+      "town": "Langreo",
+      "townPath": "/Antenas-Asturias/langreo.html",
+      "nearbyServicePaths": [
+        "/Antenas-Asturias/san-martin-del-rey-aurelio.html",
+        "/Antenas-Asturias/mieres.html",
+        "/Antenas-Asturias/bimenes.html",
+        "/Antenas-Asturias/siero.html",
+        "/Antenas-Asturias/norena.html",
+        "/Antenas-Asturias/laviana.html"
+      ]
+    }
+  ],
   "localPhotos": [
     {
       "file": "cambio-antena-tdt-televes-mungia.webp",
