@@ -11,29 +11,28 @@ const normalized = s => s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowe
 const provinceRoutes = ['/Antenas-Bizkaia/','/Antenas-Guipuzcoa/','/Antenas-Cantabria/','/Antenas-Asturias/','/Antenas-Burgos/'];
 const asset = name => '/assets/galeria/'+name;
 const photoCredit = 'Fotografías de Roberto Fuentes González.';
-const nearbyWorkMaxKm = 3;
+const nearbyWorkExamples = new Map([
+  ['/Antenas-Bizkaia/amoroto.html', '/Antenas-Bizkaia/gizaburuaga.html'],
+  ['/Antenas-Bizkaia/mendexa.html', '/Antenas-Bizkaia/lekeitio.html'],
+]);
 
 function addNearbyWorkLinks(root, manifest, localTowns) {
+  const towns = new Map(manifest.map(page => [page.path, page]));
   const ownWork = new Map(localTowns.map(page => [page.path, page]));
-  const nearbyLink = /<a href="([^"]+)" data-nearby-ine="\d+" data-distance-km="([\d.]+)"/g;
   const nearbySection = /<section\b[^>]*id="pueblos-cercanos"[^>]*>[\s\S]*?<\/section>/;
-  let count = 0;
-  for (const page of manifest) {
-    if (ownWork.has(page.path)) continue;
-    const file = path.join(root, page.path.slice(1));
+  for (const [source, destination] of nearbyWorkExamples) {
+    const town = ownWork.get(destination);
+    if (!towns.has(source) || !town) throw new Error('Referencia a trabajo cercano no válida: ' + source);
+    const file = path.join(root, source.slice(1));
     const html = fs.readFileSync(file, 'utf8');
     const section = html.match(nearbySection)?.[0];
-    const candidate = [...(section ?? '').matchAll(nearbyLink)]
-      .find(([, route, distance]) => Number(distance) <= nearbyWorkMaxKm && ownWork.has(route));
-    if (!candidate) continue;
-    const town = ownWork.get(candidate[1]);
+    const marker = '<div class="related-town-links">';
+    if (!section?.includes(marker)) throw new Error('Falta el bloque de cercanos en ' + source);
     const example = `<p class="nearby-work" data-nearby-work="1"><strong>Trabajo real en un municipio cercano.</strong> <a href="${esc(town.path)}#galeria">Ver la intervención en ${esc(town.name)}</a>.</p>`;
     const cleanSection = section.replace(/<p class="nearby-work" data-nearby-work="1">[\s\S]*?<\/p>/, '');
-    const updated = cleanSection.replace('<div class="related-town-links">', example + '<div class="related-town-links">');
+    const updated = cleanSection.replace(marker, () => example + marker);
     fs.writeFileSync(file, html.replace(section, () => updated));
-    count++;
   }
-  return count;
 }
 
 export function copyWorkPhotos(root='dist') {
@@ -180,7 +179,7 @@ export function applyLocalWork(root='dist') {
     html=html.replace(marker,gallery+marker).replace('</head>',galleryStyle+'</head>').replace('</body>',galleryScript+'</body>');
     fs.writeFileSync(file,html);
   }
-  const nearbyCount = addNearbyWorkLinks(root, manifest, localTowns);
-  console.log(`TRABAJOS REALES OK: ${work.photos.length + localPhotos.length + regionalPhotos.length} fotografías propias; portada, ${provinceRoutes.length + localProvinceRoutes.length} provincias y ${linkedTowns.length + additional.length} municipios. Casos enlazados a menos de 3 km o a 3 km: ${nearbyCount}.`);
+  addNearbyWorkLinks(root, manifest, localTowns);
+  console.log(`TRABAJOS REALES OK: ${work.photos.length + localPhotos.length + regionalPhotos.length} fotografías propias; portada, ${provinceRoutes.length + localProvinceRoutes.length} provincias y ${linkedTowns.length + additional.length} municipios. Referencias a trabajos cercanos: ${nearbyWorkExamples.size}.`);
 }
 if(process.argv[1]&&import.meta.url===pathToFileURL(path.resolve(process.argv[1])).href)applyLocalWork();
