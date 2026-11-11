@@ -277,6 +277,19 @@
   ],
   "localPhotos": [
     {
+      "file": "instalacion-videoportero-fermax-duox-loeches.webp",
+      "thumbnail": "instalacion-videoportero-fermax-duox-loeches-mini.webp",
+      "alt": "Placa exterior Fermax DUOX con cámara y pulsadores en Loeches",
+      "caption": "Instalación de un videoportero Fermax DUOX en Loeches, Madrid. La foto muestra la placa exterior con cámara y pulsadores de llamada para las viviendas.",
+      "width": 810,
+      "height": 1440,
+      "original": "15C04AB4-93B2-41C1-9193-DDFC088CB195.jpeg",
+      "sha256": "19ae2acf6c6742a19dda2023195832d3e54939db3a8588b16776951692d611b9",
+      "town": "Loeches",
+      "townPath": "/Antenas-Madrid/loeches.html",
+      "provincePath": "/Antenas-Madrid/"
+    },
+    {
       "file": "montaje-starlink-mastil-tordesillas.webp",
       "thumbnail": "montaje-starlink-mastil-tordesillas-mini.webp",
       "alt": "Antena Starlink montada sobre un mástil en Tordesillas",
