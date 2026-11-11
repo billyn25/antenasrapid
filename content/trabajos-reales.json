@@ -277,6 +277,19 @@
   ],
   "localPhotos": [
     {
+      "file": "videoportero-comunitario-balmaseda.webp",
+      "thumbnail": "videoportero-comunitario-balmaseda-mini.webp",
+      "alt": "Placa exterior de videoportero con pulsadores en un portal de Balmaseda",
+      "caption": "Trabajo de videoportero para una comunidad de vecinos en Balmaseda. La foto muestra la placa exterior con dos columnas de pulsadores de llamada.",
+      "width": 1080,
+      "height": 1434,
+      "original": "WhatsApp Image 2026-11-02 at 08.49.05.jpeg",
+      "sha256": "b74358c04cb88c1e59c9ce943c3524a35c15b3573153fac6335b30cc9bd0e89c",
+      "town": "Balmaseda",
+      "townPath": "/Antenas-Bizkaia/balmaseda.html",
+      "provincePath": "/Antenas-Bizkaia/"
+    },
+    {
       "file": "reparacion-pulsadores-fermax-valdilecha-exterior.webp",
       "thumbnail": "reparacion-pulsadores-fermax-valdilecha-exterior-mini.webp",
       "alt": "Placa exterior Fermax con tres pulsadores en Valdilecha",
