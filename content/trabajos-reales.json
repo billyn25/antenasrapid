@@ -300,6 +300,20 @@
   ],
   "localPhotos": [
     {
+      "file": "adaptacion-antena-uhf-y-movil-5g-cangas-de-onis.webp",
+      "thumbnail": "adaptacion-antena-uhf-y-movil-5g-cangas-de-onis-mini.webp",
+      "title": "Adaptación de antenas para TDT y señal móvil 5G en Cangas de Onís",
+      "alt": "Antena UHF de televisión y antenas de señal móvil montadas en una torreta en Cangas de Onís, Asturias",
+      "caption": "En Cangas de Onís adaptamos la antena UHF para recibir la TDT e instalamos antenas para señal móvil 5G en la misma torreta. La intervención se hizo en altura y el acceso a la instalación era complicado.",
+      "width": 1080,
+      "height": 1440,
+      "original": "BB4F5BCD-49F7-4F59-BB14-883876459371.jpeg",
+      "sha256": "88ab0dad50b31554c2184150f30f966b1489830671d1edb89ccd14469fd933ce",
+      "town": "Cangas de Onís",
+      "townPath": "/Antenas-Asturias/cangas-de-onis.html",
+      "provincePath": "/Antenas-Asturias/"
+    },
+    {
       "file": "cambio-antenas-uhf-cableado-colmenarejo.webp",
       "thumbnail": "cambio-antenas-uhf-cableado-colmenarejo-mini.webp",
       "title": "Cambio urgente de antenas UHF y cableado en Colmenarejo",
