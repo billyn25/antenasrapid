@@ -300,6 +300,20 @@
   ],
   "localPhotos": [
     {
+      "file": "cambio-antenas-uhf-cableado-colmenarejo.webp",
+      "thumbnail": "cambio-antenas-uhf-cableado-colmenarejo-mini.webp",
+      "title": "Cambio urgente de antenas UHF y cableado en Colmenarejo",
+      "alt": "Instalación de antenas UHF y una parabólica sobre un tejado de Colmenarejo, Madrid",
+      "caption": "La TDT dejó de verse tras la lluvia en la calle Fuente del Conejo, 21, en Colmenarejo. Atendimos el aviso urgente en 48 horas y sustituimos las antenas UHF y el cableado de la instalación.",
+      "width": 1080,
+      "height": 1440,
+      "original": "2692DC34-A234-41A4-8EF3-337FE40035AE.jpeg",
+      "sha256": "20805cc1939d91b1b3e06275d062f3a9d6276d1e1a77969d89ccaff86c501d7a",
+      "town": "Colmenarejo",
+      "townPath": "/Antenas-Madrid/colmenarejo.html",
+      "provincePath": "/Antenas-Madrid/"
+    },
+    {
       "file": "cambio-antena-tdt-cable-fuente-almazan.webp",
       "thumbnail": "cambio-antena-tdt-cable-fuente-almazan-mini.webp",
       "title": "Cambio de antena TDT, cable exterior y fuente en Almazán",
