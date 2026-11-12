@@ -300,6 +300,20 @@
   ],
   "localPhotos": [
     {
+      "file": "videoportero-tegui-serie-8-wifi-castro-urdiales.webp",
+      "thumbnail": "videoportero-tegui-serie-8-wifi-castro-urdiales-mini.webp",
+      "title": "Cambio de videoportero a Tegui Serie 8 con Wi‑Fi en Castro Urdiales",
+      "alt": "Placa exterior de videoportero Tegui Serie 8 instalada en un muro de piedra en Castro Urdiales",
+      "caption": "El videoportero antiguo ya no daba imagen y repararlo salía más caro que cambiarlo. En Castro Urdiales instalamos una placa Tegui Serie 8 con un monitor interior Classe 100 X con Wi‑Fi.",
+      "width": 1080,
+      "height": 1440,
+      "original": "IMG_87D8820D-C8FF-4315-AEC6-72BCF2508F94.jpeg",
+      "sha256": "f65beab2798299b9a474c4b0d93d0b07a4de4d15ab4b53cf6247658b366e22ab",
+      "town": "Castro-Urdiales",
+      "townPath": "/Antenas-Cantabria/castro-urdiales.html",
+      "provincePath": "/Antenas-Cantabria/"
+    },
+    {
       "file": "instalacion-antena-tdt-televes-santona.webp",
       "thumbnail": "instalacion-antena-tdt-televes-santona-mini.webp",
       "title": "Instalación de antena TDT Televes en Santoña",
