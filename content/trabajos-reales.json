@@ -300,6 +300,20 @@
   ],
   "localPhotos": [
     {
+      "file": "antena-colineal-rover-valle-de-mena.webp",
+      "thumbnail": "antena-colineal-rover-valle-de-mena-mini.webp",
+      "title": "Instalación de antena colineal Rover en Valle de Mena",
+      "alt": "Antena colineal Rover montada en un mástil sobre un tejado en Valle de Mena, Burgos",
+      "caption": "Instalamos una antena colineal Rover para la recepción de TDT en Valle de Mena, Burgos. En la foto se ve la nueva antena montada en el mástil y el recorrido del cable exterior hacia la cubierta.",
+      "width": 811,
+      "height": 1440,
+      "original": "2F8C6F6D-605F-4EE7-A4AE-5D030B33E5E7.jpeg",
+      "sha256": "39fff6debcb1faa99eff23011add38c889b670e389935831c3dc5fb49f69c8ef",
+      "town": "Valle de Mena",
+      "townPath": "/Antenas-Burgos/valle-de-mena.html",
+      "provincePath": "/Antenas-Burgos/"
+    },
+    {
       "file": "adaptacion-antena-uhf-y-movil-5g-cangas-de-onis.webp",
       "thumbnail": "adaptacion-antena-uhf-y-movil-5g-cangas-de-onis-mini.webp",
       "title": "Adaptación de antenas para TDT y señal móvil 5G en Cangas de Onís",
