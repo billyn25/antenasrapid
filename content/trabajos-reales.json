@@ -300,6 +300,20 @@
   ],
   "localPhotos": [
     {
+      "file": "cambio-antena-tdt-cable-fuente-almazan.webp",
+      "thumbnail": "cambio-antena-tdt-cable-fuente-almazan-mini.webp",
+      "title": "Cambio de antena TDT, cable exterior y fuente en Almazán",
+      "alt": "Antenas de televisión sobre un mástil elevado en una cubierta de Almazán, Soria",
+      "caption": "En Almazán sustituimos la antena TDT, renovamos el cableado con cable negro para exterior y cambiamos la fuente de alimentación. Para acceder a la instalación y trabajar en altura utilizamos una escalera y equipo de protección con arnés.",
+      "width": 810,
+      "height": 1440,
+      "original": "AD717079-043C-4935-BCC6-CE9488C49F22.jpeg",
+      "sha256": "6e52c96a557365455e16454f58fde5d00ed142ace6a3c0d9ab6baf01576ac7d7",
+      "town": "Almazán",
+      "townPath": "/Antenas-Soria/almazan.html",
+      "provincePath": "/Antenas-Soria/"
+    },
+    {
       "file": "videoportero-tegui-serie-8-wifi-castro-urdiales.webp",
       "thumbnail": "videoportero-tegui-serie-8-wifi-castro-urdiales-mini.webp",
       "title": "Cambio de videoportero a Tegui Serie 8 con Wi‑Fi en Castro Urdiales",
