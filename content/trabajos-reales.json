@@ -300,6 +300,20 @@
   ],
   "localPhotos": [
     {
+      "file": "cambio-cable-exterior-tdt-mieres.webp",
+      "thumbnail": "cambio-cable-exterior-tdt-mieres-mini.webp",
+      "title": "Cambio de cable exterior y revisión de TDT en Mieres",
+      "alt": "Mástil y cableado de la instalación de TDT en un tejado de Mieres, Asturias",
+      "caption": "En la calle Dalia, 11, en Mieres, sustituimos el cable de antena por cable coaxial negro para exterior y revisamos la instalación de TDT.",
+      "width": 810,
+      "height": 1440,
+      "original": "38A8E676-A032-401B-9C4C-6A3CC0A81DBD.jpeg",
+      "sha256": "2c61f1440d70f601295c3d0b157000cda55760bbd13a861ff4c3add1ef414e0b",
+      "town": "Mieres",
+      "townPath": "/Antenas-Asturias/mieres.html",
+      "provincePath": "/Antenas-Asturias/"
+    },
+    {
       "file": "zona-norte-medicion-satelite-promax.webp",
       "thumbnail": "zona-norte-medicion-satelite-promax-mini.webp",
       "alt": "Medidor PROMAX HD Ranger conectado a un LNB Fracarro sobre un tejado en Hernani",
