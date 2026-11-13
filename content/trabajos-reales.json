@@ -300,6 +300,20 @@
   ],
   "localPhotos": [
     {
+      "file": "control-accesos-llaveros-torrejon-de-ardoz.webp",
+      "thumbnail": "control-accesos-llaveros-torrejon-de-ardoz-mini.webp",
+      "title": "Apertura con llaveros en una comunidad de Torrejón de Ardoz",
+      "alt": "Lector de proximidad Golmar debajo de la placa Fermax del portal en Torrejón de Ardoz",
+      "caption": "En esta comunidad de Torrejón de Ardoz conservamos la placa Fermax del portero automático e instalamos debajo un lector de proximidad Golmar. Los vecinos pueden abrir la puerta del portal acercando su llavero al lector, y la placa sigue sirviendo para llamar a las viviendas.",
+      "width": 1080,
+      "height": 1440,
+      "original": "74deeaf4-5982-4431-b5e0-45635851ce7d.jpg",
+      "sha256": "5aff192eba53d3f405c603c960cc8ec018e52f38a0122707849bb91fcfb37a57",
+      "town": "Torrejón de Ardoz",
+      "townPath": "/Antenas-Madrid/torrejon-de-ardoz.html",
+      "provincePath": "/Antenas-Madrid/"
+    },
+    {
       "file": "cambio-cable-exterior-tdt-mieres.webp",
       "thumbnail": "cambio-cable-exterior-tdt-mieres-mini.webp",
       "title": "Cambio de cable exterior y revisión de TDT en Mieres",
