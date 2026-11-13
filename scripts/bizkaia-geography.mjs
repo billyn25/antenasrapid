@@ -71,8 +71,9 @@ export function auditBizkaiaGeography(root='dist'){
   for(const meta of h.matchAll(/<meta[^>]*(?:name|property)="(?:description|og:description|og:title)"[^>]*>/g))assert(!meta[0].includes('Bizkaia'),p.path+': metadatos');
  }
  const home=fs.readFileSync(path.join(root,'index.html'),'utf8');assert(home.includes('data-town-finder'));
- const search=JSON.parse(fs.readFileSync(path.join(root,'assets/town-finder-index.json'),'utf8'));assert.equal(search.length,3797);assert.equal(new Set(search.map(p=>p.url)).size,3797);
- console.log('AUDITORÍA COBERTURA OK: 113 bloques postales, SEO municipal sin provincia y 3797 destinos del buscador.');
+ const search=JSON.parse(fs.readFileSync(path.join(root,'assets/town-finder-index.json'),'utf8'));assert.equal(search.length,3798);assert.equal(new Set(search.map(p=>p.url)).size,3798);
+ assert(search.some(p=>p.name==='Hendaya / Hendaye'&&p.province==='Francia'&&p.url==='/trabajos/hendaya-dos-antenas/'),'Falta Hendaya en el buscador');
+ console.log('AUDITORÍA COBERTURA OK: 113 bloques postales, SEO municipal sin provincia y 3798 destinos del buscador.');
 }
 if(process.argv[1]&&import.meta.url===pathToFileURL(path.resolve(process.argv[1])).href){
  if(process.argv.includes('--audit'))auditBizkaiaGeography();else if(process.argv.includes('--copy-only'))cleanBizkaiaCopy();else applyBizkaiaGeography();

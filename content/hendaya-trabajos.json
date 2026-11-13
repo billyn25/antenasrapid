@@ -1,0 +1,40 @@
+{
+  "route": "/trabajos/hendaya-dos-antenas/",
+  "town": "Hendaya",
+  "country": "Francia",
+  "photos": [
+    {
+      "file": "dos-antenas-hendaya-chimenea-piedra.webp",
+      "thumbnail": "dos-antenas-hendaya-chimenea-piedra-mini.webp",
+      "title": "Dos antenas a distinta altura",
+      "alt": "Dos antenas de televisión orientadas en direcciones distintas sobre un mástil junto a una chimenea de piedra en Hendaya.",
+      "caption": "En esta primera instalación montamos dos antenas para completar la recepción de canales. La fotografía muestra ambas a distinta altura en un mismo mástil, con el cableado sujeto al soporte.",
+      "width": 1152,
+      "height": 1536,
+      "original": "BFC594AD-500B-4984-BB8A-FAF28375F88E.jpeg",
+      "sha256": "7b4232864212be94440f0b5633f1648270936426f6a83c2a582914121d314cfa"
+    },
+    {
+      "file": "dos-antenas-hendaya-chimenea-blanca.webp",
+      "thumbnail": "dos-antenas-hendaya-chimenea-blanca-mini.webp",
+      "title": "Montaje junto a una chimenea blanca",
+      "alt": "Instalación de dos antenas de televisión en un mástil junto a una chimenea blanca en Hendaya.",
+      "caption": "La segunda instalación también utiliza dos antenas para captar el conjunto de canales. El montaje se encuentra junto a una chimenea blanca, con las antenas separadas en altura y el cableado descendiendo por el mástil.",
+      "width": 864,
+      "height": 1536,
+      "original": "9CB77757-B42C-48CB-B885-5EBED59920EA.jpeg",
+      "sha256": "922706918b87973bc50bae0171c81c8b01a135e26b334943698d6a0ecdcf2ae1"
+    },
+    {
+      "file": "dos-antenas-hendaya-soporte-chimenea.webp",
+      "thumbnail": "dos-antenas-hendaya-soporte-chimenea-mini.webp",
+      "title": "Dos antenas con soporte en chimenea",
+      "alt": "Dos antenas de televisión en un mástil fijado a una chimenea mediante soportes metálicos en Hendaya.",
+      "caption": "En la tercera instalación se montaron dos antenas con el mismo objetivo: completar la recepción de televisión. En la imagen se distinguen las dos orientaciones, los soportes metálicos del mástil y la caja situada bajo las antenas.",
+      "width": 864,
+      "height": 1536,
+      "original": "D9765397-8AFC-4303-BCAB-1BF29CAC829E.jpeg",
+      "sha256": "d5a6a70c14d48e5b4a7933e70bf167e6cb976b9dd4bbb16c939929f8f6568619"
+    }
+  ]
+}
