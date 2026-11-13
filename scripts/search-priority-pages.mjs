@@ -5,6 +5,20 @@ import { join } from 'node:path';
 // Pages selected from the November 2026 Search Console export.
 const pages = [
   {
+    path: 'Antenas-Madrid/madrid.html',
+    title: 'Antenista en Madrid | Reparación de TDT y antenas colectivas',
+    description: 'Reparación e instalación de antenas TDT en Madrid capital. Revisamos cabeceras de comunidades, amplificadores y pérdida de señal. Llama al 614 78 99 45.',
+    section: 'servicios',
+    lead: 'Reparamos antenas TDT, parabólicas y sistemas colectivos en Madrid capital. Si varias viviendas pierden los mismos canales, <a href="#antenas-colectivas-madrid">consulta cómo orientamos la revisión de la antena comunitaria</a>.',
+  },
+  {
+    path: 'Antenas-Bizkaia/bilbao.html',
+    title: 'Antenista en Bilbao | Reparación de TDT y antenas colectivas',
+    description: 'Antenista en Bilbao para averías de TDT, parabólicas y antenas colectivas. Revisamos cabeceras y amplificadores. Llama al 641 589 394.',
+    section: 'servicios',
+    lead: 'Atendemos averías de antena en viviendas y comunidades de Bilbao. Si el corte de TDT afecta a varios vecinos, revisamos la alimentación, la central y la distribución común. En <a href="/Antenas-Bizkaia/barakaldo.html#galeria">una comunidad de Barakaldo sustituimos una central Triax por una Rover Digineo</a> tras perder la señal.',
+  },
+  {
     path: 'Antenas-Salamanca/index.html',
     title: 'Antenistas en Salamanca | Antenas TDT y videoporteros',
     description: 'Instalación y reparación de antenas TDT y videoporteros en Salamanca. Revisamos pérdidas de señal, centrales programables y porteros de comunidades.',
