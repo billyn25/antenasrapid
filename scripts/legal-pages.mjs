@@ -1,12 +1,14 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { renderFooter, legalLinks } from './footer.mjs';
+import site from '../config/site.json' with { type: 'json' };
 
 const root = path.resolve('dist');
 const phone = '641 589 394';
 const tel = '+34641589394';
 const whatsapp = '34641589394';
 const domain = 'https://www.antenasrapid.com';
+const email = site.email;
 
 const cookieNotice = `<aside class="cookie-notice" data-cookie-notice hidden aria-label="Información sobre cookies y privacidad"><div class="cookie-notice-copy"><strong>Privacidad clara, sin cookies publicitarias</strong><p>Antenas Rapid no utiliza cookies de analítica, publicidad ni seguimiento en esta versión. Solo guardamos en este navegador que ya has cerrado este aviso.</p></div><div class="cookie-notice-actions"><a href="/cookies.html">Política de cookies</a><button type="button" data-cookie-dismiss>Entendido</button></div></aside>`;
 
@@ -37,7 +39,7 @@ function legalFooter() {
 }
 
 function page({title, description, route, kicker, lead, body}) {
-  return `${legalHead(title, description, route)}<body>${legalHeader()}<main class="legal-page"><section class="legal-hero"><div class="wrap"><span class="eyebrow">${kicker}</span><h1>${title}</h1><p>${lead}</p></div></section><section class="legal-content"><div class="wrap legal-layout"><article class="legal-copy">${body}<p class="legal-updated">Última actualización: 6 de noviembre de 2026.</p></article><aside class="legal-aside"><strong>Información legal</strong><p>Documentación del sitio y tratamiento de la información.</p><a href="/aviso-legal.html"${route==='/aviso-legal.html'?' aria-current="page"':''}>Aviso legal</a><a href="/privacidad.html"${route==='/privacidad.html'?' aria-current="page"':''}>Privacidad y RGPD</a><a href="/cookies.html"${route==='/cookies.html'?' aria-current="page"':''}>Cookies</a><a href="/">Volver a la web</a></aside></div></section></main>${legalFooter()}${cookieNotice}</body></html>`;
+  return `${legalHead(title, description, route)}<body>${legalHeader()}<main class="legal-page"><section class="legal-hero"><div class="wrap"><span class="eyebrow">${kicker}</span><h1>${title}</h1><p>${lead}</p></div></section><section class="legal-content"><div class="wrap legal-layout"><article class="legal-copy">${body}<p class="legal-updated">Última actualización: 15 de noviembre de 2026.</p></article><aside class="legal-aside"><strong>Información legal</strong><p>Documentación del sitio y tratamiento de la información.</p><a href="/aviso-legal.html"${route==='/aviso-legal.html'?' aria-current="page"':''}>Aviso legal</a><a href="/privacidad.html"${route==='/privacidad.html'?' aria-current="page"':''}>Privacidad y RGPD</a><a href="/cookies.html"${route==='/cookies.html'?' aria-current="page"':''}>Cookies</a><a href="/">Volver a la web</a></aside></div></section></main>${legalFooter()}${cookieNotice}</body></html>`;
 }
 
 function walk(dir) {
@@ -69,6 +71,7 @@ fs.writeFileSync(path.join(root, 'aviso-legal.html'), page({
   <div><dt>Domicilio</dt><dd>Alameda de Urquijo s/n, Bilbao</dd></div>
   <div><dt>Sitio web</dt><dd>www.antenasrapid.com</dd></div>
   <div><dt>Teléfono</dt><dd><a href="tel:${tel}">${phone}</a></dd></div>
+  <div><dt>Correo electrónico</dt><dd><a class="email-link" href="mailto:${email}">${email}</a></dd></div>
   <div><dt>Contacto por mensajería</dt><dd><a href="https://wa.me/${whatsapp}">WhatsApp</a></dd></div>
 </dl>
 <h2>Finalidad del sitio</h2>
@@ -98,10 +101,11 @@ fs.writeFileSync(path.join(root, 'privacidad.html'), page({
   <div><dt>Domicilio</dt><dd>Alameda de Urquijo s/n, Bilbao</dd></div>
   <div><dt>Web</dt><dd>www.antenasrapid.com</dd></div>
   <div><dt>Teléfono</dt><dd><a href="tel:${tel}">${phone}</a></dd></div>
+  <div><dt>Correo electrónico</dt><dd><a class="email-link" href="mailto:${email}">${email}</a></dd></div>
   <div><dt>WhatsApp</dt><dd><a href="https://wa.me/${whatsapp}">Abrir conversación</a></dd></div>
 </dl>
 <h2>Qué datos podemos tratar</h2>
-<p>Los formularios de consulta preparan en tu navegador un mensaje con la provincia, localidad, servicio y detalles que indiques. Al continuar se abre WhatsApp, donde puedes revisar el mensaje y decidir si lo envías. La web no recibe ni guarda los campos del formulario.</p><p>Si llamas o envías un mensaje por WhatsApp, podremos tratar los datos que facilites voluntariamente para entender y atender tu solicitud: por ejemplo nombre, teléfono, localidad o dirección del servicio, tipo de inmueble y detalles de la avería o instalación.</p>
+<p>Los formularios de consulta preparan en tu navegador un mensaje con la provincia, localidad, servicio y detalles que indiques. Al continuar se abre WhatsApp, donde puedes revisar el mensaje y decidir si lo envías. La web no recibe ni guarda los campos del formulario.</p><p>Si llamas, escribes por correo electrónico o envías un mensaje por WhatsApp, podremos tratar los datos que facilites voluntariamente para entender y atender tu solicitud: por ejemplo nombre, teléfono, localidad o dirección del servicio, tipo de inmueble y detalles de la avería o instalación.</p>
 <h2>Finalidades</h2>
 <ul><li>Responder consultas y solicitudes de presupuesto.</li><li>Organizar avisos, visitas, instalaciones y reparaciones.</li><li>Mantener las comunicaciones necesarias durante la prestación del servicio.</li><li>Cumplir obligaciones administrativas o legales cuando correspondan.</li></ul>
 <h2>Base jurídica</h2>
@@ -111,7 +115,7 @@ fs.writeFileSync(path.join(root, 'privacidad.html'), page({
 <h2>Conservación</h2>
 <p>Los datos se conservarán durante el tiempo necesario para atender la consulta o prestar el servicio y, posteriormente, durante los plazos exigibles para atender obligaciones legales y posibles responsabilidades.</p>
 <h2>Derechos</h2>
-<p>Puedes solicitar acceso, rectificación, supresión, oposición, limitación y, cuando corresponda, portabilidad de tus datos. Puedes iniciar la solicitud a través de los medios de contacto publicados en esta web. Podrá pedirse información adicional para verificar la identidad de quien ejerce el derecho.</p>
+<p>Puedes solicitar acceso, rectificación, supresión, oposición, limitación y, cuando corresponda, portabilidad de tus datos. Puedes iniciar la solicitud escribiendo a <a class="email-link" href="mailto:${email}">${email}</a> o a través de los demás medios de contacto publicados en esta web. Podrá pedirse información adicional para verificar la identidad de quien ejerce el derecho.</p>
 <p>Si consideras que el tratamiento no se ajusta a la normativa, puedes presentar una reclamación ante la <a href="https://www.aepd.es/" rel="noopener noreferrer">Agencia Española de Protección de Datos</a>.</p>
 <h2>Decisiones automatizadas</h2>
 <p>Esta web no realiza decisiones automatizadas ni elaboración de perfiles de usuarios.</p>`

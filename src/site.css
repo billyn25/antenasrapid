@@ -338,6 +338,9 @@ body{background:linear-gradient(#fff 0 72%,#fbfaf8 100%)}
 .home-contact-copy h2{max-width:390px;font-size:clamp(30px,3.1vw,42px);line-height:1.12}
 .home-contact-copy p{max-width:420px;margin:0 0 18px;color:var(--muted);font-size:16px;line-height:1.7}
 .home-contact-copy .eyebrow{margin-bottom:14px}
+.email-link{overflow-wrap:anywhere;text-decoration:underline;text-underline-offset:3px}
+.home-contact-copy .contact-email strong{display:block;color:var(--ink)}
+.home-contact-copy .contact-email .email-link{display:inline-block;padding:6px 0;font-weight:700}
 .whatsapp-form{min-width:0;padding:28px;background:#fff;border:1px solid #dfe0e4;border-radius:12px;box-shadow:0 12px 32px rgba(29,31,35,.06)}
 .whatsapp-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 16px}
 .whatsapp-field{display:flex;flex-direction:column;gap:7px;min-width:0}
