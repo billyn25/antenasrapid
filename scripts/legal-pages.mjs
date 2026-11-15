@@ -80,6 +80,9 @@ fs.writeFileSync(path.join(root, 'aviso-legal.html'), page({
 <p>El acceso a esta web implica un uso responsable, lícito y respetuoso con los derechos de terceros. La información publicada tiene finalidad informativa y comercial y no sustituye la revisión de una instalación concreta.</p>
 <h2>Propiedad intelectual</h2>
 <p>Los textos, diseño, elementos gráficos, marca y demás contenidos propios de la web están protegidos por la normativa aplicable. No se autoriza su explotación fuera de los usos permitidos legalmente sin autorización del titular.</p>
+<h2>Créditos de datos locales</h2>
+<p>Distancias calculadas a partir de las referencias municipales del <a href="https://www.ign.es/web/ign/portal/ane-datos-geograficos">IGN, 2025</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</p>
+<p>Selección de datos de <a href="https://www.cartociudad.es/web/portal/directorio-de-servicios/descarga">CartoCiudad (IGN/CNIG · SCNE)</a> y de la Comunidad de Madrid (<a href="https://gestiona.comunidad.madrid/nomenclator/">Nomenclátor</a> e <a href="https://www.comunidad.madrid/geoportal/idem">IDEM</a>), <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</p>
 <h2>Enlaces y servicios externos</h2>
 <p>La web facilita enlaces a servicios externos, como WhatsApp. Al utilizarlos abandonas el entorno controlado por Antenas Rapid y pasan a aplicarse también las condiciones y políticas del proveedor correspondiente.</p>
 <h2>Responsabilidad</h2>

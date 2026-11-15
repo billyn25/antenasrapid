@@ -19,13 +19,10 @@ export function validatePostalData(data) {
   return data;
 }
 const codeList = codes => codes.map(code => `<span class="postal-code">${esc(code)}</span>`).join(' ');
-function sourceNote(data) {
-  return `<p class="postal-source">Códigos asociados a direcciones municipales de <a href="https://www.cartociudad.es/web/portal/directorio-de-servicios/descarga">CartoCiudad (IGN/CNIG)</a>. Consulta de datos: ${esc(data.checkedOn)}. Obra derivada de CartoCiudad, <a href="https://www.scne.es/">CC BY 4.0 · SCNE</a>.</p>`;
-}
 export function postalBlock(page, row, data) {
   const place = esc(page.name);
   const shown = row.postalCodes.slice(0, 12), rest = row.postalCodes.slice(12);
-  return `<section class="section soft postal-coverage" id="codigos-postales"><div class="wrap"><span class="eyebrow">Localiza tu aviso</span><h2>Calles, zonas y códigos postales de ${place}</h2><p>Para consultar una instalación o reparación de antena, portero o videoportero en ${place}, indica la calle y el código postal junto al municipio.</p><div class="postal-code-list" aria-label="Códigos postales de ${place}">${codeList(shown)}</div>${rest.length ? `<details class="postal-more"><summary>Ver los ${rest.length} códigos restantes</summary><div class="postal-code-list">${codeList(rest)}</div></details>` : ''}<p class="postal-help">Un municipio puede tener varios códigos y un mismo código puede compartirse entre municipios. Confirma el correspondiente a tu dirección al preparar el aviso.</p>${madridGeographyContent(row.id)}${sourceNote(data)}<a class="text-link" href="${MADRID_ROUTE}#localidades">Buscar otro municipio o código postal de Madrid →</a></div></section>`;
+  return `<section class="section soft postal-coverage" id="codigos-postales"><div class="wrap"><span class="eyebrow">Localiza tu aviso</span><h2>Calles, zonas y códigos postales de ${place}</h2><p>Para consultar una instalación o reparación de antena, portero o videoportero en ${place}, indica la calle y el código postal junto al municipio.</p><div class="postal-code-list" aria-label="Códigos postales de ${place}">${codeList(shown)}</div>${rest.length ? `<details class="postal-more"><summary>Ver los ${rest.length} códigos restantes</summary><div class="postal-code-list">${codeList(rest)}</div></details>` : ''}${madridGeographyContent(row.id)}<a class="text-link" href="${MADRID_ROUTE}#localidades">Buscar otro municipio o código postal de Madrid →</a></div></section>`;
 }
 export function enrichMadridTown(html, page, row, data) {
   if (!page.path.startsWith(MADRID_ROUTE)) return html;
@@ -52,7 +49,7 @@ export function enrichMadridDirectory(html, locals, lookup, data) {
     .replace('</head>', '<link rel="stylesheet" href="/assets/madrid-postal.css"></head>');
   const marker = '<section class="section wrap faq" id="preguntas">';
   assert.ok(output.includes(marker), 'Directorio de Madrid sin FAQ');
-  return output.replace(marker, `<section class="section wrap postal-province-note">${sourceNote(data)}</section>` + marker);
+  return output;
 }
 
 // Un mismo municipio conserva el mismo servicio en portada y directorio.
