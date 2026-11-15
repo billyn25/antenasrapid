@@ -1,3 +1,4 @@
+import {applyImportantSeoFixes} from './important-seo-fixes.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import {normalizeCanonicalHtml} from './canonical-urls.mjs';
@@ -43,6 +44,7 @@ applySearchPriorityPages(root);
 applyLocalWorkReferences(root);
 applyHendayaWork(root);
 applyMadridContact(root);
+applyImportantSeoFixes(root);
 normalizeCanonicalHtml(root);
 const urls = [];
 for (const file of walk(root).filter(f => f.endsWith('.html'))) {

@@ -51,7 +51,7 @@ assert.equal(listed.length,indexed.size);assert.equal(new Set(listed).size,liste
 const manifest=JSON.parse(fs.readFileSync(path.join(root,'local-pages-manifest.json'),'utf8'));
 const madridDistricts=JSON.parse(fs.readFileSync('content/madrid-districts.json','utf8')).districts;
 assert.ok(indexed.has(domain+'/trabajos/hendaya-dos-antenas/'), 'Falta la página de los tres trabajos de Hendaya');
-const coreIndexable=3; // portada + núcleo histórico + trabajos documentados de Hendaya
+const coreIndexable=2; // portada + trabajos documentados de Hendaya; alias Abanto redirigido
 const expectedIndexable=manifest.length+provinces+madridDistricts.length+coreIndexable;
 assert.equal(provinces,19);
 assert.equal(madridDistricts.length,21);

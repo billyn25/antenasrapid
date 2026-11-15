@@ -300,6 +300,20 @@
   ],
   "localPhotos": [
     {
+      "file": "dos-antenas-previo-televes-dos-uhf-miranda-de-ebro.webp",
+      "thumbnail": "dos-antenas-previo-televes-dos-uhf-miranda-de-ebro-mini.webp",
+      "title": "Dos antenas y previo Televes de dos entradas UHF en Miranda de Ebro",
+      "alt": "Dos antenas de televisión sobre un mástil y previo Televes en un tejado de Miranda de Ebro",
+      "caption": "Instalación realizada en Miranda de Ebro con dos antenas de televisión y un previo Televes de dos entradas UHF. Las antenas están situadas a distinta altura y orientadas en direcciones diferentes; el previo se encuentra instalado en el mástil.",
+      "width": 865,
+      "height": 1536,
+      "original": "69AF8FE0-221C-4CCA-8DD2-BCFDF78A0AF0.jpeg",
+      "sha256": "330c5320ac493ee5897db24d122f43ab4685d52e379b7b133f4a4419e1397186",
+      "town": "Miranda de Ebro",
+      "townPath": "/Antenas-Burgos/miranda-de-ebro.html",
+      "provincePath": "/Antenas-Burgos/"
+    },
+    {
       "file": "control-accesos-llaveros-torrejon-de-ardoz.webp",
       "thumbnail": "control-accesos-llaveros-torrejon-de-ardoz-mini.webp",
       "title": "Apertura con llaveros en una comunidad de Torrejón de Ardoz",
