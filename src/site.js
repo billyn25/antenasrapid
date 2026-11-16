@@ -118,7 +118,7 @@
       };
       const updateZoneStatus = () => {
         if (!province.value) return setStatus('');
-        if (!provinceNames.has(province.value)) return setStatus('Elige una provincia de la lista.', true);
+        if (!provinceNames.has(province.value)) return setStatus('Elige una zona de la lista.', true);
         if (!destinationForProvince()) return setStatus('No se ha podido preparar el contacto. Utiliza el WhatsApp de tu zona en el pie de página.', true);
         const destinationLabel = centralProvinces.has(province.value) ? zoneName() : 'la zona norte y Castilla y León';
         setStatus(`Tu consulta irá al equipo de ${destinationLabel}.`);
@@ -163,7 +163,7 @@
         const doorphoneActive = updateDoorphoneFields();
         if (!contactForm.reportValidity()) return;
         if (!provinceNames.has(province.value)) {
-          setStatus('Elige una provincia de la lista.', true);
+          setStatus('Elige una zona de la lista.', true);
           province.focus();
           return;
         }
@@ -189,7 +189,7 @@
         const scope = doorphoneActive && scopeNames.get(doorphoneScope.value);
         const lines = [
           'Hola, quiero hacer una consulta a Antenas Rapid.',
-          `Provincia: ${provinceNames.get(province.value)}`,
+          `${province.value === 'francia' ? 'País' : 'Provincia'}: ${provinceNames.get(province.value)}`,
           `Localidad: ${locality.value.trim()}`,
           `Servicio: ${serviceNames.get(service.value)}`,
           ...(affectedChannels ? [`Canales: ${affectedChannels}`] : []),

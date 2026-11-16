@@ -21,7 +21,7 @@ function cards() {
   return data.photos.map((photo, i) => `<figure id="instalacion-${photo.installationNumber ?? i+1}"><button class="gallery-open" type="button" data-src="${asset(photo.file)}" data-alt="${esc(photo.alt)}" aria-label="Ampliar la foto de la instalación ${photo.installationNumber ?? i+1} en Hendaya"><img src="${asset(photo.thumbnail)}" alt="${esc(photo.alt)}" width="${photo.width}" height="${photo.height}" loading="lazy" decoding="async"></button><figcaption><span class="eyebrow">Instalación ${photo.installationNumber ?? i+1} · Hendaya</span><h3>${esc(photo.title)}</h3>${renderWorkDate(photo)}<p>${esc(photo.caption)}</p></figcaption></figure>`).join('');
 }
 
-export function applyHendayaWork(root) {
+export function applyHendayaWork(root, {includeReferences = true} = {}) {
   assert.equal(data.photos.length, 4, 'Hendaya: deben publicarse cuatro instalaciones');
   assert.equal(new Set(data.photos.map(photo => photo.installationNumber)).size, data.photos.length, 'Hendaya: identificadores de instalación repetidos');
   const dest = path.join(root, 'assets/galeria');
@@ -50,6 +50,7 @@ export function applyHendayaWork(root) {
   const file = path.join(root, data.route.slice(1), 'index.html');
   fs.mkdirSync(path.dirname(file), {recursive:true});
   fs.writeFileSync(file, html);
+  if (!includeReferences) return;
 
   const preview = `<aside class="hendaya-preview" data-hendaya-work="1"><a href="${data.route}#galeria" aria-label="Ver las instalaciones en Hendaya"><img src="${asset(data.photos[0].thumbnail)}" alt="${esc(data.photos[0].alt)}" width="${data.photos[0].width}" height="${data.photos[0].height}" loading="lazy" decoding="async"></a><div><span class="eyebrow">Trabajos reales en Hendaya · Francia</span><h3>Dos antenas en tejados y fachadas</h3>${renderWorkDate(data.photos[0])}<p>Último trabajo: dos antenas junto a la fachada de una vivienda. ${data.photos.length} instalaciones con fotografías.</p><a href="${data.route}#galeria">Ver los trabajos →</a><p><a href="${data.serviceRoute}">Antenista en Hendaya, Francia →</a></p></div></aside>`;
   for (const relative of ['index.html','Antenas-Guipuzcoa/index.html','Antenas-Guipuzcoa/irun.html','Antenas-Guipuzcoa/hondarribia.html']) {
