@@ -4,6 +4,7 @@ import path from 'node:path';
 import data from '../content/hendaya-trabajos.json' with {type: 'json'};
 import {galleryDialog, galleryScript, galleryStyle} from './real-work-gallery.mjs';
 import {renderFooter} from './footer.mjs';
+import {renderWorkDate} from './work-publication.mjs';
 
 const domain = 'https://www.antenasrapid.com';
 const esc = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -17,7 +18,7 @@ const style = `<style id="hendaya-case-style">
 </style>`;
 
 function cards() {
-  return data.photos.map((photo, i) => `<figure id="instalacion-${i+1}"><button class="gallery-open" type="button" data-src="${asset(photo.file)}" data-alt="${esc(photo.alt)}" aria-label="Ampliar la foto de la instalación ${i+1} en Hendaya"><img src="${asset(photo.thumbnail)}" alt="${esc(photo.alt)}" width="${photo.width}" height="${photo.height}" loading="lazy" decoding="async"></button><figcaption><span class="eyebrow">Instalación ${i+1} · Hendaya</span><h3>${esc(photo.title)}</h3><p>${esc(photo.caption)}</p></figcaption></figure>`).join('');
+  return data.photos.map((photo, i) => `<figure id="instalacion-${i+1}"><button class="gallery-open" type="button" data-src="${asset(photo.file)}" data-alt="${esc(photo.alt)}" aria-label="Ampliar la foto de la instalación ${i+1} en Hendaya"><img src="${asset(photo.thumbnail)}" alt="${esc(photo.alt)}" width="${photo.width}" height="${photo.height}" loading="lazy" decoding="async"></button><figcaption><span class="eyebrow">Instalación ${i+1} · Hendaya</span><h3>${esc(photo.title)}</h3>${renderWorkDate(photo)}<p>${esc(photo.caption)}</p></figcaption></figure>`).join('');
 }
 
 export function applyHendayaWork(root) {
@@ -34,7 +35,7 @@ export function applyHendayaWork(root) {
   const localHeader = header.replace(/href="#(?!contacto")([^"]+)"/g, 'href="/#$1"');
   const imageObjects = data.photos.map(photo => ({
     '@type':'ImageObject', contentUrl:domain+asset(photo.file), thumbnailUrl:domain+asset(photo.thumbnail),
-    name:photo.title, caption:photo.caption, description:photo.alt, width:photo.width, height:photo.height,
+    name:photo.title, caption:photo.caption, description:photo.alt, datePublished:photo.publishedOn, width:photo.width, height:photo.height,
     creator:{'@type':'Person',name:'Roberto Fuentes González'}, creditText:'Roberto Fuentes González · Antenas Rapid',
     copyrightNotice:'Fotografía de Roberto Fuentes González', license:domain+'/aviso-legal.html', acquireLicensePage:domain+'/aviso-legal.html'
   }));
