@@ -39,7 +39,7 @@ function legalFooter() {
 }
 
 function page({title, description, route, kicker, lead, body}) {
-  return `${legalHead(title, description, route)}<body>${legalHeader()}<main class="legal-page"><section class="legal-hero"><div class="wrap"><span class="eyebrow">${kicker}</span><h1>${title}</h1><p>${lead}</p></div></section><section class="legal-content"><div class="wrap legal-layout"><article class="legal-copy">${body}<p class="legal-updated">Última actualización: 15 de noviembre de 2026.</p></article><aside class="legal-aside"><strong>Información legal</strong><p>Documentación del sitio y tratamiento de la información.</p><a href="/aviso-legal.html"${route==='/aviso-legal.html'?' aria-current="page"':''}>Aviso legal</a><a href="/privacidad.html"${route==='/privacidad.html'?' aria-current="page"':''}>Privacidad y RGPD</a><a href="/cookies.html"${route==='/cookies.html'?' aria-current="page"':''}>Cookies</a><a href="/">Volver a la web</a></aside></div></section></main>${legalFooter()}${cookieNotice}</body></html>`;
+  return `${legalHead(title, description, route)}<body>${legalHeader()}<main class="legal-page"><section class="legal-hero"><div class="wrap"><span class="eyebrow">${kicker}</span><h1>${title}</h1><p>${lead}</p></div></section><section class="legal-content"><div class="wrap legal-layout"><article class="legal-copy">${body}<p class="legal-updated">Última actualización: 16 de noviembre de 2026.</p></article><aside class="legal-aside"><strong>Información legal</strong><p>Documentación del sitio y tratamiento de la información.</p><a href="/aviso-legal.html"${route==='/aviso-legal.html'?' aria-current="page"':''}>Aviso legal</a><a href="/privacidad.html"${route==='/privacidad.html'?' aria-current="page"':''}>Privacidad y RGPD</a><a href="/cookies.html"${route==='/cookies.html'?' aria-current="page"':''}>Cookies</a><a href="/">Volver a la web</a></aside></div></section></main>${legalFooter()}${cookieNotice}</body></html>`;
 }
 
 function walk(dir) {
@@ -68,7 +68,7 @@ fs.writeFileSync(path.join(root, 'aviso-legal.html'), page({
 <dl class="legal-data">
   <div><dt>Nombre comercial</dt><dd>Antenas Rapid</dd></div>
   <div><dt>Titular</dt><dd>Roberto Fuentes González</dd></div>
-  <div><dt>Domicilio</dt><dd>Alameda de Urquijo s/n, Bilbao</dd></div>
+  <div><dt>Domicilio</dt><dd>${site.address}</dd></div>
   <div><dt>Sitio web</dt><dd>www.antenasrapid.com</dd></div>
   <div><dt>Teléfono</dt><dd><a href="tel:${tel}">${phone}</a></dd></div>
   <div><dt>Correo electrónico</dt><dd><a class="email-link" href="mailto:${email}">${email}</a></dd></div>
@@ -101,7 +101,7 @@ fs.writeFileSync(path.join(root, 'privacidad.html'), page({
 <h2>Responsable</h2>
 <dl class="legal-data">
   <div><dt>Responsable</dt><dd>Roberto Fuentes González · Antenas Rapid</dd></div>
-  <div><dt>Domicilio</dt><dd>Alameda de Urquijo s/n, Bilbao</dd></div>
+  <div><dt>Domicilio</dt><dd>${site.address}</dd></div>
   <div><dt>Web</dt><dd>www.antenasrapid.com</dd></div>
   <div><dt>Teléfono</dt><dd><a href="tel:${tel}">${phone}</a></dd></div>
   <div><dt>Correo electrónico</dt><dd><a class="email-link" href="mailto:${email}">${email}</a></dd></div>
