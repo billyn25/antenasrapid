@@ -33,7 +33,7 @@ function children(html){
  assert.equal(nodes.join('').replace(/\s/g,''),html.replace(/\s/g,''),'Contenido fuera de los bloques previstos');
  return nodes;
 }
-const ranks={servicios:10,'problemas-tdt':20,'porteros-videoporteros':30,'cobertura-movil':40,'soluciones-tecnicas':50,'servicio-local':60,experiencia:70,galeria:80,'gallery-lightbox':81,'contexto-municipal':90,'codigos-postales':91,'distritos-madrid':92,preguntas:100,contacto:110,zonas:120,'pueblos-cercanos':130};
+const ranks={servicios:10,'problemas-tdt':20,'porteros-videoporteros':30,'cobertura-movil':40,'soluciones-tecnicas':50,'servicio-local':60,experiencia:70,galeria:80,'gallery-lightbox':81,'contexto-municipal':90,'codigos-postales':91,'distritos-madrid':92,preguntas:100,contacto:110,zonas:120,'sintonizar-tdt':125,'pueblos-cercanos':130};
 function nodeRank(node,label){
  const classes=classOf(node),id=idOf(node);let rank;
  if(/^<style\b/.test(node))rank=5; // Keep all original styles in their original cascade order.

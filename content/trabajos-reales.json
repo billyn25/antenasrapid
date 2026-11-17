@@ -330,6 +330,21 @@
   ],
   "localPhotos": [
     {
+      "file": "dos-antenas-cubillo-del-campo-2026-11-17.webp",
+      "thumbnail": "dos-antenas-cubillo-del-campo-2026-11-17-mini.webp",
+      "title": "Instalación de dos antenas en Cubillo del Campo, Burgos",
+      "alt": "Dos antenas de televisión en un mástil sobre el tejado en Cubillo del Campo, Burgos",
+      "caption": "Instalación de dos antenas de televisión en Cubillo del Campo, Burgos. Las antenas están montadas a distinta altura y orientadas en diferentes direcciones sobre el mismo mástil.",
+      "width": 865,
+      "height": 1536,
+      "original": "39113B4E-56A5-4E84-B456-A641F93CE57A.jpeg",
+      "sha256": "7c0c00a7e02d29214b68f8cc8e2814711adb125220023e0e1827f5ec82c8d768",
+      "town": "Cubillo del Campo",
+      "townPath": "/Antenas-Burgos/cubillo-del-campo.html",
+      "provincePath": "/Antenas-Burgos/",
+      "publishedOn": "2026-11-17"
+    },
+    {
       "file": "instalacion-antena-tdt-pina-de-campos-2026-11-17.webp",
       "thumbnail": "instalacion-antena-tdt-pina-de-campos-2026-11-17-mini.webp",
       "title": "Instalación de antena TDT en Piña de Campos, Palencia",
