@@ -330,6 +330,21 @@
   ],
   "localPhotos": [
     {
+      "file": "antena-ellipse-santibanez-de-la-pena-2026-11-17.webp",
+      "thumbnail": "antena-ellipse-santibanez-de-la-pena-2026-11-17-mini.webp",
+      "title": "Antena Ellipse con previo de mástil en Santibáñez de la Peña",
+      "alt": "Antena Ellipse y previo de mástil instalados sobre un tejado en Santibáñez de la Peña, Palencia",
+      "caption": "Había problemas de recepción en algunos canales de televisión. En esta instalación de Santibáñez de la Peña, Palencia, se montó una antena Ellipse con previo de mástil y fuente de alimentación para mejorar la recepción de la TDT.",
+      "width": 865,
+      "height": 1536,
+      "original": "43717E9C-0E4E-4704-AD91-90DF87A6A57A.jpeg",
+      "sha256": "c80f98804a6e559cfe8efe0cbe2b33c1ba58540aadfca27c65f4c910fd0028b0",
+      "town": "Santibáñez de la Peña",
+      "townPath": "/Antenas-Palencia/santibanez-de-la-pena.html",
+      "provincePath": "/Antenas-Palencia/",
+      "publishedOn": "2026-11-17"
+    },
+    {
       "file": "dos-antenas-cubillo-del-campo-2026-11-17.webp",
       "thumbnail": "dos-antenas-cubillo-del-campo-2026-11-17-mini.webp",
       "title": "Instalación de dos antenas en Cubillo del Campo, Burgos",
