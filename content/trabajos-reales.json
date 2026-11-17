@@ -330,6 +330,22 @@
   ],
   "localPhotos": [
     {
+      "file": "instalacion-antena-tdt-pina-de-campos-2026-11-17.webp",
+      "thumbnail": "instalacion-antena-tdt-pina-de-campos-2026-11-17-mini.webp",
+      "title": "Instalación de antena TDT en Piña de Campos, Palencia",
+      "alt": "Antena de televisión instalada sobre un mástil junto al tejado en Piña de Campos, Palencia",
+      "caption": "Instalación de antena de televisión realizada en Piña de Campos, Palencia. Antena montada en un mástil junto al tejado, con el cableado fijado al soporte.",
+      "width": 865,
+      "height": 1536,
+      "original": "38D81273-9FA9-4A29-BC69-814D510C712A.jpeg",
+      "sha256": "43a0b45b2f9a152df4cf99521904ea4e9259f9af6fbcadbf3bfbd5630e2b78a9",
+      "town": "Piña de Campos",
+      "townPath": "/Antenas-Palencia/pina-de-campos.html",
+      "provincePath": "/Antenas-Palencia/",
+      "performedOn": "2026-11-17",
+      "publishedOn": "2026-11-17"
+    },
+    {
       "file": "instalacion-dos-antenas-espejo-alava.webp",
       "thumbnail": "instalacion-dos-antenas-espejo-alava-mini.webp",
       "title": "Instalación de dos antenas en Espejo, Álava",
