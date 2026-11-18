@@ -52,7 +52,8 @@ const manifest=JSON.parse(fs.readFileSync(path.join(root,'local-pages-manifest.j
 const madridDistricts=JSON.parse(fs.readFileSync('content/madrid-districts.json','utf8')).districts;
 assert.ok(indexed.has(domain+'/trabajos/hendaya-dos-antenas/'), 'Falta la galería de trabajos de Hendaya');
 assert.ok(indexed.has(domain+'/antenista-hendaya-francia/'), 'Falta la ficha de servicio de Hendaya, Francia');
-const coreIndexable=3; // portada + ficha de servicio y trabajos de Hendaya; alias Abanto redirigido
+assert.ok(indexed.has(domain+'/comunidades-de-vecinos/'), 'Falta la página de servicios para comunidades');
+const coreIndexable=4; // portada + comunidades + ficha de servicio y trabajos de Hendaya; alias Abanto redirigido
 const expectedIndexable=manifest.length+provinces+madridDistricts.length+coreIndexable;
 assert.equal(provinces,19);
 assert.equal(madridDistricts.length,21);

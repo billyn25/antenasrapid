@@ -1,0 +1,28 @@
+{
+  "route": "/comunidades-de-vecinos/",
+  "title": "Antenas y porteros para comunidades de vecinos | Rapid",
+  "description": "Reparación de antenas colectivas, porteros y videoporteros para comunidades de vecinos. Control de accesos y mantenimiento. Consulta por localidad en Antenas Rapid.",
+  "cases": [
+    {"file":"instalacion-videoportero-bticino-bilbao.webp","title":"Videoportero BTicino en Bilbao"},
+    {"file":"control-accesos-llaveros-torrejon-de-ardoz.webp","title":"Apertura con llaveros en Torrejón de Ardoz"},
+    {"file":"portero-audio-dos-hilos-alcala-de-henares.webp","title":"Portero de dos hilos en Alcalá de Henares"},
+    {"file":"cambio-a-videoportero-llodio-antes.webp","title":"Llodio: portero antes del cambio"},
+    {"file":"cambio-a-videoportero-llodio-despues.webp","title":"Llodio: nuevo videoportero instalado"},
+    {"file":"valoracion-videoportero-getxo.webp","title":"Getxo: valoración para renovar el portero"}
+  ],
+  "services": [
+    {"id":"antenas-colectivas","service":"amplificacion","title":"Antenas colectivas y distribución de TDT","text":"Si varios vecinos pierden los mismos canales o sufren pixelaciones, revisamos la antena, la cabecera amplificadora, las fuentes y la distribución del edificio. Comparamos la señal en distintos puntos para localizar la pérdida antes de decidir qué sustituir."},
+    {"id":"porteros-comunidades","service":"porteros","title":"Reparación de porteros automáticos","text":"Cuando no suena la llamada, falla el audio o no abre el portal, comprobamos qué viviendas están afectadas. Revisamos pulsadores, grupo fónico, alimentación, abrepuertas y conexiones para valorar la reparación del sistema existente."},
+    {"id":"videoporteros-comunidades","service":"videoporteros","title":"Cambio a videoportero en la comunidad","text":"Revisamos la placa, la caja de empotrar, el cableado y el número de viviendas y accesos. Con esos datos valoramos el equipo compatible, los monitores y la adaptación necesaria para renovar el conjunto o pasar de un portero de audio a videoportero."},
+    {"id":"control-accesos","service":"accesos","title":"Apertura del portal con llaveros","text":"Instalación de lectores de proximidad para abrir el portal con llaveros. Revisamos el abrepuertas, la alimentación y el espacio disponible, y valoramos si se puede conservar la placa de portero existente."},
+    {"id":"mantenimiento-comunidades","service":"mantenimiento","title":"Mantenimiento de instalaciones comunitarias","text":"Consulta la revisión de antenas, cabecera, cableado, porteros y videoporteros de tu edificio. El alcance, la periodicidad y los materiales incluidos se acuerdan según el estado de la instalación y las necesidades de la comunidad."}
+  ],
+  "questions": [
+    {"question":"¿Atendéis a administradores de fincas y presidentes de comunidad?","answer":"Sí. Puedes consultar una avería o una renovación indicando la localidad, la dirección del edificio, el número de viviendas y quién facilitará el acceso a las zonas comunes."},
+    {"question":"¿Hay que cambiar toda la antena si varios vecinos no ven la TV?","answer":"Primero se localiza el fallo. Puede estar en la recepción, una fuente, el amplificador o la distribución. Indica qué canales fallan y si afecta a todo el edificio, a una planta o solo a determinadas viviendas."},
+    {"question":"¿Se puede reparar el portero y conservar los telefonillos?","answer":"Lo valoramos tras revisar el sistema y la disponibilidad de componentes compatibles. Si el fallo está en un pulsador, el grupo fónico o la alimentación, se estudia su reparación antes de proponer una renovación completa."},
+    {"question":"¿Podemos pasar de telefonillo a videoportero aprovechando los cables?","answer":"Depende del sistema existente, el estado del cableado y el equipo elegido. Antes de preparar la sustitución revisamos la compatibilidad de la placa, la fuente y los terminales de las viviendas."},
+    {"question":"¿Qué necesitáis para preparar un presupuesto para la comunidad?","answer":"Localidad y dirección, número de viviendas y portales, avería o mejora solicitada y fotos de la placa o los equipos accesibles. Con esa información concretamos la revisión y el alcance del presupuesto."},
+    {"question":"¿Tenéis servicio de urgencias para comunidades?","answer":"Sí, puedes consultar una urgencia de antena, portero o videoportero. Indica si el fallo afecta a todo el edificio y tu localidad para confirmar disponibilidad y condiciones de la visita."}
+  ]
+}

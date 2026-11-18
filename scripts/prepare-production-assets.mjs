@@ -1,3 +1,4 @@
+import {applyCommunities} from './communities.mjs';
 import {applyImportantSeoFixes} from './important-seo-fixes.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -45,6 +46,7 @@ applySearchPriorityPages(root);
 applyLocalWorkReferences(root);
 applyHendayaWork(root);
 applyHendayaService(root);
+applyCommunities(root);
 applyMadridContact(root);
 applyImportantSeoFixes(root);
 normalizeCanonicalHtml(root);
