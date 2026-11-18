@@ -32,11 +32,10 @@ jobs:
           npm install --no-save --package-lock=false playwright@1.56.1
           npx playwright install --with-deps chromium
           node tests/town-section-order.browser.mjs
-      - name: Simular paquete final sin publicarlo
+      - name: Auditar copia del paquete final sin publicarlo
         run: |
           rm -rf .production-check
           cp -a dist .production-check
-          CONFIRM_PRODUCTION_PREP=1 PRODUCTION_ROOT=.production-check node scripts/prepare-production-assets.mjs
           PRODUCTION_ROOT=.production-check npm run audit:production
       - name: Comparar la web publicada con la salida comprobada
         run: |
