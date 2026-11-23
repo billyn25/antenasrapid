@@ -122,7 +122,7 @@ const featuredByProvince={
   'Antenas-Soria':['Soria','Almazán','El Burgo de Osma','Ólvega','San Esteban de Gormaz','Ágreda','San Leonardo de Yagüe','Golmayo'],
   'Antenas-Valladolid':['Valladolid','Laguna de Duero','Medina del Campo','Arroyo de la Encomienda','Tordesillas','Tudela de Duero','Íscar','Peñafiel'],
   'Antenas-Zamora':['Zamora','Benavente','Toro','Puebla de Sanabria','Morales del Vino','Villaralbo','Fuentesaúco','Fermoselle'],
-  'Antenas-Asturias':['Gijón','Oviedo','Avilés','Siero','Langreo','Mieres','Llanes','Ribadesella'],
+  'Antenas-Asturias':['Langreo','Gijón','Oviedo','Avilés','Siero','Mieres','Llanes','Ribadesella'],
   'Antenas-Avila':['Ávila','Arévalo','Arenas de San Pedro','Las Navas del Marqués','Candeleda','El Tiemblo','Sotillo de la Adrada','Cebreros']
 };
 const normTown=v=>String(v||'').toLocaleLowerCase('es').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,' ').trim();
@@ -137,7 +137,7 @@ const featuredCards=[...provinceSegments].sort((a,b)=>a.localeCompare(b,'es')).m
  const provinceName=seg.replace(/^Antenas-/,'').replace('Guipuzcoa','Gipuzkoa').replace('Alava','Álava').replaceAll('-',' ');
  if(chosen.length<4) throw new Error(`Portada: faltan pueblos destacados válidos para ${seg} (${chosen.length}/8)`);
  if(extra.length<12) throw new Error(`Portada: faltan pueblos adicionales válidos para ${seg} (${extra.length}/12)`);
- return `<article class="featured-province"><h3><a href="/${seg}/">${provinceName}</a></h3><div class="featured-towns">${chosen.map(p=>`<a href="${p.path}">${p.name}</a>`).join('')}</div><details class="featured-more"><summary>Más pueblos con servicio</summary><div class="featured-more-links">${extra.map(p=>`<a href="${p.path}">${p.name}</a>`).join('')}</div></details><a class="featured-all" href="/${seg}/">Ver todos los pueblos →</a></article>`;
+ return `<article class="featured-province"><h3><a href="/${seg}/">${provinceName}</a></h3><div class="featured-towns">${chosen.map(p=>`<a href="${p.path}">${seg === 'Antenas-Asturias' && p.name === 'Langreo' ? 'Antenista en Langreo' : p.name}</a>`).join('')}</div><details class="featured-more"><summary>Más pueblos con servicio</summary><div class="featured-more-links">${extra.map(p=>`<a href="${p.path}">${p.name}</a>`).join('')}</div></details><a class="featured-all" href="/${seg}/">Ver todos los pueblos →</a></article>`;
 }).join('');
 const featuredHtml=`<section class="featured-localities" id="pueblos-destacados"><div class="wrap"><span class="eyebrow">Localidades principales</span><h2>Pueblos y ciudades con servicio</h2><p class="featured-lead">Accesos directos a algunas de las localidades principales de cada provincia. Consulta la provincia para ver el listado completo.</p><div class="featured-province-grid">${featuredCards}</div></div></section>`;
 

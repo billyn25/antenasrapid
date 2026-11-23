@@ -9,7 +9,7 @@
   return loading;
  };
  async function search(submit=false){
-  const version=++revision,term=normalize(input.value);list.replaceChildren();list.hidden=true;
+  const version=++revision,term=normalize(input.value).replace(/^(?:antenistas?|instaladores? de antenas?)(?: en| de)?(?: |$)/, '').trim();list.replaceChildren();list.hidden=true;
   if(term.length<2){status.textContent='Escribe al menos dos letras del pueblo o ciudad.';return;}
   try{await load();}catch{status.textContent='No se ha podido cargar el buscador. Puedes elegir una provincia debajo e intentarlo de nuevo.';return;}
   if(version!==revision)return;
