@@ -271,7 +271,7 @@
   dialog.className = 'rapid-contact-sheet';
   dialog.id = 'rapid-mobile-contacts';
   dialog.setAttribute('aria-labelledby', 'rapid-contact-heading');
-  dialog.innerHTML = '<header><h2 id="rapid-contact-heading">Contactar con Rapid</h2><button type="button" aria-label="Cerrar" autofocus>×</button></header>';
+  dialog.innerHTML = '<header><h2 id="rapid-contact-heading">Contactar con el técnico</h2><button type="button" aria-label="Cerrar" autofocus>×</button></header>';
   for (const row of contacts.slice().reverse()) {
     const section = document.createElement('section');
     const heading = document.createElement('h3');
@@ -293,7 +293,7 @@
   const button = document.createElement('button');
   button.type = 'button';
   button.className = 'rapid-contact-trigger';
-  button.textContent = 'Contactar con el técnico';
+  button.textContent = 'Contactar';
   button.setAttribute('aria-haspopup', 'dialog');
   button.setAttribute('aria-controls', dialog.id);
   button.addEventListener('click', () => dialog.showModal());
