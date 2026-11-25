@@ -272,7 +272,7 @@
   dialog.id = 'rapid-mobile-contacts';
   dialog.setAttribute('aria-labelledby', 'rapid-contact-heading');
   dialog.innerHTML = '<header><h2 id="rapid-contact-heading">Contactar con Rapid</h2><button type="button" aria-label="Cerrar" autofocus>×</button></header>';
-  for (const row of contacts) {
+  for (const row of contacts.slice().reverse()) {
     const section = document.createElement('section');
     const heading = document.createElement('h3');
     heading.textContent = row.querySelector('strong').textContent;
