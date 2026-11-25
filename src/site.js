@@ -303,6 +303,11 @@
     const bounds = dialog.getBoundingClientRect();
     if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) dialog.close();
   });
+  const note = document.createElement('small');
+  note.textContent = 'Preferimos WhatsApp. Déjanos un mensaje y nos pondremos en contacto contigo lo antes posible.';
+  note.style.display = 'block';
+  note.style.marginTop = '1rem';
+  dialog.append(note);
   document.body.append(dialog);
   bar.replaceChildren(button);
 })();
