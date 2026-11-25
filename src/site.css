@@ -421,3 +421,16 @@ body main .local-depth-card[open]>summary::before{content:'−'}
 .service-examples{margin-top:14px;padding-top:12px;border-top:1px solid var(--line)}
 .service-examples ul{margin:4px 0 0;padding-left:18px}
 .service-examples a{display:inline-block;text-decoration:underline;text-underline-offset:3px}
+
+#rapid-mobile-contacts > small {
+  display:block;
+  margin:14px 0 0;
+  padding:10px 12px;
+  border-left:4px solid #168250;
+  border-radius:8px;
+  background:#e7f7ed;
+  color:#12452e;
+  font-size:14px;
+  line-height:1.45;
+  font-weight:600;
+}
