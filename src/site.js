@@ -293,7 +293,7 @@
   const button = document.createElement('button');
   button.type = 'button';
   button.className = 'rapid-contact-trigger';
-  button.textContent = 'Contactar';
+  button.textContent = 'Contactar con el técnico';
   button.setAttribute('aria-haspopup', 'dialog');
   button.setAttribute('aria-controls', dialog.id);
   button.addEventListener('click', () => dialog.showModal());
