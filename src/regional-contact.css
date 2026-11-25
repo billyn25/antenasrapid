@@ -13,3 +13,16 @@
 .footer .wrap>.regional-contacts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 30px;margin-top:22px}
 .footer .wrap>.regional-contacts>strong{grid-column:1/-1}
 @media(max-width:760px){.footer .wrap>.regional-contacts{grid-template-columns:1fr}}
+
+.mobilebar .rapid-contact-trigger{grid-column:1/-1;flex:1;width:100%;min-height:46px;border:0;border-radius:9px;background:#ac1732;color:white;font:inherit;font-weight:700;cursor:pointer}
+dialog.rapid-contact-sheet{box-sizing:border-box;width:min(100%,28rem);max-width:100%;max-height:90vh;max-height:90dvh;overflow:auto;margin:auto auto 0;padding:20px 20px max(20px,env(safe-area-inset-bottom));border:0;border-radius:18px 18px 0 0;background:#fff;color:#212126;box-shadow:0 -8px 42px #0003}
+.rapid-contact-sheet::backdrop{background:#12141cab}
+.rapid-contact-sheet header{position:static;display:flex;align-items:center;justify-content:space-between;gap:12px;background:white;color:inherit;padding:0;border:0;box-shadow:none}
+.rapid-contact-sheet h2{font-size:1.35rem;margin:0}
+.rapid-contact-sheet header button{min-width:44px;min-height:44px;font-size:1.6rem;color:#282832;border:0;border-radius:50%;background:#f2f2f3;cursor:pointer}
+.rapid-contact-sheet section{padding:14px 0 0;margin:14px 0 0;border-top:1px solid #ddd}
+.rapid-contact-sheet h3{font-size:1rem;margin:0}
+.rapid-contact-sheet p{margin:4px 0 10px;font-size:1.25rem;font-weight:700}
+.rapid-contact-sheet section div{display:flex;gap:10px}
+.rapid-contact-sheet section a{flex:1;min-height:44px;display:grid;place-items:center;border-radius:8px;background:#a71931;color:white;font-weight:700;text-decoration:none}
+.rapid-contact-sheet section a+a{background:#146548}

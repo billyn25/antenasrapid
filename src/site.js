@@ -260,3 +260,49 @@
     }
   }
 })();
+
+(() => {
+  const bar = document.querySelector('.mobilebar');
+  if (!bar || typeof HTMLDialogElement === 'undefined' || !HTMLDialogElement.prototype.showModal) return;
+  const contacts = [...document.querySelectorAll('footer .regional-contact')].filter(row => row.querySelector('.regional-phone') && row.querySelector('.regional-whatsapp'));
+  if (contacts.length !== 2) return;
+
+  const dialog = document.createElement('dialog');
+  dialog.className = 'rapid-contact-sheet';
+  dialog.id = 'rapid-mobile-contacts';
+  dialog.setAttribute('aria-labelledby', 'rapid-contact-heading');
+  dialog.innerHTML = '<header><h2 id="rapid-contact-heading">Contactar con Rapid</h2><button type="button" aria-label="Cerrar" autofocus>×</button></header>';
+  for (const row of contacts) {
+    const section = document.createElement('section');
+    const heading = document.createElement('h3');
+    heading.textContent = row.querySelector('strong').textContent;
+    const phone = row.querySelector('.regional-phone');
+    const number = document.createElement('p');
+    number.textContent = phone.textContent;
+    const actions = document.createElement('div');
+    for (const [source, label] of [[phone, 'Llamar'], [row.querySelector('.regional-whatsapp'), 'WhatsApp']]) {
+      const link = document.createElement('a');
+      link.href = source.href;
+      link.textContent = label;
+      link.setAttribute('aria-label', label + ' · ' + heading.textContent + ' · ' + number.textContent);
+      actions.append(link);
+    }
+    section.append(heading, number, actions);
+    dialog.append(section);
+  }
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.className = 'rapid-contact-trigger';
+  button.textContent = 'Contactar';
+  button.setAttribute('aria-haspopup', 'dialog');
+  button.setAttribute('aria-controls', dialog.id);
+  button.addEventListener('click', () => dialog.showModal());
+  dialog.querySelector('button').addEventListener('click', () => dialog.close());
+  dialog.addEventListener('click', event => {
+    if (event.target !== dialog) return;
+    const bounds = dialog.getBoundingClientRect();
+    if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) dialog.close();
+  });
+  document.body.append(dialog);
+  bar.replaceChildren(button);
+})();
